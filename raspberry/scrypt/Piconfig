@@ -1,0 +1,178 @@
+#!/bin/bash
+
+cat <<"EOF"
+                                ___           ___                               
+                               /\  \         /\__\                              
+      ___         ___         |::\  \       /:/ _/_                             
+     /\__\       /\__\        |:|:\  \     /:/ /\__\                            
+    /:/  /      /:/__/      __|:|\:\  \   /:/ /:/ _/_                           
+   /:/__/      /::\  \     /::::|_\:\__\ /:/_/:/ /\__\                          
+  /::\  \      \/\:\  \__  \:\~~\  \/__/ \:\/:/ /:/  /                          
+ /:/\:\  \      ~~\:\/\__\  \:\  \        \::/_/:/  /                           
+ \/__\:\  \        \::/  /   \:\  \   ___  \:\/:/  /                            
+      \:\__\       /:/  /     \:\__\ /\  \  \::/  /                             
+       \/__/       \/__/___    \/__//::\  \  \/__/                              
+                       /\__\       /:/\:\  \                                    
+                      /:/  /      /:/  \:\  \                                   
+                     /:/__/      /:/__/ \:\__\                                  
+                    /::\  \      \:\  \ /:/  /                                  
+                   /:/\:\  \      \:\  /:/  /                                   
+                   \/__\:\  \      \:\/:/  /                                    
+                        \:\__\      \::/  /                                     
+      ___                \/__/___    \/__/  ___                         ___     
+     /\  \                   /\__\         /\  \                       /\__\    
+    /::\  \     ___         /:/  /        /::\  \                     /:/ _/_   
+   /:/\:\__\   /\__\       /:/  /        /:/\:\  \                   /:/ /\__\  
+  /:/ /:/  /  /:/__/      /:/  /  ___   /:/  \:\  \   ___     ___   /:/ /:/ _/_ 
+ /:/_/:/  /  /::\  \     /:/__/  /\__\ /:/__/ \:\__\ /\  \   /\__\ /:/_/:/ /\__\
+ \:\/:/  /   \/\:\  \__  \:\  \ /:/  / \:\  \ /:/  / \:\  \ /:/  / \:\/:/ /:/  /
+  \::/__/     ~~\:\/\__\  \:\  /:/  /   \:\  /:/  /   \:\  /:/  /   \::/_/:/  / 
+   \:\  \        \::/  /   \:\/:/  /     \:\/:/  /     \:\/:/  /     \:\/:/  /  
+    \:\__\       /:/  /     \::/  /       \::/  /       \::/  /       \::/  /   
+     \/__/       \/__/       \/__/         \/__/         \/__/         \/__/    
+
+
+EOF
+
+########################################### INFO ###############################################
+# Last Update 03.12.2017
+#
+# VIM :	There is an installation with wim and NerdTree That makes you able to navigate folder without quitting vim  
+#			If you allready have a .vimrc configration file it will backed-up ONLY ONE BACUP WILL BE MADE so be carefull 
+#			There is NO .vimrc Configuration file for SUDOERS 
+#
+# C : 	All the C relatives will be installed for compiling C codes and Debugging
+#
+# WiringPi : Wirign pi is a C based software for controlling the Raspberry Pi's GPIO pins in C 
+#			But Also have inlime terminal command compiled for ease of use plese refer to http://wiringpi.com/ for more information 
+#
+# HTOP : HTOP is a fully made task manager with comprehemsible interface 
+#
+# MidnightCommander : Is a file browser with two windows and helps a lot in mamaging file copiying etc... 
+#
+#
+#
+#
+#
+#
+################################################################################################
+
+
+
+
+#VARIABLES 
+
+VIMRC=".vimrc"
+VIMDIR=".vim"
+
+
+#MAIM SCRIPT FOR INSTALLATION
+printf "\e[93m================================================== GOING HOME ==================================================\e[32m\n\n"
+cd ~
+cp PiConf Temp.txt
+printf "\e[36m================================================== HOME SWEET HOME =======================================\e[32m\n\n"
+
+printf "\e[31m================================================== INSTALLING GIT ================================================\e[32m\n"
+sudo apt-get install git-core 
+printf "\e[36m================================================== FINISHED INSTALLING GIT =======================================\e[32m\n\n"
+
+
+printf "\e[31m================================================== INSTALLING VIM ================================================\e[32m\n"
+sudo apt-get install -y vim
+git clone https://github.com/scrooloose/nerdtree.git
+
+if [ -f $VIMRC ];
+then
+   printf "\e[95mFile : $VIMRC exists Making a Backup\e[32m\n"
+     mv $VIMRC  "$VIMRC".bak
+     touch vimconfig.txt
+else
+   printf "\e[95mCreatting file : $VIMRC\n"
+   touch vimconfig.txt
+fi
+
+if [ -d "$VIMDIR" ]; 
+then 
+	printf "\e[95mDirectory : $VIMDIR exists Making a Backup\e[32m\n"
+	sleep 1 
+
+	if [ -d "$VIMDIR""_bak" ];
+	then
+		printf "\e[95mBackup Directory Allredy Exists : Replacing\e[32m\n"
+		sudo rm -r $VIMDIR"_bak"
+	fi
+	
+	mv $VIMDIR $VIMDIR"_bak"
+	sudo mkdir $VIMDIR
+else 
+	printf "\e[95mCreating directory : $VIMDIR \e[32m\n"
+	sudo mkdir $VIMDIR
+fi
+
+#This is the configuration to be writtten inside .vimrc that works great but has no configuration for sudoers
+cat <<EOT >> vimconfig.txt
+""VIM_CONFIG_START
+
+"Basic syntax ----------------------------------------------------------------------
+
+syntax on
+set number 
+set tabstop=3		""TabSize of 3  
+set shiftwidth=3 	""Indentation fo 3  
+set softtabstop=0 ""Enabeling it will remplace tabs by spaces in insert mode not cool
+set noexpandtab 	""Enabeling it will remplace tabs by spaces not cool 
+
+"-----------------------------------------------------------------------------------
+
+
+
+"NerdTree --------------------------------------------------------------------------
+
+"autocmd vimenter * NERDTree "For auto activating nerd tree when vim opens 
+map <C-n> :NERDTreeToggle<CR>  
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif ""autoClose wim when only the NerdTree Window IS open 
+
+"------------------------------------------------------------------------------------
+
+""VIM_CONFIG_END
+EOT
+
+mv vimconfig.txt $VIMRC
+sudo cp -a nerdtree/. $VIMDIR
+sudo rm -r nerdtree/
+printf "\e[36m================================================== FINISHED INSTALLING VIM =======================================\e[32m\n\n"
+
+
+printf "\e[31m================================================== INSTALLING C RELATIES =========================================\e[32m\n"
+sudo apt-get install gcc
+printf "\e[36m================================================== FINISHED INSTALLING C RELATIVES ================================\e[32m\n\n"
+
+printf "\e[31m================================================== INSTALLING I2C TOOLS RELATIES =========================================\e[32m\n"
+sudo apt-get install -y i2c-tools
+sudo apt-get install -y libi2c-dev
+printf "\e[36m================================================== FINISHED INSTALLING I2C TOOLS ================================\e[32m\n\n"
+
+printf "\e[31m================================================== INSTALLING HTOP ================================================\e[32m\n"
+sudo apt-get install -y htop 
+printf "\e[36m================================================== FINISHED INSTALLING HTOP =======================================\e[32m\n\n"
+
+printf "\e[31m================================================== INSTALLING MIDNIGHT COMMANDER ================================================\e[32m\n"
+sudo apt-get install -y mc 
+printf "\e[36m================================================== FINISHED INSTALLING MIDNIGHT COMMANDER =======================================\e[32m\n\n"
+
+printf "\e[31m================================================== INSTALLING POSTGRESQL ================================================\e[32m\n"
+sudo apt-get install -y postgresql libpq-dev postgresql-client postgresql-client-common 
+sudo apt-get install -y php5-pgsql 
+printf "\e[36m================================================== FINISHED INSTALLING POSTGRESQL =======================================\e[32m\n\n"
+
+printf "\e[31m================================================== INSTALLING WiringPi =========================================\e[32m\n"
+git clone git://git.drogon.net/wiringPi
+cd ~/wiringPi
+./build
+cd ~ 
+rm -r wiringPi 
+printf "\e[36m================================================== FINISHED INSTALLING WiringPi ================================\e[32m\n\n"
+
+printf "\e[95mfinished\e[32m\n"
+
+
