@@ -24,3 +24,5 @@ int i2c_write_16(char reg, char data);
 int i2c_write_8(char data); 
 
 void i2c_open_device(int address); 
+
+unsigned char i2c_read_8(char regToRead); 

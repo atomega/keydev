@@ -162,6 +162,10 @@ sudo cp -a nerdtree/. $VIMDIR
 sudo rm -r nerdtree/
 
 
+
+printf "\e[36m INSTALLING LIVE-BUILD TOOL \e[32m\n"
+sudo apt-get install -y live-build
+
 printf "\e[36m##################INSTALLING THINGS FOR DEBIAN DONE ###################\e[32m\n"
 
 

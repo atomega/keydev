@@ -151,7 +151,7 @@ int main()
 	data = uartRecieveData(); 	
 	getchar(); 
 	uartSendData("ATID");  
-   uartSendEnter();   
+   	uartSendEnter();   
 	getchar(); 
 	data = uartRecieveData(); 	
 

@@ -13,13 +13,10 @@
 #include "main.h"
 #include "i2c.h"
 
-
 int fd = 0; 																		// File description (pour suivre létat du port i2c) 
 char buf[24]; 	
 char current_dev_id = 0;
-
-
-
+unsigned char read_buf[1]; 
 
 //Initialisation de la communication avec un IC
 // PORT_I2C Definit dan i2c.h corresspond au nom du port I2C a etre tuilisé
@@ -79,6 +76,7 @@ int i2c_write_16(char reg, char data)
 {
 	buf[0] = reg; 
 	buf[1] = data; 
+
 	if ((write(fd, buf, 2)) != 2) 											// Ecriture de deux éléments présent sur le buffer
 	{														
 		#ifdef I2C_DEBUG
@@ -101,5 +99,45 @@ int i2c_write_16(char reg, char data)
 	}
 	
 	return 1; 
+}
+
+unsigned char i2c_read_8(char regToRead)
+{
+
+	#ifdef I2C_DEBUG
+ 	char write_command = (current_dev_id << 1)|1;  
+  	#endif 
+	if (i2c_write_8(regToRead))
+	{
+			#ifdef I2C_DEBUG
+			printf("I2C.C :\t Erreur de demande de lecture : 8 bits \n");
+			printf("I2C.C :\t Readwrite command : 0x%x \n", write_command & 0xff); 
+			printf("I2C.C :\t Addresse : 0x%x \n \n", regToRead & 0xff);  
+			#endif
+	
+	}	
+	else 
+	{	
+		if ((read(fd, read_buf, 1)) != 1) 											// Lecture d'un éllemnt dans le buffer. 
+		{	
+			#ifdef I2C_DEBUG
+			printf("I2C.C :\t Erreur de lecture : 8 bits \n");
+			printf("I2C.C :\t Registre \t : 0x%x \n", regToRead & 0xff); 
+			printf("I2C.C :\t Recut 1 \t : 0x%x \n", read_buf[0] & 0xff); 
+			printf("I2C.C :\t Addresse \t : 0x%x \n \n", current_dev_id & 0xff);  
+			#endif
+		}
+		else 
+		{
+			#ifdef I2C_DEBUG
+			printf("I2C.C :\t Lecture reuissit : 8 bits \n");
+			printf("I2C.C :\t Registre \t : 0x%x \n", regToRead & 0xff); 
+			printf("I2C.C :\t Recut 1 \t : 0x%x \n", read_buf[0] & 0xff); 
+			printf("I2C.C :\t Addresse \t : 0x%x \n \n", current_dev_id & 0xff);  
+			#endif
+			return read_buf[0]; 	
+		}
+	}	
+		return read_buf[0]; 	
 }
 
