@@ -1,13 +1,8 @@
 #include "main.h"
-#include "lcd.h"
-#include "getip.h"
-#include "dbcomm.h"
+#include "bh1750/bh1750.h"
 int main()
 {
-	i2c_lcd_init(LCD_ADDRS); 
-	lcd_display_string(1, 0, "       R-A-M      "); 
-	get_ip_eth(); 
-	get_ip_wlan(); 	
-//	testDb(); 	
-  return 0; 
+	bh1750_open(); 
+	bh1750_oneShot(BH1750_ONE_TIME_HIGH_RES_MODE_1); 
+	return 0; 
 }

@@ -1,0 +1,36 @@
+INC = /usr/include/pgsql
+
+CC=gcc 
+CFLAGS= -Wall -pedantic  
+LDFLAGS= 
+EXEC= runtest
+
+
+all : $(EXEC)
+
+$(EXEC): main.o i2c.o bh1750.o 
+	$(CC) -o $@ $^ $(LDFLAGS) 
+ 
+main.o: main.c
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+bh1750.o: bh1750.c
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+i2c.o: i2c.c
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+lcd.o: lcd.c
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+getip.o: getip.c
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+dbcomm.o: dbcomm.c
+	$(CC) -c -I/usr/local/pgsql/include dbcomm.c
+
+clean: 
+	rm -rf *.o *.so
+
+cleanall: 
+	rm -rf *.o .so $(EXEC)

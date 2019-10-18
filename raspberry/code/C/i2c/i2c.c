@@ -10,17 +10,19 @@
 // La Fonction "write" pour la communication en i2c est déja 
 // compris dans les libraires du raspian 
 //////////////////////////////////////////////////////////
-#include "main.h"
+#include "../main.h"
 #include "i2c.h"
 
-int fd = 0; 																		// File description (pour suivre létat du port i2c) 
-char buf[24]; 	
-char current_dev_id = 0;
-unsigned char read_buf[1]; 
+int16_t fd = 0; 																		// File description (pour suivre létat du port i2c) 
+int8_t buf[24]; 	
+int8_t current_dev_id = 0;
+uint8_t read_buf[1]; 
+
+
 
 //Initialisation de la communication avec un IC
 // PORT_I2C Definit dan i2c.h corresspond au nom du port I2C a etre tuilisé
-void i2c_open_device( int address )
+void i2c_open_device( int16_t address )
 {
 	char *fileName = PORT_I2C; 
 	
@@ -38,13 +40,18 @@ void i2c_open_device( int address )
 	{
 		buf[0] = 0;																	// This is the register we want to read from
 		current_dev_id = address; 
-	}
-	
+	}	
 } 
 
 
+void i2c_close_device(uint16_t address)
+{
+	
+}
+
+
 //Ecriture de 8 bits sur l'excave qui à été initialisé dans i2c_open_device() 
-int i2c_write_8(char data)														
+int16_t i2c_write_8(int8_t data)														
 {
 	buf[0] = data; 
 	if ((write(fd, buf, 1)) != 1) 											// Ecriture d'un seul élément présent sur le buffer
@@ -72,7 +79,7 @@ int i2c_write_8(char data)
 
 
 //Ecriture de 16 bits sur l'escave qui à été initialisé dans i2c_open_device() 
-int i2c_write_16(char reg, char data)
+int16_t i2c_write_16(int8_t reg, int8_t data)
 {
 	buf[0] = reg; 
 	buf[1] = data; 
@@ -101,17 +108,12 @@ int i2c_write_16(char reg, char data)
 	return 1; 
 }
 
-unsigned char i2c_read_8(char regToRead)
+uint8_t i2c_read_8(int8_t regToRead)
 {
-
-	#ifdef I2C_DEBUG
- 	char write_command = (current_dev_id << 1)|1;  
-  	#endif 
 	if (i2c_write_8(regToRead))
 	{
 			#ifdef I2C_DEBUG
 			printf("I2C.C :\t Erreur de demande de lecture : 8 bits \n");
-			printf("I2C.C :\t Readwrite command : 0x%x \n", write_command & 0xff); 
 			printf("I2C.C :\t Addresse : 0x%x \n \n", regToRead & 0xff);  
 			#endif
 	
@@ -139,5 +141,45 @@ unsigned char i2c_read_8(char regToRead)
 		}
 	}	
 		return read_buf[0]; 	
+}
+
+uint16_t i2c_read_16(int8_t regToRead)
+{
+	uint16_t result = 0;
+
+	if (i2c_write_8(regToRead))
+	{
+			#ifdef I2C_DEBUG
+			printf("I2C.C :\t Erreur de demande de lecture : 8 bits \n");
+			printf("I2C.C :\t Addresse : 0x%x \n \n", regToRead & 0xff);  
+			#endif
+	
+	}	
+	else 
+	{	
+		if ((read(fd, read_buf, 2)) != 2) 											// Lecture d'un éllemnt dans le buffer. 
+		{	
+			#ifdef I2C_DEBUG
+			printf("I2C.C :\t Erreur de lecture : 8 bits \n");
+			printf("I2C.C :\t Registre \t : 0x%x \n", regToRead & 0xff); 
+			printf("I2C.C :\t Recut 1 \t : 0x%x \n", read_buf[0] & 0xff); 
+			printf("I2C.C :\t Recut 2 \t : 0x%x \n", read_buf[1] & 0xff); 
+			printf("I2C.C :\t Addresse \t : 0x%x \n \n", current_dev_id & 0xff);  
+			#endif
+		}
+		else 
+		{
+			#ifdef I2C_DEBUG
+			printf("I2C.C :\t Lecture reuissit : 8 bits \n");
+			printf("I2C.C :\t Registre \t : 0x%x \n", regToRead & 0xff); 
+			printf("I2C.C :\t Recut 1 \t : 0x%x \n", read_buf[0] & 0xff); 
+			printf("I2C.C :\t Recut 2 \t : 0x%x \n", read_buf[1] & 0xff); 
+			printf("I2C.C :\t Addresse \t : 0x%x \n \n", current_dev_id & 0xff);  
+			#endif
+			result = read_buf[1] + (read_buf[0] >> (CHAR_BIT - 2));
+			return result;  	
+		}
+	}	
+		return result; 	
 }
 

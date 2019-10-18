@@ -15,14 +15,15 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-
 #define PORT_I2C "/dev/i2c-1" // Declaration du port a utiliser pour la communication I2C. 
 
 
-int i2c_write_16(char reg, char data); 
+int16_t i2c_write_16(int8_t reg, int8_t data); 
 
-int i2c_write_8(char data); 
+int16_t i2c_write_8(int8_t data); 
 
-void i2c_open_device(int address); 
+void i2c_open_device(int16_t address); 
 
-unsigned char i2c_read_8(char regToRead); 
+uint8_t i2c_read_8(int8_t regToRead); 
+
+uint16_t i2c_read_16(int8_t regToRead);
