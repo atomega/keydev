@@ -76,10 +76,14 @@ printf "\e[31m================================================== INSTALLING GIT 
 sudo apt-get install git-core 
 printf "\e[36m================================================== FINISHED INSTALLING GIT =======================================\e[32m\n\n"
 
+printf "\e[31m================================================== INSTALLING CMAKE ================================================\e[32m\n"
+sudo apt-get install cmake 
+printf "\e[36m================================================== FINISHED INSTALLING CMAKE =======================================\e[32m\n\n"
 
 printf "\e[31m================================================== INSTALLING VIM ================================================\e[32m\n"
 sudo apt-get install -y vim
 git clone https://github.com/scrooloose/nerdtree.git
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 if [ -f $VIMRC ];
 then

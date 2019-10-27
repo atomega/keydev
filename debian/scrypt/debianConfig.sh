@@ -96,8 +96,11 @@ printf "\e[31m INSTALLING GIMP\e[32m\n"
 sudo apt-get install -y gimp
 printf "\e[31m INSTALLING NCURSES \e[32m\n"
 sudo apt-get install -y ncurse-*
+printf "\e[31m INSTALLING CMAKE \e[32m\n"
+sudo apt-get install cmake 
 printf "\e[31m INSTALLING VIM \e[32m\n"
 sudo apt-get install -y vim
+
 printf "\e[31m ADDING NERDTREE TO VIM \e[32m\n"
 git clone https://github.com/scrooloose/nerdtree.git
 
