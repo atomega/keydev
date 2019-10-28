@@ -190,6 +190,6 @@ uint8_t ma12070_setVolume(int16_t volume);
 uint8_t ma12070_init(void); 
 uint8_t ma12070_configure(uint8_t Default);
 int16_t ma12070_getVolume(void); 
-
-uint8_t ma12070_setPowerMode(uint8_t mode); 
+uint8_t ma12070_setPowerMode(uint8_t mode);
 void ma12070_getCurrentDevInfo(void); 
+void ma12070_printCurrentCconf(void); 

@@ -34,6 +34,14 @@ int16_t ma12070_getVolume(void)
 }
 
 
+
+
+void ma12070_printCurrentCconf(void)
+{
+	printf("\n\n\t CURRENT CONFIGURATION OF MA12070P \n\n");
+  	printf("power_mode = %d\n",amp.power_mode);	
+}
+
 void ma12070_getCurrentDevInfo(void)
 {
 	Buffer = i2c_read_8(MA12070_REG_POWER_MODE_CONTROL);
@@ -61,7 +69,7 @@ void ma12070_getCurrentDevInfo(void)
 
 	Buffer = i2c_read_8(MA12070_REG_AUDIO_IN_MODE);
 	amp.audio_in_mode = get_bits_range_uint8(Buffer,5,6);
-	Buffer = i2c_read_8(MA12070_REG_MA12070_REG_DC_PROTECTION);
+	Buffer = i2c_read_8(MA12070_REG_DC_PROTECTION);
 	amp.eh_dc_shndn = get_nth_bit_uint8(Buffer,2);
 
 	Buffer = i2c_read_8(MA12070_REG_AUDI_IN_OVERWRITE);
@@ -71,7 +79,7 @@ void ma12070_getCurrentDevInfo(void)
 	amp.eh_clear = get_nth_bit_uint8(Buffer,2);
 	
 	Buffer = i2c_read_8(MA12070_REG_PCM_WORD_FORMAT);
-	amp.i2s_format get_n_bits_lsb_uint8(Buffer,3);
+	amp.i2s_format = get_n_bits_lsb_uint8(Buffer,3);
 	
 	Buffer = i2c_read_8(MA12070_REG_I2S_CONFIG);
 	amp.i2s_right_first = get_nth_bit_uint8(Buffer,5);
@@ -98,7 +106,7 @@ void ma12070_getCurrentDevInfo(void)
 	amp.vol_db[1] = i2c_read_8(MA12070_REG_VOL_DB_CH1);
 	amp.vol_db[2] = i2c_read_8(MA12070_REG_VOL_DB_CH2);
 	amp.vol_db[3] = i2c_read_8(MA12070_REG_VOL_DB_CH3);
-	i2c_read_8	Buffer = (MA12070_REG_VOL_LSB_CHX);
+	Buffer = i2c_read_8(MA12070_REG_VOL_LSB_CHX);
 	amp.vol_lsb[0] = get_n_bits_lsb_uint8(Buffer,2);
 	amp.vol_lsb[1] = get_bits_range_uint8(Buffer,2,3);
 	amp.vol_lsb[2] = get_bits_range_uint8(Buffer,4,5);
@@ -162,46 +170,40 @@ uint8_t ma12070_setPowerMode(uint8_t mode)
 	switch(mode)
 	{
 		case MA12070_POWER_MODE_1:
-	 		Buffer = set_nth_bit_uint8(Buffer,MA12070_POWER_MODE_LSB); 
-	 		Buffer = unset_nth_bit_uint8(Buffer,MA12070_POWER_MODE_MSB); 
-			amp.power_mode = Buffer; 
-			i2c_write_16(MA12070_REG_POWER_MODE_CONTROL,amp.power_mode); 
+	 		Buffer = set_nth_bit_uint8(Buffer,4); 
+	 		Buffer = unset_nth_bit_uint8(Buffer,5); 
+			amp.power_mode = get_bits_range_uint8(Buffer,4,5); 
+			i2c_write_16(MA12070_REG_POWER_MODE_CONTROL,Buffer); 
 			return 0; 
 		
 		case MA12070_POWER_MODE_2: 	
-	 		Buffer = unset_nth_bit_uint8(Buffer,MA12070_POWER_MODE_LSB); 
-	 		Buffer = set_nth_bit_uint8(Buffer,MA12070_POWER_MODE_MSB); 
-			amp.power_mode = Buffer; 
-			i2c_write_16(MA12070_REG_POWER_MODE_CONTROL,amp.power_mode); 
+	 		Buffer = unset_nth_bit_uint8(Buffer,4); 
+	 		Buffer = set_nth_bit_uint8(Buffer,5); 
+			amp.power_mode = get_bits_range_uint8(Buffer,4,5); 
+			i2c_write_16(MA12070_REG_POWER_MODE_CONTROL,Buffer); 
 			return 0; 
 		
 		case MA12070_POWER_MODE_3: 	
-	 		Buffer = set_nth_bit_uint8(Buffer,MA12070_POWER_MODE_LSB); 
-	 		Buffer = set_nth_bit_uint8(Buffer,MA12070_POWER_MODE_MSB); 
-			amp.power_mode = Buffer; 
-			i2c_write_16(MA12070_REG_POWER_MODE_CONTROL,amp.power_mode); 
+	 		Buffer = set_nth_bit_uint8(Buffer,4); 
+	 		Buffer = set_nth_bit_uint8(Buffer,5); 
+			amp.power_mode = get_bits_range_uint8(Buffer,4,5); 
+			i2c_write_16(MA12070_REG_POWER_MODE_CONTROL,Buffer); 
 			return 0; 
 		
 		case MA12070_POWER_MODE_MAN:
-	 		Buffer = set_nth_bit_uint8(Buffer,MA12070_POWER_MODE_LSB); 
-	 		Buffer = unset_nth_bit_uint8(Buffer,MA12070_POWER_MODE_MSB); 
-			amp.power_mode = Buffer; 
-			i2c_write_16(MA12070_REG_POWER_MODE_CONTROL,amp.power_mode); 
+	 		Buffer = set_nth_bit_uint8(Buffer,6); 
+			amp.power_mode = get_bits_range_uint8(Buffer,4,5); 
+			i2c_write_16(MA12070_REG_POWER_MODE_CONTROL,Buffer); 
 			return 0; 
 		
 		case MA12070_POWER_MODE_DEFF:	
-			amp.power_mode = MA12070_DEF_POWER_MODE_CONTROL; 
-			i2c_write_16(MA12070_REG_POWER_MODE_CONTROL,amp.power_mode); 
+			amp.power_mode = get_bits_range_uint8(Buffer,4,5); 
+			i2c_write_16(MA12070_REG_POWER_MODE_CONTROL,Buffer); 
 			return 0; 
 		
 		default: 
 				return 1; 
 	}		
-}
-
-uint8_t ma12070_setTreshold1To2(uint8_t treshold)
-{
-	
 }
 
 
