@@ -157,7 +157,7 @@ typedef struct MA12070
 	uint8_t i2s_frame_size;
 	uint8_t i2s_order;
 	uint8_t i2s_ws_pol;
-	uint8_t i2s_sck_po;
+	uint8_t i2s_sck_pol;
 	uint8_t audio_proc_release;
 	uint8_t audio_proc_attack;
 	uint8_t audio_proc_enable;
@@ -192,3 +192,4 @@ uint8_t ma12070_configure(uint8_t Default);
 int16_t ma12070_getVolume(void); 
 
 uint8_t ma12070_setPowerMode(uint8_t mode); 
+void ma12070_getCurrentDevInfo(void); 

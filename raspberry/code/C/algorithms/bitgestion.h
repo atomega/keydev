@@ -33,3 +33,8 @@ uint8_t get_n_bits_msb_uint8( uint8_t value, uint8_t bits);
 int8_t get_n_bits_msb_int8(int8_t value, uint8_t bits);
 uint16_t get_n_bits_msb_uint16( uint16_t value, uint8_t bits);
 int16_t get_n_bits_msb_int16( int16_t value, uint8_t bits);
+
+uint8_t get_bits_range_uint8( uint8_t value, uint8_t startBit, uint8_t stopBit); 
+int8_t get_bits_range_int8( int8_t value, uint8_t startBit, uint8_t stopBit); 
+uint16_t get_bits_range_uint16( uint16_t value, uint8_t startBit, uint8_t stopBit); 
+int16_t get_bits_range_int16( int16_t value, uint8_t startBit, uint8_t stopBit); 

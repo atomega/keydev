@@ -400,3 +400,108 @@ int16_t get_n_bits_msb_int16( int16_t value, uint8_t bits)
 	}
 	return 0; 
 }
+
+// Get Bits range from startBit to stopBit and return them shifted.  
+
+
+uint8_t get_bits_range_uint8( uint8_t value, uint8_t startBit, uint8_t stopBit)
+{
+	if (startBit <= 8 && bits >=0)
+	{
+		if(startBit <= 8 && bits >=0)
+		{
+			if(startBit < stopBit)
+			{
+				uint8_t mask = 0;
+				uint8_t i = 0; 
+				for(i = startBit; i <= stopBit; i++ )
+        		{
+                	mask |= (1 << i);
+        		}
+        		return (value & mask) >> startBit; 
+			}
+		}	
+	}
+	else 
+	{
+		return 0; 
+	}
+	return 0; 
+}
+
+int8_t get_bits_range_int8( int8_t value, uint8_t startBit, uint8_t stopBit)
+{
+	if (startBit <= 8 && bits >=0)
+	{
+		if(startBit <= 8 && bits >=0)
+		{
+			if(startBit < stopBit)
+			{
+				uint8_t mask = 0;
+				uint8_t i = 0; 
+				for(i = startBit; i <= stopBit; i++ )
+        		{
+                	mask |= (1 << i);
+        		}
+        		return (value & mask) >> startBit; 
+			}
+		}	
+	}
+	else 
+	{
+		return 0; 
+	}
+	return 0; 
+}
+
+uint16_t get_bits_range_uint16( uint16_t value, uint8_t startBit, uint8_t stopBit)
+{
+	if (startBit <= 16 && bits >=0)
+	{
+		if(startBit <= 16 && bits >=0)
+		{
+			if(startBit < stopBit)
+			{
+				uint8_t mask = 0;
+				uint8_t i = 0; 
+				for(i = startBit; i <= stopBit; i++ )
+        		{
+                	mask |= (1 << i);
+        		}
+        		return (value & mask) >> startBit; 
+			}
+		}	
+	}
+	else 
+	{
+		return 0; 
+	}
+	return 0; 
+}
+
+
+
+int16_t get_bits_range_int16( int16_t value, uint8_t startBit, uint8_t stopBit)
+{
+	if (startBit <= 16 && bits >=0)
+	{
+		if(startBit <= 16 && bits >=0)
+		{
+			if(startBit < stopBit)
+			{
+				uint8_t mask = 0;
+				uint8_t i = 0; 
+				for(i = startBit; i <= stopBit; i++ )
+        		{
+                	mask |= (1 << i);
+        		}
+        		return (value & mask) >> startBit; 
+			}
+		}	
+	}
+	else 
+	{
+		return 0; 
+	}
+	return 0; 
+}
