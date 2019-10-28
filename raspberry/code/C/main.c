@@ -14,8 +14,13 @@ int main(int argc, char *argv[])
 	//int16_t test16 = 4; //32767; 
 	//uint8_t n = 1;
 	//ma12070_getVolume();  
+	ma12070_init(); 
  
+	ma12070_setPowerMode(MA12070_POWER_MODE_3); 
+	ma12070_getCurrentDevInfo(); 
+	ma12070_printCurrentCconf(); 
 	ma12070_setPowerMode(MA12070_POWER_MODE_2); 
+	ma12070_getCurrentDevInfo(); 
 	ma12070_printCurrentCconf(); 
 	return 0; 
 }
