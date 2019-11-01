@@ -15,6 +15,122 @@ uint8_t ma12070_init(void)
 	return 1;
 }
 
+uint8_t ma12070_setTreshol(uint8_t channel, uint8_t value)
+{
+	if(value <= 0 && value <= 255)
+	{
+		switch(channel)
+		{
+			case MA12070_REG_MTHR_1TO2 :
+				i2c_write_16(MA12070_REG_MTHR_1TO2, value); 
+				return 0;
+			
+			case MA12070_REG_MTHR_2TO1 : 
+				i2c_write_16(MA12070_REG_MTHR_2TO1, value); 
+				return 0; 
+			
+			case MA12070_REG_MTHR_2TO3 : 
+				i2c_write_16(MA12070_REG_MTHR_2TO3, value); 
+				return 0; 
+			
+			case MA12070_REG_MTHR_3TO2 : 
+				i2c_write_16(MA12070_REG_MTHR_3TO2, value); 
+				return 0; 
+			
+			default : 
+				return 1; 
+		}
+	}
+
+	return 1; 
+}
+
+uint8_t ma12070_setClippingAndOpc(uint8_t clipOrOpc, uint8_t enable)
+{
+	if( clipOrOpc >= 0 && clipOrOpc <= 1 && enable >= 0 && enable <= 1)
+	{
+		Buffer = i2c_read_8(MA12070_REG_SOFT_CILLIPNG)
+		
+		if (clipOrOpc)
+		{
+			if (enable)
+			{
+				Buffer = set_nth_bit_uint8(Buffer, 7);
+			}
+			else 
+			{
+				Buffer = unset_nth_bit_uint8(Buffer, 7);
+			}
+		}
+		else
+		{
+			if (enable)
+			{
+				Buffer = set_nth_bit_uint8(Buffer, 1);
+			}
+			else
+			{
+				Buffer = unset_nth_bit_uint8(Buffer, 1);
+			}
+		}
+
+		i2c_write_16(MA12070_REG_SOFT_CILLIPNG, Buffer);
+		
+		return 0; 
+	}
+
+	return 1; 
+}
+
+uint8_t ma12070_setPowerModeProfileSetings(uint8_t setings)
+{
+	if (setings >= 0 && setings <= 4)
+	{
+		Buffer = i2c_read_8(MA12070_REG_PM_PROFILE_MODE);  
+		switch(setings)
+		{
+			case 0 :
+				Buffer = unset_nth_bit_uint8(Buffer,0); //0
+				Buffer = unset_nth_bit_uint8(Buffer,1); //0
+				Buffer = unset_nth_bit_uint8(Buffer,2); //0
+				i2c_write_16(MA12070_REG_PM_PROFILE_MODE, Buffer);
+				return 0; 
+			case 1 :
+				Buffer = set_nth_bit_uint8(Buffer,0); 	//1
+				Buffer = unset_nth_bit_uint8(Buffer,1); //0
+				Buffer = unset_nth_bit_uint8(Buffer,2); //0
+				i2c_write_16(MA12070_REG_PM_PROFILE_MODE, Buffer);
+				return 0; 
+			case 2 :
+				Buffer = unset_nth_bit_uint8(Buffer,0); //0
+				Buffer = set_nth_bit_uint8(Buffer,1); 	//1
+				Buffer = unset_nth_bit_uint8(Buffer,2); //0
+				i2c_write_16(MA12070_REG_PM_PROFILE_MODE, Buffer);
+				return 0; 
+			case 3 :
+				Buffer = set_nth_bit_uint8(Buffer,0); 	//1
+				Buffer = set_nth_bit_uint8(Buffer,1); 	//1
+				Buffer = unset_nth_bit_uint8(Buffer,2); //0
+				i2c_write_16(MA12070_REG_PM_PROFILE_MODE, Buffer);
+				return 0; 
+			case 4 :
+				Buffer = unset_nth_bit_uint8(Buffer,0); //0
+				Buffer = unset_nth_bit_uint8(Buffer,1); //0
+				Buffer = set_nth_bit_uint8(Buffer,2); 	//1
+				i2c_write_16(MA12070_REG_PM_PROFILE_MODE, Buffer);
+				return 0;  
+			default:
+				return 1; 
+		}
+	}
+	return 1; 
+}
+
+uint8_t ma12070_setPowerModeProfileConfig(uint8_t config)
+{
+	
+}
+
 int16_t ma12070_getVolume(void)
 {
 	uint8_t DbFraction = 0; 
@@ -197,11 +313,6 @@ uint8_t ma12070_setPowerMode(uint8_t mode)
 		default: 
 				return 1; 
 	}		
-}
-
-uint8_t ma12070_setTreshold1To2(uint8_t treshold)
-{
-	
 }
 
 
