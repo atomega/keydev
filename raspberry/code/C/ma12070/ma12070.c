@@ -15,7 +15,7 @@ uint8_t ma12070_init(void)
 	return 1;
 }
 
-uint8_t ma12070_setTreshol(uint8_t channel, uint8_t value)
+uint8_t ma12070_setTreshold(uint8_t channel, uint8_t value)
 {
 	if(value <= 0 && value <= 255)
 	{

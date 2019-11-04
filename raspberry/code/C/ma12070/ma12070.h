@@ -193,4 +193,4 @@ int16_t ma12070_getVolume(void);
 
 uint8_t ma12070_setPowerMode(uint8_t mode); 
 void ma12070_getCurrentDevInfo(void); 
-uint8_t ma12070_setTreshol(uint8_t channel, uint8_t value);
+uint8_t ma12070_setTreshold(uint8_t channel, uint8_t value);
