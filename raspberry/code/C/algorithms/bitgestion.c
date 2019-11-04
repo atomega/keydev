@@ -406,9 +406,9 @@ int16_t get_n_bits_msb_int16( int16_t value, uint8_t bits)
 
 uint8_t get_bits_range_uint8( uint8_t value, uint8_t startBit, uint8_t stopBit)
 {
-	if (startBit <= 8 && bits >=0)
+	if (startBit <= 8 && startBit >=0)
 	{
-		if(startBit <= 8 && bits >=0)
+		if(stopBit <= 8 && stopBit >=0)
 		{
 			if(startBit < stopBit)
 			{
@@ -418,7 +418,7 @@ uint8_t get_bits_range_uint8( uint8_t value, uint8_t startBit, uint8_t stopBit)
         		{
                 	mask |= (1 << i);
         		}
-        		return (value & mask) >> startBit; 
+        		return ((value & mask) >> startBit); 
 			}
 		}	
 	}
@@ -431,9 +431,9 @@ uint8_t get_bits_range_uint8( uint8_t value, uint8_t startBit, uint8_t stopBit)
 
 int8_t get_bits_range_int8( int8_t value, uint8_t startBit, uint8_t stopBit)
 {
-	if (startBit <= 8 && bits >=0)
+	if (startBit <= 8 && startBit >=0)
 	{
-		if(startBit <= 8 && bits >=0)
+		if(stopBit <= 8 && stopBit >=0)
 		{
 			if(startBit < stopBit)
 			{
@@ -456,9 +456,9 @@ int8_t get_bits_range_int8( int8_t value, uint8_t startBit, uint8_t stopBit)
 
 uint16_t get_bits_range_uint16( uint16_t value, uint8_t startBit, uint8_t stopBit)
 {
-	if (startBit <= 16 && bits >=0)
+	if (startBit <= 16 && startBit >=0)
 	{
-		if(startBit <= 16 && bits >=0)
+		if(stopBit <= 16 && stopBit >=0)
 		{
 			if(startBit < stopBit)
 			{
@@ -483,9 +483,9 @@ uint16_t get_bits_range_uint16( uint16_t value, uint8_t startBit, uint8_t stopBi
 
 int16_t get_bits_range_int16( int16_t value, uint8_t startBit, uint8_t stopBit)
 {
-	if (startBit <= 16 && bits >=0)
+	if (startBit <= 16 && startBit >=0)
 	{
-		if(startBit <= 16 && bits >=0)
+		if(stopBit <= 16 && stopBit >=0)
 		{
 			if(startBit < stopBit)
 			{
