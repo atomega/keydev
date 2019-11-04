@@ -126,8 +126,18 @@ uint8_t ma12070_setPowerModeProfileSetings(uint8_t setings)
 	return 1; 
 }
 
-uint8_t ma12070_setPowerModeProfileConfig(uint8_t config)
+uint8_t ma12070_setPowerModeProfileConfig(uint8_t scheme, uint8_t pm)
 {
+	if(scheme <= 3 && >= 0 && pm <= 3 && pm >= 1)
+	{
+		switch(pm)
+		{
+			case 1 : 
+			case 2 : 
+			case 3 : 
+			default : 
+		}
+	}
 	
 }
 
