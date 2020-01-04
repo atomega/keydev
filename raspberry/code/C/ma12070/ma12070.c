@@ -15,6 +15,49 @@ uint8_t ma12070_init(void)
 	return 1;
 }
 
+uint8_t ma12070_setPowerMode(uint8_t mode)
+{
+	Buffer = i2c_read_8(MA12070_REG_POWER_MODE_CONTROL);
+  		
+	switch(mode)
+	{
+		case MA12070_POWER_MODE_1:
+	 		Buffer = set_nth_bit_uint8(Buffer,4); 
+	 		Buffer = unset_nth_bit_uint8(Buffer,5); 
+			amp.power_mode = get_bits_range_uint8(Buffer,4,5); 
+			i2c_write_16(MA12070_REG_POWER_MODE_CONTROL,Buffer); 
+			return 0; 
+		
+		case MA12070_POWER_MODE_2: 	
+	 		Buffer = unset_nth_bit_uint8(Buffer,4); 
+	 		Buffer = set_nth_bit_uint8(Buffer,5); 
+			amp.power_mode = get_bits_range_uint8(Buffer,4,5); 
+			i2c_write_16(MA12070_REG_POWER_MODE_CONTROL,Buffer); 
+			return 0; 
+		
+		case MA12070_POWER_MODE_3: 	
+	 		Buffer = set_nth_bit_uint8(Buffer,4); 
+	 		Buffer = set_nth_bit_uint8(Buffer,5); 
+			amp.power_mode = get_bits_range_uint8(Buffer,4,5);
+			i2c_write_16(MA12070_REG_POWER_MODE_CONTROL,Buffer); 
+			return 0; 
+		
+		case MA12070_POWER_MODE_MAN:
+	 		Buffer = set_nth_bit_uint8(Buffer,6); 
+			amp.power_mode = get_bits_range_uint8(Buffer,4,5);
+			i2c_write_16(MA12070_REG_POWER_MODE_CONTROL,Buffer); 
+			return 0; 
+		
+		case MA12070_POWER_MODE_DEFF:	
+			amp.power_mode = get_bits_range_uint8(Buffer,4,5);
+			i2c_write_16(MA12070_REG_POWER_MODE_CONTROL,Buffer); 
+			return 0; 
+		
+		default: 
+				return 1; 
+	}		
+}
+
 uint8_t ma12070_setTreshold(uint8_t channel, uint8_t value)
 {
 	if(value <= 0 && value <= 255)
@@ -45,13 +88,13 @@ uint8_t ma12070_setTreshold(uint8_t channel, uint8_t value)
 	return 1; 
 }
 
-uint8_t ma12070_setClippingAndOpc(uint8_t clipOrOpc, uint8_t enable)
+uint8_t ma12070_setClippingAndOcp(uint8_t clipOrOcp, uint8_t enable)
 {
-	if( clipOrOpc >= 0 && clipOrOpc <= 1 && enable >= 0 && enable <= 1)
+	if( clipOrOcp >= 0 && clipOrOcp <= 1 && enable >= 0 && enable <= 1)
 	{
 		Buffer = i2c_read_8(MA12070_REG_SOFT_CILLIPNG)
 		
-		if (clipOrOpc)
+		if (clipOrOcp)
 		{
 			if (enable)
 			{
@@ -86,34 +129,34 @@ uint8_t ma12070_setPowerModeProfileSetings(uint8_t setings)
 {
 	if (setings >= 0 && setings <= 4)
 	{
-		Buffer = i2c_read_8(MA12070_REG_PM_PROFILE_MODE);  
+		Buffer = i2c_read_8(MA12070_REG_PM_PROFILE_MODE);
 		switch(setings)
 		{
-			case 0 :
+			case MA12070_POWER_PROFILE_0 :
 				Buffer = unset_nth_bit_uint8(Buffer,0); //0
 				Buffer = unset_nth_bit_uint8(Buffer,1); //0
 				Buffer = unset_nth_bit_uint8(Buffer,2); //0
 				i2c_write_16(MA12070_REG_PM_PROFILE_MODE, Buffer);
 				return 0; 
-			case 1 :
+			case MA12070_POWER_PROFILE_1 :
 				Buffer = set_nth_bit_uint8(Buffer,0); 	//1
 				Buffer = unset_nth_bit_uint8(Buffer,1); //0
 				Buffer = unset_nth_bit_uint8(Buffer,2); //0
 				i2c_write_16(MA12070_REG_PM_PROFILE_MODE, Buffer);
 				return 0; 
-			case 2 :
+			case MA12070_POWER_PROFILE_2 :
 				Buffer = unset_nth_bit_uint8(Buffer,0); //0
 				Buffer = set_nth_bit_uint8(Buffer,1); 	//1
 				Buffer = unset_nth_bit_uint8(Buffer,2); //0
 				i2c_write_16(MA12070_REG_PM_PROFILE_MODE, Buffer);
 				return 0; 
-			case 3 :
+			case MA12070_POWER_PROFILE_3 :
 				Buffer = set_nth_bit_uint8(Buffer,0); 	//1
 				Buffer = set_nth_bit_uint8(Buffer,1); 	//1
 				Buffer = unset_nth_bit_uint8(Buffer,2); //0
 				i2c_write_16(MA12070_REG_PM_PROFILE_MODE, Buffer);
 				return 0; 
-			case 4 :
+			case MA12070_POWER_PROFILE_4 :
 				Buffer = unset_nth_bit_uint8(Buffer,0); //0
 				Buffer = unset_nth_bit_uint8(Buffer,1); //0
 				Buffer = set_nth_bit_uint8(Buffer,2); 	//1
@@ -126,19 +169,185 @@ uint8_t ma12070_setPowerModeProfileSetings(uint8_t setings)
 	return 1; 
 }
 
-uint8_t ma12070_setPowerModeProfileConfig(uint8_t scheme, uint8_t pm)
+uint8_t ma12070_setPowerModeProfileConfig(uint8_t scheme, uint8_t powerMode)
 {
 	if(scheme <= 3 && >= 0 && pm <= 3 && pm >= 1)
 	{
+		Buffer = i2c_read_8(MA12070_REG_PM_PROFILE_CONF);
 		switch(pm)
 		{
-			case 1 : 
-			case 2 : 
-			case 3 : 
-			default : 
+			case MA12070_POWER_MODE_1 : 
+				switch(scheme)
+				{
+					case MA12070_POWER_SCHEME_CUSTOM : 
+						Buffer = set_nth_bit_uint8(Buffer,5);	//1
+						Buffer = unset_nth_bit_uint8(Buffer,4); //0
+						 
+					case MA12070_POWER_SCHEME_A : 
+						Buffer = unset_nth_bit_uint8(Buffer,5); //0
+						Buffer = unset_nth_bit_uint8(Buffer,4); //0
+						
+					case MA12070_POWER_SCHEME_B : 
+						Buffer = unset_nth_bit_uint8(Buffer,5); //0
+						Buffer = set_nth_bit_uint8(Buffer,4);	//1
+						
+					case MA12070_POWER_SCHEME_C : 
+						Buffer = set_nth_bit_uint8(Buffer,5);	//1
+						Buffer = unset_nth_bit_uint8(Buffer,4); //0
+						
+					case MA12070_POWER_SCHEME_D :
+						Buffer = set_nth_bit_uint8(Buffer,5); 	//1 
+						Buffer = set_nth_bit_uint8(Buffer,4); 	//1
+						
+					default : 
+						return 1; 
+				}
+				i2c_write_16(MA12070_REG_PM_PROFILE_CONF); 
+				return 0; 
+
+			case MA12070_POWER_MODE_2 : 
+				switch(scheme)
+				{
+					case MA12070_POWER_SCHEME_CUSTOM : 
+						Buffer = set_nth_bit_uint8(Buffer,3);	//1
+						Buffer = set_nth_bit_uint8(Buffer,2);	//1
+
+					case MA12070_POWER_SCHEME_A :
+						Buffer = unset_nth_bit_uint8(Buffer,3);	//0
+						Buffer = unset_nth_bit_uint8(Buffer,2); //0
+					
+					case MA12070_POWER_SCHEME_B : 
+						Buffer = unset_nth_bit_uint8(Buffer,3);	//0
+						Buffer = set_nth_bit_uint8(Buffer,2); 	//1 
+						
+					case MA12070_POWER_SCHEME_C : 
+						Buffer = set_nth_bit_uint8(Buffer,3);	//1 
+						Buffer = unset_nth_bit_uint8(Buffer,2); //0
+						
+					case MA12070_POWER_SCHEME_D :
+						Buffer = set_nth_bit_uint8(Buffer,3); 	//1
+						Buffer = set_nth_bit_uint8(Buffer,2); 	//1
+						
+					default : 
+						return 1; 
+				}
+				i2c_write_16(MA12070_REG_PM_PROFILE_CONF); 
+				return 0; 
+			
+			case MA12070_POWER_MODE_3 : 
+				switch(scheme)
+				{
+					case MA12070_POWER_SCHEME_CUSTOM : 
+						Buffer = set_nth_bit_uint8(Buffer,1);	//1
+						Buffer = set_nth_bit_uint8(Buffer,0);	//1
+
+					case MA12070_POWER_SCHEME_A :
+						Buffer = unset_nth_bit_uint8(Buffer,1);	//0
+						Buffer = unset_nth_bit_uint8(Buffer,0); //0
+
+					case MA12070_POWER_SCHEME_B : 
+						Buffer = unset_nth_bit_uint8(Buffer,1);	//0
+						Buffer = set_nth_bit_uint8(Buffer,0);	//1
+						
+					case MA12070_POWER_SCHEME_C : 
+						Buffer = set_nth_bit_uint8(Buffer,1);	//1
+						Buffer = unset_nth_bit_uint8(Buffer,0); //0
+					
+					case MA12070_POWER_SCHEME_D :
+						Buffer = set_nth_bit_uint8(Buffer,1);	//1
+						Buffer = set_nth_bit_uint8(Buffer,0); 	//1
+
+					default : 
+						return 1; 
+				}				
+				i2c_write_16(MA12070_REG_PM_PROFILE_CONF); 
+				return 0;
+
+			default :
+				return 1; 
 		}
 	}
+	else 
+	{
+		return 1; 
+	}
+	return 1;
+}
+
+uint8_t ma12070_clearOcpLatch()
+{
+	Buffer = i2c_read_8(MA12070_REG_OVER_CURR_PROT);
+	Buffer = unset_nth_bit_uint8(Buffer,7);
+	i2c_write_16(MA12070_REG_OVER_CURR_PROT); 
+	return 0;
+}
+
+uint8_t ma12070_setAudioInMode(uint8_t mode)
+{
+	if(mode <= 2 && >= 0 )
+	{
+		Buffer = i2c_read_8(MA12070_REG_AUDIO_IN_MODE); 
+		switch(mode)
+		{
+			case 1 :
+				Buffer = unset_nth_bit_uint8(Buffer,6); 
+				Buffer = unset_nth_bit_uint8(Buffer,5); 
+			case 2 :
+				Buffer = unset_nth_bit_uint8(Buffer,6); 
+				Buffer = set_nth_bit_uint8(Buffer,5); 
+			default : 
+				return 1; 
+		}
+		i2c_write_16(MA12070_REG_AUDIO_IN_MODE, Buffer); 
+		return 0; 
+	}
+	else 
+	{
+		return 0; 
+	}
+	return 1;
+}
+
+uint8_t ma12070_setDcProtection(uint8_t enable)
+{
+	Buffer = i2c_read_8(MA12070_REG_DC_PROTECTION);
 	
+	if(enable)
+	{
+		Buffer = set_nth_bit_uint8(Buffer,2);
+	}
+	else 
+	{
+		Buffer = unset_nth_bit_uint8(Buffer,2);
+	}
+
+	i2c_write_16(MA12070_REG_DC_PROTECTION); 
+	return 0;  
+}
+
+uint8_t ma12070_setAudioInOverwrite(uint8_t enable)
+{
+	Buffer = i2c_read_8(MA12070_REG_AUDI_IN_OVERWRITE);
+	
+	if(enable)
+	{
+		Buffer = set_nth_bit_uint8(Buffer,5);
+	}
+	else 
+	{
+		Buffer = unset_nth_bit_uint8(Buffer,5);
+	}
+
+	i2c_write_16(MA12070_REG_AUDI_IN_OVERWRITE); 
+	return 0;  
+}
+
+uint8_t ma12070_clearErrHandler()
+{
+	Buffer = i2c_read_8(MA12070_REG_ERROR_HANDLER);
+	Buffer = unset_nth_bit_uint8(Buffer,2);
+	i2c_write_16(MA12070_REG_ERROR_HANDLER); 
+	return 0; 
 }
 
 int16_t ma12070_getVolume(void)
@@ -231,8 +440,6 @@ void ma12070_printCurrentCconf(void)
 	printf("msel_mon = %d\n", amp.msel_mon);
 	printf("error = %d\n", amp.error);
 } 
-
-
 
 void ma12070_getCurrentDevInfo(void)
 {
@@ -354,51 +561,6 @@ void ma12070_getCurrentDevInfo(void)
 	amp.error = i2c_read_8(MA12070_REG_ERROR);
 }
 
-
-uint8_t ma12070_setPowerMode(uint8_t mode)
-{
-	Buffer = 0; //i2c_read_8(MA12070_REG_POWER_MODE_CONTROL);
-  		
-	switch(mode)
-	{
-		case MA12070_POWER_MODE_1:
-	 		Buffer = set_nth_bit_uint8(Buffer,4); 
-	 		Buffer = unset_nth_bit_uint8(Buffer,5); 
-			amp.power_mode = get_bits_range_uint8(Buffer,4,5); 
-			i2c_write_16(MA12070_REG_POWER_MODE_CONTROL,Buffer); 
-			return 0; 
-		
-		case MA12070_POWER_MODE_2: 	
-	 		Buffer = unset_nth_bit_uint8(Buffer,4); 
-	 		Buffer = set_nth_bit_uint8(Buffer,5); 
-			amp.power_mode = get_bits_range_uint8(Buffer,4,5); 
-			i2c_write_16(MA12070_REG_POWER_MODE_CONTROL,Buffer); 
-			return 0; 
-		
-		case MA12070_POWER_MODE_3: 	
-	 		Buffer = set_nth_bit_uint8(Buffer,4); 
-	 		Buffer = set_nth_bit_uint8(Buffer,5); 
-			amp.power_mode = get_bits_range_uint8(Buffer,4,5); 
-			i2c_write_16(MA12070_REG_POWER_MODE_CONTROL,Buffer); 
-			return 0; 
-		
-		case MA12070_POWER_MODE_MAN:
-	 		Buffer = set_nth_bit_uint8(Buffer,6); 
-			amp.power_mode = get_bits_range_uint8(Buffer,4,5); 
-			i2c_write_16(MA12070_REG_POWER_MODE_CONTROL,Buffer); 
-			return 0; 
-		
-		case MA12070_POWER_MODE_DEFF:	
-			amp.power_mode = get_bits_range_uint8(Buffer,4,5); 
-			i2c_write_16(MA12070_REG_POWER_MODE_CONTROL,Buffer); 
-			return 0; 
-		
-		default: 
-				return 1; 
-	}		
-}
-
-
 uint8_t ma12070_setVolume(int16_t volume)
 {
 	int16_t DbBuff = 0; 
@@ -472,8 +634,6 @@ uint8_t ma12070_setVolume(int16_t volume)
 	}
 }
 
-
-
 uint8_t ma12070_configure(uint8_t Default)
 {
 	//Set the device back to default setings
@@ -488,3 +648,27 @@ uint8_t ma12070_configure(uint8_t Default)
 	return 1; 
 }
 
+
+// This part of the code may later be neede but for now the ma12070_getCurrentDevInfo functio does the trick for me.
+/*
+uint8_t ma12070_monitorCh0FreqAndPwr()
+{
+	uint8_t frequency = 0;  
+	uint8_t powerMode = 0; 
+	Buffer = i2c_read_8(MA12070_REG_MON_CH0_FREQ_POW); 
+	frequency = get_n_bits_msb_uint8(Buffer,4);
+	frequency = frequency << 1; 
+	powerMode = get_n_bits_lsb_uint8(Buffer,2); 
+	amp.
+} 
+
+uint8_t ma12070_monitorCh0()
+{
+	Buffer = i2c_read_8(MA12070_REG_MON_CH0_FREQ_POW);
+}
+
+uint8_t ma12070_monitorCh0ModulationInd()
+{
+
+}
+*/
