@@ -8,8 +8,6 @@
 
 #define MA12070_REG_POWER_MODE_CONTROL 0x00 
 #define MA12070_DEF_POWER_MODE_CONTROL 0x3D 
-#define MA12070_POWER_MODE_LSB 4
-#define MA12070_POWER_MODE_MSB 5
 #define MA12070_POWER_MODE_1 1
 #define MA12070_POWER_MODE_2 2
 #define MA12070_POWER_MODE_3 3
@@ -29,6 +27,8 @@
 #define MA12070_DEF_MTHR_3TO2 0x50 
 
 #define MA12070_REG_SOFT_CILLIPNG 0x0A 
+#define MA12070_CLIPPING_EN 0x1 
+#define MA12070_CLIPPING_LATCH 0x00 
 #define MA12070_DEF_SOFT_CILLIPNG 0xC 
 
 #define MA12070_REG_PM_PROFILE_MODE 0x1D
@@ -37,7 +37,7 @@
 #define MA12070_POWER_PROFILE_2 3
 #define MA12070_POWER_PROFILE_3 4
 #define MA12070_POWER_PROFILE_4 5
-#define MA12070_DEF_PM_PROFILE_MODE 0x00
+#define MA12070_DEF_PM_PROFILE_MODE 0x3D
 
 #define MA12070_REG_PM_PROFILE_CONF 0x1E
 #define	MA12070_POWER_SCHEME_CUSTOM 1 
@@ -64,6 +64,13 @@
 #define MA12070_DEF_ERROR_HANDLER 0x30
 
 #define MA12070_REG_PCM_WORD_FORMAT 0x35
+#define MA12070_I2S_STANDART 1
+#define MA12070_I2S_LEFT 2
+#define MA12070_I2S_RIGHT_16b 3
+#define MA12070_I2S_RIGHT_18b 4
+#define MA12070_I2S_RIGHT_20b 5
+#define MA12070_I2S_RIGHT_24b 6
+
 #define MA12070_DEF_PCM_WORD_FORMAT 0x01
 
 #define MA12070_REG_I2S_CONFIG 0x36
@@ -203,5 +210,17 @@ uint8_t ma12070_configure(uint8_t Default);
 int16_t ma12070_getVolume(void); 
 
 uint8_t ma12070_setPowerMode(uint8_t mode); 
+uint8_t ma12070_setTreshold(uint8_t transition, uint8_t value); 
+uint8_t ma12070_setClippingAndOcp(uint8_t clipOrOcp, uint8_t enable); 
+uint8_t ma12070_setPowerModeProfileSetings(uint8_t setings); 
+uint8_t ma12070_setPowerModeProfileConfig(uint8_t scheme, uint8_t powerMode); 
+uint8_t ma12070_clearOcpLatch(); 
+uint8_t ma12070_setAudioInMode(uint8_t mode);
+uint8_t ma12070_setDcProtection(uint8_t enable);
+uint8_t ma12070_setAudioInOverwrite(uint8_t enable);
+uint8_t ma12070_setI2sFormat(uint8_t format); 
+uint8_t ma12070_clearErrHandler();
+int16_t ma12070_getVolume(void);
+
+void ma12070_printCurrentCconf(void);
 void ma12070_getCurrentDevInfo(void); 
-uint8_t ma12070_setTreshold(uint8_t channel, uint8_t value);
