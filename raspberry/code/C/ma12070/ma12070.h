@@ -52,6 +52,8 @@
 #define MA12070_DEF_OVER_CURR_PROT 0x1F 
 
 #define MA12070_REG_AUDIO_IN_MODE 0x25
+#define MA12070_AUDIO_IN_MODE_0 1 
+#define MA12070_AUDIO_IN_MODE_1 2
 #define MA12070_DEF_AUDIO_IN_MODE 0x10
 
 #define MA12070_REG_DC_PROTECTION 0x26 
@@ -155,6 +157,7 @@
 typedef struct MA12070 
 {
 	uint8_t power_mode;
+	uint8_t power_mode_manual;
 	uint8_t treshold_1to2; 
 	uint8_t treshold_2to1;
 	uint8_t treshold_2to3;
@@ -183,10 +186,10 @@ typedef struct MA12070
 	uint8_t audio_proc_limitter;
 	uint8_t vol_db_master;
 	uint8_t vol_lsb_master;
-	uint8_t vol_db[3];
-	uint8_t vol_lsb[3];
-	uint8_t thr_db[3];
-	uint8_t thr_lsb[3];
+	uint8_t vol_db[4];
+	uint8_t vol_lsb[4];
+	uint8_t thr_db[4];
+	uint8_t thr_lsb[4];
 	uint8_t audio_porc_limiter_mon;
 	uint8_t audio_proc_clip_mon;
 	uint8_t dcu_frequency_mon[2];
@@ -205,7 +208,7 @@ typedef struct MA12070
 
 
 uint8_t ma12070_setVolume(int16_t volume); 
-uint8_t ma12070_init(void); 
+uint8_t ma12070_initI2c(void); 
 uint8_t ma12070_configure(uint8_t Default);
 int16_t ma12070_getVolume(void); 
 
@@ -218,8 +221,29 @@ uint8_t ma12070_clearOcpLatch();
 uint8_t ma12070_setAudioInMode(uint8_t mode);
 uint8_t ma12070_setDcProtection(uint8_t enable);
 uint8_t ma12070_setAudioInOverwrite(uint8_t enable);
+
 uint8_t ma12070_setI2sFormat(uint8_t format); 
+uint8_t ma12070_setI2sRightFirst(uint8_t leftOrRight);
+uint8_t ma12070_setI2sNoOfFrameBits(uint8_t bits);
+uint8_t ma12070_setI2sBitOrder(uint8_t mostOrLeast);
+uint8_t ma12070_setI2sWsPolarity(uint8_t highOrLow);
+uint8_t ma12070_setI2sSckPolarity(uint8_t risingOrFalling);
+
+uint8_t ma12070_setProcReleaseLvl(uint8_t lvl);
+uint8_t ma12070_setProcAttackLvl(uint8_t lvl);
+uint8_t ma12070_setProcEn(uint8_t enable);
+uint8_t ma12070_setProcMute(uint8_t mute);
+uint8_t ma12060_setProcLimiterEn(uint8_t enable);
+
+uint8_t ma12070_setVolumeCh0(uint8_t db, uint8_t lsb);
+uint8_t ma12070_setVolumeCh1(uint8_t db, uint8_t lsb);
+uint8_t ma12070_setVolumeCh2(uint8_t db, uint8_t lsb);
+uint8_t ma12070_setVolumeCh3(uint8_t db, uint8_t lsb);
+uint8_t ma12070_setVolumeMaster(uint8_t db, uint8_t lsb);
+
+
 uint8_t ma12070_clearErrHandler();
+
 int16_t ma12070_getVolume(void);
 
 void ma12070_printCurrentCconf(void);
