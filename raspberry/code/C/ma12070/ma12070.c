@@ -1108,7 +1108,7 @@ uint8_t ma12070_configure(uint8_t Default)
 		ma12070_setVolumeCh1(0x18,0x0);
 		ma12070_setVolumeCh2(0x18,0x0);
 		ma12070_setVolumeCh3(0x18,0x0);
-		ma12070_setVolumeMaster(0x30,0x0);
+		ma12070_setVolumeMaster(0x40,0x0);
 		//ma12070_setVolume(-15);															// Set Volume to 0 dB 
 	return 1; 
 }
