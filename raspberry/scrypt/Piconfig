@@ -164,18 +164,18 @@ printf "\e[31m================================================== INSTALLING MIDN
 sudo apt-get install -y mc 
 printf "\e[36m================================================== FINISHED INSTALLING MIDNIGHT COMMANDER =======================================\e[32m\n\n"
 
-printf "\e[31m================================================== INSTALLING POSTGRESQL ================================================\e[32m\n"
-sudo apt-get install -y postgresql libpq-dev postgresql-client postgresql-client-common 
-sudo apt-get install -y php5-pgsql 
-printf "\e[36m================================================== FINISHED INSTALLING POSTGRESQL =======================================\e[32m\n\n"
+#printf "\e[31m================================================== INSTALLING POSTGRESQL ================================================\e[32m\n"
+#sudo apt-get install -y postgresql libpq-dev postgresql-client postgresql-client-common 
+#sudo apt-get install -y php5-pgsql 
+#printf "\e[36m================================================== FINISHED INSTALLING POSTGRESQL =======================================\e[32m\n\n"
 
-printf "\e[31m================================================== INSTALLING WiringPi =========================================\e[32m\n"
-git clone git://git.drogon.net/wiringPi
-cd ~/wiringPi
-./build
-cd ~ 
-rm -r wiringPi 
-printf "\e[36m================================================== FINISHED INSTALLING WiringPi ================================\e[32m\n\n"
+#printf "\e[31m================================================== INSTALLING WiringPi =========================================\e[32m\n"
+#git clone git://git.drogon.net/wiringPi
+#cd ~/wiringPi
+#./build
+#cd ~ 
+#rm -r wiringPi 
+#printf "\e[36m================================================== FINISHED INSTALLING WiringPi ================================\e[32m\n\n"
 
 printf "\e[95mfinished\e[32m\n"
 
