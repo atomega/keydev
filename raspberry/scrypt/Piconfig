@@ -73,11 +73,11 @@ cp PiConf Temp.txt
 printf "\e[36m================================================== HOME SWEET HOME =======================================\e[32m\n\n"
 
 printf "\e[31m================================================== INSTALLING GIT ================================================\e[32m\n"
-sudo apt-get install git-core 
+sudo apt-get install -y git-core 
 printf "\e[36m================================================== FINISHED INSTALLING GIT =======================================\e[32m\n\n"
 
 printf "\e[31m================================================== INSTALLING CMAKE ================================================\e[32m\n"
-sudo apt-get install cmake 
+sudo apt-get install -y cmake
 printf "\e[36m================================================== FINISHED INSTALLING CMAKE =======================================\e[32m\n\n"
 
 printf "\e[31m================================================== INSTALLING VIM ================================================\e[32m\n"
@@ -148,7 +148,7 @@ printf "\e[36m================================================== FINISHED INSTAL
 
 
 printf "\e[31m================================================== INSTALLING C RELATIES =========================================\e[32m\n"
-sudo apt-get install gcc
+sudo apt-get install -y gcc
 printf "\e[36m================================================== FINISHED INSTALLING C RELATIVES ================================\e[32m\n\n"
 
 printf "\e[31m================================================== INSTALLING I2C TOOLS RELATIES =========================================\e[32m\n"
