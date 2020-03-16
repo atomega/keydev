@@ -23,8 +23,8 @@ def read_temp():
 #		f= open("data.txt","w+")
 #		f.write("Temp : %.2f C" %round(temp_c,2))
 #		f.close
-		print(str(temp_c))
-
-while True:
-	read_temp()
-	time.sleep(2)
+#		print(str(temp_c))
+		return str(temp_c)
+#while True:
+#	read_temp()
+#	time.sleep(2)
