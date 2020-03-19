@@ -49,6 +49,7 @@ SOFTWARE.
 
 #include "bm_i2c.h"
 
+
 bm_i2c::bm_i2c(uint8_t channel, uint8_t address)
 	: m_channel(channel), m_address(address),   
 {
@@ -68,7 +69,6 @@ bm_i2c::clearError()
 {
 	m_error = 0;
 }
-
 bm_i2c::getAddressMode()
 {
 

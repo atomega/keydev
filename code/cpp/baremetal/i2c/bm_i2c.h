@@ -73,8 +73,8 @@ typedef enum
 	I2C_SPEED_STANDART	= 1,	// Sm	100 kbits/s This mode will be choosen for the constructor. 
 	I2C_SPEED_FAST		= 2,	// Fm	400 kbits/s 
 	I2C_SPEED_FAST_PLUS	= 3,	// Fm+	1	Mbits/s
-	I2C_SPEED_HIGH_SPEED= 4, // Hs	3.4 Mbits/s 
-	I2C_SPEED_ULTRA_FAST= 5	// UFm	5	Mbits/s
+	I2C_SPEED_HIGH_SPEED	= 4,	// Hs	3.4 Mbits/s 
+	I2C_SPEED_ULTRA_FAST	= 5	// UFm	5	Mbits/s
 } bm_i2c_speedTypeDef; // PLease note that speed modes engender a behavioural change
 
 typedef enum
@@ -89,35 +89,35 @@ typedef enum
 class bm_i2c
 {
 	public :
-		
-		/*Methods*/
-		bm_i2c_speedTypeDef testDeviceSpeed(); // Cycle trough different modes until device cnat't answer fast enought
 
-		uint8_t discoverDevices(); // Scan the awailable address range on standart mode to find devices (please set timout to a reasonable value) similar as Linux 
-		
-		uint8_t checkPullUps();		// Not a hardware check it will only check if communicaion is possible without errors
+		/*Methods*/
+		bm_i2c_speedTypeDef testDeviceSpeed(); 		// Cycle trough different modes until device cnat't answer fast enought
+
+		uint8_t discoverDevices(); 			// Scan the awailable address range on standart mode to find devices (please set timout to a reasonable value) similar as Linux 
+
+		uint8_t checkPullUps();				// Not a hardware check it will only check if communicaion is possible without errors
 
 		void send(uint8_t *Data, uint8_t Lenght);      	//Send a given number of bytes 
 		void receive(uint8_t *Buffer, uint8_t Lenght);	//Read a given number of bytes
-		
-		void softReset();			// Software reset not supported by all hardware.
+
+		void softReset();		// Software reset not supported by all hardware.
 		void clockSynchronise();	// Clock Syncronization
 		void abortTransmit();		// Stop Communication for multimaster mode 
-		void arbitration();			// Arbitration for multimaster mode to define the right master. 
+		void arbitration();		// Arbitration for multimaster mode to define the right master. 
 		void clockStretch();		// Optional For Pausing Communication because treatement takes longer than the communication
-		void freeChannel();			// Can be used for MCU but initialy thougt for linux
-		void initChannel();			// Can be used for MCU but initialy thougt for linux
-		void busClear();			// in case if SCL is stuck 
+		void freeChannel();		// Can be used for MCU but initialy thougt for linux
+		void initChannel();		// Can be used for MCU but initialy thougt for linux
+		void busClear();		// in case if SCL is stuck 
 		void readDeviceInfo();		// 3 Bytes (24 its) Read Only Register | 12 Bits : Manufacturer info | 9 Bits: Part Identification | 3 Bits DIE Rev. 
 
 		/*getters*/
-		uint8_t getError() const;
-		uint8_t getMode() const;
-		uint32_t getTimeout() const;
-		uint8_t getAddressMode() const;
-		uint8_t getInterrupt() const;
-		uint8_t getAddress() const;
-		uint8_t getsetDma() const;
+		uint8_t getError() 	const;
+		uint8_t getMode() 	const;
+		uint32_t getTimeout() 	const;
+		uint8_t getAddressMode()const;
+		uint8_t getInterrupt() 	const;
+		uint8_t getAddress() 	const;
+		uint8_t getsetDma() 	const;
 
 		/*Setters*/
 		void setTimeout(uint8_t m_timeout);
@@ -130,21 +130,18 @@ class bm_i2c
 		~bm_i2c();
 
 	private :
-		bm_i2c_addressTypeDef m_adressMode; // Address of the device to be communicated
+		bm_i2c_addressTypeDef m_adressMode; 	// Address of the device to be communicated
 		bm_i2c_speedTypeDef m_speed;		// Trasmission speed
 		bm_i2c_stateTypeDef m_state;		// Current state of this i2c Object
-
-		uint8_t m_channel; 					// Selection of I2C Hardware Channel
-		uint8_t m_adress;  					// Address of the device to be communicated
-		uint8_t *m_bufferPointer; 			// Buffer pointer for data to be sent & received
-		uint8_t m_transferCount; 			// Internal counter for the count of data Transfer
-		uint32_t m_timeout;					// Timeout for managing communication breaks
+		uint8_t m_channel; 			// Selection of I2C Hardware Channel
+		uint8_t m_adress;  			// Address of the device to be communicated
+		uint8_t *m_bufferPointer; 		// Buffer pointer for data to be sent & received
+		uint8_t m_transferCount; 		// Internal counter for the count of data Transfer
+		uint32_t m_timeout;			// Timeout for managing communication breaks
 		uint32_t m_interrupttFlags; 		// Interrupt flag that would be sent
-		uint32_t m_interruptSource;			// From what this interrupt is coming
-		uint32_t m_error; 					// The error code corresponding to that error
-
+		uint32_t m_interruptSource;		// From what this interrupt is coming
+		uint32_t m_error; 			// The error code corresponding to that error
 		volatile uint8_t m_transferSize;	// Size of the data to be sent or received
 };
-
 
 #endif /* BM_I2C_H_ */

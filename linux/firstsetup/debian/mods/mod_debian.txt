@@ -1,0 +1,9 @@
+VIM 
+Vim that comes with my vim.rc feel free to use it
+OFF
+GCC
+Compilator for C & CPP
+OFF
+POSTGRES
+Do you want another database as mysql ?
+OFF
