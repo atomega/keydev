@@ -1,12 +1,13 @@
 #!/bin/bash
 
-#MODULES=$(cat ~/keydev/linux/firstsetup/sw_modules)
-mapfile -t MODULES <~/keydev/linux/firstsetup/sw_modules
+mapfile -t MODULES </home/$USER/keydev/linux/firstsetup/sw_modules
 echo "Wellcome to Raspbian setup script"
-MODULE=$(grep VIM ~/keydev/linux/firstsetup/sw_modules)
+
+#MODULE=$(grep VIM /home/$USER/keydev/linux/firstsetup/sw_modules)
 
 for m in "${MODULES[@]}"
 do
+	echo $m
 	case $m in 
 		VIM)
 			~/keydev/linux/firstsetup/modules/vim/installVim.sh

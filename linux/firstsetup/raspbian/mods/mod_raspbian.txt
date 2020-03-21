@@ -18,6 +18,7 @@ Do you want another database as mysql ?
 OFF
 CMAKE
 Makefile generator extremly usefull
+OFF
 PIP
 One of the best tools to install and manage Python packages
 OFF

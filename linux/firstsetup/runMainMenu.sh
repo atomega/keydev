@@ -16,8 +16,8 @@ LENGHT_LIST_ITEM=1
 LENGHT_PREV_LIST_ITEM=1
 W_LIST_SECTION=0
 
-mapfile -t MOD_RASPBIAN < raspbian/mods/mod_raspbian.txt
-mapfile -t MOD_DEBIAN < debian/mods/mod_debian.txt
+mapfile -t MOD_RASPBIAN < /home/key/keydev/linux/firstsetup/raspbian/mods/mod_raspbian.txt
+mapfile -t MOD_DEBIAN < /home/key/keydev/linux/firstsetup/debian/mods/mod_debian.txt
 
 get_dimentions()
 {
@@ -83,7 +83,7 @@ case $OS in
 		W_NBR_OF_SELECTION=$(( ${#MOD_RASPBIAN[@]} / 3 ))
 		get_dimentions
 		whiptail	--checklist --separate-output "$W_TITLE" $W_WINDOW_HEIGHT $W_WINDOW_WIDTH $W_LIST_HEIGHT "${MOD_RASPBIAN[@]}" 2>sw_modules
-		raspbian/setupRaspbian.sh
+		/home/$USER/keydev/linux/firstsetup/raspbian/setupRaspbian.sh
 		;;
 	*)
 		echo "You should not be here"
@@ -94,7 +94,7 @@ W_LIST_SECTION=0
 
 rm sw_*
 
-sudo apt-get update -y
-sudo apt-get upgrade -y
+#sudo apt-get update -y
+#sudo apt-get upgrade -y
 
 exit 0
