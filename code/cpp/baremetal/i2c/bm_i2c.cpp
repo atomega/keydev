@@ -55,8 +55,8 @@ SOFTWARE.
 bm_i2c::throwError(uint16_t error)
 {
 	std::cout << "an error has been generated " << error << "Operation aborded anc channel closed" << endl; 
-	~bm_i2c(); 	
 	m_state = I2C_STATE_ERROR; 
+	~bm_i2c(); 	
 }
 
 bm_i2c::setAddress(uint8_t address) : m_address(address)
