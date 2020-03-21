@@ -16,8 +16,8 @@ LENGHT_LIST_ITEM=1
 LENGHT_PREV_LIST_ITEM=1
 W_LIST_SECTION=0
 
-mapfile -t MOD_RASPBIAN < /home/key/keydev/linux/firstsetup/raspbian/mods/mod_raspbian.txt
-mapfile -t MOD_DEBIAN < /home/key/keydev/linux/firstsetup/debian/mods/mod_debian.txt
+mapfile -t MOD_RASPBIAN < /home/$USER/keydev/linux/firstsetup/raspbian/mods/mod_raspbian.txt
+mapfile -t MOD_DEBIAN < /home/$USER/keydev/linux/firstsetup/debian/mods/mod_debian.txt
 
 get_dimentions()
 {
