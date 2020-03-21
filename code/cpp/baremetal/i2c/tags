@@ -9,9 +9,9 @@ I2C_ADDRESS_10B	bm_i2c.h	/^	I2C_ADDRESS_10B = 2	\/\/ 10 bits addressing mode  $/
 I2C_ADDRESS_7B	bm_i2c.h	/^	I2C_ADDRESS_7B	= 1,	\/\/ 7  bits addressing mode  $/;"	e	enum:__anon3
 I2C_SPEED_FAST	bm_i2c.h	/^	I2C_SPEED_FAST		= 2,	\/\/ Fm	400 kbits\/s $/;"	e	enum:__anon2
 I2C_SPEED_FAST_PLUS	bm_i2c.h	/^	I2C_SPEED_FAST_PLUS	= 3,	\/\/ Fm+	1	Mbits\/s$/;"	e	enum:__anon2
-I2C_SPEED_HIGH_SPEED	bm_i2c.h	/^	I2C_SPEED_HIGH_SPEED= 4, \/\/ Hs	3.4 Mbits\/s $/;"	e	enum:__anon2
+I2C_SPEED_HIGH_SPEED	bm_i2c.h	/^	I2C_SPEED_HIGH_SPEED	= 4,	\/\/ Hs	3.4 Mbits\/s $/;"	e	enum:__anon2
 I2C_SPEED_STANDART	bm_i2c.h	/^	I2C_SPEED_STANDART	= 1,	\/\/ Sm	100 kbits\/s This mode will be choosen for the constructor. $/;"	e	enum:__anon2
-I2C_SPEED_ULTRA_FAST	bm_i2c.h	/^	I2C_SPEED_ULTRA_FAST= 5	\/\/ UFm	5	Mbits\/s$/;"	e	enum:__anon2
+I2C_SPEED_ULTRA_FAST	bm_i2c.h	/^	I2C_SPEED_ULTRA_FAST	= 5	\/\/ UFm	5	Mbits\/s$/;"	e	enum:__anon2
 I2C_STATE_ABORT	bm_i2c.h	/^	I2C_STATE_ABORT		= 7,	\/\/ Aborted by user$/;"	e	enum:__anon1
 I2C_STATE_ERROR	bm_i2c.h	/^	I2C_STATE_ERROR		= 9 	\/\/ Error happened$/;"	e	enum:__anon1
 I2C_STATE_LISTEN	bm_i2c.h	/^	I2C_STATE_LISTEN	= 6,	\/\/ Listening$/;"	e	enum:__anon1
@@ -28,17 +28,17 @@ bm_i2c_stateTypeDef	bm_i2c.h	/^} bm_i2c_stateTypeDef;$/;"	t	typeref:enum:__anon1
 clearError	bm_i2c.cpp	/^bm_i2c::clearError()$/;"	f	class:bm_i2c
 getAddress	bm_i2c.cpp	/^bm_i2c::getAddress() const$/;"	f	class:bm_i2c
 getAddressMode	bm_i2c.cpp	/^bm_i2c::getAddressMode()$/;"	f	class:bm_i2c
-m_adress	bm_i2c.h	/^		uint8_t m_adress;  					\/\/ Address of the device to be communicated$/;"	m	class:bm_i2c
-m_adressMode	bm_i2c.h	/^		bm_i2c_addressTypeDef m_adressMode; \/\/ Address of the device to be communicated$/;"	m	class:bm_i2c
-m_bufferPointer	bm_i2c.h	/^		uint8_t *m_bufferPointer; 			\/\/ Buffer pointer for data to be sent & received$/;"	m	class:bm_i2c
-m_channel	bm_i2c.h	/^		uint8_t m_channel; 					\/\/ Selection of I2C Hardware Channel$/;"	m	class:bm_i2c
-m_error	bm_i2c.h	/^		uint32_t m_error; 					\/\/ The error code corresponding to that error$/;"	m	class:bm_i2c
-m_interruptSource	bm_i2c.h	/^		uint32_t m_interruptSource;			\/\/ From what this interrupt is coming$/;"	m	class:bm_i2c
+m_adress	bm_i2c.h	/^		uint8_t m_adress;  			\/\/ Address of the device to be communicated$/;"	m	class:bm_i2c
+m_adressMode	bm_i2c.h	/^		bm_i2c_addressTypeDef m_adressMode; 	\/\/ Address of the device to be communicated$/;"	m	class:bm_i2c
+m_bufferPointer	bm_i2c.h	/^		uint8_t *m_bufferPointer; 		\/\/ Buffer pointer for data to be sent & received$/;"	m	class:bm_i2c
+m_channel	bm_i2c.h	/^		uint8_t m_channel; 			\/\/ Selection of I2C Hardware Channel$/;"	m	class:bm_i2c
+m_error	bm_i2c.h	/^		uint32_t m_error; 			\/\/ The error code corresponding to that error$/;"	m	class:bm_i2c
+m_interruptSource	bm_i2c.h	/^		uint32_t m_interruptSource;		\/\/ From what this interrupt is coming$/;"	m	class:bm_i2c
 m_interrupttFlags	bm_i2c.h	/^		uint32_t m_interrupttFlags; 		\/\/ Interrupt flag that would be sent$/;"	m	class:bm_i2c
 m_speed	bm_i2c.h	/^		bm_i2c_speedTypeDef m_speed;		\/\/ Trasmission speed$/;"	m	class:bm_i2c
 m_state	bm_i2c.h	/^		bm_i2c_stateTypeDef m_state;		\/\/ Current state of this i2c Object$/;"	m	class:bm_i2c
-m_timeout	bm_i2c.h	/^		uint32_t m_timeout;					\/\/ Timeout for managing communication breaks$/;"	m	class:bm_i2c
-m_transferCount	bm_i2c.h	/^		uint8_t m_transferCount; 			\/\/ Internal counter for the count of data Transfer$/;"	m	class:bm_i2c
+m_timeout	bm_i2c.h	/^		uint32_t m_timeout;			\/\/ Timeout for managing communication breaks$/;"	m	class:bm_i2c
+m_transferCount	bm_i2c.h	/^		uint8_t m_transferCount; 		\/\/ Internal counter for the count of data Transfer$/;"	m	class:bm_i2c
 m_transferSize	bm_i2c.h	/^		volatile uint8_t m_transferSize;	\/\/ Size of the data to be sent or received$/;"	m	class:bm_i2c
 setAddress	bm_i2c.cpp	/^bm_i2c::setAddress(uint8_t address): m_address(address){}$/;"	f	class:bm_i2c
 uint32_t	bm_i2c.h	57;"	d

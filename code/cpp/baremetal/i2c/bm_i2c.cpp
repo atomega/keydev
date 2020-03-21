@@ -1,5 +1,5 @@
 /**********************************************************************
-* Project       : Library for Bare Metal Adaptation
+i* Project       : Library for Bare Metal Adaptation
 * Program name 	: bm_i2c
 * Author        : KeY(kerem.yollu@gmail.com) & Edwin Koch
 * Contributors	:
@@ -48,30 +48,76 @@ SOFTWARE.
 */
 
 #include "bm_i2c.h"
+#include <linux/i2c-dev.h>
+#include <i2c/smbus.h>
+#include <stdio.h>
 
-
-bm_i2c::bm_i2c(uint8_t channel, uint8_t address)
-	: m_channel(channel), m_address(address),   
+bm_i2c::throwError(uint16_t error)
 {
+	std::cout << "an error has been generated " << error << "Operation aborded anc channel closed" << endl; 
+	~bm_i2c(); 	
+	m_state = I2C_STATE_ERROR; 
+}
+
+bm_i2c::setAddress(uint8_t address) : m_address(address)
+{
+	m_state = I2C_STATE_RESET; 
+	m_error = ioctl(m_fileDescriptor, I2C_SLAVE,m_adress;  
+	
+	if (m_error < 0) 
+	{	
+		throwError(m_error); 
+		m_state = I2C_STATE_ERROR; 
+	}
+	else
+	{
+		m_error = 0	;	
+	}
+}
+
+bm_i2c::initChannel()
+{
+	m_state = I2C_STATE_RESET; 
+	snprintf(m_fileName, 19, "/dev/i2c-%d", m_channel);
+	
+	m_fileDescriptor = open(m_fileName, O_RDWR);
+	
+	if (file < 0) 
+	{	
+		throwError(file); 
+		m_state = I2C_STATE_ERROR; 
+	}
+	else 
+	{
+		m_error = 0 ; 
+	}
+	
+}
+
+
+bm_i2c::bm_i2c(uint8_t channel, uint8_t address, uint8_t DMA)
+	: m_channel(channel), m_address(address), m_dma(DMA)  
+{ 	
+	bm_i2c::initChannel(); 
+	bm_i2c::setAddress(m_address); 
 	m_state = I2C_STATE_READY;
 }
 
 
-bm_i2c::setAddress(uint8_t address): m_address(address){}
+
+
+
+
 
 
 bm_i2c::getAddress() const
 {
-	return m_adresse;
+	return m_address;
 }
 
 bm_i2c::clearError()
 {
 	m_error = 0;
-}
-bm_i2c::getAddressMode()
-{
-
 }
 
 bm_i2c::~bm_i2c() {

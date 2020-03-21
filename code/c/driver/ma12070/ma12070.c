@@ -1,6 +1,6 @@
-#include"../main.h"
-#include"../i2c/i2c.h"
-#include"../algorithms/bitgestion.h"
+#include"../../main.h"
+#include"../../baremetal/i2c_raspberry/i2c/i2c.h"
+#include"../../algorithms/bitgestion.h"
 #include"ma12070.h"
 
 int curretnVolume = 0; 

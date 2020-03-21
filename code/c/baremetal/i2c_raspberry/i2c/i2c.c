@@ -10,7 +10,7 @@
 // La Fonction "write" pour la communication en i2c est déja 
 // compris dans les libraires du raspian 
 //////////////////////////////////////////////////////////
-#include "../main.h"
+#include "../../../main.h"
 #include "i2c.h"
 
 int16_t fd = 0; 																		// File description (pour suivre létat du port i2c) 

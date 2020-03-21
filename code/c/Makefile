@@ -1,5 +1,5 @@
 
-csrc = $(wildcard *.c) \ $(wildcard i2c/*.c) \ $(wildcard bh1750/*.c) \ $(wildcard algorithms/*.c) \ $(wildcard ma12070/*.c)
+csrc = $(wildcard *.c) \ $(wildcard baremetal/i2c_raspberry/i2c/*.c) \ $(wildcard driver/bh1750/*.c) \ $(wildcard algorithms/*.c) \ $(wildcard driver/ma12070/*.c)
 
 obj = $(csrc:.c=.o)
 CC = gcc 
