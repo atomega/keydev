@@ -1,12 +1,23 @@
 VIM 
-Vim that comes with my vim.rc feel free to use it
+It comes with my vim.rc feel free to use it
 OFF
 GCC
 Compilator for C & CPP
 OFF
-POSTGRES
-Do you want another database as mysql ?
+I2C_TOOLS
+I2c utilities for raspberry kernel
+OFF
+HTOP
+Console task manager
 OFF
 MC
 Midnight commander a great file browser
+OFF
+POSTGRES
+Do you want another database as mysql ?
+OFF
+CMAKE
+Makefile generator extremly usefull
+PIP
+One of the best tools to install and manage Python packages
 OFF
