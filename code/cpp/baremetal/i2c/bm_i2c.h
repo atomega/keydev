@@ -86,48 +86,51 @@ class bm_i2c
 		} bm_i2c_address_t;
 
 		/*Methods*/
-		bm_i2c_speed_t testDeviceSpeed(); 		// Cycle trough different modes until device cnat't answer fast enought
+//		bm_i2c_speed_t testDeviceSpeed(); 		// Cycle trough different modes until device cnat't answer fast enought
+//
+//		uint8_t discoverDevices(); 			// Scan the awailable address range on standart mode to find devices (please set timout to a reasonable value) similar as Linux 
+//
+//		void send(uint8_t *Data, uint8_t *Reg, uint8_t *Lenght);  //Send a given number of bytes 
+//		void receive(uint8_t *Buffer, uint8_t *Reg, uint8_t *Lenght);			//Read a given number of bytes
 
-		uint8_t discoverDevices(); 			// Scan the awailable address range on standart mode to find devices (please set timout to a reasonable value) similar as Linux 
-
-		void send(uint8_t *Data, uint8_t Lenght);      	//Send a given number of bytes 
-		void receive(uint8_t *Buffer, uint8_t Lenght);	//Read a given number of bytes
-
-		void initChannel(void);	// Can be used for MCU but initialy thougt for linux
-		void freeChannel();		// Can be used for MCU but initialy thougt for linux
-		void softReset();		// Software reset not supported by all hardware.
-		void clockSynchronise();// Clock Syncronization
-		void abortTransmit();	// Stop Communication for multimaster mode 
-		void arbitration();		// Arbitration for multimaster mode to define the right master. 
-		void clockStretch();	// Optional For Pausing Communication because treatement takes longer than the communication
-		void busClear();		// in case if SCL is stuck 
-		void readDeviceInfo();	// 3 Bytes (24 its) Read Only Register | 12 Bits : Manufacturer info | 9 Bits: Part Identification | 3 Bits DIE Rev. 
+		void initChannel();	// Can be used for MCU but initialy thougt for linux
+//		void freeChannel();		// Can be used for MCU but initialy thougt for linux
+//		void softReset();		// Software reset not supported by all hardware.
+//		void clockSynchronise();// Clock Syncronization
+//		void abortTransmit();	// Stop Communication for multimaster mode 
+//		void arbitration();		// Arbitration for multimaster mode to define the right master. 
+//		void clockStretch();	// Optional For Pausing Communication because treatement takes longer than the communication
+//		void busClear();		// in case if SCL is stuck 
+//		void readDeviceInfo();	// 3 Bytes (24 its) Read Only Register | 12 Bits : Manufacturer info | 9 Bits: Part Identification | 3 Bits DIE Rev. 
 
 		/*getters*/
-		uint8_t getError() 	const;
-		uint8_t getMode() 	const;
-		uint32_t getTimeout() 	const;
-		uint8_t getAddressMode()const;
-		uint8_t getInterrupt() 	const;
-		uint8_t getAddress() 	const;
-		uint8_t getsetDma() 	const;
-
-		/*Setters*/
-		void setTimeout(uint8_t m_timeout);
-		void setAddressMode();
-		void setInterrupt();
+//		uint8_t getError() 	const;
+//		uint8_t getMode() 	const;
+//		uint32_t getTimeout() 	const;
+//		uint8_t getAddressMode()const;
+//		uint8_t getInterrupt() 	const;
+//		uint8_t getAddress() 	const;
+//		uint8_t getsetDma() 	const;
+//
+//		/*Setters*/
+//		void setTimeout(uint8_t m_timeout);
+//		void setAddressMode();
+//		void setInterrupt();
 		void setAddress(uint8_t address);
-		void setDma();
-		void setSpeed(bm_i2c_speed_t spped);
+//		void setDma();
+//		void setSpeed(bm_i2c_speed_t spped);
 		bm_i2c(uint8_t channel, uint8_t address, uint8_t DMA);
 		~bm_i2c();
 
+	protected: 
+		void throwI2cError(uint16_t error);	// Private error function for error handling
+
 	private :
-		void throwError(uint16_t error);	// Private error function for error handling
+		
 		bm_i2c_address_t m_addressMode; // Address of the device to be communicated
 		bm_i2c_speed_t m_speed;		// Trasmission speed
 		bm_i2c_state_t m_state;		// Current state of this i2c Object
-		uint8_t m_fileName[20];				// For Linux i2c file name
+		char m_fileName[20];				// For Linux i2c file name
 		uint8_t m_dma;						// Indication for DMA ToDo : Define if it's really necessery
 		uint16_t m_fileDescriptor;			// For Linux i2c file description
 		uint8_t m_channel;					// Selection of I2C Hardware Channel
