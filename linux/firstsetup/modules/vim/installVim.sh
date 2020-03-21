@@ -1,7 +1,9 @@
-#bin/usr/bash
+#!/bin/bash
 
 VIMRC="/home/$USER/.vimrc"
 VIMDIR="/home/$USER/.vim"
+
+echo "Wellcome to the VIM installation script"
 
 sudo apt-get install exuberant-ctags
 sudo apt-get install -y vim 

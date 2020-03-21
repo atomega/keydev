@@ -1,4 +1,4 @@
-VIM 
+VIM
 It comes with my vim.rc feel free to use it
 OFF
 GCC

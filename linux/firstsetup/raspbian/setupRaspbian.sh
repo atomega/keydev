@@ -1,16 +1,16 @@
 #!/bin/bash
 
-mapfile -t MODULES </home/$USER/keydev/linux/firstsetup/sw_modules
 echo "Wellcome to Raspbian setup script"
 
-#MODULE=$(grep VIM /home/$USER/keydev/linux/firstsetup/sw_modules)
+mapfile -t MODULES </home/$USER/keydev/linux/firstsetup/sw_modules
 
 for m in "${MODULES[@]}"
 do
 	echo $m
 	case $m in 
 		VIM)
-			~/keydev/linux/firstsetup/modules/vim/installVim.sh
+			echo "debug" 
+			/home/pi/keydev/linux/firstsetup/modules/vim/installVim.sh
 			;;
 		GCC)
 			sudo apt-get install -y gcc
@@ -37,8 +37,7 @@ do
 			sudo apt-get install -y python3-pip
 			;;
 		*)
-			echo "You should not be here"
-			exit 0 
+			echo "One module has not been taken care of"
 			;;
 	esac
 done
