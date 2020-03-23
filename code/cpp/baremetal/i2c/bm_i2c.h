@@ -20,14 +20,11 @@
 * 	Revision History
 * 	****************
 *	Date		Author		V		Revision (Date in YYYYMMDD format)
-*	17032020    KeY      	1.0		First creation of it .h File creation
+*	22032020    KeY      	1.0		First creation of it .h File creation
 ***********************************************************************
-	TODO @ 17.03.2020
+	TODO @ 22.03.2020
 	****
-	1: PLease change all vouds to corresponting return types 
-	2: Manage error handling that is inexixtenet for now 
-	3: Mange encapsulation Some methodes doesn't require Public access
-	4: Kepp in mind that chaging Methodes on the future won't be an option
+	1: Manage error handling that is inexixtenet for now 
 ***********************************************************************
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -56,91 +53,112 @@ using namespace std;
 class bm_i2c
 {
 	public :
-
+		typedef enum
+		{
+			I2C_STATE_RESET		= 1,// Not Initialized
+			I2C_STATE_READY		= 2,// Ready
+			I2C_STATE_TX		= 4,// Transmitting
+			I2C_STATE_RX		= 5,// Receiving
+			I2C_STATE_LISTEN	= 6,// Listening
+			I2C_STATE_ABORT		= 7,// Aborted by user
+			I2C_STATE_TIMEOUT	= 8,// Timeout
+			I2C_STATE_ERROR		= 9	// Error happened
+		}	bm_i2c_state_t;			// Typical Low Level Communication states
 
 		typedef enum
 		{
-			I2C_STATE_RESET		= 1,	// Not Initialized
-			I2C_STATE_READY		= 2,	// Ready
-			I2C_STATE_TX		= 4,	// Transmitting
-			I2C_STATE_RX		= 5,	// Receiving
-			I2C_STATE_LISTEN	= 6,	// Listening
-			I2C_STATE_ABORT		= 7,	// Aborted by user
-			I2C_STATE_TIMEOUT	= 8,	// Timeout
-			I2C_STATE_ERROR		= 9 	// Error happened
-		} bm_i2c_state_t;
+			I2C_SPEED_STANDART		= 1,// Sm	100 kbits/s This mode will be choosen for the constructor. 
+			I2C_SPEED_FAST			= 2,// Fm	400 kbits/s 
+			I2C_SPEED_FAST_PLUS		= 3,// Fm+	1	Mbits/s
+			I2C_SPEED_HIGH_SPEED	= 4,// Hs	3.4 Mbits/s 
+			I2C_SPEED_ULTRA_FAST	= 5	// UFm	5	Mbits/s
+		}	bm_i2c_speed_t;				// Please note that speed modes engender a behavioural change
 
 		typedef enum
 		{
-			I2C_SPEED_STANDART		= 1,	// Sm	100 kbits/s This mode will be choosen for the constructor. 
-			I2C_SPEED_FAST			= 2,	// Fm	400 kbits/s 
-			I2C_SPEED_FAST_PLUS		= 3,	// Fm+	1	Mbits/s
-			I2C_SPEED_HIGH_SPEED	= 4,	// Hs	3.4 Mbits/s 
-			I2C_SPEED_ULTRA_FAST	= 5		// UFm	5	Mbits/s
-		} bm_i2c_speed_t; // PLease note that speed modes engender a behavioural change
-
-		typedef enum
-		{
-			I2C_ADDRESS_7B	= 1,	// 7  bits addressing mode  
+			I2C_ADDRESS_7B	= 1,// 7  bits addressing mode  
 			I2C_ADDRESS_10B = 2	// 10 bits addressing mode  
-		} bm_i2c_address_t;
+		}	bm_i2c_address_t;	// Doest not require a hardware support -> device adress is sent differently
 
-		/*Methods*/
-//		bm_i2c_speed_t testDeviceSpeed(); 		// Cycle trough different modes until device cnat't answer fast enought
-//
-//		uint8_t discoverDevices(); 			// Scan the awailable address range on standart mode to find devices (please set timout to a reasonable value) similar as Linux 
-//
-//		void send(uint8_t *Data, uint8_t *Reg, uint8_t *Lenght);  //Send a given number of bytes 
-//		void receive(uint8_t *Buffer, uint8_t *Reg, uint8_t *Lenght);			//Read a given number of bytes
-
-		void initChannel();	// Can be used for MCU but initialy thougt for linux
-//		void freeChannel();		// Can be used for MCU but initialy thougt for linux
-//		void softReset();		// Software reset not supported by all hardware.
-//		void clockSynchronise();// Clock Syncronization
-//		void abortTransmit();	// Stop Communication for multimaster mode 
-//		void arbitration();		// Arbitration for multimaster mode to define the right master. 
-//		void clockStretch();	// Optional For Pausing Communication because treatement takes longer than the communication
-//		void busClear();		// in case if SCL is stuck 
-//		void readDeviceInfo();	// 3 Bytes (24 its) Read Only Register | 12 Bits : Manufacturer info | 9 Bits: Part Identification | 3 Bits DIE Rev. 
-
-		/*getters*/
-//		uint8_t getError() 	const;
-//		uint8_t getMode() 	const;
-//		uint32_t getTimeout() 	const;
-//		uint8_t getAddressMode()const;
-//		uint8_t getInterrupt() 	const;
-//		uint8_t getAddress() 	const;
-//		uint8_t getsetDma() 	const;
-//
-//		/*Setters*/
-//		void setTimeout(uint8_t m_timeout);
-//		void setAddressMode();
-//		void setInterrupt();
-		void setAddress(uint8_t address);
-//		void setDma();
-//		void setSpeed(bm_i2c_speed_t spped);
-		bm_i2c(uint8_t channel, uint8_t address, uint8_t DMA);
+		typedef enum
+		{
+			I2C_MODE_MASTER			= 1,// Single Master Mode
+			I2C_MODE_SLAVE			= 2,// Slave Mode
+			I2C_MODE_MULTI_MASTER	= 3	// Multy Master Mode
+		}	bm_i2c_mode_t;				// Only algorithm changes
+	
+		/*Constructor destructor*/
+		bm_i2c(uint8_t channel, uint16_t address, bm_i2c_mode_t mode); // Creat i2c abject witha agiven channel address & mode speed is by default the slowest.
 		~bm_i2c();
 
-	protected: 
-		void throwI2cError(uint16_t error);	// Private error function for error handling
+		/*Methods*/
 
+		void receive(uint8_t *Buffer, uint8_t *Register, uint8_t *Lenght);	// Defined by me : Read a given number of bytes
+		void send(uint8_t *Data, uint8_t *Register, uint8_t *Lenght);			// Defined by me : Send a given number of bytes 
+		uint8_t testDeviceSpeed();											// Defined by me : Cycle trough different modes until device cnat't answer fast enought
+		uint8_t discoverDevices();											// Defined by me : Scan the awailable address range on standart mode to find devices   
+		
+		void initChannelAsMaster();	// Hardware Specific : Initilise the hardware channel in master mode
+		void initChannelAsSlave();	// Hardware Specific : Initilise the hardware channel in slavic mode (@life of boris)
+		void freeChannel();			// Hardware Specific : Free the hardware channel for othe recousrces
+
+		void clockSynchronise();// I2C Standart : Clock Syncronization
+		void readDeviceInfo();	// I2c Standart : 3 Bytes (24 bits) | 12 Bits : Manufacturer info | 9 Bits: Part Identification | 3 Bits DIE Rev. 
+		void abortTransmit();	// I2c Standart : Stop Communication for multimaster mode 
+		void clockStretch();	// I2C Standart : Optional For Pausing Communication because treatement takes longer than the communication
+		void arbitration();		// I2C Standart : Arbitration for multimaster mode to define the right master. 
+		void softReset();		// I2C Standart : Software reset not supported by all hardware.
+		void busClear();		// I2C Standart : in case if SCL is stuck 
+
+		/*Setters*/
+		void setSpeed(bm_i2c_speed_t speed);	// I2C Standart 
+		void setAddress(uint8_t address);		// I2C Standart 
+		void setAddressMode();					// I2C Standart
+
+		void setTimeout(uint8_t m_timeout);		// Hardware specific
+		void setInterrupt();					// Hardware Specific
+		void setDma();							// Hardware specific 	
+		
+		/*getters*/
+		uint8_t getIcIdentification()const;
+		uint8_t getIcRevision() const;
+		uint8_t getInterrupt() const;
+		uint8_t getAddress()const;
+		uint8_t getError() const;
+		uint16_t getIcManufacturer() const;
+		uint32_t getTimeout() const;
+		uint8_t getAddressMode() const;
+		uint8_t getMode() const;	
+		
+
+		void throwI2cError(int16_t error);					// Defined by me : Private error function for error handling
+		void write16(uint8_t *Data, uint8_t* Register); 
+		void read8(uint8_t *Data, uint8_t* Register); 
 	private :
 		
-		bm_i2c_address_t m_addressMode; // Address of the device to be communicated
-		bm_i2c_speed_t m_speed;		// Trasmission speed
-		bm_i2c_state_t m_state;		// Current state of this i2c Object
-		char m_fileName[20];				// For Linux i2c file name
-		uint8_t m_dma;						// Indication for DMA ToDo : Define if it's really necessery
-		uint16_t m_fileDescriptor;			// For Linux i2c file description
-		uint8_t m_channel;					// Selection of I2C Hardware Channel
-		uint8_t m_address;					// Address of the device to be communicated
-		uint8_t *m_bufferPointer;			// Buffer pointer for data to be sent & received
-		uint8_t m_transferCount;			// Internal counter for the count of data Transfer
-		uint32_t m_timeout;					// Timeout for managing communication breaks
-		uint32_t m_interrupttFlags; 		// Interrupt flag that would be sent
-		uint32_t m_interruptSource;			// From what this interrupt is coming
-		uint32_t m_error;					// The error code corresponding to that error
-		volatile uint8_t m_transferSize;	// Size of the data to be sent or received
+		bm_i2c_address_t m_addressMode;	// I2C Standart : Address type of the device to be communicated
+		uint16_t m_address;				// I2c Standrat : Address of the device to be communicated or our Slave address in Slave mode
+		bm_i2c_speed_t m_speed;			// I2C Standart : Trasmission speed
+		uint16_t m_icManufacturer;		// I2C Standart : Device information from manufacturer 
+		uint8_t m_icIdentification;		// I2C Standart : Device information from manufacturer
+		uint8_t m_icRevision;			// I2C Standart : Device information from manufacturer
+		bm_i2c_mode_t m_mode;			// I2C Standart : Mode of our device
+
+		char m_fileName[20];			// Linux : i2c file name
+		uint16_t m_fileDescriptor;		// Linux : i2c file description
+		
+		bm_i2c_state_t m_state;			// Defined by me : Current state of this i2c Object
+
+		uint8_t m_channel;				// Hardware Specific : Selection of I2C Channel
+		uint32_t m_interrupttFlags; 	// Hardware Specific : Interrupt flag
+		uint32_t m_interruptSource;		// Hardware Specific : Interrupt cause
+		
+		uint8_t *m_bufferPointer;		// Buffer pointer for data to be sent & received
+		uint8_t *m_regPointer;			// Register pointer for data to be sent & received
+		uint8_t m_dataFrame[4];			// Data frame to get the right order of data
+		uint8_t m_transferCount;		// Internal counter for the count of data Transfer
+		uint32_t m_timeout;				// Timeout for managing communication breaks
+		int16_t m_error;				// The error code corresponding to that error
+		volatile uint8_t m_transferSize;// Size of the data to be sent or received
 };
 

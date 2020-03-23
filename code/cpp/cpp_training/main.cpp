@@ -4,15 +4,72 @@
 #include <iostream>
 #include <string>
 #include <cmath>
-#include "Personnage.h"
+//#include "Personnage.h"
 
 using namespace std;
 
 void testingValRefPtr(); 
+void testPointer(int *firstPointer);
+void testPointer2(int *secondPointer);
 
 int main()
 {
-    int i = 0; 
+
+
+	int myVar[32];
+	for (int i = 0 ; i < 32; i++)
+	{
+		myVar[i] = i; 
+	}
+
+	cout << "myVar = " << myVar[0] << endl; 
+	testPointer(myVar);
+	cout << "myVar = " << myVar[0] << endl; 
+
+    cout << "\n\n\n Reched end of Main" << endl;
+    return 0; 
+}
+
+
+
+void testPointer(int *firstPointer)
+{
+	cout << "firstPOinter = " << (*firstPointer)<< endl; 
+	testPointer2(firstPointer);
+}
+
+void testPointer2(int *secondPointer)
+{
+	*secondPointer += 2;	
+	cout << "secondPointer = " << (*secondPointer)<< endl; 
+}
+
+
+void testingValRefPtr()
+{
+    std::cout << "##################################################" << endl;
+    std::cout << "|| Var\t\t|| Value\t|| Address\t||" << endl;
+    std::cout << "##################################################" << endl;
+                                                                    
+    int foo = 30;
+    std::cout << "|| foo\t\t|| " << foo << "\t\t|| " << &foo << "\t||" << endl;
+    
+    int& ref = foo;
+    std::cout << "|| &Ref = foo\t|| " << ref << "\t\t|| " << &ref << "\t||" << endl;
+    
+    int* ptr = 0;
+    std::cout << "|| ptr = 0\t|| " << ptr << "\t|| " << &ptr << "\t||" << endl;
+    
+    ptr = &foo;
+    std::cout << "|| ptr = &foo\t|| " << *ptr << "\t\t|| " << &ptr << "\t||" << endl;
+    
+    std::cout << "##################################################" << endl;
+
+    delete ptr; 
+    ptr = 0; 
+}
+/*
+	int i = 0; 
     int j = 0; 
     int playerQte = 0;
     const int playerArraySize = 0; 
@@ -57,31 +114,4 @@ int main()
     david.showStatus();
     cout << "Goliath" << endl; 
     goliath.showStatus(); 
-
-    std::cout << "\n\n\n Reched end of Main" << endl;
-    return 0; 
-}
-
-void testingValRefPtr()
-{
-    std::cout << "##################################################" << endl;
-    std::cout << "|| Var\t\t|| Value\t|| Address\t||" << endl;
-    std::cout << "##################################################" << endl;
-                                                                    
-    int foo = 30;
-    std::cout << "|| foo\t\t|| " << foo << "\t\t|| " << &foo << "\t||" << endl;
-    
-    int& ref = foo;
-    std::cout << "|| &Ref = foo\t|| " << ref << "\t\t|| " << &ref << "\t||" << endl;
-    
-    int* ptr = 0;
-    std::cout << "|| ptr = 0\t|| " << ptr << "\t|| " << &ptr << "\t||" << endl;
-    
-    ptr = &foo;
-    std::cout << "|| ptr = &foo\t|| " << *ptr << "\t\t|| " << &ptr << "\t||" << endl;
-    
-    std::cout << "##################################################" << endl;
-
-    delete ptr; 
-    ptr = 0; 
-}
+*/ 

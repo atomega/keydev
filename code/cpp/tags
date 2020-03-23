@@ -1,0 +1,118 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CC	Makefile	/^CC = g++ $/;"	m
+CC	cpp_training/Makefile	/^CC = g++ $/;"	m
+CFLAGS	Makefile	/^CFLAGS = -Wall -pedantic  $/;"	m
+CFLAGS	cpp_training/Makefile	/^CFLAGS = -Wall -pedantic  $/;"	m
+EXEC	Makefile	/^EXEC = runtest$/;"	m
+EXEC	cpp_training/Makefile	/^EXEC = runtest$/;"	m
+I2C_ADDRESS_10B	baremetal/i2c/bm_i2c.h	/^			I2C_ADDRESS_10B = 2	\/\/ 10 bits addressing mode  $/;"	e	enum:bm_i2c::__anon3
+I2C_ADDRESS_7B	baremetal/i2c/bm_i2c.h	/^			I2C_ADDRESS_7B	= 1,\/\/ 7  bits addressing mode  $/;"	e	enum:bm_i2c::__anon3
+I2C_MODE_MASTER	baremetal/i2c/bm_i2c.h	/^			I2C_MODE_MASTER			= 1,\/\/ Single Master Mode$/;"	e	enum:bm_i2c::__anon4
+I2C_MODE_MULTI_MASTER	baremetal/i2c/bm_i2c.h	/^			I2C_MODE_MULTI_MASTER	= 3	\/\/ Multy Master Mode$/;"	e	enum:bm_i2c::__anon4
+I2C_MODE_SLAVE	baremetal/i2c/bm_i2c.h	/^			I2C_MODE_SLAVE			= 2,\/\/ Slave Mode$/;"	e	enum:bm_i2c::__anon4
+I2C_SPEED_FAST	baremetal/i2c/bm_i2c.h	/^			I2C_SPEED_FAST			= 2,\/\/ Fm	400 kbits\/s $/;"	e	enum:bm_i2c::__anon2
+I2C_SPEED_FAST_PLUS	baremetal/i2c/bm_i2c.h	/^			I2C_SPEED_FAST_PLUS		= 3,\/\/ Fm+	1	Mbits\/s$/;"	e	enum:bm_i2c::__anon2
+I2C_SPEED_HIGH_SPEED	baremetal/i2c/bm_i2c.h	/^			I2C_SPEED_HIGH_SPEED	= 4,\/\/ Hs	3.4 Mbits\/s $/;"	e	enum:bm_i2c::__anon2
+I2C_SPEED_STANDART	baremetal/i2c/bm_i2c.h	/^			I2C_SPEED_STANDART		= 1,\/\/ Sm	100 kbits\/s This mode will be choosen for the constructor. $/;"	e	enum:bm_i2c::__anon2
+I2C_SPEED_ULTRA_FAST	baremetal/i2c/bm_i2c.h	/^			I2C_SPEED_ULTRA_FAST	= 5	\/\/ UFm	5	Mbits\/s$/;"	e	enum:bm_i2c::__anon2
+I2C_STATE_ABORT	baremetal/i2c/bm_i2c.h	/^			I2C_STATE_ABORT		= 7,\/\/ Aborted by user$/;"	e	enum:bm_i2c::__anon1
+I2C_STATE_ERROR	baremetal/i2c/bm_i2c.h	/^			I2C_STATE_ERROR		= 9	\/\/ Error happened$/;"	e	enum:bm_i2c::__anon1
+I2C_STATE_LISTEN	baremetal/i2c/bm_i2c.h	/^			I2C_STATE_LISTEN	= 6,\/\/ Listening$/;"	e	enum:bm_i2c::__anon1
+I2C_STATE_READY	baremetal/i2c/bm_i2c.h	/^			I2C_STATE_READY		= 2,\/\/ Ready$/;"	e	enum:bm_i2c::__anon1
+I2C_STATE_RESET	baremetal/i2c/bm_i2c.h	/^			I2C_STATE_RESET		= 1,\/\/ Not Initialized$/;"	e	enum:bm_i2c::__anon1
+I2C_STATE_RX	baremetal/i2c/bm_i2c.h	/^			I2C_STATE_RX		= 5,\/\/ Receiving$/;"	e	enum:bm_i2c::__anon1
+I2C_STATE_TIMEOUT	baremetal/i2c/bm_i2c.h	/^			I2C_STATE_TIMEOUT	= 8,\/\/ Timeout$/;"	e	enum:bm_i2c::__anon1
+I2C_STATE_TX	baremetal/i2c/bm_i2c.h	/^			I2C_STATE_TX		= 4,\/\/ Transmitting$/;"	e	enum:bm_i2c::__anon1
+LDFLAGS	Makefile	/^LDFLAGS = $/;"	m
+LDFLAGS	cpp_training/Makefile	/^LDFLAGS = $/;"	m
+Personnage	cpp_training/Personnage.cpp	/^Personnage::Personnage() $/;"	f	class:Personnage
+Personnage	cpp_training/Personnage.cpp	/^Personnage::Personnage(string weaponName, int weaponDamage) $/;"	f	class:Personnage
+Personnage	cpp_training/Personnage.h	/^class Personnage$/;"	c
+Weapon	cpp_training/Weapon.cpp	/^Weapon::Weapon() : m_name("Epee Rouiller"), m_damage(10)$/;"	f	class:Weapon
+Weapon	cpp_training/Weapon.cpp	/^Weapon::Weapon(string name, int damage) : m_name(name), m_damage(damage)$/;"	f	class:Weapon
+Weapon	cpp_training/Weapon.h	/^class Weapon$/;"	c
+abortTransmit	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::abortTransmit()$/;"	f	class:bm_i2c
+arbitration	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::arbitration()$/;"	f	class:bm_i2c
+attac	cpp_training/Personnage.cpp	/^void Personnage::attac(Personnage& target)$/;"	f	class:Personnage
+bm_i2c	baremetal/i2c/bm_i2c.cpp	/^bm_i2c::bm_i2c(uint8_t channel, uint8_t address, bm_i2c_mode_t mode) $/;"	f	class:bm_i2c
+bm_i2c	baremetal/i2c/bm_i2c.h	/^class bm_i2c$/;"	c
+bm_i2c_address_t	baremetal/i2c/bm_i2c.h	/^		}	bm_i2c_address_t;	\/\/ Doest not require a hardware support -> device adress is sent differently$/;"	t	class:bm_i2c	typeref:enum:bm_i2c::__anon3
+bm_i2c_mode_t	baremetal/i2c/bm_i2c.h	/^		}	bm_i2c_mode_t;				\/\/ Only algorithm changes$/;"	t	class:bm_i2c	typeref:enum:bm_i2c::__anon4
+bm_i2c_speed_t	baremetal/i2c/bm_i2c.h	/^		}	bm_i2c_speed_t;				\/\/ Please note that speed modes engender a behavioural change$/;"	t	class:bm_i2c	typeref:enum:bm_i2c::__anon2
+bm_i2c_state_t	baremetal/i2c/bm_i2c.h	/^		}	bm_i2c_state_t;			\/\/ Typical Low Level Communication states$/;"	t	class:bm_i2c	typeref:enum:bm_i2c::__anon1
+busClear	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::busClear()$/;"	f	class:bm_i2c
+change	cpp_training/Weapon.cpp	/^void Weapon::change(string name, int damage)$/;"	f	class:Weapon
+changeWeapon	cpp_training/Personnage.cpp	/^void Personnage::changeWeapon(std::string newWeaponName, int newWeaponDamage)$/;"	f	class:Personnage
+clockStretch	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::clockStretch()$/;"	f	class:bm_i2c
+clockSynchronise	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::clockSynchronise()$/;"	f	class:bm_i2c
+csrc	Makefile	/^csrc = $(wildcard *.cpp) \\ $(wildcard baremetal\/i2c\/*.cpp) $/;"	m
+csrc	cpp_training/Makefile	/^csrc = $(wildcard *.cpp)$/;"	m
+dirnkPotion	cpp_training/Personnage.cpp	/^void Personnage::dirnkPotion(int potionQte)$/;"	f	class:Personnage
+freeChannel	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::freeChannel()$/;"	f	class:bm_i2c
+getAddress	baremetal/i2c/bm_i2c.cpp	/^uint8_t bm_i2c::getAddress() const$/;"	f	class:bm_i2c
+getAddressMode	baremetal/i2c/bm_i2c.cpp	/^uint8_t bm_i2c::getAddressMode() const$/;"	f	class:bm_i2c
+getDamage	cpp_training/Weapon.cpp	/^int Weapon::getDamage() const $/;"	f	class:Weapon
+getError	baremetal/i2c/bm_i2c.cpp	/^uint8_t bm_i2c::getError() const$/;"	f	class:bm_i2c
+getIcIdentification	baremetal/i2c/bm_i2c.cpp	/^uint8_t bm_i2c::getIcIdentification() const$/;"	f	class:bm_i2c
+getIcManufacturer	baremetal/i2c/bm_i2c.cpp	/^uint16_t bm_i2c::getIcManufacturer() const$/;"	f	class:bm_i2c
+getIcRevision	baremetal/i2c/bm_i2c.cpp	/^uint8_t bm_i2c::getIcRevision()	const$/;"	f	class:bm_i2c
+getInterrupt	baremetal/i2c/bm_i2c.cpp	/^uint8_t bm_i2c::getInterrupt() const$/;"	f	class:bm_i2c
+getTimeout	baremetal/i2c/bm_i2c.cpp	/^uint32_t bm_i2c::getTimeout() const$/;"	f	class:bm_i2c
+initChannelAsMaster	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::initChannelAsMaster()$/;"	f	class:bm_i2c
+initChannelAsSlave	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::initChannelAsSlave()$/;"	f	class:bm_i2c
+isAlive	cpp_training/Personnage.cpp	/^bool Personnage::isAlive() const $/;"	f	class:Personnage
+m_address	baremetal/i2c/bm_i2c.h	/^		uint8_t m_address;				\/\/ I2c Standrat : Address of the device to be communicated or our Slave address in Slave mode$/;"	m	class:bm_i2c
+m_addressMode	baremetal/i2c/bm_i2c.h	/^		bm_i2c_address_t m_addressMode;	\/\/ I2C Standart : Address type of the device to be communicated$/;"	m	class:bm_i2c
+m_bufferPointer	baremetal/i2c/bm_i2c.h	/^		uint8_t *m_bufferPointer;		\/\/ Buffer pointer for data to be sent & received$/;"	m	class:bm_i2c
+m_channel	baremetal/i2c/bm_i2c.h	/^		uint8_t m_channel;				\/\/ Hardware Specific : Selection of I2C Channel$/;"	m	class:bm_i2c
+m_damage	cpp_training/Weapon.h	/^	int m_damage;$/;"	m	class:Weapon
+m_error	baremetal/i2c/bm_i2c.h	/^		uint32_t m_error;				\/\/ The error code corresponding to that error$/;"	m	class:bm_i2c
+m_fileDescriptor	baremetal/i2c/bm_i2c.h	/^		uint16_t m_fileDescriptor;		\/\/ Linux : i2c file description$/;"	m	class:bm_i2c
+m_fileName	baremetal/i2c/bm_i2c.h	/^		char m_fileName[20];			\/\/ Linux : i2c file name$/;"	m	class:bm_i2c
+m_hp	cpp_training/Personnage.h	/^    int m_hp;$/;"	m	class:Personnage
+m_icIdentification	baremetal/i2c/bm_i2c.h	/^		uint8_t m_icIdentification;		\/\/ I2C Standart : Device information from manufacturer$/;"	m	class:bm_i2c
+m_icManufacturer	baremetal/i2c/bm_i2c.h	/^		uint16_t m_icManufacturer;		\/\/ I2C Standart : Device information from manufacturer $/;"	m	class:bm_i2c
+m_icRevision	baremetal/i2c/bm_i2c.h	/^		uint8_t m_icRevision;			\/\/ I2C Standart : Device information from manufacturer$/;"	m	class:bm_i2c
+m_interruptSource	baremetal/i2c/bm_i2c.h	/^		uint32_t m_interruptSource;		\/\/ Hardware Specific : Interrupt cause$/;"	m	class:bm_i2c
+m_interrupttFlags	baremetal/i2c/bm_i2c.h	/^		uint32_t m_interrupttFlags; 	\/\/ Hardware Specific : Interrupt flag$/;"	m	class:bm_i2c
+m_mana	cpp_training/Personnage.h	/^    int m_mana;$/;"	m	class:Personnage
+m_mode	baremetal/i2c/bm_i2c.h	/^		bm_i2c_mode_t m_mode;			\/\/ I2C Standart : Mode of our device$/;"	m	class:bm_i2c
+m_name	cpp_training/Personnage.h	/^    std::string m_name;$/;"	m	class:Personnage
+m_name	cpp_training/Weapon.h	/^	std::string m_name; $/;"	m	class:Weapon
+m_regPointer	baremetal/i2c/bm_i2c.h	/^		uint8_t *m_regPointer;			\/\/ Register pointer for data to be sent & received$/;"	m	class:bm_i2c
+m_speed	baremetal/i2c/bm_i2c.h	/^		bm_i2c_speed_t m_speed;			\/\/ I2C Standart : Trasmission speed$/;"	m	class:bm_i2c
+m_state	baremetal/i2c/bm_i2c.h	/^		bm_i2c_state_t m_state;			\/\/ Defined by me : Current state of this i2c Object$/;"	m	class:bm_i2c
+m_timeout	baremetal/i2c/bm_i2c.h	/^		uint32_t m_timeout;				\/\/ Timeout for managing communication breaks$/;"	m	class:bm_i2c
+m_transferCount	baremetal/i2c/bm_i2c.h	/^		uint8_t m_transferCount;		\/\/ Internal counter for the count of data Transfer$/;"	m	class:bm_i2c
+m_transferSize	baremetal/i2c/bm_i2c.h	/^		volatile uint8_t m_transferSize;\/\/ Size of the data to be sent or received$/;"	m	class:bm_i2c
+m_weapon	cpp_training/Personnage.h	/^    Weapon m_weapon;$/;"	m	class:Personnage
+main	cpp_training/main.cpp	/^int main()$/;"	f
+main	main.cpp	/^int main()$/;"	f
+obj	Makefile	/^obj = $(csrc:.cpp=.o)$/;"	m
+obj	cpp_training/Makefile	/^obj = $(csrc:.cpp=.o)$/;"	m
+readDeviceInfo	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::readDeviceInfo()$/;"	f	class:bm_i2c
+receive	baremetal/i2c/bm_i2c.cpp	/^void§h bm_i2c::receive(uint8_t *Buffer, uint8_t *Reg, uint8_t *Lenght)$/;"	f	class:bm_i2c
+recieveDmg	cpp_training/Personnage.cpp	/^void Personnage::recieveDmg(int dmg) $/;"	f	class:Personnage
+send	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::send(uint8_t *Data, uint8_t *Reg, uint8_t *Lenght)$/;"	f	class:bm_i2c
+setAddress	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::setAddress(uint8_t address)$/;"	f	class:bm_i2c
+setAddressMode	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::setAddressMode()$/;"	f	class:bm_i2c
+setDma	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::setDma()$/;"	f	class:bm_i2c
+setInterrupt	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::setInterrupt()$/;"	f	class:bm_i2c
+setName	cpp_training/Personnage.cpp	/^void Personnage::setName(std::string name)$/;"	f	class:Personnage
+setSpeed	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::setSpeed(bm_i2c_speed_t speed)$/;"	f	class:bm_i2c
+setTimeout	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::setTimeout(uint8_t m_timeout)$/;"	f	class:bm_i2c
+show	cpp_training/Weapon.cpp	/^void Weapon::show() const $/;"	f	class:Weapon
+showStatus	cpp_training/Personnage.cpp	/^void Personnage::showStatus() const$/;"	f	class:Personnage
+softReset	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::softReset()$/;"	f	class:bm_i2c
+testDeviceSpeed	baremetal/i2c/bm_i2c.cpp	/^uint8_t bm_i2c::testDeviceSpeed()$/;"	f	class:bm_i2c
+testingValRefPtr	cpp_training/main.cpp	/^void testingValRefPtr()$/;"	f
+testingValRefPtr	main.cpp	/^void testingValRefPtr()$/;"	f
+throwI2cError	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::throwI2cError(uint16_t error)$/;"	f	class:bm_i2c
+~Personnage	cpp_training/Personnage.cpp	/^Personnage::~Personnage()$/;"	f	class:Personnage
+~Weapon	cpp_training/Weapon.cpp	/^Weapon::~Weapon()$/;"	f	class:Weapon
+~bm_i2c	baremetal/i2c/bm_i2c.cpp	/^bm_i2c::~bm_i2c()$/;"	f	class:bm_i2c
