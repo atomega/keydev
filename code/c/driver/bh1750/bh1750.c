@@ -93,7 +93,6 @@ uint16_t bh1750_oneShot(uint8_t mode)
 
 int16_t bh1750_calculateLumen(int16_t measured)
 {
-	#ifdef BH1750_DEBUG
 	int8_t high = 0; 
 	int8_t low = 0;
   	high = (unsigned char)(measured >> 8);
@@ -101,7 +100,6 @@ int16_t bh1750_calculateLumen(int16_t measured)
 	printf("Returned value : %u \n", measured); 	
 	printf("Separeted :\tHigh : 0x%x \n", high & 0xff); 
 	printf("Separated :\tLow : 0x%x \n", low & 0xff); 
-	#endif	
 	
 	int16_t lux = 0; 
 	lux=((measured & 0xff00)>>8) | ((measured & 0x00ff)<<8);		

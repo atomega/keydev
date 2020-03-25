@@ -64,8 +64,8 @@ SOFTWARE.
 using namespace std; 
 
 // Creat i2c abject witha agiven channel address & mode speed is by default the slowest.
-bm_i2c::bm_i2c(uint8_t channel, uint16_t address, bm_i2c_mode_t mode) 
-: m_channel(channel), m_address(address), m_mode(mode)
+bm_i2c::bm_i2c(uint8_t channel, uint16_t address, bm_i2c_mode_t mode, bm_i2c_address_t addressMode) 
+: m_channel(channel), m_address(address), m_mode(mode), m_addressMode(addressMode)
 { 
 	m_state = I2C_STATE_RESET; 
 	m_icIdentification = 0; 
@@ -101,9 +101,8 @@ bm_i2c::~bm_i2c()
 
 
 // Hardware Specific : Initilise the hardware channel in master mode
-void bm_i2c::initChannelAsMaster()
+void bm_i2c::i2c_initChannelAsMaster()
 {
-	/*Usercode*/			
 	snprintf(m_fileName, 19, "/dev/i2c-%d", m_channel);
 	
 	m_fileDescriptor = open(m_fileName, O_RDWR);
@@ -112,77 +111,101 @@ void bm_i2c::initChannelAsMaster()
 	{	
 		throwI2cError(__LINE__); 
 	}
-	/*Edocresu*/	
 }
 
-void bm_i2c::setAddress(uint8_t address)
+void bm_i2c::i2c_setAddress(uint16_t address)
 {		 
-	/*Usercode*/			
-	m_address = address;
-	m_state = I2C_STATE_RESET; 
-	m_error = ioctl(m_fileDescriptor, I2C_SLAVE,m_address);  
+	switch (m_addressMode)
+	{
+		case I2C_ADDRESS_7B: 
+			m_address = address;
+			m_internalBuffer[0] = address & ((1 << 8)-1);
+		break;
 	
+		case I2C_ADDRESS_10B:
+
+		break;
+			
+	}
+	m_state	= I2C_STATE_RESET; 
+	m_error = ioctl(m_fileDescriptor, I2C_SLAVE,m_internalBuffer[0]);
 	if (m_error < 0) 
 	{	
 		throwI2cError(__LINE__); 
 		m_state = I2C_STATE_ERROR; 
 	}
-	/*Edocresu*/
 }
-	 
+
 
 // Defined by me :Read a given number of bytes
-void bm_i2c::receive(uint8_t *Buffer, uint8_t *Register, uint8_t *Lenght)
+void bm_i2c::i2c_receive(uint8_t *Buffer, uint8_t *reg, uint8_t *BufferLenght, uint8_t *regLenght)
 {
-	/*Usercode*/			
-	for(m_transferCount = 0 ; m_transferCount < *Lenght; m_transferCount++ )
-	{	
+	if (*BufferLenght == *regLenght)
+	{
+		for(m_transferCount = 0 ; m_transferCount < *BufferLenght ; m_transferCount++ )
+		{	
+			pointreg(reg[m_transferCount]);
+			if ((read(m_fileDescriptor,Buffer[m_transferCount],1 )) != 1) 										 
+			{	
+				throwI2cError(__LINE__); 
+			}
+		}
+	}
+	else if (*BufferLenght > *regLenght  &&  *regLenght == 1)
+	{
+		pointreg(reg);
+		i2c_readNtimes(uint8_t *data, uint8_t* dataLenght)
 	}
 }
 
 // Defined by me : Send a given number of bytes
-void bm_i2c::send(uint8_t *Data, uint8_t *Register, uint8_t *Lenght)
+void bm_i2c::i2c_send(uint8_t *data, uint8_t *reg, uint8_t *dataLenght, uint8_t *regLenght)
 {
-	for(m_transferCount = 0 ; m_transferCount < *Lenght; m_transferCount++ )
+	for(m_transferCount = 0 ; m_transferCount < *regLenght; m_transferCount++ )
 	{ 
-		m_dataFrame[0] = *Register; 
-		m_dataFrame[1] = *Data;
-		if (write(m_fileDescriptor, m_dataFrame, 2) != 2)
-		{
-			throwI2cError(__LINE__); 
-		}
+		writeI2c(&data[m_transferCount], &reg[m_transferCount]);
 	}
 }
 
-void bm_i2c::write16(uint8_t *Data, uint8_t* Register)
+// Defined by me : Points to the register to be red from 
+void bm_i2c::i2c_pointreg(uint8_t * reg)
 {
-	m_dataFrame[0] = *Register; 
-	m_dataFrame[1] = *Data; 
-
-	if ((write(m_fileDescriptor, m_dataFrame, 2)) != 2) 										
-	{														
-		throwI2cError(__LINE__); 
-	}	
-}
- 
-void bm_i2c::read8(uint8_t *Data, uint8_t* Register)
-{
-	if ((write(m_fileDescriptor, Register, 1)) != 1) 										
+	m_internalBuffer[0] = * reg; 
+	if ((write(m_fileDescriptor,m_internalBuffer, 1)) != 1) 										
 	{	
 		throwI2cError(__LINE__);  
 	}
-	else 
-	{	
-		if ((read(m_fileDescriptor, m_dataFrame, 1)) != 1) 										 
-		{	
-			throwI2cError(__LINE__); 
-		}
+}
+
+// Defined by me ; Writes one Byte
+void bm_i2c::i2c_writeSingle(uint8_t *data, uint8_t* reg)
+{
+	m_internalBuffer[0] = *reg; 
+	m_internalBuffer[1] = *data; 
+
+	if ((write(m_fileDescriptor, m_internalBuffer, 2)) != 2) 										
+	{
+		throwI2cError(__LINE__); 
 	}	
+}
+
+
+
+void bm_i2c::i2c_readNtimes(uint8_t *data, uint8_t* dataLenght)
+{
+	if ((read(m_fileDescriptor,data, dataLenght)) != dataLenght) 										 
+	{	
+		throwI2cError(__LINE__); 
+	}
+	else
+	{
+		cout << "write Done " << endl; 
+	}
 }
  
 
 // Defined by me : Cycle trough different modes until device cnat't answer fast enought
-uint8_t bm_i2c::testDeviceSpeed()
+uint8_t bm_i2c::i2c_testDeviceSpeed()
 {
 	//TODO : Implement it	
 	return 0;
@@ -190,134 +213,79 @@ uint8_t bm_i2c::testDeviceSpeed()
 
 
 // Hardware Specific : Initilise the hardware channel in slave mode
-void bm_i2c::initChannelAsSlave()
+void bm_i2c::i2c_initChannelAsSlave()
 {
-	/*Usercode*/			
-	/*Edocresu*/
 }
 
 // Hardware Specific : Free the hardware channel for othe recousrces
-void bm_i2c::freeChannel()
+void bm_i2c::i2c_freeChannel()
 {
-	/*Usercode*/			
 	close(m_fileDescriptor); 
-	/*Edocresu*/
 }			
 
-
 // I2C Standart : Clock Syncronization
-void bm_i2c::clockSynchronise()
-{
-	/*Usercode*/			
-	/*Edocresu*/
-}
-// I2c Standart : 3 Bytes (24 its) Read Only Register | 12 Bits : Manufacturer info | 9 Bits: Part Identification | 3 Bits DIE Rev.
-void bm_i2c::readDeviceInfo()
-{
-	/*Usercode*/			
-	/*Edocresu*/
-}	 
+void bm_i2c::i2c_clockSynchronise(){}
+// I2c Standart : 3 Bytes (24 its) Read Only reg | 12 Bits : Manufacturer info | 9 Bits: Part Identification | 3 Bits DIE Rev.
+void bm_i2c::i2c_readDeviceInfo(){}	 
 // I2c Standart : Stop Communication for multimaster mode
-void bm_i2c::abortTransmit()
-{
-	/*Usercode*/			
-	/*Edocresu*/
-}	 
+void bm_i2c::i2c_abortTransmit(){}	 
 // I2C Standart : Optional For Pausing Communication because treatement takes longer than the communication
-void bm_i2c::clockStretch()
-{
-	/*Usercode*/			
-	/*Edocresu*/
-}	
+void bm_i2c::i2c_clockStretch(){}	
 // I2C Standart : Arbitration for multimaster mode to define the right master.
-void bm_i2c::arbitration()
-{
-	/*Usercode*/			
-	/*Edocresu*/
-}		 
+void bm_i2c::i2c_arbitration(){}		 
 // I2C Standart : Software reset not supported by all hardware.
-void bm_i2c::softReset()
-{
-	/*Usercode*/			
-	/*Edocresu*/
-}		
+void bm_i2c::i2c_softReset(){}		
 // I2C Standart : in case if SCL is stuck
-void bm_i2c::busClear()
-{
-	/*Usercode*/			
-	/*Edocresu*/
-}
+void bm_i2c::i2c_busClear(){}
 
-
-void bm_i2c::setSpeed(bm_i2c_speed_t speed)
-{
-}
-
-		 
-void bm_i2c::setAddressMode()
-{
-	
-}
-					
-
-void bm_i2c::setTimeout(uint8_t m_timeout)
-{
-	
-}
-	
-void bm_i2c::setInterrupt()
-{
-	
-}
-			
-void bm_i2c::setDma()
-{
-	
-}
-
-uint8_t bm_i2c::getIcIdentification() const
+void bm_i2c::i2c_setSpeed(bm_i2c_speed_t speed){}
+void bm_i2c::i2c_setAddressMode(){}
+void bm_i2c::i2c_setTimeout(uint8_t m_timeout){}
+void bm_i2c::i2c_setInterrupt(){}
+void bm_i2c::i2c_setDma(){}
+uint8_t bm_i2c::i2c_getIcIdentification() const
 {
 	return m_icIdentification; 	
 }
 
-uint8_t bm_i2c::getIcRevision()	const
+uint8_t bm_i2c::i2c_getIcRevision()	const
 {
 	return m_icRevision;  
 }
 
-uint8_t bm_i2c::getInterrupt() const
+uint8_t bm_i2c::i2c_getInterrupt() const
 {
 	return m_interrupttFlags; 
 }
 
-uint8_t bm_i2c::getAddress() const
+uint8_t bm_i2c::i2c_getAddress() const
 {
 	return m_address; 
 }
 
-uint8_t bm_i2c::getError() const
+uint8_t bm_i2c::i2c_getError() const
 {
 	return m_error; 
 }
 
-uint16_t bm_i2c::getIcManufacturer() const
+uint16_t bm_i2c::i2c_getIcManufacturer() const
 {
 	return m_icManufacturer; 
 }
 
-uint32_t bm_i2c::getTimeout() const
+uint32_t bm_i2c::i2c_getTimeout() const
 {
 	return m_timeout; 
 }
 
 
-uint8_t bm_i2c::getAddressMode() const
+uint8_t bm_i2c::i2c_getAddressMode() const
 {
 	return m_addressMode; 	
 }
 
 
-void bm_i2c::throwI2cError(int16_t error)
+void bm_i2c::i2c_throwError(int16_t error)
 {
 	cout << "An error has been generated on line : >>" << error << "<< " << endl << "Operation aborded anc channel closed" << endl; 
 	m_state = I2C_STATE_ERROR; 

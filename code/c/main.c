@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 //	ma12070_getCurrentDevInfo(); 
 //	ma12070_printCurrentCconf();
 	bh1750_open(); 
-	bh1750_set_mode(BH1750_ONE_TIME_HIGH_RES_MODE_1);
+//	bh1750_set_mode(BH1750_ONE_TIME_HIGH_RES_MODE_1);
 	bh1750_oneShot(BH1750_ONE_TIME_HIGH_RES_MODE_1);
 	return 0; 
 }

@@ -88,13 +88,13 @@ class bm_i2c
 		}	bm_i2c_mode_t;				// Only algorithm changes
 	
 		/*Constructor destructor*/
-		bm_i2c(uint8_t channel, uint16_t address, bm_i2c_mode_t mode); // Creat i2c abject witha agiven channel address & mode speed is by default the slowest.
+		bm_i2c(uint8_t channel, uint16_t address, bm_i2c_mode_t mode, bm_i2c_address_t addressMode); // Creat i2c abject witha agiven channel address & mode speed is by default the slowest. 
 		~bm_i2c();
 
 		/*Methods*/
 
-		void receive(uint8_t *Buffer, uint8_t *Register, uint8_t *Lenght);	// Defined by me : Read a given number of bytes
-		void send(uint8_t *Data, uint8_t *Register, uint8_t *Lenght);			// Defined by me : Send a given number of bytes 
+		void receive(uint8_t *Buffer, uint8_t *Register, uint8_t *BufferLenght, uint8_t * RegisterLenght);	// Defined by me : Read a given number of bytes
+		void send(uint8_t *Data, uint8_t *Register, uint8_t *DataLenght, uint8_t * RegisterLenght);			// Defined by me : Send a given number of bytes 
 		uint8_t testDeviceSpeed();											// Defined by me : Cycle trough different modes until device cnat't answer fast enought
 		uint8_t discoverDevices();											// Defined by me : Scan the awailable address range on standart mode to find devices   
 		
@@ -112,7 +112,7 @@ class bm_i2c
 
 		/*Setters*/
 		void setSpeed(bm_i2c_speed_t speed);	// I2C Standart 
-		void setAddress(uint8_t address);		// I2C Standart 
+		void setAddress(uint16_t address);		// I2C Standart 
 		void setAddressMode();					// I2C Standart
 
 		void setTimeout(uint8_t m_timeout);		// Hardware specific
@@ -131,9 +131,11 @@ class bm_i2c
 		uint8_t getMode() const;	
 		
 
-		void throwI2cError(int16_t error);					// Defined by me : Private error function for error handling
-		void write16(uint8_t *Data, uint8_t* Register); 
-		void read8(uint8_t *Data, uint8_t* Register); 
+		void throwI2cError(int16_t error);				// Defined by me : Private error function for error handling
+		void writeI2c(uint8_t *Data, uint8_t* Register);	// Defined by me : Writes one Byte
+		void readI2c(uint8_t *Data, uint8_t* Register);	// Defined by me ; Reads one Byte
+		void pointRegister(uint8_t *Register);			// Defined by me : Points to the register to be red from
+
 	private :
 		
 		bm_i2c_address_t m_addressMode;	// I2C Standart : Address type of the device to be communicated
@@ -155,7 +157,7 @@ class bm_i2c
 		
 		uint8_t *m_bufferPointer;		// Buffer pointer for data to be sent & received
 		uint8_t *m_regPointer;			// Register pointer for data to be sent & received
-		uint8_t m_dataFrame[4];			// Data frame to get the right order of data
+		uint8_t m_internalBuffer[4];	// Data frame to get the right order of data
 		uint8_t m_transferCount;		// Internal counter for the count of data Transfer
 		uint32_t m_timeout;				// Timeout for managing communication breaks
 		int16_t m_error;				// The error code corresponding to that error

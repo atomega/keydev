@@ -12,6 +12,7 @@ void testingValRefPtr();
 void testPointer(int *firstPointer);
 void testPointer2(int *secondPointer);
 
+void writeTest(int fd, int *buf);
 int main()
 {
 
@@ -22,9 +23,16 @@ int main()
 		myVar[i] = i; 
 	}
 
-	cout << "myVar = " << myVar[0] << endl; 
+
+	unsigned int first = 0x55 ;
+	unsigned char second = first & ((1 << 8) -1);
+
+	cout << "secodn =" << (void*)second << endl;
+
+
+	cout << "myVar = " << myVar[4] << endl; 
 	testPointer(myVar);
-	cout << "myVar = " << myVar[0] << endl; 
+	cout << "myVar = " << myVar[4] << endl; 
 
     cout << "\n\n\n Reched end of Main" << endl;
     return 0; 
@@ -34,16 +42,22 @@ int main()
 
 void testPointer(int *firstPointer)
 {
-	cout << "firstPOinter = " << (*firstPointer)<< endl; 
-	testPointer2(firstPointer);
+	cout << "firstPOinter = " << firstPointer[4]<< endl; 
+	testPointer2(&firstPointer[4]);
 }
 
 void testPointer2(int *secondPointer)
 {
-	*secondPointer += 2;	
 	cout << "secondPointer = " << (*secondPointer)<< endl; 
+	writeTest(5, secondPointer);
 }
 
+void writeTest(int fd, int *buf)
+{
+
+	*buf = 8;	
+	cout << "buf = " << (*buf)<< endl; 
+}
 
 void testingValRefPtr()
 {
