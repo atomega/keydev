@@ -176,6 +176,8 @@ uint16_t i2c_read_16(int8_t regToRead)
 			printf("I2C.C :\t Recut 2 \t : 0x%x \n", read_buf[1] & 0xff); 
 			printf("I2C.C :\t Addresse \t : 0x%x \n \n", current_dev_id & 0xff);  
 			#endif
+			printf("I2C.C :\t Recut 1 \t : 0x%x \n", read_buf[0] & 0xff); 
+			printf("I2C.C :\t Recut 2 \t : 0x%x \n", read_buf[1] & 0xff); 
 			result = read_buf[1] + (read_buf[0] >> (CHAR_BIT - 2));
 			return result;  	
 		}

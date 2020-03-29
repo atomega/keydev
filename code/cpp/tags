@@ -8,6 +8,9 @@ CC	Makefile	/^CC = g++ $/;"	m
 CC	cpp_training/Makefile	/^CC = g++ $/;"	m
 CFLAGS	Makefile	/^CFLAGS = -Wall -pedantic  $/;"	m
 CFLAGS	cpp_training/Makefile	/^CFLAGS = -Wall -pedantic  $/;"	m
+CHAR_MODE	driver/pf8574/pf8574lcd.h	51;"	d
+CMD_MODE	driver/pf8574/pf8574lcd.h	50;"	d
+EN	driver/pf8574/pf8574lcd.h	44;"	d
 EXEC	Makefile	/^EXEC = runtest$/;"	m
 EXEC	cpp_training/Makefile	/^EXEC = runtest$/;"	m
 I2C_ADDRESS_10B	baremetal/i2c/bm_i2c.h	/^			I2C_ADDRESS_10B = 2	\/\/ 10 bits addressing mode  $/;"	e	enum:bm_i2c::__anon3
@@ -28,63 +31,127 @@ I2C_STATE_RESET	baremetal/i2c/bm_i2c.h	/^			I2C_STATE_RESET		= 1,\/\/ Not Initia
 I2C_STATE_RX	baremetal/i2c/bm_i2c.h	/^			I2C_STATE_RX		= 5,\/\/ Receiving$/;"	e	enum:bm_i2c::__anon1
 I2C_STATE_TIMEOUT	baremetal/i2c/bm_i2c.h	/^			I2C_STATE_TIMEOUT	= 8,\/\/ Timeout$/;"	e	enum:bm_i2c::__anon1
 I2C_STATE_TX	baremetal/i2c/bm_i2c.h	/^			I2C_STATE_TX		= 4,\/\/ Transmitting$/;"	e	enum:bm_i2c::__anon1
+LCD_1LINE	driver/pf8574/pf8574lcd.h	35;"	d
+LCD_2LINE	driver/pf8574/pf8574lcd.h	34;"	d
+LCD_4BITMODE	driver/pf8574/pf8574lcd.h	33;"	d
+LCD_5x1DOTS	driver/pf8574/pf8574lcd.h	36;"	d
+LCD_5x8DOTS	driver/pf8574/pf8574lcd.h	37;"	d
+LCD_8BITMODE	driver/pf8574/pf8574lcd.h	32;"	d
+LCD_ADDRS	driver/pf8574/pf8574lcd.h	54;"	d
+LCD_BACKLIGHT	driver/pf8574/pf8574lcd.h	40;"	d
+LCD_BLINKOFF	driver/pf8574/pf8574lcd.h	23;"	d
+LCD_BLINKON	driver/pf8574/pf8574lcd.h	22;"	d
+LCD_CLEARDISPLAY	driver/pf8574/pf8574lcd.h	2;"	d
+LCD_CURSORMOVE	driver/pf8574/pf8574lcd.h	27;"	d
+LCD_CURSOROFF	driver/pf8574/pf8574lcd.h	21;"	d
+LCD_CURSORON	driver/pf8574/pf8574lcd.h	20;"	d
+LCD_CURSORSHIFT	driver/pf8574/pf8574lcd.h	6;"	d
+LCD_DISPLAYCONTROL	driver/pf8574/pf8574lcd.h	5;"	d
+LCD_DISPLAYMOVE	driver/pf8574/pf8574lcd.h	26;"	d
+LCD_DISPLAYOFF	driver/pf8574/pf8574lcd.h	19;"	d
+LCD_DISPLAYON	driver/pf8574/pf8574lcd.h	18;"	d
+LCD_ENTRYLEFT	driver/pf8574/pf8574lcd.h	13;"	d
+LCD_ENTRYMODESET	driver/pf8574/pf8574lcd.h	4;"	d
+LCD_ENTRYRIGHT	driver/pf8574/pf8574lcd.h	12;"	d
+LCD_ENTRYSHIFTDECREMENT	driver/pf8574/pf8574lcd.h	15;"	d
+LCD_ENTRYSHIFTINCREMENT	driver/pf8574/pf8574lcd.h	14;"	d
+LCD_FUNCTIONSET	driver/pf8574/pf8574lcd.h	7;"	d
+LCD_MOVELEFT	driver/pf8574/pf8574lcd.h	29;"	d
+LCD_MOVERIGHT	driver/pf8574/pf8574lcd.h	28;"	d
+LCD_NOBACKLIGHT	driver/pf8574/pf8574lcd.h	41;"	d
+LCD_RETURNHOME	driver/pf8574/pf8574lcd.h	3;"	d
+LCD_SETCGRAMADDR	driver/pf8574/pf8574lcd.h	8;"	d
+LCD_SETDDRAMADDR	driver/pf8574/pf8574lcd.h	9;"	d
 LDFLAGS	Makefile	/^LDFLAGS = $/;"	m
 LDFLAGS	cpp_training/Makefile	/^LDFLAGS = $/;"	m
 Personnage	cpp_training/Personnage.cpp	/^Personnage::Personnage() $/;"	f	class:Personnage
 Personnage	cpp_training/Personnage.cpp	/^Personnage::Personnage(string weaponName, int weaponDamage) $/;"	f	class:Personnage
 Personnage	cpp_training/Personnage.h	/^class Personnage$/;"	c
+RS	driver/pf8574/pf8574lcd.h	46;"	d
+RW	driver/pf8574/pf8574lcd.h	45;"	d
+TOTAL_CHAR_CAP	driver/pf8574/pf8574lcd.h	57;"	d
 Weapon	cpp_training/Weapon.cpp	/^Weapon::Weapon() : m_name("Epee Rouiller"), m_damage(10)$/;"	f	class:Weapon
 Weapon	cpp_training/Weapon.cpp	/^Weapon::Weapon(string name, int damage) : m_name(name), m_damage(damage)$/;"	f	class:Weapon
 Weapon	cpp_training/Weapon.h	/^class Weapon$/;"	c
-abortTransmit	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::abortTransmit()$/;"	f	class:bm_i2c
-arbitration	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::arbitration()$/;"	f	class:bm_i2c
 attac	cpp_training/Personnage.cpp	/^void Personnage::attac(Personnage& target)$/;"	f	class:Personnage
-bm_i2c	baremetal/i2c/bm_i2c.cpp	/^bm_i2c::bm_i2c(uint8_t channel, uint8_t address, bm_i2c_mode_t mode) $/;"	f	class:bm_i2c
+bm_i2c	baremetal/i2c/bm_i2c.cpp	/^bm_i2c::bm_i2c(uint8_t channel, uint16_t address, bm_i2c_mode_t mode, bm_i2c_address_t addressMode) $/;"	f	class:bm_i2c
 bm_i2c	baremetal/i2c/bm_i2c.h	/^class bm_i2c$/;"	c
 bm_i2c_address_t	baremetal/i2c/bm_i2c.h	/^		}	bm_i2c_address_t;	\/\/ Doest not require a hardware support -> device adress is sent differently$/;"	t	class:bm_i2c	typeref:enum:bm_i2c::__anon3
 bm_i2c_mode_t	baremetal/i2c/bm_i2c.h	/^		}	bm_i2c_mode_t;				\/\/ Only algorithm changes$/;"	t	class:bm_i2c	typeref:enum:bm_i2c::__anon4
 bm_i2c_speed_t	baremetal/i2c/bm_i2c.h	/^		}	bm_i2c_speed_t;				\/\/ Please note that speed modes engender a behavioural change$/;"	t	class:bm_i2c	typeref:enum:bm_i2c::__anon2
 bm_i2c_state_t	baremetal/i2c/bm_i2c.h	/^		}	bm_i2c_state_t;			\/\/ Typical Low Level Communication states$/;"	t	class:bm_i2c	typeref:enum:bm_i2c::__anon1
-busClear	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::busClear()$/;"	f	class:bm_i2c
+c_obj	Makefile	/^c_obj = $(c_src:.c=.o)$/;"	m
+c_src	Makefile	/^c_src = $(wildcard driver\/pf8574\/*.c)$/;"	m
 change	cpp_training/Weapon.cpp	/^void Weapon::change(string name, int damage)$/;"	f	class:Weapon
 changeWeapon	cpp_training/Personnage.cpp	/^void Personnage::changeWeapon(std::string newWeaponName, int newWeaponDamage)$/;"	f	class:Personnage
-clockStretch	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::clockStretch()$/;"	f	class:bm_i2c
-clockSynchronise	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::clockSynchronise()$/;"	f	class:bm_i2c
-csrc	Makefile	/^csrc = $(wildcard *.cpp) \\ $(wildcard baremetal\/i2c\/*.cpp) $/;"	m
+cpp_obj	Makefile	/^cpp_obj = $(cpp_src:.cpp=.o)$/;"	m
+cpp_src	Makefile	/^cpp_src = $(wildcard *.cpp) \\ $(wildcard baremetal\/i2c\/*.cpp) $/;"	m
 csrc	cpp_training/Makefile	/^csrc = $(wildcard *.cpp)$/;"	m
 dirnkPotion	cpp_training/Personnage.cpp	/^void Personnage::dirnkPotion(int potionQte)$/;"	f	class:Personnage
-freeChannel	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::freeChannel()$/;"	f	class:bm_i2c
-getAddress	baremetal/i2c/bm_i2c.cpp	/^uint8_t bm_i2c::getAddress() const$/;"	f	class:bm_i2c
-getAddressMode	baremetal/i2c/bm_i2c.cpp	/^uint8_t bm_i2c::getAddressMode() const$/;"	f	class:bm_i2c
 getDamage	cpp_training/Weapon.cpp	/^int Weapon::getDamage() const $/;"	f	class:Weapon
-getError	baremetal/i2c/bm_i2c.cpp	/^uint8_t bm_i2c::getError() const$/;"	f	class:bm_i2c
-getIcIdentification	baremetal/i2c/bm_i2c.cpp	/^uint8_t bm_i2c::getIcIdentification() const$/;"	f	class:bm_i2c
-getIcManufacturer	baremetal/i2c/bm_i2c.cpp	/^uint16_t bm_i2c::getIcManufacturer() const$/;"	f	class:bm_i2c
-getIcRevision	baremetal/i2c/bm_i2c.cpp	/^uint8_t bm_i2c::getIcRevision()	const$/;"	f	class:bm_i2c
-getInterrupt	baremetal/i2c/bm_i2c.cpp	/^uint8_t bm_i2c::getInterrupt() const$/;"	f	class:bm_i2c
-getTimeout	baremetal/i2c/bm_i2c.cpp	/^uint32_t bm_i2c::getTimeout() const$/;"	f	class:bm_i2c
-initChannelAsMaster	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::initChannelAsMaster()$/;"	f	class:bm_i2c
-initChannelAsSlave	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::initChannelAsSlave()$/;"	f	class:bm_i2c
+i2cAdressmode	driver/pf8574/pf8574lcd.c	/^bm_i2c::bm_i2c_address_t i2cAdressmode = bm_i2c::I2C_ADDRESS_7B; $/;"	v
+i2cAdressmode	main.cpp	/^bm_i2c::bm_i2c_address_t i2cAdressmode = bm_i2c::I2C_ADDRESS_7B; $/;"	v
+i2cMode	driver/pf8574/pf8574lcd.c	/^bm_i2c::bm_i2c_mode_t i2cMode = bm_i2c::I2C_MODE_MASTER; $/;"	v
+i2cMode	main.cpp	/^bm_i2c::bm_i2c_mode_t i2cMode = bm_i2c::I2C_MODE_MASTER; $/;"	v
+i2cSpeed	driver/pf8574/pf8574lcd.c	/^bm_i2c::bm_i2c_speed_t i2cSpeed = bm_i2c::I2C_SPEED_STANDART; $/;"	v
+i2cSpeed	main.cpp	/^bm_i2c::bm_i2c_speed_t i2cSpeed = bm_i2c::I2C_SPEED_STANDART; $/;"	v
+i2cStatus	driver/pf8574/pf8574lcd.c	/^bm_i2c::bm_i2c_state_t i2cStatus = bm_i2c::I2C_STATE_READY; $/;"	v
+i2cStatus	main.cpp	/^bm_i2c::bm_i2c_state_t i2cStatus = bm_i2c::I2C_STATE_READY; $/;"	v
+i2c_abortTransmit	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::i2c_abortTransmit(){}	 $/;"	f	class:bm_i2c
+i2c_arbitration	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::i2c_arbitration(){}		 $/;"	f	class:bm_i2c
+i2c_busClear	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::i2c_busClear(){}$/;"	f	class:bm_i2c
+i2c_clockStretch	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::i2c_clockStretch(){}	$/;"	f	class:bm_i2c
+i2c_clockSynchronise	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::i2c_clockSynchronise(){}$/;"	f	class:bm_i2c
+i2c_freeChannel	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::i2c_freeChannel()$/;"	f	class:bm_i2c
+i2c_getAddress	baremetal/i2c/bm_i2c.cpp	/^uint8_t bm_i2c::i2c_getAddress() const$/;"	f	class:bm_i2c
+i2c_getAddressMode	baremetal/i2c/bm_i2c.cpp	/^uint8_t bm_i2c::i2c_getAddressMode() const$/;"	f	class:bm_i2c
+i2c_getError	baremetal/i2c/bm_i2c.cpp	/^uint8_t bm_i2c::i2c_getError() const$/;"	f	class:bm_i2c
+i2c_getIcIdentification	baremetal/i2c/bm_i2c.cpp	/^uint8_t bm_i2c::i2c_getIcIdentification() const$/;"	f	class:bm_i2c
+i2c_getIcManufacturer	baremetal/i2c/bm_i2c.cpp	/^uint16_t bm_i2c::i2c_getIcManufacturer() const$/;"	f	class:bm_i2c
+i2c_getIcRevision	baremetal/i2c/bm_i2c.cpp	/^uint8_t bm_i2c::i2c_getIcRevision()	const$/;"	f	class:bm_i2c
+i2c_getInterrupt	baremetal/i2c/bm_i2c.cpp	/^uint8_t bm_i2c::i2c_getInterrupt() const$/;"	f	class:bm_i2c
+i2c_getTimeout	baremetal/i2c/bm_i2c.cpp	/^uint32_t bm_i2c::i2c_getTimeout() const$/;"	f	class:bm_i2c
+i2c_initChannelAsMaster	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::i2c_initChannelAsMaster()$/;"	f	class:bm_i2c
+i2c_initChannelAsSlave	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::i2c_initChannelAsSlave()$/;"	f	class:bm_i2c
+i2c_lcd_init	driver/pf8574/pf8574lcd.c	/^int i2c_lcd_init(int addrs)$/;"	f
+i2c_pointReg	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::i2c_pointReg(uint8_t * reg)$/;"	f	class:bm_i2c
+i2c_readDeviceInfo	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::i2c_readDeviceInfo(){}	 $/;"	f	class:bm_i2c
+i2c_receive	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::i2c_receive(uint8_t *buffer, uint8_t *reg, uint8_t *bufferLenght, uint8_t *regLenght)$/;"	f	class:bm_i2c
+i2c_send	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::i2c_send(uint8_t *data, uint8_t *reg, uint8_t *dataLenght, uint8_t *regLenght)$/;"	f	class:bm_i2c
+i2c_setAddress	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::i2c_setAddress(uint16_t address)$/;"	f	class:bm_i2c
+i2c_setAddressMode	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::i2c_setAddressMode(){}$/;"	f	class:bm_i2c
+i2c_setDma	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::i2c_setDma(){}$/;"	f	class:bm_i2c
+i2c_setInterrupt	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::i2c_setInterrupt(){}$/;"	f	class:bm_i2c
+i2c_setSpeed	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::i2c_setSpeed(bm_i2c_speed_t speed){}$/;"	f	class:bm_i2c
+i2c_setTimeout	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::i2c_setTimeout(uint8_t m_timeout){}$/;"	f	class:bm_i2c
+i2c_softReset	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::i2c_softReset(){}		$/;"	f	class:bm_i2c
+i2c_testDeviceSpeed	baremetal/i2c/bm_i2c.cpp	/^uint8_t bm_i2c::i2c_testDeviceSpeed()$/;"	f	class:bm_i2c
+i2c_throwError	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::i2c_throwError(int16_t error)$/;"	f	class:bm_i2c
 isAlive	cpp_training/Personnage.cpp	/^bool Personnage::isAlive() const $/;"	f	class:Personnage
-m_address	baremetal/i2c/bm_i2c.h	/^		uint8_t m_address;				\/\/ I2c Standrat : Address of the device to be communicated or our Slave address in Slave mode$/;"	m	class:bm_i2c
+lcd_display_string	driver/pf8574/pf8574lcd.c	/^void lcd_display_string(char line, char pos, char* charvalue)$/;"	f
+lcd_write	driver/pf8574/pf8574lcd.c	/^void lcd_write(char cmd, char mode)$/;"	f
+lcd_write_4bits	driver/pf8574/pf8574lcd.c	/^void lcd_write_4bits(char data)$/;"	f
+ldc_pulse_En	driver/pf8574/pf8574lcd.c	/^void ldc_pulse_En(char data)$/;"	f
+m_address	baremetal/i2c/bm_i2c.h	/^		uint16_t m_address;				\/\/ I2c Standrat : Address of the device to be communicated or our Slave address in Slave mode$/;"	m	class:bm_i2c
 m_addressMode	baremetal/i2c/bm_i2c.h	/^		bm_i2c_address_t m_addressMode;	\/\/ I2C Standart : Address type of the device to be communicated$/;"	m	class:bm_i2c
 m_bufferPointer	baremetal/i2c/bm_i2c.h	/^		uint8_t *m_bufferPointer;		\/\/ Buffer pointer for data to be sent & received$/;"	m	class:bm_i2c
 m_channel	baremetal/i2c/bm_i2c.h	/^		uint8_t m_channel;				\/\/ Hardware Specific : Selection of I2C Channel$/;"	m	class:bm_i2c
 m_damage	cpp_training/Weapon.h	/^	int m_damage;$/;"	m	class:Weapon
-m_error	baremetal/i2c/bm_i2c.h	/^		uint32_t m_error;				\/\/ The error code corresponding to that error$/;"	m	class:bm_i2c
+m_error	baremetal/i2c/bm_i2c.h	/^		int16_t m_error;				\/\/ The error code corresponding to that error$/;"	m	class:bm_i2c
 m_fileDescriptor	baremetal/i2c/bm_i2c.h	/^		uint16_t m_fileDescriptor;		\/\/ Linux : i2c file description$/;"	m	class:bm_i2c
 m_fileName	baremetal/i2c/bm_i2c.h	/^		char m_fileName[20];			\/\/ Linux : i2c file name$/;"	m	class:bm_i2c
 m_hp	cpp_training/Personnage.h	/^    int m_hp;$/;"	m	class:Personnage
 m_icIdentification	baremetal/i2c/bm_i2c.h	/^		uint8_t m_icIdentification;		\/\/ I2C Standart : Device information from manufacturer$/;"	m	class:bm_i2c
 m_icManufacturer	baremetal/i2c/bm_i2c.h	/^		uint16_t m_icManufacturer;		\/\/ I2C Standart : Device information from manufacturer $/;"	m	class:bm_i2c
 m_icRevision	baremetal/i2c/bm_i2c.h	/^		uint8_t m_icRevision;			\/\/ I2C Standart : Device information from manufacturer$/;"	m	class:bm_i2c
+m_internalBuffer	baremetal/i2c/bm_i2c.h	/^		uint8_t m_internalBuffer[4];	\/\/ data frame to get the right order of data$/;"	m	class:bm_i2c
 m_interruptSource	baremetal/i2c/bm_i2c.h	/^		uint32_t m_interruptSource;		\/\/ Hardware Specific : Interrupt cause$/;"	m	class:bm_i2c
 m_interrupttFlags	baremetal/i2c/bm_i2c.h	/^		uint32_t m_interrupttFlags; 	\/\/ Hardware Specific : Interrupt flag$/;"	m	class:bm_i2c
 m_mana	cpp_training/Personnage.h	/^    int m_mana;$/;"	m	class:Personnage
 m_mode	baremetal/i2c/bm_i2c.h	/^		bm_i2c_mode_t m_mode;			\/\/ I2C Standart : Mode of our device$/;"	m	class:bm_i2c
 m_name	cpp_training/Personnage.h	/^    std::string m_name;$/;"	m	class:Personnage
 m_name	cpp_training/Weapon.h	/^	std::string m_name; $/;"	m	class:Weapon
-m_regPointer	baremetal/i2c/bm_i2c.h	/^		uint8_t *m_regPointer;			\/\/ Register pointer for data to be sent & received$/;"	m	class:bm_i2c
+m_regPointer	baremetal/i2c/bm_i2c.h	/^		uint8_t *m_regPointer;			\/\/ reg pointer for data to be sent & received$/;"	m	class:bm_i2c
 m_speed	baremetal/i2c/bm_i2c.h	/^		bm_i2c_speed_t m_speed;			\/\/ I2C Standart : Trasmission speed$/;"	m	class:bm_i2c
 m_state	baremetal/i2c/bm_i2c.h	/^		bm_i2c_state_t m_state;			\/\/ Defined by me : Current state of this i2c Object$/;"	m	class:bm_i2c
 m_timeout	baremetal/i2c/bm_i2c.h	/^		uint32_t m_timeout;				\/\/ Timeout for managing communication breaks$/;"	m	class:bm_i2c
@@ -93,26 +160,16 @@ m_transferSize	baremetal/i2c/bm_i2c.h	/^		volatile uint8_t m_transferSize;\/\/ S
 m_weapon	cpp_training/Personnage.h	/^    Weapon m_weapon;$/;"	m	class:Personnage
 main	cpp_training/main.cpp	/^int main()$/;"	f
 main	main.cpp	/^int main()$/;"	f
-obj	Makefile	/^obj = $(csrc:.cpp=.o)$/;"	m
 obj	cpp_training/Makefile	/^obj = $(csrc:.cpp=.o)$/;"	m
-readDeviceInfo	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::readDeviceInfo()$/;"	f	class:bm_i2c
-receive	baremetal/i2c/bm_i2c.cpp	/^void§h bm_i2c::receive(uint8_t *Buffer, uint8_t *Reg, uint8_t *Lenght)$/;"	f	class:bm_i2c
 recieveDmg	cpp_training/Personnage.cpp	/^void Personnage::recieveDmg(int dmg) $/;"	f	class:Personnage
-send	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::send(uint8_t *Data, uint8_t *Reg, uint8_t *Lenght)$/;"	f	class:bm_i2c
-setAddress	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::setAddress(uint8_t address)$/;"	f	class:bm_i2c
-setAddressMode	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::setAddressMode()$/;"	f	class:bm_i2c
-setDma	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::setDma()$/;"	f	class:bm_i2c
-setInterrupt	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::setInterrupt()$/;"	f	class:bm_i2c
+reg	main.cpp	/^uint8_t reg[10];$/;"	v
 setName	cpp_training/Personnage.cpp	/^void Personnage::setName(std::string name)$/;"	f	class:Personnage
-setSpeed	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::setSpeed(bm_i2c_speed_t speed)$/;"	f	class:bm_i2c
-setTimeout	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::setTimeout(uint8_t m_timeout)$/;"	f	class:bm_i2c
 show	cpp_training/Weapon.cpp	/^void Weapon::show() const $/;"	f	class:Weapon
 showStatus	cpp_training/Personnage.cpp	/^void Personnage::showStatus() const$/;"	f	class:Personnage
-softReset	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::softReset()$/;"	f	class:bm_i2c
-testDeviceSpeed	baremetal/i2c/bm_i2c.cpp	/^uint8_t bm_i2c::testDeviceSpeed()$/;"	f	class:bm_i2c
+testPointer	cpp_training/main.cpp	/^void testPointer(int *firstPointer)$/;"	f
+testPointer2	cpp_training/main.cpp	/^void testPointer2(int *secondPointer)$/;"	f
 testingValRefPtr	cpp_training/main.cpp	/^void testingValRefPtr()$/;"	f
-testingValRefPtr	main.cpp	/^void testingValRefPtr()$/;"	f
-throwI2cError	baremetal/i2c/bm_i2c.cpp	/^void bm_i2c::throwI2cError(uint16_t error)$/;"	f	class:bm_i2c
+writeTest	cpp_training/main.cpp	/^void writeTest(int fd, int *buf)$/;"	f
 ~Personnage	cpp_training/Personnage.cpp	/^Personnage::~Personnage()$/;"	f	class:Personnage
 ~Weapon	cpp_training/Weapon.cpp	/^Weapon::~Weapon()$/;"	f	class:Weapon
 ~bm_i2c	baremetal/i2c/bm_i2c.cpp	/^bm_i2c::~bm_i2c()$/;"	f	class:bm_i2c

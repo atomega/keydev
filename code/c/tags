@@ -1,0 +1,522 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ABS_POS	driver/powerstep01/powerstep01.h	15;"	d
+ACC	driver/powerstep01/powerstep01.h	19;"	d
+ADC_OUT	driver/powerstep01/powerstep01.h	23;"	d
+ALARM_EN	driver/powerstep01/powerstep01.h	27;"	d
+BACKWARD	driver/powerstep01/powerstep01.h	88;"	d
+BH1750_ADDR	driver/bh1750/bh1750.h	21;"	d
+BH1750_CONTINUOUS_HIGH_RES_MODE_1	driver/bh1750/bh1750.h	4;"	d
+BH1750_CONTINUOUS_HIGH_RES_MODE_2	driver/bh1750/bh1750.h	6;"	d
+BH1750_CONTINUOUS_LOW_RES_MODE	driver/bh1750/bh1750.h	2;"	d
+BH1750_ONE_TIME_HIGH_RES_MODE_1	driver/bh1750/bh1750.h	9;"	d
+BH1750_ONE_TIME_HIGH_RES_MODE_2	driver/bh1750/bh1750.h	12;"	d
+BH1750_ONE_TIME_LOW_RES_MODE	driver/bh1750/bh1750.h	15;"	d
+BH1750_POWER_DOWN	driver/bh1750/bh1750.h	17;"	d
+BH1750_POWER_ON	driver/bh1750/bh1750.h	18;"	d
+BH1750_RESET	driver/bh1750/bh1750.h	19;"	d
+BLACK	driver/ssd1306/ssd1306_i2c.h	24;"	d
+BUFFER_MAX	baremetal/gpio/gpio.c	27;"	d	file:
+Buffer	driver/ma12070/ma12070.c	/^uint8_t Buffer = 0; $/;"	v
+CC	Makefile	/^CC = gcc $/;"	m
+CFLAGS	Makefile	/^CFLAGS = -Wall -pedantic  $/;"	m
+CHAR_MODE	driver/pf8574/pf8574lcd.h	51;"	d
+CMD_MODE	driver/pf8574/pf8574lcd.h	50;"	d
+CONFIG	driver/powerstep01/powerstep01.h	31;"	d
+CURRENT_HYST	driver/esp_TB/esp8266.h	16;"	d
+CURRENT_LSB	driver/esp_TB/esp8266.h	20;"	d
+CURRENT_MSB	driver/esp_TB/esp8266.h	19;"	d
+DB	driver/postgres/dbcomm.h	4;"	d
+DEC	driver/powerstep01/powerstep01.h	20;"	d
+DEVICE_STATE	driver/esp_TB/esp8266.h	11;"	d
+DIRECTION_MAX	baremetal/gpio/gpio.c	66;"	d	file:
+EL_POS	driver/powerstep01/powerstep01.h	16;"	d
+EN	driver/pf8574/pf8574lcd.h	44;"	d
+ETH_INTERFACE	driver/systeminfo/getip.h	11;"	d
+EXEC	Makefile	/^EXEC = runtest$/;"	m
+FN_SLP_ACC	driver/powerstep01/powerstep01.h	39;"	d
+FN_SLP_DEC	driver/powerstep01/powerstep01.h	40;"	d
+FORWARD	driver/powerstep01/powerstep01.h	87;"	d
+FS_SPD	driver/powerstep01/powerstep01.h	25;"	d
+GATECFG1	driver/powerstep01/powerstep01.h	28;"	d
+GATECFG2	driver/powerstep01/powerstep01.h	29;"	d
+GETPARAM	driver/powerstep01/powerstep01.h	74;"	d
+GETSTATUS	driver/powerstep01/powerstep01.h	68;"	d
+GOHOME	driver/powerstep01/powerstep01.h	60;"	d
+GOMARK	driver/powerstep01/powerstep01.h	61;"	d
+GOTO	driver/powerstep01/powerstep01.h	78;"	d
+GOTODIR	driver/powerstep01/powerstep01.h	79;"	d
+GOUNTIL	driver/powerstep01/powerstep01.h	80;"	d
+GOUNTIL_AKT	driver/powerstep01/powerstep01.h	82;"	d
+GOUNTIL_NAKT	driver/powerstep01/powerstep01.h	83;"	d
+GPIODirection	baremetal/gpio/gpio.c	/^static int GPIODirection(int pin, int dir)$/;"	f	file:
+GPIOExport	baremetal/gpio/gpio.c	/^static int GPIOExport(int pin)$/;"	f	file:
+GPIORead	baremetal/gpio/gpio.c	/^static int GPIORead(int pin)$/;"	f	file:
+GPIOUnexport	baremetal/gpio/gpio.c	/^static int GPIOUnexport(int pin)$/;"	f	file:
+GPIOWrite	baremetal/gpio/gpio.c	/^static int GPIOWrite(int pin, int value)$/;"	f	file:
+HARDHIZ	driver/powerstep01/powerstep01.h	67;"	d
+HARDSTOP	driver/powerstep01/powerstep01.h	65;"	d
+HEIGHT	driver/ssd1306/ssd1306_i2c.h	49;"	d
+HEIGHT	driver/ssd1306/ssd1306_i2c.h	54;"	d
+HEIGHT	driver/ssd1306/ssd1306_i2c.h	59;"	d
+HIGH	baremetal/gpio/gpio.c	20;"	d	file:
+IN	baremetal/gpio/gpio.c	16;"	d	file:
+INT_SPEED	driver/powerstep01/powerstep01.h	37;"	d
+INVERSE	driver/ssd1306/ssd1306_i2c.h	26;"	d
+KVAL_ACC	driver/powerstep01/powerstep01.h	35;"	d
+KVAL_DEC	driver/powerstep01/powerstep01.h	36;"	d
+KVAL_HOLD	driver/powerstep01/powerstep01.h	33;"	d
+KVAL_RUN	driver/powerstep01/powerstep01.h	34;"	d
+K_THERM	driver/powerstep01/powerstep01.h	41;"	d
+LCD_1LINE	driver/pf8574/pf8574lcd.h	35;"	d
+LCD_2LINE	driver/pf8574/pf8574lcd.h	34;"	d
+LCD_4BITMODE	driver/pf8574/pf8574lcd.h	33;"	d
+LCD_5x1DOTS	driver/pf8574/pf8574lcd.h	36;"	d
+LCD_5x8DOTS	driver/pf8574/pf8574lcd.h	37;"	d
+LCD_8BITMODE	driver/pf8574/pf8574lcd.h	32;"	d
+LCD_ADDRS	driver/pf8574/pf8574lcd.h	54;"	d
+LCD_BACKLIGHT	driver/pf8574/pf8574lcd.h	40;"	d
+LCD_BLINKOFF	driver/pf8574/pf8574lcd.h	23;"	d
+LCD_BLINKON	driver/pf8574/pf8574lcd.h	22;"	d
+LCD_CLEARDISPLAY	driver/pf8574/pf8574lcd.h	2;"	d
+LCD_CURSORMOVE	driver/pf8574/pf8574lcd.h	27;"	d
+LCD_CURSOROFF	driver/pf8574/pf8574lcd.h	21;"	d
+LCD_CURSORON	driver/pf8574/pf8574lcd.h	20;"	d
+LCD_CURSORSHIFT	driver/pf8574/pf8574lcd.h	6;"	d
+LCD_DISPLAYCONTROL	driver/pf8574/pf8574lcd.h	5;"	d
+LCD_DISPLAYMOVE	driver/pf8574/pf8574lcd.h	26;"	d
+LCD_DISPLAYOFF	driver/pf8574/pf8574lcd.h	19;"	d
+LCD_DISPLAYON	driver/pf8574/pf8574lcd.h	18;"	d
+LCD_ENTRYLEFT	driver/pf8574/pf8574lcd.h	13;"	d
+LCD_ENTRYMODESET	driver/pf8574/pf8574lcd.h	4;"	d
+LCD_ENTRYRIGHT	driver/pf8574/pf8574lcd.h	12;"	d
+LCD_ENTRYSHIFTDECREMENT	driver/pf8574/pf8574lcd.h	15;"	d
+LCD_ENTRYSHIFTINCREMENT	driver/pf8574/pf8574lcd.h	14;"	d
+LCD_FUNCTIONSET	driver/pf8574/pf8574lcd.h	7;"	d
+LCD_MOVELEFT	driver/pf8574/pf8574lcd.h	29;"	d
+LCD_MOVERIGHT	driver/pf8574/pf8574lcd.h	28;"	d
+LCD_NOBACKLIGHT	driver/pf8574/pf8574lcd.h	41;"	d
+LCD_RETURNHOME	driver/pf8574/pf8574lcd.h	3;"	d
+LCD_SETCGRAMADDR	driver/pf8574/pf8574lcd.h	8;"	d
+LCD_SETDDRAMADDR	driver/pf8574/pf8574lcd.h	9;"	d
+LDFLAGS	Makefile	/^LDFLAGS = $/;"	m
+LOW	baremetal/gpio/gpio.c	19;"	d	file:
+MA12070	driver/ma12070/ma12070.h	/^typedef struct MA12070 $/;"	s
+MA12070_ADDR	driver/ma12070/ma12070.h	1;"	d
+MA12070_AUDIO_IN_MODE_0	driver/ma12070/ma12070.h	55;"	d
+MA12070_AUDIO_IN_MODE_1	driver/ma12070/ma12070.h	56;"	d
+MA12070_CLIPPING_EN	driver/ma12070/ma12070.h	30;"	d
+MA12070_CLIPPING_LATCH	driver/ma12070/ma12070.h	31;"	d
+MA12070_DEF_AUDIO_IN_MODE	driver/ma12070/ma12070.h	57;"	d
+MA12070_DEF_AUDI_IN_OVERWRITE	driver/ma12070/ma12070.h	63;"	d
+MA12070_DEF_CLIP_STAUTS	driver/ma12070/ma12070.h	127;"	d
+MA12070_DEF_DC_PROTECTION	driver/ma12070/ma12070.h	60;"	d
+MA12070_DEF_ERROR	driver/ma12070/ma12070.h	154;"	d
+MA12070_DEF_ERROR_HANDLER	driver/ma12070/ma12070.h	66;"	d
+MA12070_DEF_ERRO_ACC	driver/ma12070/ma12070.h	148;"	d
+MA12070_DEF_I2S_CONFIG	driver/ma12070/ma12070.h	79;"	d
+MA12070_DEF_LIMITER_SET	driver/ma12070/ma12070.h	85;"	d
+MA12070_DEF_LIMITER_STATUS	driver/ma12070/ma12070.h	124;"	d
+MA12070_DEF_MON_CH0	driver/ma12070/ma12070.h	133;"	d
+MA12070_DEF_MON_CH0_FREQ_POW	driver/ma12070/ma12070.h	130;"	d
+MA12070_DEF_MON_CH0_MODUL	driver/ma12070/ma12070.h	136;"	d
+MA12070_DEF_MON_CH1	driver/ma12070/ma12070.h	142;"	d
+MA12070_DEF_MON_CH1_FREQ_POW	driver/ma12070/ma12070.h	139;"	d
+MA12070_DEF_MON_CH1_MODUL	driver/ma12070/ma12070.h	145;"	d
+MA12070_DEF_MON_MSEL	driver/ma12070/ma12070.h	151;"	d
+MA12070_DEF_MTHR_1TO2	driver/ma12070/ma12070.h	18;"	d
+MA12070_DEF_MTHR_2TO1	driver/ma12070/ma12070.h	21;"	d
+MA12070_DEF_MTHR_2TO3	driver/ma12070/ma12070.h	24;"	d
+MA12070_DEF_MTHR_3TO2	driver/ma12070/ma12070.h	27;"	d
+MA12070_DEF_OVER_CURR_PROT	driver/ma12070/ma12070.h	52;"	d
+MA12070_DEF_PCM_WORD_FORMAT	driver/ma12070/ma12070.h	76;"	d
+MA12070_DEF_PM_PROFILE_CONF	driver/ma12070/ma12070.h	49;"	d
+MA12070_DEF_PM_PROFILE_MODE	driver/ma12070/ma12070.h	40;"	d
+MA12070_DEF_POWER_MODE_CONTROL	driver/ma12070/ma12070.h	10;"	d
+MA12070_DEF_PROCESSOR_SET	driver/ma12070/ma12070.h	82;"	d
+MA12070_DEF_SOFT_CILLIPNG	driver/ma12070/ma12070.h	32;"	d
+MA12070_DEF_THR_DB_CH0	driver/ma12070/ma12070.h	109;"	d
+MA12070_DEF_THR_DB_CH1	driver/ma12070/ma12070.h	112;"	d
+MA12070_DEF_THR_DB_CH2	driver/ma12070/ma12070.h	115;"	d
+MA12070_DEF_THR_DB_CH3	driver/ma12070/ma12070.h	118;"	d
+MA12070_DEF_THR_LSB_CHX	driver/ma12070/ma12070.h	121;"	d
+MA12070_DEF_VOL_DB_CH0	driver/ma12070/ma12070.h	94;"	d
+MA12070_DEF_VOL_DB_CH1	driver/ma12070/ma12070.h	97;"	d
+MA12070_DEF_VOL_DB_CH2	driver/ma12070/ma12070.h	100;"	d
+MA12070_DEF_VOL_DB_CH3	driver/ma12070/ma12070.h	103;"	d
+MA12070_DEF_VOL_DB_MASTER	driver/ma12070/ma12070.h	88;"	d
+MA12070_DEF_VOL_LSB_CHX	driver/ma12070/ma12070.h	106;"	d
+MA12070_DEF_VOL_LSB_MASTER	driver/ma12070/ma12070.h	91;"	d
+MA12070_I2S_LEFT	driver/ma12070/ma12070.h	70;"	d
+MA12070_I2S_RIGHT_16b	driver/ma12070/ma12070.h	71;"	d
+MA12070_I2S_RIGHT_18b	driver/ma12070/ma12070.h	72;"	d
+MA12070_I2S_RIGHT_20b	driver/ma12070/ma12070.h	73;"	d
+MA12070_I2S_RIGHT_24b	driver/ma12070/ma12070.h	74;"	d
+MA12070_I2S_STANDART	driver/ma12070/ma12070.h	69;"	d
+MA12070_POWER_MODE_1	driver/ma12070/ma12070.h	11;"	d
+MA12070_POWER_MODE_2	driver/ma12070/ma12070.h	12;"	d
+MA12070_POWER_MODE_3	driver/ma12070/ma12070.h	13;"	d
+MA12070_POWER_MODE_DEFF	driver/ma12070/ma12070.h	15;"	d
+MA12070_POWER_MODE_MAN	driver/ma12070/ma12070.h	14;"	d
+MA12070_POWER_PROFILE_0	driver/ma12070/ma12070.h	35;"	d
+MA12070_POWER_PROFILE_1	driver/ma12070/ma12070.h	36;"	d
+MA12070_POWER_PROFILE_2	driver/ma12070/ma12070.h	37;"	d
+MA12070_POWER_PROFILE_3	driver/ma12070/ma12070.h	38;"	d
+MA12070_POWER_PROFILE_4	driver/ma12070/ma12070.h	39;"	d
+MA12070_POWER_SCHEME_A	driver/ma12070/ma12070.h	44;"	d
+MA12070_POWER_SCHEME_B	driver/ma12070/ma12070.h	45;"	d
+MA12070_POWER_SCHEME_C	driver/ma12070/ma12070.h	46;"	d
+MA12070_POWER_SCHEME_CUSTOM	driver/ma12070/ma12070.h	43;"	d
+MA12070_POWER_SCHEME_D	driver/ma12070/ma12070.h	47;"	d
+MA12070_REG_AUDIO_IN_MODE	driver/ma12070/ma12070.h	54;"	d
+MA12070_REG_AUDI_IN_OVERWRITE	driver/ma12070/ma12070.h	62;"	d
+MA12070_REG_CLIP_STAUTS	driver/ma12070/ma12070.h	126;"	d
+MA12070_REG_DC_PROTECTION	driver/ma12070/ma12070.h	59;"	d
+MA12070_REG_ERROR	driver/ma12070/ma12070.h	153;"	d
+MA12070_REG_ERROR_HANDLER	driver/ma12070/ma12070.h	65;"	d
+MA12070_REG_ERRO_ACC	driver/ma12070/ma12070.h	147;"	d
+MA12070_REG_I2S_CONFIG	driver/ma12070/ma12070.h	78;"	d
+MA12070_REG_LIMITER_SET	driver/ma12070/ma12070.h	84;"	d
+MA12070_REG_LIMITER_STATUS	driver/ma12070/ma12070.h	123;"	d
+MA12070_REG_MON_CH0	driver/ma12070/ma12070.h	132;"	d
+MA12070_REG_MON_CH0_FREQ_POW	driver/ma12070/ma12070.h	129;"	d
+MA12070_REG_MON_CH0_MODUL	driver/ma12070/ma12070.h	135;"	d
+MA12070_REG_MON_CH1	driver/ma12070/ma12070.h	141;"	d
+MA12070_REG_MON_CH1_FREQ_POW	driver/ma12070/ma12070.h	138;"	d
+MA12070_REG_MON_CH1_MODUL	driver/ma12070/ma12070.h	144;"	d
+MA12070_REG_MON_MSEL	driver/ma12070/ma12070.h	150;"	d
+MA12070_REG_MTHR_1TO2	driver/ma12070/ma12070.h	17;"	d
+MA12070_REG_MTHR_2TO1	driver/ma12070/ma12070.h	20;"	d
+MA12070_REG_MTHR_2TO3	driver/ma12070/ma12070.h	23;"	d
+MA12070_REG_MTHR_3TO2	driver/ma12070/ma12070.h	26;"	d
+MA12070_REG_OVER_CURR_PROT	driver/ma12070/ma12070.h	51;"	d
+MA12070_REG_PCM_WORD_FORMAT	driver/ma12070/ma12070.h	68;"	d
+MA12070_REG_PM_PROFILE_CONF	driver/ma12070/ma12070.h	42;"	d
+MA12070_REG_PM_PROFILE_MODE	driver/ma12070/ma12070.h	34;"	d
+MA12070_REG_POWER_MODE_CONTROL	driver/ma12070/ma12070.h	9;"	d
+MA12070_REG_PROCESSOR_SET	driver/ma12070/ma12070.h	81;"	d
+MA12070_REG_SOFT_CILLIPNG	driver/ma12070/ma12070.h	29;"	d
+MA12070_REG_THR_DB_CH0	driver/ma12070/ma12070.h	108;"	d
+MA12070_REG_THR_DB_CH1	driver/ma12070/ma12070.h	111;"	d
+MA12070_REG_THR_DB_CH2	driver/ma12070/ma12070.h	114;"	d
+MA12070_REG_THR_DB_CH3	driver/ma12070/ma12070.h	117;"	d
+MA12070_REG_THR_LSB_CHX	driver/ma12070/ma12070.h	120;"	d
+MA12070_REG_VOL_DB_CH0	driver/ma12070/ma12070.h	93;"	d
+MA12070_REG_VOL_DB_CH1	driver/ma12070/ma12070.h	96;"	d
+MA12070_REG_VOL_DB_CH2	driver/ma12070/ma12070.h	99;"	d
+MA12070_REG_VOL_DB_CH3	driver/ma12070/ma12070.h	102;"	d
+MA12070_REG_VOL_DB_MASTER	driver/ma12070/ma12070.h	87;"	d
+MA12070_REG_VOL_LSB_CHX	driver/ma12070/ma12070.h	105;"	d
+MA12070_REG_VOL_LSB_MASTER	driver/ma12070/ma12070.h	90;"	d
+MA12070_VOL_MAX	driver/ma12070/ma12070.h	3;"	d
+MA12070_VOL_MAX_DB	driver/ma12070/ma12070.h	5;"	d
+MA12070_VOL_MIN	driver/ma12070/ma12070.h	4;"	d
+MA12070_VOL_MIN_DB	driver/ma12070/ma12070.h	6;"	d
+MARK	driver/powerstep01/powerstep01.h	17;"	d
+MAX_SPEED	driver/powerstep01/powerstep01.h	21;"	d
+MIN_SPEED	driver/powerstep01/powerstep01.h	22;"	d
+MOVE	driver/powerstep01/powerstep01.h	77;"	d
+Motor	driver/powerstep01/powerstep01.h	/^}Motor;$/;"	v	typeref:struct:Motors
+Motors	driver/powerstep01/powerstep01.h	/^struct Motors$/;"	s
+NOP	driver/powerstep01/powerstep01.h	59;"	d
+OCD_TH	driver/powerstep01/powerstep01.h	24;"	d
+OUT	baremetal/gpio/gpio.c	17;"	d	file:
+OVERCURRENT_VAL	driver/esp_TB/esp8266.h	12;"	d
+OVERHEAT_VAL	driver/esp_TB/esp8266.h	13;"	d
+PIN	baremetal/gpio/gpio.c	22;"	d	file:
+PORT_I2C	baremetal/i2c_raspberry/i2c/i2c.h	18;"	d
+POUT	baremetal/gpio/gpio.c	23;"	d	file:
+RD	driver/esp_TB/esp8266.c	34;"	d	file:
+RELAY_STAUS	driver/esp_TB/esp8266.h	14;"	d
+RELEASESW	driver/powerstep01/powerstep01.h	81;"	d
+RELEASESW_AKT	driver/powerstep01/powerstep01.h	84;"	d
+RELEASESW_NAKT	driver/powerstep01/powerstep01.h	85;"	d
+RESERVED1	driver/powerstep01/powerstep01.h	69;"	d
+RESERVED2	driver/powerstep01/powerstep01.h	70;"	d
+RESETDEVICE	driver/powerstep01/powerstep01.h	63;"	d
+RESTEPOS	driver/powerstep01/powerstep01.h	62;"	d
+RS	driver/pf8574/pf8574lcd.h	46;"	d
+RUN	driver/powerstep01/powerstep01.h	75;"	d
+RW	driver/pf8574/pf8574lcd.h	45;"	d
+RX_BUFF_LENGHT	driver/uart/uart.c	40;"	d	file:
+SETPARAM	driver/powerstep01/powerstep01.h	73;"	d
+SOFTHIZ	driver/powerstep01/powerstep01.h	66;"	d
+SOFTSTOP	driver/powerstep01/powerstep01.h	64;"	d
+SPEED	driver/powerstep01/powerstep01.h	18;"	d
+SSD1306_128_64	driver/ssd1306/ssd1306_i2c.h	42;"	d
+SSD1306_ACTIVATE_SCROLL	driver/ssd1306/ssd1306_i2c.h	122;"	d
+SSD1306_CHARGEPUMP	driver/ssd1306/ssd1306_i2c.h	116;"	d
+SSD1306_COLUMNADDR	driver/ssd1306/ssd1306_i2c.h	108;"	d
+SSD1306_COMSCANDEC	driver/ssd1306/ssd1306_i2c.h	112;"	d
+SSD1306_COMSCANINC	driver/ssd1306/ssd1306_i2c.h	111;"	d
+SSD1306_DEACTIVATE_SCROLL	driver/ssd1306/ssd1306_i2c.h	123;"	d
+SSD1306_DISPLAYALLON	driver/ssd1306/ssd1306_i2c.h	86;"	d
+SSD1306_DISPLAYALLON_RESUME	driver/ssd1306/ssd1306_i2c.h	85;"	d
+SSD1306_DISPLAYOFF	driver/ssd1306/ssd1306_i2c.h	89;"	d
+SSD1306_DISPLAYON	driver/ssd1306/ssd1306_i2c.h	90;"	d
+SSD1306_EXTERNALVCC	driver/ssd1306/ssd1306_i2c.h	118;"	d
+SSD1306_I2C_ADDRESS	driver/ssd1306/ssd1306_i2c.h	28;"	d
+SSD1306_I2C_H_	driver/ssd1306/ssd1306_i2c.h	22;"	d
+SSD1306_INVERTDISPLAY	driver/ssd1306/ssd1306_i2c.h	88;"	d
+SSD1306_LCDHEIGHT	driver/ssd1306/ssd1306_i2c.h	71;"	d
+SSD1306_LCDHEIGHT	driver/ssd1306/ssd1306_i2c.h	75;"	d
+SSD1306_LCDHEIGHT	driver/ssd1306/ssd1306_i2c.h	79;"	d
+SSD1306_LCDWIDTH	driver/ssd1306/ssd1306_i2c.h	70;"	d
+SSD1306_LCDWIDTH	driver/ssd1306/ssd1306_i2c.h	74;"	d
+SSD1306_LCDWIDTH	driver/ssd1306/ssd1306_i2c.h	78;"	d
+SSD1306_LEFT_HORIZONTAL_SCROLL	driver/ssd1306/ssd1306_i2c.h	126;"	d
+SSD1306_MEMORYMODE	driver/ssd1306/ssd1306_i2c.h	107;"	d
+SSD1306_NORMALDISPLAY	driver/ssd1306/ssd1306_i2c.h	87;"	d
+SSD1306_PAGEADDR	driver/ssd1306/ssd1306_i2c.h	109;"	d
+SSD1306_RIGHT_HORIZONTAL_SCROLL	driver/ssd1306/ssd1306_i2c.h	125;"	d
+SSD1306_SEGREMAP	driver/ssd1306/ssd1306_i2c.h	114;"	d
+SSD1306_SETCOMPINS	driver/ssd1306/ssd1306_i2c.h	93;"	d
+SSD1306_SETCONTRAST	driver/ssd1306/ssd1306_i2c.h	84;"	d
+SSD1306_SETDISPLAYCLOCKDIV	driver/ssd1306/ssd1306_i2c.h	97;"	d
+SSD1306_SETDISPLAYOFFSET	driver/ssd1306/ssd1306_i2c.h	92;"	d
+SSD1306_SETHIGHCOLUMN	driver/ssd1306/ssd1306_i2c.h	103;"	d
+SSD1306_SETLOWCOLUMN	driver/ssd1306/ssd1306_i2c.h	102;"	d
+SSD1306_SETMULTIPLEX	driver/ssd1306/ssd1306_i2c.h	100;"	d
+SSD1306_SETPRECHARGE	driver/ssd1306/ssd1306_i2c.h	98;"	d
+SSD1306_SETSTARTLINE	driver/ssd1306/ssd1306_i2c.h	105;"	d
+SSD1306_SETVCOMDETECT	driver/ssd1306/ssd1306_i2c.h	95;"	d
+SSD1306_SET_VERTICAL_SCROLL_AREA	driver/ssd1306/ssd1306_i2c.h	124;"	d
+SSD1306_SWITCHCAPVCC	driver/ssd1306/ssd1306_i2c.h	119;"	d
+SSD1306_VERTICAL_AND_LEFT_HORIZONTAL_SCROLL	driver/ssd1306/ssd1306_i2c.h	128;"	d
+SSD1306_VERTICAL_AND_RIGHT_HORIZONTAL_SCROLL	driver/ssd1306/ssd1306_i2c.h	127;"	d
+STALL_TH	driver/powerstep01/powerstep01.h	42;"	d
+STATUS	driver/powerstep01/powerstep01.h	30;"	d
+STEPCLOCK	driver/powerstep01/powerstep01.h	76;"	d
+STEP_MODE	driver/powerstep01/powerstep01.h	26;"	d
+ST_SLP	driver/powerstep01/powerstep01.h	38;"	d
+S_MA12070	driver/ma12070/ma12070.h	/^} S_MA12070;$/;"	t	typeref:struct:MA12070
+TEMP_HYST	driver/esp_TB/esp8266.h	15;"	d
+TEMP_LSB	driver/esp_TB/esp8266.h	18;"	d
+TEMP_MSB	driver/esp_TB/esp8266.h	17;"	d
+TENSION_LSB	driver/esp_TB/esp8266.h	22;"	d
+TENSION_MSB	driver/esp_TB/esp8266.h	21;"	d
+TOFF_MIN	driver/powerstep01/powerstep01.h	50;"	d
+TON_MIN	driver/powerstep01/powerstep01.h	49;"	d
+TOTAL_CHAR_CAP	driver/pf8574/pf8574lcd.h	57;"	d
+TVAL_ACC	driver/powerstep01/powerstep01.h	46;"	d
+TVAL_DEC	driver/powerstep01/powerstep01.h	47;"	d
+TVAL_HOLD	driver/powerstep01/powerstep01.h	44;"	d
+TVAL_RUN	driver/powerstep01/powerstep01.h	45;"	d
+TX_BUFF_LENGHT	driver/uart/uart.c	39;"	d	file:
+T_FAST	driver/powerstep01/powerstep01.h	48;"	d
+UART_INTEFACE	driver/uart/uart.c	41;"	d	file:
+VALUE_MAX	baremetal/gpio/gpio.c	88;"	d	file:
+WHITE	driver/ssd1306/ssd1306_i2c.h	25;"	d
+WIDTH	driver/ssd1306/ssd1306_i2c.h	48;"	d
+WIDTH	driver/ssd1306/ssd1306_i2c.h	53;"	d
+WIDTH	driver/ssd1306/ssd1306_i2c.h	58;"	d
+WLAN_INTERFACE	driver/systeminfo/getip.h	12;"	d
+_vccstate	driver/ssd1306/ssd1306_i2c.c	/^int _vccstate;$/;"	v
+absPos	driver/powerstep01/powerstep01.h	/^	uint32_t absPos;$/;"	m	struct:Motors
+acceleration	driver/powerstep01/powerstep01.h	/^	uint16_t acceleration; $/;"	m	struct:Motors
+amp	driver/ma12070/ma12070.c	/^S_MA12070 amp = {0}; $/;"	v
+audio_in_mode	driver/ma12070/ma12070.h	/^	uint8_t audio_in_mode;$/;"	m	struct:MA12070
+audio_in_mode_ext	driver/ma12070/ma12070.h	/^	uint8_t audio_in_mode_ext;$/;"	m	struct:MA12070
+audio_porc_limiter_mon	driver/ma12070/ma12070.h	/^	uint8_t audio_porc_limiter_mon;$/;"	m	struct:MA12070
+audio_proc_attack	driver/ma12070/ma12070.h	/^	uint8_t audio_proc_attack;$/;"	m	struct:MA12070
+audio_proc_clip_mon	driver/ma12070/ma12070.h	/^	uint8_t audio_proc_clip_mon;$/;"	m	struct:MA12070
+audio_proc_enable	driver/ma12070/ma12070.h	/^	uint8_t audio_proc_enable;$/;"	m	struct:MA12070
+audio_proc_limitter	driver/ma12070/ma12070.h	/^	uint8_t audio_proc_limitter;$/;"	m	struct:MA12070
+audio_proc_mute	driver/ma12070/ma12070.h	/^	uint8_t audio_proc_mute;$/;"	m	struct:MA12070
+audio_proc_release	driver/ma12070/ma12070.h	/^	uint8_t audio_proc_release;$/;"	m	struct:MA12070
+bh1750_calculateLumen	driver/bh1750/bh1750.c	/^int16_t bh1750_calculateLumen(int16_t measured)$/;"	f
+bh1750_oneShot	driver/bh1750/bh1750.c	/^uint16_t bh1750_oneShot(uint8_t mode)$/;"	f
+bh1750_open	driver/bh1750/bh1750.c	/^void bh1750_open(void)$/;"	f
+bh1750_reset	driver/bh1750/bh1750.c	/^uint8_t bh1750_reset(void)$/;"	f
+bh1750_set_mode	driver/bh1750/bh1750.c	/^uint8_t bh1750_set_mode(uint8_t mode)$/;"	f
+bh1750_sleep	driver/bh1750/bh1750.c	/^uint8_t bh1750_sleep(void)$/;"	f
+bh1750_wake	driver/bh1750/bh1750.c	/^uint8_t bh1750_wake(void)$/;"	f
+buf	baremetal/i2c_raspberry/i2c/i2c.c	/^int8_t buf[24]; 	$/;"	v
+buffer	driver/ssd1306/ssd1306_i2c.c	/^int buffer[SSD1306_LCDWIDTH * SSD1306_LCDHEIGHT \/ 4 ] = {$/;"	v
+change_nth_bit_to_x_int16	algorithms/bitgestion.c	/^int16_t change_nth_bit_to_x_int16( int16_t value, uint8_t n, uint8_t x)$/;"	f
+change_nth_bit_to_x_int8	algorithms/bitgestion.c	/^int8_t change_nth_bit_to_x_int8( int8_t value, uint8_t n, uint8_t x)$/;"	f
+change_nth_bit_to_x_uint16	algorithms/bitgestion.c	/^uint16_t change_nth_bit_to_x_uint16( uint16_t value, uint8_t n, uint8_t x)$/;"	f
+change_nth_bit_to_x_uint8	algorithms/bitgestion.c	/^uint8_t change_nth_bit_to_x_uint8( uint8_t value, uint8_t n, uint8_t x)$/;"	f
+configuration	driver/powerstep01/powerstep01.h	/^	uint16_t configuration;$/;"	m	struct:Motors
+csrc	Makefile	/^csrc = $(wildcard *.c) \\ $(wildcard baremetal\/i2c_raspberry\/i2c\/*.c) \\ $(wildcard driver\/bh1750\/*.c) \\ $(wildcard algorithms\/*.c) \\ $(wildcard driver\/ma12070\/*.c) \\$(wildcard driver\/pf8574\/*.c)$/;"	m
+currentSpeed	driver/powerstep01/powerstep01.h	/^	uint32_t currentSpeed; $/;"	m	struct:Motors
+current_dev_id	baremetal/i2c_raspberry/i2c/i2c.c	/^int8_t current_dev_id = 0;$/;"	v
+curretnVolume	driver/ma12070/ma12070.c	/^int curretnVolume = 0; $/;"	v
+cursor_x	driver/ssd1306/ssd1306_i2c.c	/^int cursor_x = 0;$/;"	v
+cursor_y	driver/ssd1306/ssd1306_i2c.c	/^int cursor_y = 0;$/;"	v
+dcu_frequency_mon	driver/ma12070/ma12070.h	/^	uint8_t dcu_frequency_mon[2];$/;"	m	struct:MA12070
+dcu_modulation_mon	driver/ma12070/ma12070.h	/^	uint8_t dcu_modulation_mon[2];$/;"	m	struct:MA12070
+dcu_mute_mon	driver/ma12070/ma12070.h	/^	uint8_t dcu_mute_mon[2];$/;"	m	struct:MA12070
+dcu_power_mode_mon	driver/ma12070/ma12070.h	/^	uint8_t dcu_power_mode_mon[2];$/;"	m	struct:MA12070
+dcu_pvdd_ok_mon	driver/ma12070/ma12070.h	/^	uint8_t dcu_pvdd_ok_mon[2];$/;"	m	struct:MA12070
+dcu_vcfly1_ok_mon	driver/ma12070/ma12070.h	/^	uint8_t dcu_vcfly1_ok_mon[2];$/;"	m	struct:MA12070
+dcu_vcfly2_ok_mon	driver/ma12070/ma12070.h	/^	uint8_t dcu_vcfly2_ok_mon[2];$/;"	m	struct:MA12070
+dcu_vdd_ok_mon	driver/ma12070/ma12070.h	/^	uint8_t dcu_vdd_ok_mon[2];$/;"	m	struct:MA12070
+deceleration	driver/powerstep01/powerstep01.h	/^	uint16_t deceleration; $/;"	m	struct:Motors
+do_exit	driver/postgres/dbcomm.c	/^void do_exit(PGconn *conn, PGresult *res) $/;"	f
+eh_clear	driver/ma12070/ma12070.h	/^	uint8_t eh_clear;$/;"	m	struct:MA12070
+eh_dc_shndn	driver/ma12070/ma12070.h	/^	uint8_t eh_dc_shndn;$/;"	m	struct:MA12070
+elecPos	driver/powerstep01/powerstep01.h	/^	uint16_t elecPos;$/;"	m	struct:Motors
+error	driver/ma12070/ma12070.h	/^	uint8_t error;$/;"	m	struct:MA12070
+error_acc	driver/ma12070/ma12070.h	/^	uint8_t error_acc;$/;"	m	struct:MA12070
+establishTCP	driver/esp_TB/esp8266.c	/^char establishTCP()$/;"	f
+executeSqlCmd	driver/postgres/dbcomm.c	/^void executeSqlCmd( PGconn *conn, char *CmdString)$/;"	f
+false	driver/ssd1306/ssd1306_i2c.c	28;"	d	file:
+fd	baremetal/i2c_raspberry/i2c/i2c.c	/^int16_t fd = 0; 																		\/\/ File description (pour suivre létat du port i2c) $/;"	v
+get_bits_range_int16	algorithms/bitgestion.c	/^int16_t get_bits_range_int16( int16_t value, uint8_t startBit, uint8_t stopBit)$/;"	f
+get_bits_range_int8	algorithms/bitgestion.c	/^int8_t get_bits_range_int8( int8_t value, uint8_t startBit, uint8_t stopBit)$/;"	f
+get_bits_range_uint16	algorithms/bitgestion.c	/^uint16_t get_bits_range_uint16( uint16_t value, uint8_t startBit, uint8_t stopBit)$/;"	f
+get_bits_range_uint8	algorithms/bitgestion.c	/^uint8_t get_bits_range_uint8( uint8_t value, uint8_t startBit, uint8_t stopBit)$/;"	f
+get_ip_eth	driver/systeminfo/getip.c	/^void get_ip_eth() $/;"	f
+get_ip_wlan	driver/systeminfo/getip.c	/^void get_ip_wlan() $/;"	f
+get_n_bits_lsb_int16	algorithms/bitgestion.c	/^int16_t get_n_bits_lsb_int16( int16_t value, uint8_t bits)$/;"	f
+get_n_bits_lsb_int8	algorithms/bitgestion.c	/^int8_t get_n_bits_lsb_int8(int8_t value, uint8_t bits)$/;"	f
+get_n_bits_lsb_uint16	algorithms/bitgestion.c	/^uint16_t get_n_bits_lsb_uint16( uint16_t value, uint8_t bits)$/;"	f
+get_n_bits_lsb_uint8	algorithms/bitgestion.c	/^uint8_t get_n_bits_lsb_uint8( uint8_t value, uint8_t bits)$/;"	f
+get_n_bits_msb_int16	algorithms/bitgestion.c	/^int16_t get_n_bits_msb_int16( int16_t value, uint8_t bits)$/;"	f
+get_n_bits_msb_int8	algorithms/bitgestion.c	/^int8_t get_n_bits_msb_int8(int8_t value, uint8_t bits)$/;"	f
+get_n_bits_msb_uint16	algorithms/bitgestion.c	/^uint16_t get_n_bits_msb_uint16( uint16_t value, uint8_t bits)$/;"	f
+get_n_bits_msb_uint8	algorithms/bitgestion.c	/^uint8_t get_n_bits_msb_uint8( uint8_t value, uint8_t bits)$/;"	f
+get_nth_bit_int16	algorithms/bitgestion.c	/^uint8_t get_nth_bit_int16( int16_t value, uint8_t n)$/;"	f
+get_nth_bit_int8	algorithms/bitgestion.c	/^uint8_t get_nth_bit_int8( int8_t value, uint8_t n)$/;"	f
+get_nth_bit_uint16	algorithms/bitgestion.c	/^uint8_t get_nth_bit_uint16( uint16_t value, uint8_t n)$/;"	f
+get_nth_bit_uint8	algorithms/bitgestion.c	/^uint8_t get_nth_bit_uint8( uint8_t value, uint8_t n)$/;"	f
+i2c_close_device	baremetal/i2c_raspberry/i2c/i2c.c	/^void i2c_close_device(uint16_t address)$/;"	f
+i2c_lcd_init	driver/pf8574/pf8574lcd.c	/^int i2c_lcd_init(int addrs)$/;"	f
+i2c_open_device	baremetal/i2c_raspberry/i2c/i2c.c	/^void i2c_open_device( int16_t address )$/;"	f
+i2c_read_16	baremetal/i2c_raspberry/i2c/i2c.c	/^uint16_t i2c_read_16(int8_t regToRead)$/;"	f
+i2c_read_8	baremetal/i2c_raspberry/i2c/i2c.c	/^uint8_t i2c_read_8(int8_t regToRead)$/;"	f
+i2c_write_16	baremetal/i2c_raspberry/i2c/i2c.c	/^int16_t i2c_write_16(int8_t reg, int8_t data)$/;"	f
+i2c_write_8	baremetal/i2c_raspberry/i2c/i2c.c	/^int16_t i2c_write_8(int8_t data)														$/;"	f
+i2s_format	driver/ma12070/ma12070.h	/^	uint8_t i2s_format;$/;"	m	struct:MA12070
+i2s_frame_size	driver/ma12070/ma12070.h	/^	uint8_t i2s_frame_size;$/;"	m	struct:MA12070
+i2s_order	driver/ma12070/ma12070.h	/^	uint8_t i2s_order;$/;"	m	struct:MA12070
+i2s_right_first	driver/ma12070/ma12070.h	/^	uint8_t i2s_right_first;$/;"	m	struct:MA12070
+i2s_sck_pol	driver/ma12070/ma12070.h	/^	uint8_t i2s_sck_pol;$/;"	m	struct:MA12070
+i2s_ws_pol	driver/ma12070/ma12070.h	/^	uint8_t i2s_ws_pol;$/;"	m	struct:MA12070
+ifClampEn	driver/ma12070/ma12070.h	/^	uint8_t ifClampEn; $/;"	m	struct:MA12070
+initUART	driver/esp_TB/esp8266.c	/^void initUART() $/;"	f
+initUART	driver/uart/uart.c	/^void initUART() $/;"	f
+isItDone	driver/esp_TB/esp8266.c	/^char isItDone(char* Data)$/;"	f
+lcd_display_string	driver/pf8574/pf8574lcd.c	/^void lcd_display_string(char line, char pos, char* charvalue)$/;"	f
+lcd_write	driver/pf8574/pf8574lcd.c	/^void lcd_write(char cmd, char mode)$/;"	f
+lcd_write_4bits	driver/pf8574/pf8574lcd.c	/^void lcd_write_4bits(char data)$/;"	f
+ldc_pulse_En	driver/pf8574/pf8574lcd.c	/^void ldc_pulse_En(char data)$/;"	f
+ma12060_setProcLimiterEn	driver/ma12070/ma12070.c	/^uint8_t ma12060_setProcLimiterEn(uint8_t enable)$/;"	f
+ma12070_clearErrHandler	driver/ma12070/ma12070.c	/^uint8_t ma12070_clearErrHandler()$/;"	f
+ma12070_clearOcpLatch	driver/ma12070/ma12070.c	/^uint8_t ma12070_clearOcpLatch()$/;"	f
+ma12070_configure	driver/ma12070/ma12070.c	/^uint8_t ma12070_configure(uint8_t Default)$/;"	f
+ma12070_getCurrentDevInfo	driver/ma12070/ma12070.c	/^void ma12070_getCurrentDevInfo(void)$/;"	f
+ma12070_getVolume	driver/ma12070/ma12070.c	/^int16_t ma12070_getVolume(void)$/;"	f
+ma12070_initI2c	driver/ma12070/ma12070.c	/^uint8_t ma12070_initI2c(void)$/;"	f
+ma12070_printCurrentCconf	driver/ma12070/ma12070.c	/^void ma12070_printCurrentCconf(void)$/;"	f
+ma12070_setAudioInMode	driver/ma12070/ma12070.c	/^uint8_t ma12070_setAudioInMode(uint8_t mode)$/;"	f
+ma12070_setAudioInOverwrite	driver/ma12070/ma12070.c	/^uint8_t ma12070_setAudioInOverwrite(uint8_t enable)$/;"	f
+ma12070_setClippingAndOcp	driver/ma12070/ma12070.c	/^uint8_t ma12070_setClippingAndOcp(uint8_t clipOrOcp, uint8_t enable)$/;"	f
+ma12070_setDcProtection	driver/ma12070/ma12070.c	/^uint8_t ma12070_setDcProtection(uint8_t enable)$/;"	f
+ma12070_setI2sBitOrder	driver/ma12070/ma12070.c	/^uint8_t ma12070_setI2sBitOrder(uint8_t mostOrLeast)$/;"	f
+ma12070_setI2sFormat	driver/ma12070/ma12070.c	/^uint8_t ma12070_setI2sFormat(uint8_t format)$/;"	f
+ma12070_setI2sNoOfFrameBits	driver/ma12070/ma12070.c	/^uint8_t ma12070_setI2sNoOfFrameBits(uint8_t bits)$/;"	f
+ma12070_setI2sRightFirst	driver/ma12070/ma12070.c	/^uint8_t ma12070_setI2sRightFirst(uint8_t leftOrRight)$/;"	f
+ma12070_setI2sSckPolarity	driver/ma12070/ma12070.c	/^uint8_t ma12070_setI2sSckPolarity(uint8_t risingOrFalling)$/;"	f
+ma12070_setI2sWsPolarity	driver/ma12070/ma12070.c	/^uint8_t ma12070_setI2sWsPolarity(uint8_t highOrLow)$/;"	f
+ma12070_setPowerMode	driver/ma12070/ma12070.c	/^uint8_t ma12070_setPowerMode(uint8_t mode)$/;"	f
+ma12070_setPowerModeProfileConfig	driver/ma12070/ma12070.c	/^uint8_t ma12070_setPowerModeProfileConfig(uint8_t scheme, uint8_t powerMode)$/;"	f
+ma12070_setPowerModeProfileSetings	driver/ma12070/ma12070.c	/^uint8_t ma12070_setPowerModeProfileSetings(uint8_t setings)$/;"	f
+ma12070_setProcAttackLvl	driver/ma12070/ma12070.c	/^uint8_t ma12070_setProcAttackLvl(uint8_t lvl)$/;"	f
+ma12070_setProcEn	driver/ma12070/ma12070.c	/^uint8_t ma12070_setProcEn(uint8_t enable)$/;"	f
+ma12070_setProcMute	driver/ma12070/ma12070.c	/^uint8_t ma12070_setProcMute(uint8_t mute)$/;"	f
+ma12070_setProcReleaseLvl	driver/ma12070/ma12070.c	/^uint8_t ma12070_setProcReleaseLvl(uint8_t lvl)$/;"	f
+ma12070_setTreshold	driver/ma12070/ma12070.c	/^uint8_t ma12070_setTreshold(uint8_t transition, uint8_t value)$/;"	f
+ma12070_setVolume	driver/ma12070/ma12070.c	/^uint8_t ma12070_setVolume(int16_t volume)$/;"	f
+ma12070_setVolumeCh0	driver/ma12070/ma12070.c	/^uint8_t ma12070_setVolumeCh0(uint8_t db, uint8_t lsb)$/;"	f
+ma12070_setVolumeCh1	driver/ma12070/ma12070.c	/^uint8_t ma12070_setVolumeCh1(uint8_t db, uint8_t lsb)$/;"	f
+ma12070_setVolumeCh2	driver/ma12070/ma12070.c	/^uint8_t ma12070_setVolumeCh2(uint8_t db, uint8_t lsb)$/;"	f
+ma12070_setVolumeCh3	driver/ma12070/ma12070.c	/^uint8_t ma12070_setVolumeCh3(uint8_t db, uint8_t lsb)$/;"	f
+ma12070_setVolumeMaster	driver/ma12070/ma12070.c	/^uint8_t ma12070_setVolumeMaster(uint8_t db, uint8_t lsb)$/;"	f
+main	baremetal/gpio/gpio.c	/^int main(int argc, char *argv[])$/;"	f
+main	driver/esp_TB/esp8266.c	/^int main(int argc, char *argv[])$/;"	f
+main	driver/uart/uart.c	/^int main()$/;"	f
+main	main.c	/^int main(int argc, char *argv[])$/;"	f
+markedPos	driver/powerstep01/powerstep01.h	/^	uint32_t markedPos;$/;"	m	struct:Motors
+maxSpeed	driver/powerstep01/powerstep01.h	/^	uint16_t maxSpeed; $/;"	m	struct:Motors
+minSpeed	driver/powerstep01/powerstep01.h	/^	uint16_t minSpeed; $/;"	m	struct:Motors
+msel_mon	driver/ma12070/ma12070.h	/^	uint8_t msel_mon;$/;"	m	struct:MA12070
+obj	Makefile	/^obj = $(csrc:.c=.o)$/;"	m
+ocpLatchEn	driver/ma12070/ma12070.h	/^	uint8_t ocpLatchEn; $/;"	m	struct:MA12070
+ocp_latch_clear	driver/ma12070/ma12070.h	/^	uint8_t ocp_latch_clear;$/;"	m	struct:MA12070
+ocp_mon	driver/ma12070/ma12070.h	/^	uint8_t ocp_mon[2];$/;"	m	struct:MA12070
+pgm_read_byte	driver/ssd1306/ssd1306_i2c.c	32;"	d	file:
+pm1_man	driver/ma12070/ma12070.h	/^	uint8_t pm1_man;$/;"	m	struct:MA12070
+pm2_man	driver/ma12070/ma12070.h	/^	uint8_t pm2_man; $/;"	m	struct:MA12070
+pm3_man	driver/ma12070/ma12070.h	/^	uint8_t pm3_man; $/;"	m	struct:MA12070
+pmProfile	driver/ma12070/ma12070.h	/^	uint8_t pmProfile; $/;"	m	struct:MA12070
+power_mode	driver/ma12070/ma12070.h	/^	uint8_t power_mode;$/;"	m	struct:MA12070
+power_mode_manual	driver/ma12070/ma12070.h	/^	uint8_t power_mode_manual;$/;"	m	struct:MA12070
+processing	driver/esp_TB/esp8266.c	/^int processing(int min, int max)$/;"	f
+read_buf	baremetal/i2c_raspberry/i2c/i2c.c	/^uint8_t read_buf[1]; $/;"	v
+retvalue	driver/esp_TB/esp8266.c	/^int retvalue(char* data, char ending)$/;"	f
+rone	driver/esp_TB/esp8266.c	/^static	int rone = 1;   $/;"	v	file:
+rotation	driver/ssd1306/ssd1306_i2c.c	30;"	d	file:
+rtwo	driver/esp_TB/esp8266.c	/^static	int rtwo = 1; $/;"	v	file:
+set_nth_bit_int16	algorithms/bitgestion.c	/^int16_t set_nth_bit_int16( int16_t value, uint8_t n)$/;"	f
+set_nth_bit_int8	algorithms/bitgestion.c	/^int8_t set_nth_bit_int8( int8_t value, uint8_t n)$/;"	f
+set_nth_bit_uint16	algorithms/bitgestion.c	/^uint16_t set_nth_bit_uint16( uint16_t value, uint8_t n)$/;"	f
+set_nth_bit_uint8	algorithms/bitgestion.c	/^uint8_t set_nth_bit_uint8( uint8_t value, uint8_t n)$/;"	f
+ssd1306_begin	driver/ssd1306/ssd1306_i2c.c	/^void ssd1306_begin( int vccstate, int i2caddr)$/;"	f
+ssd1306_clearDisplay	driver/ssd1306/ssd1306_i2c.c	/^void ssd1306_clearDisplay(void)$/;"	f
+ssd1306_command	driver/ssd1306/ssd1306_i2c.c	/^void ssd1306_command(char c)$/;"	f
+ssd1306_dim	driver/ssd1306/ssd1306_i2c.c	/^void ssd1306_dim( int dim)$/;"	f
+ssd1306_display	driver/ssd1306/ssd1306_i2c.c	/^void ssd1306_display(void)$/;"	f
+ssd1306_drawChar	driver/ssd1306/ssd1306_i2c.c	/^void ssd1306_drawChar(int x, int y, unsigned char c, int color, int size)$/;"	f
+ssd1306_drawFastHLine	driver/ssd1306/ssd1306_i2c.c	/^void ssd1306_drawFastHLine(int x, int y, int w,  int color)$/;"	f
+ssd1306_drawFastHLineInternal	driver/ssd1306/ssd1306_i2c.c	/^void ssd1306_drawFastHLineInternal(int x, int y, int w,  int color)$/;"	f
+ssd1306_drawFastVLine	driver/ssd1306/ssd1306_i2c.c	/^void ssd1306_drawFastVLine(int x, int y, int h,  int color)$/;"	f
+ssd1306_drawFastVLineInternal	driver/ssd1306/ssd1306_i2c.c	/^void ssd1306_drawFastVLineInternal(int x, int __y, int __h,  int color)$/;"	f
+ssd1306_drawPixel	driver/ssd1306/ssd1306_i2c.c	/^void ssd1306_drawPixel(int x, int y,  int color)$/;"	f
+ssd1306_drawString	driver/ssd1306/ssd1306_i2c.c	/^void ssd1306_drawString(char *str)$/;"	f
+ssd1306_fillRect	driver/ssd1306/ssd1306_i2c.c	/^void ssd1306_fillRect(int x, int y, int w, int h, int fillcolor)$/;"	f
+ssd1306_invertDisplay	driver/ssd1306/ssd1306_i2c.c	/^void ssd1306_invertDisplay( int i)$/;"	f
+ssd1306_setTextSize	driver/ssd1306/ssd1306_i2c.c	/^void ssd1306_setTextSize(int s)$/;"	f
+ssd1306_startscrolldiagleft	driver/ssd1306/ssd1306_i2c.c	/^void ssd1306_startscrolldiagleft( int start,  int stop)$/;"	f
+ssd1306_startscrolldiagright	driver/ssd1306/ssd1306_i2c.c	/^void ssd1306_startscrolldiagright( int start,  int stop)$/;"	f
+ssd1306_startscrollleft	driver/ssd1306/ssd1306_i2c.c	/^void ssd1306_startscrollleft( int start,  int stop)$/;"	f
+ssd1306_startscrollright	driver/ssd1306/ssd1306_i2c.c	/^void ssd1306_startscrollright( int start,  int stop)$/;"	f
+ssd1306_stopscroll	driver/ssd1306/ssd1306_i2c.c	/^void ssd1306_stopscroll(void)$/;"	f
+ssd1306_swap	driver/ssd1306/ssd1306_i2c.c	107;"	d	file:
+ssd1306_write	driver/ssd1306/ssd1306_i2c.c	/^void ssd1306_write(int c)$/;"	f
+stepMode	driver/powerstep01/powerstep01.h	/^	uint8_t stepMode;$/;"	m	struct:Motors
+testDb	driver/postgres/dbcomm.c	/^void testDb() $/;"	f
+textsize	driver/ssd1306/ssd1306_i2c.c	/^int textsize = 1;$/;"	v
+thr_db	driver/ma12070/ma12070.h	/^	uint8_t thr_db[4];$/;"	m	struct:MA12070
+thr_lsb	driver/ma12070/ma12070.h	/^	uint8_t thr_lsb[4];$/;"	m	struct:MA12070
+toggle_nth_bit_int16	algorithms/bitgestion.c	/^int16_t toggle_nth_bit_int16( int16_t value, uint8_t n)$/;"	f
+toggle_nth_bit_int8	algorithms/bitgestion.c	/^int8_t toggle_nth_bit_int8( int8_t value, uint8_t n)$/;"	f
+toggle_nth_bit_uint16	algorithms/bitgestion.c	/^uint16_t toggle_nth_bit_uint16( uint16_t value, uint8_t n)$/;"	f
+toggle_nth_bit_uint8	algorithms/bitgestion.c	/^uint8_t toggle_nth_bit_uint8( uint8_t value, uint8_t n)$/;"	f
+treshold_1to2	driver/ma12070/ma12070.h	/^	uint8_t treshold_1to2; $/;"	m	struct:MA12070
+treshold_2to1	driver/ma12070/ma12070.h	/^	uint8_t treshold_2to1;$/;"	m	struct:MA12070
+treshold_2to3	driver/ma12070/ma12070.h	/^	uint8_t treshold_2to3;$/;"	m	struct:MA12070
+treshold_3to2	driver/ma12070/ma12070.h	/^	uint8_t treshold_3to2;$/;"	m	struct:MA12070
+true	driver/ssd1306/ssd1306_i2c.c	27;"	d	file:
+uart0_filestream	driver/esp_TB/esp8266.c	/^int uart0_filestream = -1;$/;"	v
+uart0_filestream	driver/uart/uart.c	/^int uart0_filestream = -1;$/;"	v
+uartRecieveData	driver/esp_TB/esp8266.c	/^char* uartRecieveData(int Delay_us, int Delay_s)$/;"	f
+uartRecieveData	driver/uart/uart.c	/^char* uartRecieveData()$/;"	f
+uartSendData	driver/esp_TB/esp8266.c	/^void uartSendData( const char *tx_data)$/;"	f
+uartSendData	driver/uart/uart.c	/^void uartSendData( const char *tx_data)$/;"	f
+uartSendEnter	driver/esp_TB/esp8266.c	/^void uartSendEnter()$/;"	f
+uartSendEnter	driver/uart/uart.c	/^void uartSendEnter()$/;"	f
+unset_nth_bit_int16	algorithms/bitgestion.c	/^int16_t unset_nth_bit_int16( int16_t value, uint8_t n)$/;"	f
+unset_nth_bit_int8	algorithms/bitgestion.c	/^int8_t unset_nth_bit_int8( int8_t value, uint8_t n)$/;"	f
+unset_nth_bit_uint16	algorithms/bitgestion.c	/^uint16_t unset_nth_bit_uint16( uint16_t value, uint8_t n)$/;"	f
+unset_nth_bit_uint8	algorithms/bitgestion.c	/^uint8_t unset_nth_bit_uint8( uint8_t value, uint8_t n)$/;"	f
+vol_db	driver/ma12070/ma12070.h	/^	uint8_t vol_db[4];$/;"	m	struct:MA12070
+vol_db_master	driver/ma12070/ma12070.h	/^	uint8_t vol_db_master;$/;"	m	struct:MA12070
+vol_lsb	driver/ma12070/ma12070.h	/^	uint8_t vol_lsb[4];$/;"	m	struct:MA12070
+vol_lsb_master	driver/ma12070/ma12070.h	/^	uint8_t vol_lsb_master;$/;"	m	struct:MA12070
+wrap	driver/ssd1306/ssd1306_i2c.c	/^int wrap = 1;$/;"	v

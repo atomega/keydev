@@ -10,15 +10,19 @@
 //
 //////////////////////////////////////////////////////////
 
-#include "../../main.h"
+#include <cstdio>
 #include "pf8574lcd.h"
-#include "../../lowlayer/i2c_raspberry/i2c/i2c.h"
+#include "../../baremetal/i2c/bm_i2c.h"
 
+	bm_i2c::bm_i2c_address_t i2cAdressmode = bm_i2c::I2C_ADDRESS_7B; 
+	bm_i2c::bm_i2c_mode_t i2cMode = bm_i2c::I2C_MODE_MASTER; 
+	bm_i2c::bm_i2c_speed_t i2cSpeed = bm_i2c::I2C_SPEED_STANDART; 
+	bm_i2c::bm_i2c_state_t i2cStatus = bm_i2c::I2C_STATE_READY; 
+	bm_i2c LCD(1, LCD_ADDRS, i2cMode, i2cAdressmode);
 
 // Fonction pour initialiser l'écran vide en mode 4 bits 
 int i2c_lcd_init(int addrs)
 {
-	i2c_open_device(addrs);			// adressage de l'escave en i2c 
 	lcd_write(0x03,CMD_MODE); 		// Mise en mode 4 bit avec 4 essai conssecutif
  	lcd_write(0x03,CMD_MODE); 
   	lcd_write(0x03,CMD_MODE); 
@@ -111,7 +115,7 @@ void lcd_display_string(char line, char pos, char* charvalue)
 // enregistrer les donées qui lui sont envoyées 
 void ldc_pulse_En(char data)
 {
-	i2c_write_8(data | EN | LCD_BACKLIGHT);
+	LCD.send(data | EN | LCD_BACKLIGHT);
 	usleep(100);  
 	i2c_write_8(((data & ~EN) | LCD_BACKLIGHT));
 	usleep(500);  
