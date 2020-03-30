@@ -2,6 +2,7 @@
 
 VIMRC="/home/$USER/.vimrc"
 VIMDIR="/home/$USER/.vim"
+LOCALVIMRC=".vimrc"
 
 echo "Wellcome to the VIM installation script"
 
@@ -16,7 +17,7 @@ else
 	printf "\e[95mCreatting file : $VIMRC\n"
 fi
 
-cp vimrc $VIMRC
+cp $LOCALVIMRC $VIMRC
 
 if [ -d "$VIMDIR" ]; 
 then 
