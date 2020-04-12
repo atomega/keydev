@@ -113,7 +113,7 @@ void ll_i2c::i2c_initChannelAsMaster()
 	}
 }
 
-void ll_i2c::i2c_setAddress(uint16_t address)
+void ll_i2c::i2c_setAddress(uint16_t &address)
 {		 
 	switch (m_addressMode)
 	{
@@ -138,11 +138,11 @@ void ll_i2c::i2c_setAddress(uint16_t address)
 
 
 // Defined by me :Read a given number of bytes
-void ll_i2c::i2c_receive(uint8_t *reg, uint8_t *buffer, uint8_t *regLenght, uint8_t *bufferLenght)
+void ll_i2c::i2c_receive(uint8_t *reg, uint8_t *buffer, uint8_t &regLenght, uint8_t &bufferLenght)
 {
-	if (*bufferLenght == *regLenght)
+	if (bufferLenght == regLenght)
 	{
-		for(m_transferCount = 0 ; m_transferCount < *bufferLenght ; m_transferCount++ )
+		for(m_transferCount = 0 ; m_transferCount < bufferLenght ; m_transferCount++ )
 		{	
 			i2c_pointReg(&reg[m_transferCount]);
 			if ((read(m_fileDescriptor,&buffer[m_transferCount],1 )) != 1) 										 
@@ -151,31 +151,27 @@ void ll_i2c::i2c_receive(uint8_t *reg, uint8_t *buffer, uint8_t *regLenght, uint
 			}
 		}
 	}
-	else if (*bufferLenght > *regLenght  &&  *regLenght == 1)
+	else if (bufferLenght > regLenght  &&  regLenght == 1)
 	{
 		i2c_pointReg(reg);
-		if ((read(m_fileDescriptor,buffer, *bufferLenght)) != *bufferLenght) 										 
+		if ((read(m_fileDescriptor,buffer, bufferLenght)) != bufferLenght) 										 
 		{	
 			i2c_throwError(__LINE__); 
-		}
-		else
-		{
-			cout << "write Done " << endl; 
 		}
 	}
 }
 
 // Defined by me : Send a given number of bytes
-void ll_i2c::i2c_send(uint8_t *reg, uint8_t *data, uint8_t *regLenght, uint8_t *dataLenght)
+void ll_i2c::i2c_send(uint8_t *reg, uint8_t *data, uint8_t &regLenght, uint8_t &dataLenght)
 {
 
-	if (*regLenght == 1 && *dataLenght ==0)
+	if (regLenght == 1 && dataLenght ==0)
 	{
 		i2c_pointReg(reg);
 	}
-	else if (*regLenght == *dataLenght)
+	else if (regLenght == dataLenght)
 	{
-		for(m_transferCount = 0 ; m_transferCount < *regLenght; m_transferCount++ )
+		for(m_transferCount = 0 ; m_transferCount < regLenght; m_transferCount++ )
 		{ 
 			m_internalBuffer[0] = reg[m_transferCount]; 
 			m_internalBuffer[1] = data[m_transferCount]; 
@@ -186,11 +182,11 @@ void ll_i2c::i2c_send(uint8_t *reg, uint8_t *data, uint8_t *regLenght, uint8_t *
 			}	
 		}
 	}
-	else if (*regLenght == 1 && *dataLenght > *regLenght )
+	else if (regLenght == 1 && dataLenght > regLenght )
 	{
 		i2c_pointReg(reg);
 
-		for(m_transferCount = 1 ; m_transferCount < *regLenght; m_transferCount++ )
+		for(m_transferCount = 1 ; m_transferCount < regLenght; m_transferCount++ )
 		{ 
 			m_internalBuffer[1] = data[m_transferCount]; 
 
@@ -203,7 +199,7 @@ void ll_i2c::i2c_send(uint8_t *reg, uint8_t *data, uint8_t *regLenght, uint8_t *
 }
 
 // Defined by me : Points to the register to be red from 
-void ll_i2c::i2c_pointReg(uint8_t * reg)
+void ll_i2c::i2c_pointReg(uint8_t *reg)
 {
 	if ((write(m_fileDescriptor,reg, 1)) != 1) 										
 	{	
@@ -247,7 +243,7 @@ void ll_i2c::i2c_busClear(){}
 
 void ll_i2c::i2c_setSpeed(ll_i2c_speed_t speed){}
 void ll_i2c::i2c_setAddressMode(){}
-void ll_i2c::i2c_setTimeout(uint8_t m_timeout){}
+void ll_i2c::i2c_setTimeout(uint8_t &m_timeout){}
 void ll_i2c::i2c_setInterrupt(){}
 void ll_i2c::i2c_setDma(){}
 uint8_t ll_i2c::i2c_getIcIdentification() const
@@ -298,4 +294,127 @@ void ll_i2c::i2c_throwError(int16_t error)
 	m_state = I2C_STATE_ERROR; 
 }
 
-
+void ll_i2c::i2c_printBuffer(uint8_t *reg, uint8_t *data, uint8_t &regLenght, uint8_t &dataLenght)
+{	
+	cout << "" << endl;
+	cout << "+-------+" << endl;
+	cout << "|Device\t|" << endl;  
+	cout <<	"+-------+-------+" << endl; 
+	cout << "|Adrr.\t|"  << (void*) m_address << "\t|"<< endl;  
+	cout << "+-------+-------+" << endl;
+	cout <<	"+-------+-------+" << endl; 
+	cout << "| Ch.\t|"  << (void*) m_channel << "\t|"<< endl;  
+	cout << "+-------+-------+" << endl;
+	cout << "" << endl;
+	
+	if (regLenght == 1 && dataLenght ==0)
+	{
+		cout <<"+-------+";	
+		cout <<"|Ptr\t|";	
+		cout <<"-------+";	
+		cout <<"|"<< (void*) reg[0] <<"\t|";
+		cout <<"-------+";	
+	}
+	else if (regLenght == dataLenght)
+	{
+		cout <<"+";
+		for(m_transferCount = 0 ; m_transferCount < regLenght; m_transferCount++ )
+		{ 
+			cout <<"-------+";	
+		}	
+		cout <<""<<	endl;
+		cout <<"|";
+		for(m_transferCount = 0 ; m_transferCount < regLenght; m_transferCount++ )
+		{ 
+			cout <<"Ptr\t|Data\t|";	
+		}	
+		cout <<""<<	endl;
+		cout <<"+";
+		for(m_transferCount = 0 ; m_transferCount < regLenght; m_transferCount++ )
+		{ 
+			cout <<"-------+";	
+		}	
+		cout <<""<<	endl;
+		cout <<"|";
+		for(m_transferCount = 0 ; m_transferCount < regLenght; m_transferCount++ )
+		{
+				if(data[m_transferCount]== 0)
+				{
+					cout << (void*) reg[m_transferCount] <<"\t|"<<"|0x00\t|";
+				}
+				else
+				{
+					cout << (void*) reg[m_transferCount] <<"\t|"<< (void*) data[m_transferCount] << "\t|"; 
+				}
+				if(reg[m_transferCount]== 0)
+				{
+					cout <<"0x00\t|"<<"| "<< (void*) data << " |"; 
+				}
+				else
+				{
+					cout << (void*) reg[m_transferCount] <<"\t|"<< (void*) data[m_transferCount] << "\t|"; 
+				}
+		}	
+		cout <<""<<	endl;
+		cout <<"+";
+		for(m_transferCount = 0 ; m_transferCount < regLenght; m_transferCount++ )
+		{ 
+			cout <<"-------+";	
+		}	
+	}
+	else if (regLenght == 1 && dataLenght > regLenght )
+	{
+		cout <<"+";
+		for(m_transferCount = 0 ; m_transferCount < regLenght + dataLenght; m_transferCount++ )
+		{ 
+			cout <<"-------+";	
+		}	
+		cout <<""<<	endl;
+		cout <<"|";
+		for(m_transferCount = 0 ; m_transferCount < regLenght; m_transferCount++ )
+		{ 
+			cout <<"Ptr\t|";	
+		}	
+		for(m_transferCount = 0 ; m_transferCount < dataLenght; m_transferCount++ )
+		{ 
+			cout <<"Data\t|";	
+		}	
+		cout <<""<<	endl;
+		cout <<"+";
+		for(m_transferCount = 0 ; m_transferCount < regLenght + dataLenght; m_transferCount++ )
+		{ 
+			cout <<"-------+";	
+		}	
+		cout <<""<<	endl;
+		cout <<"|";
+		for(m_transferCount = 0 ; m_transferCount < regLenght; m_transferCount++ )
+		{
+				if(reg[m_transferCount]== 0)
+				{
+					cout <<"0x00\t|"; 
+				}
+				else
+				{
+					cout <<""<< (void*) reg[m_transferCount] <<"\t|"; 
+				}
+		}	
+		for(m_transferCount = 0 ; m_transferCount < dataLenght; m_transferCount++ )
+		{
+				if(data[m_transferCount]== 0)
+				{
+					cout << "0x00\t|";
+				}
+				else
+				{
+					cout <<""<< (void*) data[m_transferCount]<< "\t|"; 
+				}
+		}	
+		cout <<""<<	endl;
+		cout <<"+";
+		for(m_transferCount = 0 ; m_transferCount < regLenght + dataLenght; m_transferCount++ )
+		{ 
+			cout <<"-------+";	
+		}	
+		cout <<""<<	endl;
+	}
+}

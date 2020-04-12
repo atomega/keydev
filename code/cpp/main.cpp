@@ -21,7 +21,7 @@ int main()
 {
 	uint8_t data[2]; 
 	uint8_t reg[2]; 
-
+	uint8_t i = 0; 
 	data[0] = 0; 
 	data[1] = 0; 
 
@@ -30,12 +30,12 @@ int main()
 	uint8_t dataLenght = 2; 
 	uint8_t regLenght = 1; 
 
+	bh1750.i2c_receive(reg,data,regLenght,dataLenght); 
+	bh1750.i2c_printBuffer(reg,data,regLenght,dataLenght); 
 	
 
-	bh1750.i2c_receive(reg,data,&regLenght,&dataLenght); 
-	
-	cout << "Separeted :\tHigh : "<< (void*) data[0] << endl; 
-	cout << "Separeted :\tLow : "<< (void*) data[1] << endl; 
+
+
 
 	std::cout << "\n\n\n Reached end of Main" << endl;
 	return 0; 

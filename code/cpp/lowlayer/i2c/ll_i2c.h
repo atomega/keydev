@@ -93,10 +93,11 @@ class ll_i2c
 
 		/*Methods*/
 
-		void i2c_receive(uint8_t *reg, uint8_t *buffer, uint8_t *regLenght, uint8_t *bufferLenght);	// Defined by me : Read a given number of bytes
-		void i2c_send(uint8_t *reg, uint8_t *data, uint8_t *regLenght, uint8_t *dataLenght);			// Defined by me : Send a given number of bytes 
-		uint8_t i2c_testDeviceSpeed();											// Defined by me : Cycle trough different modes until device cnat't answer fast enought
-		uint8_t i2c_discoverDevices();											// Defined by me : Scan the awailable address range on standart mode to find devices   
+		void i2c_printBuffer(uint8_t *reg, uint8_t *data, uint8_t &regLenght, uint8_t &dataLenght);		// Display the communictation string in a nice way. 
+		void i2c_receive(uint8_t *reg, uint8_t *buffer, uint8_t &regLenght, uint8_t &bufferLenght);		// Defined by me : Read a given number of bytes
+		void i2c_send(uint8_t *reg, uint8_t *data, uint8_t &regLenght, uint8_t &dataLenght);			// Defined by me : Send a given number of bytes 
+		uint8_t i2c_testDeviceSpeed();	// Defined by me : Cycle trough different modes until device cnat't answer fast enought
+		uint8_t i2c_discoverDevices();	// Defined by me : Scan the awailable address range on standart mode to find devices   
 		
 		void i2c_initChannelAsMaster();	// Hardware Specific : Initilise the hardware channel in master mode
 		void i2c_initChannelAsSlave();	// Hardware Specific : Initilise the hardware channel in slavic mode (@life of boris)
@@ -112,10 +113,10 @@ class ll_i2c
 
 		/*Setters*/
 		void i2c_setSpeed(ll_i2c_speed_t speed);	// I2C Standart 
-		void i2c_setAddress(uint16_t address);		// I2C Standart 
+		void i2c_setAddress(uint16_t &address);		// I2C Standart 
 		void i2c_setAddressMode();					// I2C Standart
 
-		void i2c_setTimeout(uint8_t timeout);		// Hardware specific
+		void i2c_setTimeout(uint8_t &timeout);		// Hardware specific
 		void i2c_setInterrupt();					// Hardware Specific
 		void i2c_setDma();							// Hardware specific 	
 		
@@ -131,8 +132,8 @@ class ll_i2c
 		uint8_t i2c_getMode() const;	
 		
 
-		void i2c_throwError(int16_t error);					// Defined by me : Private error function for error handling
-		void i2c_pointReg(uint8_t *reg);			// Defined by me : Points to the register to be red from
+		void i2c_throwError(int16_t error);	// Defined by me : Private error function for error handling
+		void i2c_pointReg(uint8_t *reg);		// Defined by me : Points to the register to be red from
 
 	private :
 		
