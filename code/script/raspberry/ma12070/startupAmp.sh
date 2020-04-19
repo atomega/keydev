@@ -4,7 +4,8 @@ sleep 3
 ./gpioSetup.sh
 
 ./enableAmp.sh 
-./runtest
+
+/home/pi/keydev/code/c/runtest
 
 ./unmuteAmp.sh
 

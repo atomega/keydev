@@ -12,16 +12,18 @@
 
 #include <cstdio>
 #include "pf8574lcd.h"
-#include "../../baremetal/i2c/bm_i2c.h"
+#include "../../lowlayer/i2c/ll_i2c.h"
 
-	bm_i2c::bm_i2c_address_t i2cAdressmode = bm_i2c::I2C_ADDRESS_7B; 
-	bm_i2c::bm_i2c_mode_t i2cMode = bm_i2c::I2C_MODE_MASTER; 
-	bm_i2c::bm_i2c_speed_t i2cSpeed = bm_i2c::I2C_SPEED_STANDART; 
-	bm_i2c::bm_i2c_state_t i2cStatus = bm_i2c::I2C_STATE_READY; 
-	bm_i2c LCD(1, LCD_ADDRS, i2cMode, i2cAdressmode);
+
+	ll_i2c LCD(LCD_ADDRS, 1, I2C_MODE_MASTER,I2C_ADDRESS_7B);
+
+	uint8_t i2cDataLenght = 0;
+	uint8_t i2cReg[1] = {0}; 
+	uint8_t i2cRegLenght = 1;
+	uint8_t i2cData[1] = {0}; 
 
 // Fonction pour initialiser l'écran vide en mode 4 bits 
-int i2c_lcd_init(int addrs)
+int lcd_init()
 {
 	lcd_write(0x03,CMD_MODE); 		// Mise en mode 4 bit avec 4 essai conssecutif
  	lcd_write(0x03,CMD_MODE); 
@@ -69,19 +71,19 @@ void lcd_display_string(char line, char pos, char* charvalue)
 		printf("LCD.C :\t Ligne selectionee => %d \n", line); 
 		#endif
 		
-		if(line == 1)											// Selection de la ligne d'écriture 
+		if(line == 0)											// Selection de la ligne d'écriture 
 		{
 			setPosition = pos; 		
 		}
-		else if(line ==2)
+		else if(line ==1)
 		{
 			setPosition = 0x40 + pos; 
 		}
-		else if(line ==3)
+		else if(line ==2)
 		{
 			setPosition = 0x14 + pos;
 		}
-		else if(line ==4)
+		else if(line ==3)
 		{
 			setPosition = 0x54 + pos; 
 		}
@@ -115,9 +117,11 @@ void lcd_display_string(char line, char pos, char* charvalue)
 // enregistrer les donées qui lui sont envoyées 
 void ldc_pulse_En(char data)
 {
-	LCD.send(data | EN | LCD_BACKLIGHT);
+	i2cReg[0] = data | EN | LCD_BACKLIGHT; 
+	LCD.i2c_send(i2cReg, i2cData, i2cRegLenght,i2cDataLenght); 
 	usleep(100);  
-	i2c_write_8(((data & ~EN) | LCD_BACKLIGHT));
+	i2cReg[0] = (data & ~EN) | LCD_BACKLIGHT,
+	LCD.i2c_send(i2cReg, i2cData, i2cRegLenght,i2cDataLenght); 
 	usleep(500);  
 }
 
@@ -134,6 +138,7 @@ void lcd_write(char cmd, char mode)
 // le rétroéclairage. 
 void lcd_write_4bits(char data)
 {	
-	i2c_write_8(data | LCD_BACKLIGHT);
+	i2cReg[0] = (data | LCD_BACKLIGHT);
+	LCD.i2c_send(i2cReg, i2cData, i2cRegLenght,i2cDataLenght); 
 	ldc_pulse_En(data); 
 }

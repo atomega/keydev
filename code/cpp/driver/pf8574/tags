@@ -1,0 +1,52 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CHAR_MODE	pf8574lcd.h	51;"	d
+CMD_MODE	pf8574lcd.h	50;"	d
+EN	pf8574lcd.h	44;"	d
+LCD_1LINE	pf8574lcd.h	35;"	d
+LCD_2LINE	pf8574lcd.h	34;"	d
+LCD_4BITMODE	pf8574lcd.h	33;"	d
+LCD_5x1DOTS	pf8574lcd.h	36;"	d
+LCD_5x8DOTS	pf8574lcd.h	37;"	d
+LCD_8BITMODE	pf8574lcd.h	32;"	d
+LCD_ADDRS	pf8574lcd.h	54;"	d
+LCD_BACKLIGHT	pf8574lcd.h	40;"	d
+LCD_BLINKOFF	pf8574lcd.h	23;"	d
+LCD_BLINKON	pf8574lcd.h	22;"	d
+LCD_CLEARDISPLAY	pf8574lcd.h	2;"	d
+LCD_CURSORMOVE	pf8574lcd.h	27;"	d
+LCD_CURSOROFF	pf8574lcd.h	21;"	d
+LCD_CURSORON	pf8574lcd.h	20;"	d
+LCD_CURSORSHIFT	pf8574lcd.h	6;"	d
+LCD_DISPLAYCONTROL	pf8574lcd.h	5;"	d
+LCD_DISPLAYMOVE	pf8574lcd.h	26;"	d
+LCD_DISPLAYOFF	pf8574lcd.h	19;"	d
+LCD_DISPLAYON	pf8574lcd.h	18;"	d
+LCD_ENTRYLEFT	pf8574lcd.h	13;"	d
+LCD_ENTRYMODESET	pf8574lcd.h	4;"	d
+LCD_ENTRYRIGHT	pf8574lcd.h	12;"	d
+LCD_ENTRYSHIFTDECREMENT	pf8574lcd.h	15;"	d
+LCD_ENTRYSHIFTINCREMENT	pf8574lcd.h	14;"	d
+LCD_FUNCTIONSET	pf8574lcd.h	7;"	d
+LCD_MOVELEFT	pf8574lcd.h	29;"	d
+LCD_MOVERIGHT	pf8574lcd.h	28;"	d
+LCD_NOBACKLIGHT	pf8574lcd.h	41;"	d
+LCD_RETURNHOME	pf8574lcd.h	3;"	d
+LCD_SETCGRAMADDR	pf8574lcd.h	8;"	d
+LCD_SETDDRAMADDR	pf8574lcd.h	9;"	d
+RS	pf8574lcd.h	46;"	d
+RW	pf8574lcd.h	45;"	d
+TOTAL_CHAR_CAP	pf8574lcd.h	57;"	d
+i2cAdressmode	pf8574lcd.cpp	/^	bm_i2c::bm_i2c_address_t i2cAdressmode = bm_i2c::I2C_ADDRESS_7B; $/;"	v
+i2cMode	pf8574lcd.cpp	/^	bm_i2c::bm_i2c_mode_t i2cMode = bm_i2c::I2C_MODE_MASTER; $/;"	v
+i2cSpeed	pf8574lcd.cpp	/^	bm_i2c::bm_i2c_speed_t i2cSpeed = bm_i2c::I2C_SPEED_STANDART; $/;"	v
+i2cStatus	pf8574lcd.cpp	/^	bm_i2c::bm_i2c_state_t i2cStatus = bm_i2c::I2C_STATE_READY; $/;"	v
+lcd_display_string	pf8574lcd.cpp	/^void lcd_display_string(char line, char pos, char* charvalue)$/;"	f
+lcd_init	pf8574lcd.cpp	/^int lcd_init(int addrs)$/;"	f
+lcd_write	pf8574lcd.cpp	/^void lcd_write(char cmd, char mode)$/;"	f
+lcd_write_4bits	pf8574lcd.cpp	/^void lcd_write_4bits(char data)$/;"	f
+ldc_pulse_En	pf8574lcd.cpp	/^void ldc_pulse_En(char data)$/;"	f

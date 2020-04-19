@@ -49,46 +49,35 @@ SOFTWARE.
 
 #include <stdint.h>
 
+#define I2C_STATE_RESET		1 // Not Initialized
+#define I2C_STATE_READY		2 // Ready
+#define I2C_STATE_TX		4 // Transmitting
+#define I2C_STATE_RX		5 // Receiving
+#define I2C_STATE_LISTEN	6 // Listening
+#define I2C_STATE_ABORT		7 // Aborted by user
+#define I2C_STATE_TIMEOUT	8 // Timeout
+#define I2C_STATE_ERROR		9 // Error happened
+
+#define I2C_SPEED_STANDART		1 // Sm	100 kbits/s This mode will be choosen for the constructor. 
+#define I2C_SPEED_FAST			2 // Fm	400 kbits/s 
+#define I2C_SPEED_FAST_PLUS		3 // Fm+	1	Mbits/s
+#define I2C_SPEED_HIGH_SPEED	4 // Hs	3.4 Mbits/s 
+#define I2C_SPEED_ULTRA_FAST	5 // UFm	5	Mbits/s
+
+#define I2C_ADDRESS_7B	1 // 7  bits addressing mode  
+#define I2C_ADDRESS_10B 2 // 10 bits addressing mode  
+
+#define I2C_MODE_MASTER			1 // Single Master Mode
+#define I2C_MODE_SLAVE			2 // Slave Mode
+#define I2C_MODE_MULTI_MASTER	3 // Multy Master Mode
+		
 using namespace std; 
 class ll_i2c
 {
 	public :
-		typedef enum
-		{
-			I2C_STATE_RESET		= 1,// Not Initialized
-			I2C_STATE_READY		= 2,// Ready
-			I2C_STATE_TX		= 4,// Transmitting
-			I2C_STATE_RX		= 5,// Receiving
-			I2C_STATE_LISTEN	= 6,// Listening
-			I2C_STATE_ABORT		= 7,// Aborted by user
-			I2C_STATE_TIMEOUT	= 8,// Timeout
-			I2C_STATE_ERROR		= 9	// Error happened
-		}	ll_i2c_state_t;			// Typical Low Level Communication states
-
-		typedef enum
-		{
-			I2C_SPEED_STANDART		= 1,// Sm	100 kbits/s This mode will be choosen for the constructor. 
-			I2C_SPEED_FAST			= 2,// Fm	400 kbits/s 
-			I2C_SPEED_FAST_PLUS		= 3,// Fm+	1	Mbits/s
-			I2C_SPEED_HIGH_SPEED	= 4,// Hs	3.4 Mbits/s 
-			I2C_SPEED_ULTRA_FAST	= 5	// UFm	5	Mbits/s
-		}	ll_i2c_speed_t;				// Please note that speed modes engender a behavioural change
-
-		typedef enum
-		{
-			I2C_ADDRESS_7B	= 1,// 7  bits addressing mode  
-			I2C_ADDRESS_10B = 2	// 10 bits addressing mode  
-		}	ll_i2c_address_t;	// Doest not require a hardware support -> device adress is sent differently
-
-		typedef enum
-		{
-			I2C_MODE_MASTER			= 1,// Single Master Mode
-			I2C_MODE_SLAVE			= 2,// Slave Mode
-			I2C_MODE_MULTI_MASTER	= 3	// Multy Master Mode
-		}	ll_i2c_mode_t;				// Only algorithm changes
-	
+		
 		/*Constructor destructor*/
-		ll_i2c(uint8_t channel, uint16_t address, ll_i2c_mode_t mode, ll_i2c_address_t addressMode); // Creat i2c abject witha agiven channel address & mode speed is by default the slowest. 
+		ll_i2c(uint16_t address, uint8_t channel, uint8_t mode, uint8_t adressMode); // Creat i2c abject witha agiven channel address & mode speed is by default the slowest. 
 		~ll_i2c();
 
 		/*Methods*/
@@ -112,7 +101,7 @@ class ll_i2c
 		void i2c_busClear();		// I2C Standart : in case if SCL is stuck 
 
 		/*Setters*/
-		void i2c_setSpeed(ll_i2c_speed_t speed);	// I2C Standart 
+		void i2c_setSpeed(uint8_t speed);	// I2C Standart 
 		void i2c_setAddress(uint16_t &address);		// I2C Standart 
 		void i2c_setAddressMode();					// I2C Standart
 
@@ -137,18 +126,18 @@ class ll_i2c
 
 	private :
 		
-		ll_i2c_address_t m_addressMode;	// I2C Standart : Address type of the device to be communicated
-		uint16_t m_address;				// I2c Standrat : Address of the device to be communicated or our Slave address in Slave mode
-		ll_i2c_speed_t m_speed;			// I2C Standart : Trasmission speed
-		uint16_t m_icManufacturer;		// I2C Standart : Device information from manufacturer 
-		uint8_t m_icIdentification;		// I2C Standart : Device information from manufacturer
-		uint8_t m_icRevision;			// I2C Standart : Device information from manufacturer
-		ll_i2c_mode_t m_mode;			// I2C Standart : Mode of our device
+		uint8_t m_addressMode;		// I2C Standart : Address type of the device to be communicated
+		uint16_t m_address;			// I2c Standrat : Address of the device to be communicated or our Slave address in Slave mode
+		uint8_t m_speed;			// I2C Standart : Trasmission speed
+		uint16_t m_icManufacturer;	// I2C Standart : Device information from manufacturer 
+		uint8_t m_icIdentification;	// I2C Standart : Device information from manufacturer
+		uint8_t m_icRevision;		// I2C Standart : Device information from manufacturer
+		uint8_t m_mode;				// I2C Standart : Mode of our device
 
-		char m_fileName[20];			// Linux : i2c file name
-		uint16_t m_fileDescriptor;		// Linux : i2c file description
+		char m_fileName[20];		// Linux : i2c file name
+		uint16_t m_fileDescriptor;	// Linux : i2c file description
 		
-		ll_i2c_state_t m_state;			// Defined by me : Current state of this i2c Object
+		uint8_t m_state;			// Defined by me : Current state of this i2c Object
 
 		uint8_t m_channel;				// Hardware Specific : Selection of I2C Channel
 		uint32_t m_interrupttFlags; 	// Hardware Specific : Interrupt flag

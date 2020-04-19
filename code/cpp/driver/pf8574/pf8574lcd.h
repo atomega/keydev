@@ -64,7 +64,7 @@
 #include <errno.h>
 #include <sys/types.h>
 #include <limits.h>
-int i2c_lcd_init(int addrs); 
+int	 lcd_init(); 
 void lcd_write_char( char charvalue); 
 void lcd_display_string(char line, char pos, char* charvalue); 
 void ldc_pulse_En(char data); 

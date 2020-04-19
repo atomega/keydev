@@ -64,8 +64,8 @@ SOFTWARE.
 using namespace std; 
 
 // Creat i2c abject witha agiven channel address & mode speed is by default the slowest.
-ll_i2c::ll_i2c(uint8_t channel, uint16_t address, ll_i2c_mode_t mode, ll_i2c_address_t addressMode) 
-: m_channel(channel), m_address(address), m_mode(mode), m_addressMode(addressMode)
+ll_i2c::ll_i2c(uint16_t address, uint8_t channel, uint8_t mode, uint8_t addressMode) 
+: m_address(address), m_channel(channel), m_mode(mode), m_addressMode(addressMode)
 { 
 	m_state = I2C_STATE_RESET; 
 	m_icIdentification = 0; 
@@ -165,7 +165,7 @@ void ll_i2c::i2c_receive(uint8_t *reg, uint8_t *buffer, uint8_t &regLenght, uint
 void ll_i2c::i2c_send(uint8_t *reg, uint8_t *data, uint8_t &regLenght, uint8_t &dataLenght)
 {
 
-	if (regLenght == 1 && dataLenght ==0)
+	if (regLenght == 1 && dataLenght == 0)
 	{
 		i2c_pointReg(reg);
 	}
@@ -241,7 +241,7 @@ void ll_i2c::i2c_softReset(){}
 // I2C Standart : in case if SCL is stuck
 void ll_i2c::i2c_busClear(){}
 
-void ll_i2c::i2c_setSpeed(ll_i2c_speed_t speed){}
+void ll_i2c::i2c_setSpeed(uint8_t speed){}
 void ll_i2c::i2c_setAddressMode(){}
 void ll_i2c::i2c_setTimeout(uint8_t &m_timeout){}
 void ll_i2c::i2c_setInterrupt(){}
@@ -294,6 +294,7 @@ void ll_i2c::i2c_throwError(int16_t error)
 	m_state = I2C_STATE_ERROR; 
 }
 
+#ifdef DEBUG
 void ll_i2c::i2c_printBuffer(uint8_t *reg, uint8_t *data, uint8_t &regLenght, uint8_t &dataLenght)
 {	
 	cout << "" << endl;
@@ -418,3 +419,4 @@ void ll_i2c::i2c_printBuffer(uint8_t *reg, uint8_t *data, uint8_t &regLenght, ui
 		cout <<""<<	endl;
 	}
 }
+#endif

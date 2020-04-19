@@ -5,38 +5,21 @@
 #include <string>
 #include <cmath>
 #include "lowlayer/i2c/ll_i2c.h"
+#include "driver/pf8574/pf8574lcd.h"
 #include <unistd.h>
 
 using namespace std;
 
-ll_i2c::ll_i2c_address_t i2cAdressmode = ll_i2c::I2C_ADDRESS_7B; 
-ll_i2c::ll_i2c_mode_t i2cMode = ll_i2c::I2C_MODE_MASTER; 
-ll_i2c::ll_i2c_speed_t i2cSpeed = ll_i2c::I2C_SPEED_STANDART; 
-ll_i2c::ll_i2c_state_t i2cStatus = ll_i2c::I2C_STATE_READY; 
-
-
-ll_i2c bh1750(1, 0x23, i2cMode, i2cAdressmode);
 
 int main()
 {
-	uint8_t data[2]; 
-	uint8_t reg[2]; 
-	uint8_t i = 0; 
-	data[0] = 0; 
-	data[1] = 0; 
+char strBuffer[20] = "Kerem"; 	
+lcd_init(); 
+lcd_display_string(0,0,"Kerem Sending Energy");
+lcd_display_string(1,0,"|#########  |78\% ok");
+lcd_display_string(2,0,"Martina Receiving");
+lcd_display_string(3,0,"<3");
 
-	reg[0] = 0x20; 
-
-	uint8_t dataLenght = 2; 
-	uint8_t regLenght = 1; 
-
-	bh1750.i2c_receive(reg,data,regLenght,dataLenght); 
-	bh1750.i2c_printBuffer(reg,data,regLenght,dataLenght); 
-	
-
-
-
-
-	std::cout << "\n\n\n Reached end of Main" << endl;
+	std::cout << "\n\n\nReached end of Main" << endl;
 	return 0; 
 }
