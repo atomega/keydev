@@ -1,5 +1,5 @@
 cpp_src = $(wildcard *.cpp) \ $(wildcard lowlayer/i2c/*.cpp) 
-c_src = $(wildcard driver/pf8574/*.c)
+c_src = $(wildcard driver/pf8574/*.c) \ $(wildcard ../c/algorithms/*.c)
 
 cpp_obj = $(cpp_src:.cpp=.o)
 c_obj = $(c_src:.c=.o)
