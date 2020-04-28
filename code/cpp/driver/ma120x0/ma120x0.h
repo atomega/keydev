@@ -1,1028 +1,547 @@
-#define MA12070_ADDR 0x20 // Device Adress
+#define MA_ADDR 0x20 // Device Adress
 
 
+//--------------------------------------------------------------- POWER MODE CONTROL
+#define MA_IND_PWR_MODE_CTRL 1
+#define MA_REG_PWR_MODE_CTRL 0x00 
+#define MA_DEF_PWR_MODE_CTRL 0x3D 
+#define MA_SHIFT_PWR_MODE_MAN 0x06
+#define MA_MSK_PWR_MODE_MAN 0x40
+#define MA_LEN_PWR_MODE_MAN 1
 
-//------------------------------------------------------------------manualPM---
-// Select Manual PowerMode control
-#define ma_manualpm__a 0
-#define ma_pm__index 0
-#define ma_manualpm__len 1
-#define ma_manualpm__mask 0x40
-#define ma_manualpm__shift 0x06
-#define ma_manualpm__reset 0x00
-//--------------------------------------------------------------------pm_man---
-// manual selected power mode
-#define ma_pm_man__a 0
-#define ma_pm_man__len 2
-#define ma_pm_man__mask 0x30
-#define ma_pm_man__shift 0x04
-#define ma_pm_man__reset 0x03
-//------------------------------------------ ----------------------mthr_1to2---
-// mod. index threshold value for pm1=>pm2 change.
-#define ma_mthr_1to2__a 1
-#define ma_mthr_1to2__index 1
-#define ma_mthr_1to2__len 8
-#define ma_mthr_1to2__mask 0xff
-#define ma_mthr_1to2__shift 0x00
-#define ma_mthr_1to2__reset 0x3c
-//-----------------------------------------------------------------mthr_2to1---
-// mod. index threshold value for pm2=>pm1 change.
-#define ma_mthr_2to1__a 2
-#define ma_mthr_2to1__index 2
-#define ma_mthr_2to1__len 8
-#define ma_mthr_2to1__mask 0xff
-#define ma_mthr_2to1__shift 0x00
-#define ma_mthr_2to1__reset 0x32
-//-----------------------------------------------------------------mthr_2to3---
-// mod. index threshold value for pm2=>pm3 change.
-#define ma_mthr_2to3__a 3
-#define ma_mthr_2to3__index 3
-#define ma_mthr_2to3__len 8
-#define ma_mthr_2to3__mask 0xff
-#define ma_mthr_2to3__shift 0x00
-#define ma_mthr_2to3__reset 0x5a
-//-----------------------------------------------------------------mthr_3to2---
-// mod. index threshold value for pm3=>pm2 change.
-#define ma_mthr_3to2__a 4
-#define ma_mthr_3to2__index 4
-#define ma_mthr_3to2__len 8
-#define ma_mthr_3to2__mask 0xff
-#define ma_mthr_3to2__shift 0x00
-#define ma_mthr_3to2__reset 0x50
-//-------------------------------------------------------------pwmclkdiv_nom---
-// pwm default clock divider value
-#define ma_pwmclkdiv_nom__a 8
-#define ma_pwmclkdiv_nom__index 5
-#define ma_pwmclkdiv_nom__len 8
-#define ma_pwmclkdiv_nom__mask 0xff
-#define ma_pwmclkdiv_nom__shift 0x00
-#define ma_pwmclkdiv_nom__reset 0x26
-//--------- ----------------------------------------------------ocp_latch_en---
-// high to use permanently latching level-2 ocp
-#define ma_ocp_latch_en__a 10
-#define ma_ocp_latch_en__index 6
-#define ma_ocp_latch_en__len 1
-#define ma_ocp_latch_en__mask 0x02
-#define ma_ocp_latch_en__shift 0x01
-#define ma_ocp_latch_en__reset 0x00
-//---------------------------------------------------------------lf_clamp_en---
-// high (default) to enable lf int2+3 clamping on clip
-#define ma_lf_clamp_en__a 10
-#define ma_lf_clamp_en__index 7
-#define ma_lf_clamp_en__len 1
-#define ma_lf_clamp_en__mask 0x80
-#define ma_lf_clamp_en__shift 0x07
-#define ma_lf_clamp_en__reset 0x00
-//-------------------------------------------------------pmcfg_btl_b.modtype---
-//
-#define ma_pmcfg_btl_b__modtype__a 18
-#define ma_pmcfg_btl_b__index 8
-#define ma_pmcfg_btl_b__modtype__len 2
-#define ma_pmcfg_btl_b__modtype__mask 0x18
-#define ma_pmcfg_btl_b__modtype__shift 0x03
-#define ma_pmcfg_btl_b__modtype__reset 0x02
-//-------------------------------------------------------pmcfg_btl_b.freqdiv---
-#define ma_pmcfg_btl_b__freqdiv__a 18
-#define ma_pmcfg_btl_b__freqdiv__len 2
-#define ma_pmcfg_btl_b__freqdiv__mask 0x06
-#define ma_pmcfg_btl_b__freqdiv__shift 0x01
-#define ma_pmcfg_btl_b__freqdiv__reset 0x01
-//----------------------------------------------------pmcfg_btl_b.lf_gain_ol---
-//
-#define ma_pmcfg_btl_b__lf_gain_ol__a 18
-#define ma_pmcfg_btl_b__lf_gain_ol__len 1
-#define ma_pmcfg_btl_b__lf_gain_ol__mask 0x01
-#define ma_pmcfg_btl_b__lf_gain_ol__shift 0x00
-#define ma_pmcfg_btl_b__lf_gain_ol__reset 0x01
-//-------------------------------------------------------pmcfg_btl_c.freqdiv---
-//
-#define ma_pmcfg_btl_c__freqdiv__a 19
-#define ma_pmcfg_btl_c__index 9
-#define ma_pmcfg_btl_c__freqdiv__len 2
-#define ma_pmcfg_btl_c__freqdiv__mask 0x06
-#define ma_pmcfg_btl_c__freqdiv__shift 0x01
-#define ma_pmcfg_btl_c__freqdiv__reset 0x01
-//-------------------------------------------------------pmcfg_btl_c.modtype---
-//
-#define ma_pmcfg_btl_c__modtype__a 19
-#define ma_pmcfg_btl_c__modtype__len 2
-#define ma_pmcfg_btl_c__modtype__mask 0x18
-#define ma_pmcfg_btl_c__modtype__shift 0x03
-#define ma_pmcfg_btl_c__modtype__reset 0x01
-//----------------------------------------------------pmcfg_btl_c.lf_gain_ol---
-//
-#define ma_pmcfg_btl_c__lf_gain_ol__a 19
-#define ma_pmcfg_btl_c__lf_gain_ol__len 1
-#define ma_pmcfg_btl_c__lf_gain_ol__mask 0x01
-#define ma_pmcfg_btl_c__lf_gain_ol__shift 0x00
-#define ma_pmcfg_btl_c__lf_gain_ol__reset 0x00
-//-------------------------------------------------------pmcfg_btl_d.modtype---
-//
-#define ma_pmcfg_btl_d__modtype__a 20
-#define ma_pmcfg_btl_d__index 10
-#define ma_pmcfg_btl_d__modtype__len 2
-#define ma_pmcfg_btl_d__modtype__mask 0x18
-#define ma_pmcfg_btl_d__modtype__shift 0x03
-#define ma_pmcfg_btl_d__modtype__reset 0x02
-//-------------------------------------------------------pmcfg_btl_d.freqdiv---
-//
-#define ma_pmcfg_btl_d__freqdiv__a 20
-#define ma_pmcfg_btl_d__freqdiv__len 2
-#define ma_pmcfg_btl_d__freqdiv__mask 0x06
-#define ma_pmcfg_btl_d__freqdiv__shift 0x01
-#define ma_pmcfg_btl_d__freqdiv__reset 0x02
-//----------------------------------------------------pmcfg_btl_d.lf_gain_ol---
-//
-#define ma_pmcfg_btl_d__lf_gain_ol__a 20
-#define ma_pmcfg_btl_d__lf_gain_ol__len 1
-#define ma_pmcfg_btl_d__lf_gain_ol__mask 0x01
-#define ma_pmcfg_btl_d__lf_gain_ol__shift 0x00
-#define ma_pmcfg_btl_d__lf_gain_ol__reset 0x00
-//------------ -------------------------------------------pmcfg_se_a.modtype---
-//
-#define ma_pmcfg_se_a__modtype__a 21
-#define ma_pmcfg_se_a__index 11
-#define ma_pmcfg_se_a__modtype__len 2
-#define ma_pmcfg_se_a__modtype__mask 0x18
-#define ma_pmcfg_se_a__modtype__shift 0x03
-#define ma_pmcfg_se_a__modtype__reset 0x01
-//--------------------------------------------------------pmcfg_se_a.freqdiv---
-//
-#define ma_pmcfg_se_a__freqdiv__a 21
-#define ma_pmcfg_se_a__freqdiv__len 2
-#define ma_pmcfg_se_a__freqdiv__mask 0x06
-#define ma_pmcfg_se_a__freqdiv__shift 0x01
-#define ma_pmcfg_se_a__freqdiv__reset 0x00
-//-----------------------------------------------------pmcfg_se_a.lf_gain_ol---
-//
-#define ma_pmcfg_se_a__lf_gain_ol__a 21
-#define ma_pmcfg_se_a__lf_gain_ol__len 1
-#define ma_pmcfg_se_a__lf_gain_ol__mask 0x01
-#define ma_pmcfg_se_a__lf_gain_ol__shift 0x00
-#define ma_pmcfg_se_a__lf_gain_ol__reset 0x01
-//-----------------------------------------------------pmcfg_se_b.lf_gain_ol---
-//
-#define ma_pmcfg_se_b__lf_gain_ol__a 22
-#define ma_pmcfg_se_b__index 12
-#define ma_pmcfg_se_b__lf_gain_ol__len 1
-#define ma_pmcfg_se_b__lf_gain_ol__mask 0x01
-#define ma_pmcfg_se_b__lf_gain_ol__shift 0x00
-#define ma_pmcfg_se_b__lf_gain_ol__reset 0x00
-//--------------------------------------------------------pmcfg_se_b.freqdiv---
-//
-#define ma_pmcfg_se_b__freqdiv__a 22
-#define ma_pmcfg_se_b__freqdiv__len 2
-#define ma_pmcfg_se_b__freqdiv__mask 0x06
-#define ma_pmcfg_se_b__freqdiv__shift 0x01
-#define ma_pmcfg_se_b__freqdiv__reset 0x01
-//--------------------------------------------------------pmcfg_se_b.modtype---
-//
-#define ma_pmcfg_se_b__modtype__a 22
-#define ma_pmcfg_se_b__modtype__len 2
-#define ma_pmcfg_se_b__modtype__mask 0x18
-#define ma_pmcfg_se_b__modtype__shift 0x03
-#define ma_pmcfg_se_b__modtype__reset 0x01
-//----------------------------------------------------------balwaitcount_pm1---
-// pm1 balancing period.
-#define ma_balwaitcount_pm1__a 23
-#define ma_balwaitcount_pm1__index 13
-#define ma_balwaitcount_pm1__len 8
-#define ma_balwaitcount_pm1__mask 0xff
-#define ma_balwaitcount_pm1__shift 0x00
-#define ma_balwaitcount_pm1__reset 0x14
-//----------------------------------------------------------balwaitcount_pm2---
-// pm2 balancing period.
-#define ma_balwaitcount_pm2__a 24
-#define ma_balwaitcount_pm2__index 13
-#define ma_balwaitcount_pm2__len 8
-#define ma_balwaitcount_pm2__mask 0xff
-#define ma_balwaitcount_pm2__shift 0x00
-#define ma_balwaitcount_pm2__reset 0x14
-//----------------------------------------------------------balwaitcount_pm3---
-// pm3 balancing period.
-#define ma_balwaitcount_pm3__a 25
-#define ma_balwaitcount_pm3__index 14
-#define ma_balwaitcount_pm3__len 8
-#define ma_balwaitcount_pm3__mask 0xff
-#define ma_balwaitcount_pm3__shift 0x00
-#define ma_balwaitcount_pm3__reset 0x1a
-//-------------------------------------------------------------usespread_pm1---
-// pm1 pwm spread-spectrum mode on/off.
-#define ma_usespread_pm1__a 26
-#define ma_usespread_pm1__len 1
-#define ma_usespread_pm1__mask 0x40
-#define ma_usespread_pm1__shift 0x06
-#define ma_usespread_pm1__reset 0x00
-//---------------------------------------------------------------dtsteps_pm1---
-// pm1 dead time setting [10ns steps].
-#define ma_dtsteps_pm1__a 26
-#define ma_dtsteps_pm1__len 3
-#define ma_dtsteps_pm1__mask 0x38
-#define ma_dtsteps_pm1__shift 0x03
-#define ma_dtsteps_pm1__reset 0x04
-//---------------------------------------------------------------baltype_pm1---
-// pm1 balancing sensor scheme.
-#define ma_baltype_pm1__a 26
-#define ma_baltype_pm1__len 3
-#define ma_baltype_pm1__mask 0x07
-#define ma_baltype_pm1__shift 0x00
-#define ma_baltype_pm1__reset 0x00
-//-------------------------------------------------------------usespread_pm2---
-// pm2 pwm spread-spectrum mode on/off.
-#define ma_usespread_pm2__a 27
-#define ma_usespread_pm2__len 1
-#define ma_usespread_pm2__mask 0x40
-#define ma_usespread_pm2__shift 0x06
-#define ma_usespread_pm2__reset 0x00
-//---------------------------------------------------------------dtsteps_pm2---
-// pm2 dead time setting [10ns steps].
-#define ma_dtsteps_pm2__a 27
-#define ma_dtsteps_pm2__len 3
-#define ma_dtsteps_pm2__mask 0x38
-#define ma_dtsteps_pm2__shift 0x03
-#define ma_dtsteps_pm2__reset 0x03
-//---------------------------------------------------------------baltype_pm2---
-// pm2 balancing sensor scheme.
-#define ma_baltype_pm2__a 27
-#define ma_baltype_pm2__len 3
-#define ma_baltype_pm2__mask 0x07
-#define ma_baltype_pm2__shift 0x00
-#define ma_baltype_pm2__reset 0x01
-//-------------------------------------------------------------usespread_pm3---
-// pm3 pwm spread-spectrum mode on/off.
-#define ma_usespread_pm3__a 28
-#define ma_usespread_pm3__len 1
-#define ma_usespread_pm3__mask 0x40
-#define ma_usespread_pm3__shift 0x06
-#define ma_usespread_pm3__reset 0x00
-//---------------------------------------------------------------dtsteps_pm3---
-// pm3 dead time setting [10ns steps].
-#define ma_dtsteps_pm3__a 28
-#define ma_dtsteps_pm3__len 3
-#define ma_dtsteps_pm3__mask 0x38
-#define ma_dtsteps_pm3__shift 0x03
-#define ma_dtsteps_pm3__reset 0x01
-//---------------------------------------------------------------baltype_pm3---
-// pm3 balancing sensor scheme.
-#define ma_baltype_pm3__a 28
-#define ma_baltype_pm3__len 3
-#define ma_baltype_pm3__mask 0x07
-#define ma_baltype_pm3__shift 0x00
-#define ma_baltype_pm3__reset 0x03
-//-----------------------------------------------------------------pmprofile---
-// pm profile select. valid presets: 0-1-2-3-4. 5=> custom profile.
-#define ma_pmprofile__a 29
-#define ma_pmprofile__len 3
-#define ma_pmprofile__mask 0x07
-#define ma_pmprofile__shift 0x00
-#define ma_pmprofile__reset 0x00
-//-------------------------------------------------------------------pm3_man---
-// custom profile pm3 contents. 0=>a,  1=>b,  2=>c,  3=>d
-#define ma_pm3_man__a 30
-#define ma_pm3_man__len 2
-#define ma_pm3_man__mask 0x30
-#define ma_pm3_man__shift 0x04
-#define ma_pm3_man__reset 0x02
-//-------------------------------------------------------------------pm2_man---
-// custom profile pm2 contents. 0=>a,  1=>b,  2=>c,  3=>d
-#define ma_pm2_man__a 30
-#define ma_pm2_man__len 2
-#define ma_pm2_man__mask 0x0c
-#define ma_pm2_man__shift 0x02
-#define ma_pm2_man__reset 0x03
-//-------------------------------------------------------------------pm1_man---
-// custom profile pm1 contents. 0=>a,  1=>b,  2=>c,  3=>d
-#define ma_pm1_man__a 30
-#define ma_pm1_man__len 2
-#define ma_pm1_man__mask 0x03
-#define ma_pm1_man__shift 0x00
-#define ma_pm1_man__reset 0x03
-//-----------------------------------------------------------ocp_latch_clear---
-// low-high clears current ocp latched condition.
-#define ma_ocp_latch_clear__a 32
-#define ma_ocp_latch_clear__len 1
-#define ma_ocp_latch_clear__mask 0x80
-#define ma_ocp_latch_clear__shift 0x07
-#define ma_ocp_latch_clear__reset 0x00
-//-------------------------------------------------------------audio_in_mode---
-// audio input mode; 0-1-2-3-4-5
-#define ma_audio_in_mode__a 37
-#define ma_audio_in_mode__len 3
-#define ma_audio_in_mode__mask 0xe0
-#define ma_audio_in_mode__shift 0x05
-#define ma_audio_in_mode__reset 0x00
-//-----------------------------------------------------------------eh_dcshdn---
-// high to enable dc protection
-#define ma_eh_dcshdn__a 38
-#define ma_eh_dcshdn__len 1
-#define ma_eh_dcshdn__mask 0x04
-#define ma_eh_dcshdn__shift 0x02
-#define ma_eh_dcshdn__reset 0x01
-//---------------------------------------------------------audio_in_mode_ext---
-// if set,  audio_in_mode is controlled from audio_in_mode register. if not set
-//audio_in_mode is set from fuse bank setting
-#define ma_audio_in_mode_ext__a 39
-#define ma_audio_in_mode_ext__len 1
-#define ma_audio_in_mode_ext__mask 0x20
-#define ma_audio_in_mode_ext__shift 0x05
-#define ma_audio_in_mode_ext__reset 0x00
-//------------------------------------------------------------------eh_clear---
-// flip to clear error registers
-#define ma_eh_clear__a 45
-#define ma_eh_clear__len 1
-#define ma_eh_clear__mask 0x04
-#define ma_eh_clear__shift 0x02
-#define ma_eh_clear__reset 0x00
-//----------------------------------------------------------thermal_compr_en---
-// enable otw-contr.  input compression?
-#define ma_thermal_compr_en__a 45
-#define ma_thermal_compr_en__len 1
-#define ma_thermal_compr_en__mask 0x20
-#define ma_thermal_compr_en__shift 0x05
-#define ma_thermal_compr_en__reset 0x01
-//---------------------------------------------------------------system_mute---
-// 1 = mute system,  0 = normal operation
-#define ma_system_mute__a 45
-#define ma_system_mute__len 1
-#define ma_system_mute__mask 0x40
-#define ma_system_mute__shift 0x06
-#define ma_system_mute__reset 0x00
-//------------------------------------------------------thermal_compr_max_db---
-// audio limiter max thermal reduction
-#define ma_thermal_compr_max_db__a 46
-#define ma_thermal_compr_max_db__len 3
-#define ma_thermal_compr_max_db__mask 0x07
-#define ma_thermal_compr_max_db__shift 0x00
-#define ma_thermal_compr_max_db__reset 0x04
-//---------------------------------------------------------audio_proc_enable---
-// enable audio proc,  bypass if not enabled
-#define ma_audio_proc_enable__a 53
-#define ma_audio_proc_enable__len 1
-#define ma_audio_proc_enable__mask 0x08
-#define ma_audio_proc_enable__shift 0x03
-#define ma_audio_proc_enable__reset 0x00
-//--------------------------------------------------------audio_proc_release---
-// 00:slow,  01:normal,  10:fast
-#define ma_audio_proc_release__a 53
-#define ma_audio_proc_release__len 2
-#define ma_audio_proc_release__mask 0x30
-#define ma_audio_proc_release__shift 0x04
-#define ma_audio_proc_release__reset 0x00
-//---------------------------------------------------------audio_proc_attack---
-// 00:slow,  01:normal,  10:fast
-#define ma_audio_proc_attack__a 53
-#define ma_audio_proc_attack__len 2
-#define ma_audio_proc_attack__mask 0xc0
-#define ma_audio_proc_attack__shift 0x06
-#define ma_audio_proc_attack__reset 0x00
-//----------------------------------------------------------------i2s_format---
-// i2s basic data format,  000 = std. i2s,  001 = left justified (default)
-#define ma_i2s_format__a 53
-#define ma_i2s_format__len 3
-#define ma_i2s_format__mask 0x07
-#define ma_i2s_format__shift 0x00
-#define ma_i2s_format__reset 0x01
-//--------------------------------------------------audio_proc_limiterenable---
-// 1: enable limiter,  0: disable limiter
-#define ma_audio_proc_limiterenable__a 54
-#define ma_audio_proc_limiterenable__len 1
-#define ma_audio_proc_limiterenable__mask 0x40
-#define ma_audio_proc_limiterenable__shift 0x06
-#define ma_audio_proc_limiterenable__reset 0x00
-//-----------------------------------------------------------audio_proc_mute---
-// 1: mute,  0: unmute
-#define ma_audio_proc_mute__a 54
-#define ma_audio_proc_mute__len 1
-#define ma_audio_proc_mute__mask 0x80
-#define ma_audio_proc_mute__shift 0x07
-#define ma_audio_proc_mute__reset 0x00
-//---------------------------------------------------------------i2s_sck_pol---
-// i2s sck polarity cfg. 0 = rising edge data change
-#define ma_i2s_sck_pol__a 54
-#define ma_i2s_sck_pol__len 1
-#define ma_i2s_sck_pol__mask 0x01
-#define ma_i2s_sck_pol__shift 0x00
-#define ma_i2s_sck_pol__reset 0x01
-//-------------------------------------------------------------i2s_framesize---
-// i2s word length. 00 = 32bit,  01 = 24bit
-#define ma_i2s_framesize__a 54
-#define ma_i2s_framesize__len 2
-#define ma_i2s_framesize__mask 0x18
-#define ma_i2s_framesize__shift 0x03
-#define ma_i2s_framesize__reset 0x00
-//----------------------------------------------------------------i2s_ws_pol---
-// i2s ws polarity. 0 = low first
-#define ma_i2s_ws_pol__a 54
-#define ma_i2s_ws_pol__len 1
-#define ma_i2s_ws_pol__mask 0x02
-#define ma_i2s_ws_pol__shift 0x01
-#define ma_i2s_ws_pol__reset 0x00
-//-----------------------------------------------------------------i2s_order---
-// i2s word bit order. 0 = msb first
-#define ma_i2s_order__a 54
-#define ma_i2s_order__len 1
-#define ma_i2s_order__mask 0x04
-#define ma_i2s_order__shift 0x02
-#define ma_i2s_order__reset 0x00
-//------------------------------------------------------------i2s_rightfirst---
-// i2s l/r word order; 0 = left first
-#define ma_i2s_rightfirst__a 54
-#define ma_i2s_rightfirst__len 1
-#define ma_i2s_rightfirst__mask 0x20
-#define ma_i2s_rightfirst__shift 0x05
-#define ma_i2s_rightfirst__reset 0x00
-//-------------------------------------------------------------vol_db_master---
-// master volume db
-#define ma_vol_db_master__a 64
-#define ma_vol_db_master__len 8
-#define ma_vol_db_master__mask 0xff
-#define ma_vol_db_master__shift 0x00
-#define ma_vol_db_master__reset 0x18
-//------------------------------------------------------------vol_lsb_master---
-// master volume lsb 1/4 steps
-#define ma_vol_lsb_master__a 65
-#define ma_vol_lsb_master__len 2
-#define ma_vol_lsb_master__mask 0x03
-#define ma_vol_lsb_master__shift 0x00
-#define ma_vol_lsb_master__reset 0x00
-//----------------------------------------------------------------vol_db_ch0---
-// volume channel 0
-#define ma_vol_db_ch0__a 66
-#define ma_vol_db_ch0__len 8
-#define ma_vol_db_ch0__mask 0xff
-#define ma_vol_db_ch0__shift 0x00
-#define ma_vol_db_ch0__reset 0x18
-//----------------------------------------------------------------vol_db_ch1---
-// volume channel 1
-#define ma_vol_db_ch1__a 67
-#define ma_vol_db_ch1__len 8
-#define ma_vol_db_ch1__mask 0xff
-#define ma_vol_db_ch1__shift 0x00
-#define ma_vol_db_ch1__reset 0x18
-//----------------------------------------------------------------vol_db_ch2---
-// volume channel 2
-#define ma_vol_db_ch2__a 68
-#define ma_vol_db_ch2__len 8
-#define ma_vol_db_ch2__mask 0xff
-#define ma_vol_db_ch2__shift 0x00
-#define ma_vol_db_ch2__reset 0x18
-//----------------------------------------------------------------vol_db_ch3---
-// volume channel 3
-#define ma_vol_db_ch3__a 69
-#define ma_vol_db_ch3__len 8
-#define ma_vol_db_ch3__mask 0xff
-#define ma_vol_db_ch3__shift 0x00
-#define ma_vol_db_ch3__reset 0x18
-//---------------------------------------------------------------vol_lsb_ch0---
-// volume channel 1 - 1/4 steps
-#define ma_vol_lsb_ch0__a 70
-#define ma_vol_lsb_ch0__len 2
-#define ma_vol_lsb_ch0__mask 0x03
-#define ma_vol_lsb_ch0__shift 0x00
-#define ma_vol_lsb_ch0__reset 0x00
-//---------------------------------------------------------------vol_lsb_ch1---
-// volume channel 3 - 1/4 steps
-#define ma_vol_lsb_ch1__a 70
-#define ma_vol_lsb_ch1__len 2
-#define ma_vol_lsb_ch1__mask 0x0c
-#define ma_vol_lsb_ch1__shift 0x02
-#define ma_vol_lsb_ch1__reset 0x00
-//---------------------------------------------------------------vol_lsb_ch2---
-// volume channel 2 - 1/4 steps
-#define ma_vol_lsb_ch2__a 70
-#define ma_vol_lsb_ch2__len 2
-#define ma_vol_lsb_ch2__mask 0x30
-#define ma_vol_lsb_ch2__shift 0x04
-#define ma_vol_lsb_ch2__reset 0x00
-//---------------------------------------------------------------vol_lsb_ch3---
-// volume channel 3 - 1/4 steps
-#define ma_vol_lsb_ch3__a 70
-#define ma_vol_lsb_ch3__len 2
-#define ma_vol_lsb_ch3__mask 0xc0
-#define ma_vol_lsb_ch3__shift 0x06
-#define ma_vol_lsb_ch3__reset 0x00
-//----------------------------------------------------------------thr_db_ch0---
-// thr_db channel 0
-#define ma_thr_db_ch0__a 71
-#define ma_thr_db_ch0__len 8
-#define ma_thr_db_ch0__mask 0xff
-#define ma_thr_db_ch0__shift 0x00
-#define ma_thr_db_ch0__reset 0x18
-//----------------------------------------------------------------thr_db_ch1---
-// thr db ch1
-#define ma_thr_db_ch1__a 72
-#define ma_thr_db_ch1__len 8
-#define ma_thr_db_ch1__mask 0xff
-#define ma_thr_db_ch1__shift 0x00
-#define ma_thr_db_ch1__reset 0x18
-//----------------------------------------------------------------thr_db_ch2---
-// thr db ch2
-#define ma_thr_db_ch2__a 73
-#define ma_thr_db_ch2__len 8
-#define ma_thr_db_ch2__mask 0xff
-#define ma_thr_db_ch2__shift 0x00
-#define ma_thr_db_ch2__reset 0x18
-//----------------------------------------------------------------thr_db_ch3---
-// threshold db ch3
-#define ma_thr_db_ch3__a 74
-#define ma_thr_db_ch3__len 8
-#define ma_thr_db_ch3__mask 0xff
-#define ma_thr_db_ch3__shift 0x00
-#define ma_thr_db_ch3__reset 0x18
-//---------------------------------------------------------------thr_lsb_ch0---
-// thr lsb ch0
-#define ma_thr_lsb_ch0__a 75
-#define ma_thr_lsb_ch0__len 2
-#define ma_thr_lsb_ch0__mask 0x03
-#define ma_thr_lsb_ch0__shift 0x00
-#define ma_thr_lsb_ch0__reset 0x00
-//---------------------------------------------------------------thr_lsb_ch1---
-// thr lsb ch1
-#define ma_thr_lsb_ch1__a 75
-#define ma_thr_lsb_ch1__len 2
-#define ma_thr_lsb_ch1__mask 0x0c
-#define ma_thr_lsb_ch1__shift 0x02
-#define ma_thr_lsb_ch1__reset 0x00
-//---------------------------------------------------------------thr_lsb_ch2---
-// thr lsb ch2 1/4 db step
-#define ma_thr_lsb_ch2__a 75
-#define ma_thr_lsb_ch2__len 2
-#define ma_thr_lsb_ch2__mask 0x30
-#define ma_thr_lsb_ch2__shift 0x04
-#define ma_thr_lsb_ch2__reset 0x00
-//---------------------------------------------------------------thr_lsb_ch3---
-// threshold lsb ch3
-#define ma_thr_lsb_ch3__a 75
-#define ma_thr_lsb_ch3__len 2
-#define ma_thr_lsb_ch3__mask 0xc0
-#define ma_thr_lsb_ch3__shift 0x06
-#define ma_thr_lsb_ch3__reset 0x00
-//-----------------------------------------------------------dcu_mon0.pm_mon---
-// power mode monitor channel 0
-#define ma_dcu_mon0__pm_mon__a 96
-#define ma_dcu_mon0__pm_mon__len 2
-#define ma_dcu_mon0__pm_mon__mask 0x03
-#define ma_dcu_mon0__pm_mon__shift 0x00
-#define ma_dcu_mon0__pm_mon__reset 0x00
-//-----------------------------------------------------dcu_mon0.freqmode_mon---
-// frequence mode monitor channel 0
-#define ma_dcu_mon0__freqmode_mon__a 96
-#define ma_dcu_mon0__freqmode_mon__len 3
-#define ma_dcu_mon0__freqmode_mon__mask 0x70
-#define ma_dcu_mon0__freqmode_mon__shift 0x04
-#define ma_dcu_mon0__freqmode_mon__reset 0x00
-//-------------------------------------------------------dcu_mon0.pps_passed---
-// dcu0 pps completion indicator
-#define ma_dcu_mon0__pps_passed__a 96
-#define ma_dcu_mon0__pps_passed__len 1
-#define ma_dcu_mon0__pps_passed__mask 0x80
-#define ma_dcu_mon0__pps_passed__shift 0x07
-#define ma_dcu_mon0__pps_passed__reset 0x00
-//----------------------------------------------------------dcu_mon0.ocp_mon---
-// ocp monitor channel 0
-#define ma_dcu_mon0__ocp_mon__a 97
-#define ma_dcu_mon0__ocp_mon__len 1
-#define ma_dcu_mon0__ocp_mon__mask 0x01
-#define ma_dcu_mon0__ocp_mon__shift 0x00
-#define ma_dcu_mon0__ocp_mon__reset 0x00
-//--------------------------------------------------------dcu_mon0.vcfly1_ok---
-// cfly1 protection monitor channel 0.
-#define ma_dcu_mon0__vcfly1_ok__a 97
-#define ma_dcu_mon0__vcfly1_ok__len 1
-#define ma_dcu_mon0__vcfly1_ok__mask 0x02
-#define ma_dcu_mon0__vcfly1_ok__shift 0x01
-#define ma_dcu_mon0__vcfly1_ok__reset 0x00
-//--------------------------------------------------------dcu_mon0.vcfly2_ok---
-// cfly2 protection monitor channel 0.
-#define ma_dcu_mon0__vcfly2_ok__a 97
-#define ma_dcu_mon0__vcfly2_ok__len 1
-#define ma_dcu_mon0__vcfly2_ok__mask 0x04
-#define ma_dcu_mon0__vcfly2_ok__shift 0x02
-#define ma_dcu_mon0__vcfly2_ok__reset 0x00
-//----------------------------------------------------------dcu_mon0.pvdd_ok---
-// dcu0 pvdd monitor
-#define ma_dcu_mon0__pvdd_ok__a 97
-#define ma_dcu_mon0__pvdd_ok__len 1
-#define ma_dcu_mon0__pvdd_ok__mask 0x08
-#define ma_dcu_mon0__pvdd_ok__shift 0x03
-#define ma_dcu_mon0__pvdd_ok__reset 0x00
-//-----------------------------------------------------------dcu_mon0.vdd_ok---
-// dcu0 vdd monitor
-#define ma_dcu_mon0__vdd_ok__a 97
-#define ma_dcu_mon0__vdd_ok__len 1
-#define ma_dcu_mon0__vdd_ok__mask 0x10
-#define ma_dcu_mon0__vdd_ok__shift 0x04
-#define ma_dcu_mon0__vdd_ok__reset 0x00
-//-------------------------------------------------------------dcu_mon0.mute---
-// dcu0 mute monitor
-#define ma_dcu_mon0__mute__a 97
-#define ma_dcu_mon0__mute__len 1
-#define ma_dcu_mon0__mute__mask 0x20
-#define ma_dcu_mon0__mute__shift 0x05
-#define ma_dcu_mon0__mute__reset 0x00
-//------------------------------------------------------------dcu_mon0.m_mon---
-// m sense monitor channel 0
-#define ma_dcu_mon0__m_mon__a 98
-#define ma_dcu_mon0__m_mon__len 8
-#define ma_dcu_mon0__m_mon__mask 0xff
-#define ma_dcu_mon0__m_mon__shift 0x00
-#define ma_dcu_mon0__m_mon__reset 0x00
-//-----------------------------------------------------------dcu_mon1.pm_mon---
-// power mode monitor channel 1
-#define ma_dcu_mon1__pm_mon__a 100
-#define ma_dcu_mon1__pm_mon__len 2
-#define ma_dcu_mon1__pm_mon__mask 0x03
-#define ma_dcu_mon1__pm_mon__shift 0x00
-#define ma_dcu_mon1__pm_mon__reset 0x00
-//-----------------------------------------------------dcu_mon1.freqmode_mon---
-// frequence mode monitor channel 1
-#define ma_dcu_mon1__freqmode_mon__a 100
-#define ma_dcu_mon1__freqmode_mon__len 3
-#define ma_dcu_mon1__freqmode_mon__mask 0x70
-#define ma_dcu_mon1__freqmode_mon__shift 0x04
-#define ma_dcu_mon1__freqmode_mon__reset 0x00
-//-------------------------------------------------------dcu_mon1.pps_passed---
-// dcu1 pps completion indicator
-#define ma_dcu_mon1__pps_passed__a 100
-#define ma_dcu_mon1__pps_passed__len 1
-#define ma_dcu_mon1__pps_passed__mask 0x80
-#define ma_dcu_mon1__pps_passed__shift 0x07
-#define ma_dcu_mon1__pps_passed__reset 0x00
-//----------------------------------------------------------dcu_mon1.ocp_mon---
-// ocp monitor channel 1
-#define ma_dcu_mon1__ocp_mon__a 101
-#define ma_dcu_mon1__ocp_mon__len 1
-#define ma_dcu_mon1__ocp_mon__mask 0x01
-#define ma_dcu_mon1__ocp_mon__shift 0x00
-#define ma_dcu_mon1__ocp_mon__reset 0x00
-//--------------------------------------------------------dcu_mon1.vcfly1_ok---
-// cfly1 protcetion monitor channel 1
-#define ma_dcu_mon1__vcfly1_ok__a 101
-#define ma_dcu_mon1__vcfly1_ok__len 1
-#define ma_dcu_mon1__vcfly1_ok__mask 0x02
-#define ma_dcu_mon1__vcfly1_ok__shift 0x01
-#define ma_dcu_mon1__vcfly1_ok__reset 0x00
-//--------------------------------------------------------dcu_mon1.vcfly2_ok---
-// cfly2 protection monitor channel 1
-#define ma_dcu_mon1__vcfly2_ok__a 101
-#define ma_dcu_mon1__vcfly2_ok__len 1
-#define ma_dcu_mon1__vcfly2_ok__mask 0x04
-#define ma_dcu_mon1__vcfly2_ok__shift 0x02
-#define ma_dcu_mon1__vcfly2_ok__reset 0x00
-//----------------------------------------------------------dcu_mon1.pvdd_ok---
-// dcu1 pvdd monitor
-#define ma_dcu_mon1__pvdd_ok__a 101
-#define ma_dcu_mon1__pvdd_ok__len 1
-#define ma_dcu_mon1__pvdd_ok__mask 0x08
-#define ma_dcu_mon1__pvdd_ok__shift 0x03
-#define ma_dcu_mon1__pvdd_ok__reset 0x00
-//-----------------------------------------------------------dcu_mon1.vdd_ok---
-// dcu1 vdd monitor
-#define ma_dcu_mon1__vdd_ok__a 101
-#define ma_dcu_mon1__vdd_ok__len 1
-#define ma_dcu_mon1__vdd_ok__mask 0x10
-#define ma_dcu_mon1__vdd_ok__shift 0x04
-#define ma_dcu_mon1__vdd_ok__reset 0x00
-//-------------------------------------------------------------dcu_mon1.mute---
-// dcu1 mute monitor
-#define ma_dcu_mon1__mute__a 101
-#define ma_dcu_mon1__mute__len 1
-#define ma_dcu_mon1__mute__mask 0x20
-#define ma_dcu_mon1__mute__shift 0x05
-#define ma_dcu_mon1__mute__reset 0x00
-//------------------------------------------------------------dcu_mon1.m_mon---
-// m sense monitor channel 1
-#define ma_dcu_mon1__m_mon__a 102
-#define ma_dcu_mon1__m_mon__len 8
-#define ma_dcu_mon1__m_mon__mask 0xff
-#define ma_dcu_mon1__m_mon__shift 0x00
-#define ma_dcu_mon1__m_mon__reset 0x00
-//--------------------------------------------------------dcu_mon0.sw_enable---
-// dcu0 switch enable monitor
-#define ma_dcu_mon0__sw_enable__a 104
-#define ma_dcu_mon0__sw_enable__len 1
-#define ma_dcu_mon0__sw_enable__mask 0x40
-#define ma_dcu_mon0__sw_enable__shift 0x06
-#define ma_dcu_mon0__sw_enable__reset 0x00
-//--------------------------------------------------------dcu_mon1.sw_enable---
-// dcu1 switch enable monitor
-#define ma_dcu_mon1__sw_enable__a 104
-#define ma_dcu_mon1__sw_enable__len 1
-#define ma_dcu_mon1__sw_enable__mask 0x80
-#define ma_dcu_mon1__sw_enable__shift 0x07
-#define ma_dcu_mon1__sw_enable__reset 0x00
-//------------------------------------------------------------hvboot0_ok_mon---
-// hvboot0_ok for test/debug
-#define ma_hvboot0_ok_mon__a 105
-#define ma_hvboot0_ok_mon__len 1
-#define ma_hvboot0_ok_mon__mask 0x40
-#define ma_hvboot0_ok_mon__shift 0x06
-#define ma_hvboot0_ok_mon__reset 0x00
-//------------------------------------------------------------hvboot1_ok_mon---
-// hvboot1_ok for test/debug
-#define ma_hvboot1_ok_mon__a 105
-#define ma_hvboot1_ok_mon__len 1
-#define ma_hvboot1_ok_mon__mask 0x80
-#define ma_hvboot1_ok_mon__shift 0x07
-#define ma_hvboot1_ok_mon__reset 0x00
-//-----------------------------------------------------------------error_acc---
-// accumulated errors,  at and after triggering
-#define ma_error_acc__a 109
-#define ma_error_acc__len 8
-#define ma_error_acc__mask 0xff
-#define ma_error_acc__shift 0x00
-#define ma_error_acc__reset 0x00
-//-------------------------------------------------------------i2s_data_rate---
-// detected i2s data rate: 00/01/10 = x1/x2/x4
-#define ma_i2s_data_rate__a 116
-#define ma_i2s_data_rate__len 2
-#define ma_i2s_data_rate__mask 0x03
-#define ma_i2s_data_rate__shift 0x00
-#define ma_i2s_data_rate__reset 0x00
-//---------------------------------------------------------audio_in_mode_mon---
-// audio input mode monitor
-#define ma_audio_in_mode_mon__a 116
-#define ma_audio_in_mode_mon__len 3
-#define ma_audio_in_mode_mon__mask 0x1c
-#define ma_audio_in_mode_mon__shift 0x02
-#define ma_audio_in_mode_mon__reset 0x00
-//------------------------------------------------------------------msel_mon---
-// msel[2:0] monitor register
-#define ma_msel_mon__a 117
-#define ma_msel_mon__len 3
-#define ma_msel_mon__mask 0x07
-#define ma_msel_mon__shift 0x00
-#define ma_msel_mon__reset 0x00
-//---------------------------------------------------------------------error---
-// current error flag monitor reg - for app. ctrl.
-#define ma_error__a 124
-#define ma_error__len 8
-#define ma_error__mask 0xff
-#define ma_error__shift 0x00
-#define ma_error__reset 0x00
-//----------------------------------------------------audio_proc_limiter_mon---
-// b7-b4: channel 3-0 limiter active
-#define ma_audio_proc_limiter_mon__a 126
-#define ma_audio_proc_limiter_mon__len 4
-#define ma_audio_proc_limiter_mon__mask 0xf0
-#define ma_audio_proc_limiter_mon__shift 0x04
-#define ma_audio_proc_limiter_mon__reset 0x00
-//-------------------------------------------------------audio_proc_clip_mon---
-// b3-b0: channel 3-0 clipping monitor
-#define ma_audio_proc_clip_mon__a 126
-#define ma_audio_proc_clip_mon__len 4
-#define ma_audio_proc_clip_mon__mask 0x0f
-#define ma_audio_proc_clip_mon__shift 0x00
-#define ma_audio_proc_clip_mon__reset 0x00
-#endif   /* Tue Nov 14 13:36:42 2017*/
+#define MA_SHIFT_PWR_MODE_SEL 0x04
+#define MA_MSK_PWR_MODE_SEL 0x30
+#define MA_LEN_PWR_MODE_SEL 2
+#define MA_PWR_MODE_1 1
+#define MA_PWR_MODE_2 2
+#define MA_PWR_MODE_3 3
+#define MA_PWR_MODE_MAN 4
+#define MA_PWR_MODE_AUTO 5
+#define MA_PWR_MODE_DEFF 6
+
+//--------------------------------------------------------------- THRESHOLD FOR POWER MODE CHANGES
+#define MA_IND_MTHR_1TO2 2
+#define MA_REG_MTHR_1TO2 0x01
+#define MA_DEF_MTHR_1TO2 0x3C
+#define MA_SHIFT_MTHR_1TO2 0x00
+#define MA_MSK_MTHR_1TO2 0xFF
+#define MA_LEN_MTHR_1TO2 8
+
+#define MA_IND_MTHR_2TO1 2
+#define MA_REG_MTHR_2TO1 0x02 
+#define MA_DEF_MTHR_2TO1 0x32 
+#define MA_SHIFT_MTHR_2TO1 0x00
+#define MA_MSK_MTHR_2TO1 0xFF
+#define MA_LEN_MTHR_2TO1 8
+
+#define MA_IND_MTHR_2TO3 3
+#define MA_REG_MTHR_2TO3 0x03 
+#define MA_DEF_MTHR_2TO3 0x5A 
+#define MA_SHIFT_MTHR_2TO3 0x00
+#define MA_MSK_MTHR_2TO3 0xFF
+#define MA_LEN_MTHR_2TO3 8
+
+#define MA_IND_MTHR_3TO2 4
+#define MA_REG_MTHR_3TO2 0x04 
+#define MA_DEF_MTHR_3TO2 0x50 
+#define MA_SHIFT_MTHR_3TO2 0x00
+#define MA_MSK_MTHR_3TO2 0xFF
+#define MA_LEN_MTHR_3TO2 8
+
+#define MA_MTHR_1TO2 1
+#define MA_MTHR_2TO1 2
+#define MA_MTHR_2TO3 3
+#define MA_MTHR_3TO2 4
+
+//--------------------------------------------------------------- SOFT CLIPPING OND OVECURRENT PTOTECTION
+// SOFT CLIPPING AND OVECURRENT PROTECHTION LATCH
+// HIGH (DEFAULT) TO ENABLE LF INT2+3 CLAMPING ON CLIP
+// HIGH TO USE PERMANENTLY LATCHING LEVEL-2 OCP
+#define MA_IND_LATCH_CLAMP 3
+#define MA_REG_LATCH_CLAMP 0x0A 
+#define MA_DEF_LATCH_CLAMP 0xC 
+#define MA_SHIFT_SOFT_CLAMP 0x07	
+#define MA_MSK_SOFT_CLAMP 0x80
+#define MA_LEN_SOFT_CLAMP 1
+#define MA_SHIFT_OCP_LATCH 0x01 	
+#define MA_MSK_OCP_LATCH 0x02
+#define MA_LEN_OCP_LATCH 1
+#define MA_LATCH_CLAMP 0x00 
+#define MA_CLIPPING_EN 0x1 
+
+//--------------------------------------------------------------- SELECT POWER MODE PROFILE SETTINGS
+// PM PROFILE SELECT. VALID PRESETS: 0-1-2-3-4. 5=> CUSTOM PROFILE.
+#define MA_IND_PM_PROFILE_MODE 4 
+#define MA_REG_PM_PROFILE_MODE 0x1D
+#define MA_DEF_PM_PROFILE_MODE 0x3D
+#define MA_SHIFT_PM_PROFILE_MODE 0x00
+#define MA_MSK_PM_PROFILE_MODE 0x07
+#define MA_LEN_PM_PROFILE_MODE 3
+#define MA_POWER_PROFILE_0 1
+#define MA_POWER_PROFILE_1 2
+#define MA_POWER_PROFILE_2 3
+#define MA_POWER_PROFILE_3 4
+#define MA_POWER_PROFILE_4 5
+
+//--------------------------------------------------------------- POWER MODE PROFILE CONFIGURATION
+// CUSTOM PROFILE PM3 CONTENTS. 0=>A,  1=>B,  2=>C,  3=>D
+#define MA_IND_PM_PROFILE_CONF 5
+#define MA_REG_PM_PROFILE_CONF 0x1E
+#define MA_DEF_PM_PROFILE_CONF 0x2F
+
+#define MA_SHIFT_PM_PROFILE_PM3 0x04
+#define MA_MSK_PM_PROFILE_PM3 0x30
+#define MA_LEN_PM_PROFILE_PM3 2
+
+#define MA_SHIFT_PM_PROFILE_PM2 0x02
+#define MA_MSK_PM_PROFILE_PM2 0x0C
+#define MA_LEN_PM_PROFILE_PM2 2
+
+#define MA_SHIFT_PM_PROFILE_PM1 0x00
+#define MA_MSK_PM_PROFILE_PM1 0x03
+#define MA_LEN_PM_PROFILE_PM1 2
+
+#define	MA_POWER_MODE_1 2
+#define	MA_POWER_MODE_2 3
+#define	MA_POWER_MODE_3 4
+
+#define	MA_POWER_SCHEME_A 0
+#define	MA_POWER_SCHEME_B 1
+#define	MA_POWER_SCHEME_C 2
+#define	MA_POWER_SCHEME_D 3
+#define MA_POWER_SCHEME_CUSTOM 6
+
+//--------------------------------------------------------------- OVER CURRENT PROTECTION LATCH CLEAR
+#define MA_IND_OCP_LATCH_CLEAR 6
+#define MA_REG_OCP_LATCH_CLEAR 0x20 
+#define MA_DEF_OCP_LATCH_CLEAR 0x1F 
+#define MA_SHIFT_OCP_LATCH_CLEAR 0x07
+#define MA_MSK_OCP_LATCH_CLEAR 0x80
+#define MA_LEN_OCP_LATCH_CLEAR 1
+//--------------------------------------------------------------- AUDIO IN MODE
+//HIGH 26 DB GAIN
+//LOW 20 B GAIN
+#define MA_IND_AUDIO_IN_MODE 7
+#define MA_REG_AUDIO_IN_MODE 0x25
+#define MA_DEF_AUDIO_IN_MODE 0x10
+#define MA_SHIFT_AUDIO_IN_MODE 0x05
+#define MA_MSK_AUDIO_IN_MODE 0x60
+#define MA_LEN_AUDIO_IN_MODE 2
+#define MA_AUDIO_IN_MODE_0 0 
+#define MA_AUDIO_IN_MODE_1 1
+#define MA_AUDIO_IN_MODE_DEFF 2
+//--------------------------------------------------------------- ENABLE DC PROTECTION
+#define MA_IND_DC_PROTECTION 8
+#define MA_REG_DC_PROTECTION 0x26 
+#define MA_DEF_DC_PROTECTION 0x05 
+#define MA_SHIFT_DC_PROTECTION 0x02
+#define MA_MSK_DC_PROTECTION 0x04
+#define MA_LEN_DC_PROTECTION 1
+//--------------------------------------------------------------- AUDIO IN MODE OVERWRITE
+// IF SET,  AUDIO_IN_MODE IS CONTROLLED FROM AUDIO_IN_MODE REGISTER. IF NOT SET
+//AUDIO_IN_MODE IS SET FROM FUSE BANK SETTING
+#define MA_IND_AUDIO_IN_OVERWRITE 9
+#define MA_REG_AUDIO_IN_OVERWRITE 0x27
+#define MA_DEF_AUDIO_IN_OVERWRITE 0x08
+#define MA_SHIFT_AUDIO_IN_OVERWRITE 0x05
+#define MA_MSK_AUDI_IN_OVERWRITE 0x20
+#define MA_LEN_AUDI_IN_OVERWRITE 1
+//--------------------------------------------------------------- ERROR HANDLER CLEAR
+#define MA_IND_ERROR_HANDLER 10
+#define MA_REG_ERROR_HANDLER 0x2D
+#define MA_DEF_ERROR_HANDLER 0x30
+#define MA_SHIFT_ERROR_HANDLER 0x02
+#define MA_MSK_ERROR_HANDLER 0x04
+#define MA_LEN_ERROR_HANDLER 1
+//--------------------------------------------------------------- AUDIO PROCESSOR AND WORD FORMAT
+#define MA_IND_PCM_PROC_SET 11
+#define MA_REG_PCM_PROC_SET 0x35
+#define MA_DEF_PCM_PROC_SET 0x01
+// 00:SLOW,  01:NORMAL,  10:FAST
+#define MA_SHIFT_PROC_ATTACK 0x06
+#define MA_MSK_PROC_ATTACK 0xC0
+#define MA_LEN_PROC_ATTACK 2
+// 00:SLOW,  01:NORMAL,  10:FAST
+#define MA_SHIFT_PROC_RELEASE 0x04
+#define MA_MSK_PROC_RELEASE 0x30
+#define MA_LEN_PROC_RELEASE 2
+// ENABLE AUDIO PROC,  BYPASS IF NOT ENABLED
+#define MA_SHIFT_PROC_ENABLE 0x03
+#define MA_MSK_PROC_ENABLE 0x08
+#define MA_LEN_PROC_ENABLE 1
+
+#define MA_SHIFT_PCM_WORD_FORMAT 0x00
+#define MA_MSK_PCM_WORD_FORMAT 0x07
+#define MA_LEN_PCM_WORD_FORMAT 3
+
+#define MA_I2S_STANDART 0
+#define MA_I2S_LEFT 1
+#define MA_I2S_RIGHT_16b 4
+#define MA_I2S_RIGHT_18b 6
+#define MA_I2S_RIGHT_20b 0
+#define MA_I2S_RIGHT_24b 7
+
+#define MA_ATT_REL_FAST 2
+#define MA_ATT_REL_NORMAL 1
+#define MA_ATT_REL_SLOW 0
+
+//---------------------------------------------------------------  I2S CONTROL & MUTE + BYPASS 
+#define MA_IND_I2S_CONFIG 12
+#define MA_REG_I2S_CONFIG 0x36
+#define MA_DEF_I2S_CONFIG 0x01
+// I2S L/R WORD ORDER. 0 = LEFT FIRST
+#define MA_SHIFT_I2S_RIGHT_FIRST 0x05
+#define MA_MSK_I2S_RIGHT_FIRST 0x20
+#define MA_LEN_I2S_RIGHT_FIRST 1
+// I2S WORD LENGTH. 0 = 32BIT,  1 = 24BIT
+#define MA_SHIFT_I2S_FRAME_SIZE 0x03
+#define MA_MSK_I2S_FRAME_SIZE 0x18
+#define MA_LEN_I2S_FRAME_SIZE 2
+// I2S WORD BIT ORDER. 0 = MSB FIRST
+#define MA_SHIFT_I2S_ORDER 0x02
+#define MA_MSK_I2S_ORDER 0x04
+#define MA_LEN_I2S_ORDER 1
+// I2S WS POLARITY. 0 = LOW FIRST
+#define MA_SHIFT_I2S_WS_POL 0x01
+#define MA_MSK_I2S_WS_POL 0x02 
+#define MA_LEN_I2S_WS_POL 1
+// I2S SCK POLARITY CFG. 0 = RISING EDGE DATA CHANGE
+#define MA_SHIFT_I2S_SCK_POL 0x00
+#define MA_MSK_I2S_SCK_POL 0x01 
+#define MA_LEN_I2S_SCK_POL 1 
+// 1 = MUTE
+#define MA_SHIFT_MUTE_EN 0x07
+#define MA_MSK_MUTE_EN 0x80
+#define MA_LEN_MUTE_EN 1
+// 1 = BYPASS
+#define MA_SHIFT_LIMITER_EN 0x06
+#define MA_MSK_LIMITER_EN 0x40
+#define MA_LEN_LIMITER_EN 1
+
+#define I2S_SCK_POL_RISING 0
+#define I2S_SCK_POL_FALLING 1
+
+#define I2S_WS_POL_HIGH 1
+#define I2S_WS_POL_LOW 0
+//--------------------------------------------------------------- MASTER INTEGER VOLUME dB
+#define MA_IND_VOL_DB_MASTER 13
+#define MA_REG_VOL_DB_MASTER 0x40
+#define MA_DEF_VOL_DB_MASTER 0x18
+#define MA_SHIFT_VOL_DB_MASTER 0x00
+#define MA_MSK_VOL_DB_MASTER 0xFF
+#define MA_LEN_VOL_DB_MASTER 8
+//--------------------------------------------------------------- MASTER FRACTION VOLUME dB 1/4
+#define MA_IND_VOL_LSB_MASTER 14
+#define MA_REG_VOL_LSB_MASTER 0x41
+#define MA_DEF_VOL_LSB_MASTER 0x00
+#define MA_SHIFT_VOL_LSB_MASTER 0x00
+#define MA_MSK_VOL_LSB_MASTER 0x03
+#define MA_LEN_VOL_LSB_MASTER 2
+//--------------------------------------------------------------- CH0L INTEGER VOLUME dB
+#define MA_IND_VOL_DB_CH0 15
+#define MA_REG_VOL_DB_CH0 0x42
+#define MA_DEF_VOL_DB_CH0 0x18
+#define MA_SHIFT_VOL_DB_CH0 0x00
+#define MA_MSK_VOL_DB_CH0 0xFF
+#define MA_LEN_VOL_DB_CH0 8
+//--------------------------------------------------------------- CH0R INTEGER VOLUME dB
+#define MA_IND_VOL_DB_CH1 16
+#define MA_REG_VOL_DB_CH1 0x43
+#define MA_DEF_VOL_DB_CH1 0x18
+#define MA_SHIFT_VOL_DB_CH1 0x00
+#define MA_MSK_VOL_DB_CH1 0xFF
+#define MA_LEN_VOL_DB_CH1 8
+//--------------------------------------------------------------- CH1L INTEGER VOLUME dB
+#define MA_IND_VOL_DB_CH2 17
+#define MA_REG_VOL_DB_CH2 0x44
+#define MA_DEF_VOL_DB_CH2 0x18
+#define MA_SHIFT_VOL_DB_CH2 0x00
+#define MA_MSK_VOL_DB_CH2 0xFF
+#define MA_LEN_VOL_DB_CH2 8
+//--------------------------------------------------------------- CH1R INTEGER VOLUME dB
+#define MA_IND_VOL_DB_CH3 18
+#define MA_REG_VOL_DB_CH3 0x45
+#define MA_DEF_VOL_DB_CH3 0x18
+#define MA_SHIFT_VOL_DB_CH3 0x00
+#define MA_MSK_VOL_DB_CH3 0xFF
+#define MA_LEN_VOL_DB_CH3 8
+//--------------------------------------------------------------- CHX FRACTION VOLUME dB 1/4
+#define MA_IND_VOL_LSB_CHX 19
+#define MA_REG_VOL_LSB_CHX 0x46
+#define MA_DEF_VOL_LSB_CHX 0x00
+
+#define MA_SHIFT_VOL_LSB_CH0 0x00
+#define MA_MSK_VOL_LSB_CH0 0x03
+#define MA_LEN_VOL_LSB_CH0 2
+
+#define MA_SHIFT_VOL_LSB_CH1 0x02
+#define MA_MSK_VOL_LSB_CH1 0x0C
+#define MA_LEN_VOL_LSB_CH1 2
+
+#define MA_SHIFT_VOL_LSB_CH2 0x04
+#define MA_MSK_VOL_LSB_CH2 0x30
+#define MA_LEN_VOL_LSB_CH2 2
+
+#define MA_SHIFT_VOL_LSB_CH3 0x06
+#define MA_MSK_VOL_LSB_CH3 0xC0
+#define MA_LEN_VOL_LSB_CH3 2
+//--------------------------------------------------------------- CH0L INTEGER LIMITER THRESHOLD dB
+#define MA_IND_THR_DB_CH0 20
+#define MA_REG_THR_DB_CH0 0x47
+#define MA_DEF_THR_DB_CH0 0x18
+#define MA_SHIFT_THR_DB_CH0 0x00
+#define MA_MSK_THR_DB_CH0 0xFF
+#define MA_LEN_THR_DB_CH0 8
+//--------------------------------------------------------------- CH0R INTEGER LIMITER THRESHOLD dB
+#define MA_IND_THR_DB_CH1 21
+#define MA_REG_THR_DB_CH1 0x48
+#define MA_DEF_THR_DB_CH1 0x18
+#define MA_SHIFT_THR_DB_CH1 0x00
+#define MA_MSK_THR_DB_CH1 0xFF
+#define MA_LEN_THR_DB_CH1 8
+//--------------------------------------------------------------- CH1L INTEGER LIMITER THRESHOLD dB
+#define MA_IND_THR_DB_CH2 22
+#define MA_REG_THR_DB_CH2 0x49
+#define MA_DEF_THR_DB_CH2 0x18
+#define MA_SHIFT_THR_DB_CH2 0x00
+#define MA_MSK_THR_DB_CH2 0xFF
+#define MA_LEN_THR_DB_CH2 8
+//--------------------------------------------------------------- CH1R INTEGER LIMITER THRESHOLD dB
+#define MA_IND_THR_DB_CH3 23
+#define MA_REG_THR_DB_CH3 0x4A
+#define MA_DEF_THR_DB_CH3 0x18
+#define MA_SHIFT_THR_DB_CH3 0x00
+#define MA_MSK_THR_DB_CH3 0xFF
+#define MA_LEN_THR_DB_CH3 8
+//--------------------------------------------------------------- CHX FRACTION LIMITER THRESHOLD dB 1/4
+#define MA_IND_THR_LSB_CHX 24
+#define MA_REG_THR_LSB_CHX 0x4B
+#define MA_DEF_THR_LSB_CHX 0x00
+
+#define MA_SHIFT_THR_LSB_CH0 0x00
+#define MA_MSK_THR_LSB_CH0 0x03
+#define MA_LEN_THR_LSB_CH0 2
+
+#define MA_SHIFT_THR_LSB_CH1 0x02
+#define MA_MSK_THR_LSB_CH1 0x0C
+#define MA_LEN_THR_LSB_CH1 2
+
+#define MA_SHIFT_THR_LSB_CH2 0x04
+#define MA_MSK_THR_LSB_CH2 0x30
+#define MA_LEN_THR_LSB_CH2 2
+
+#define MA_SHIFT_THR_LSB_CH3 0x06
+#define MA_MSK_THR_LSB_CH3 0xC0
+#define MA_LEN_THR_LSB_CH3 2
+
+//--------------------------------------------------------------- POWER MODE AN FREQUENCY MONITOR CHANNEL 0
+#define MA_IND_MON0_FREQ_PM 25
+#define MA_REG_MON0_FREQ_PM 0x60
+#define MA_DEF_MON0_FREQ_PM 0x00
+//MONITOR FREQUNBCY OF CHANNEL 0
+#define MA_SHIFT_MON0_FREQ 0x04 
+#define MA_MSK_MON0_FREQ 0x70
+#define MA_LEN_MON0_FREQ 3
+// MONITOR THE POWER MODE OF CHANNEL 0
+#define MA_SHIFT_MON0_PM 0x00
+#define MA_MSK_MON0_PM 0x03
+#define MA_LEN_MON0_PM 2
+
+//--------------------------------------------------------------- MONITOR CHANNEL 0
+#define MA_IND_MON0 26
+#define MA_REG_MON0 0x61
+#define MA_DEF_MON0 0x00
+// DCU0 MUTE MONITOR
+#define MA_SHIFT_MON0_MUTE 0x05
+#define MA_MSK_MON0_MUTE 0x20
+#define MA_LEN_MON0_MUTE 1
+// DCU0 VDD MONITOR
+#define MA_SHIFT_MON0_VDD_OK 0x04
+#define MA_MSK_MON0_VDD_OK 0x10
+#define MA_LEN_MON0_VDD_OK 1
+// DCU0 PVDD MONITOR
+#define MA_SHIFT_MON0_PVDD_OK 0x03
+#define MA_MSK_MON0_PVDD_OK 0x08
+#define MA_LEN_MON0_PVDD_OK 1
+// CFLY2 PROTECTION MONITOR CHANNEL 0.
+#define MA_SHIFT_MON0VCFLY2_OK 0x02
+#define MA_MSK_MON0VCFLY2_OK 0x04
+#define MA_LEN_MON0VCFLY2_OK 1
+// CFLY1 PROTECTION MONITOR CHANNEL 0.
+#define MA_SHIFT_MON0_VCFPLY1_OK 0x01
+#define MA_MSK_MON0_VCFPLY1_OK 0x02
+#define MA_LEN_MON0_VCFPLY1_OK 1
+// OCP MONITOR CHANNEL 0
+#define MA_SHIFT_MON0_OCP 0x00
+#define MA_MSK_MON0_OCP 0x01
+#define MA_LEN_MON0_OCP 1
+
+//--------------------------------------------------------------- MONITOR CHANNEL 0 MODULATION INDEX
+#define MA_IND_MON0_MODUL 27
+#define MA_REG_MON0_MODUL 0x62
+#define MA_DEF_MON0_MODUL 0x00
+#define MA_SHIFT_MON0_MODUL 0x00
+#define MA_MSK_MON0_MODUL 0xFF
+#define MA_LEN_MON0_MODUL 8
+
+//--------------------------------------------------------------- POWER MODE AN FREQUENCY MONITOR CHANNEL 1
+#define MA_IND_MON1_FREQ_PM 28
+#define MA_REG_MON1_FREQ_PM 0x64
+#define MA_DEF_MON1_FREQ_PM 0x00
+//MONITOR FREQUNBCY OF CHANNEL 1
+#define MA_SHIFT_MON1_FREQ 0x04 
+#define MA_MSK_MON1_FREQ 0x70
+#define MA_LEN_MON1_FREQ 3
+// MONITOR THE POWER MODE OF CHANNEL 1
+#define MA_SHIFT_MON1_PM 0x00
+#define MA_MSK_MON1_PM 0x03
+#define MA_LEN_MON1_PM 2
+//--------------------------------------------------------------- MONITOR CHANNEL 1
+#define MA_IND_MON1 29
+#define MA_REG_MON1 0x65
+#define MA_DEF_MON1 0x00
+// DCU1 MUTE MONITOR
+#define MA_SHIFT_MON1_MUTE 0x05
+#define MA_MSK_MON1_MUTE 0x20
+#define MA_LEN_MON1_MUTE 1
+// DCU1 VDD MONITOR
+#define MA_SHIFT_MON1_VDD_OK 0x04
+#define MA_MSK_MON1_VDD_OK 0x10
+#define MA_LEN_MON1_VDD_OK 1
+// DCU1 PVDD MONITOR
+#define MA_SHIFT_MON1_PVDD_OK 0x03
+#define MA_MSK_MON1_PVDD_OK 0x08
+#define MA_LEN_MON1_PVDD_OK 1
+// CFLY2 PROTECTION MONITOR CHANNEL 1.
+#define MA_SHIFT_MON1VCFLY2_OK 0x02
+#define MA_MSK_MON1VCFLY2_OK 0x04
+#define MA_LEN_MON1VCFLY2_OK 1
+// CFLY1 PROTECTION MONITOR CHANNEL 1.
+#define MA_SHIFT_MON1_VCFPLY1_OK 0x01
+#define MA_MSK_MON1_VCFPLY1_OK 0x02
+#define MA_LEN_MON1_VCFPLY1_OK 1
+// OCP MONITOR CHANNEL 1
+#define MA_SHIFT_MON1_OCP 0x00
+#define MA_MSK_MON1_OCP 0x01
+#define MA_LEN_MON1_OCP 1
+
+//--------------------------------------------------------------- MONITOR CHANNEL 0 MODULATION INDEX
+#define MA_IND_MON_CH1_MODUL 30
+#define MA_REG_MON_CH1_MODUL 0x66
+#define MA_DEF_MON_CH1_MODUL 0x00
+#define MA_SHIFT_MON_CH1_MODUL 0x00
+#define MA_MSK_MON_CH1_MODUL 0xFF
+#define MA_LEN_MON_CH1_MODUL 8
+//--------------------------------------------------------------- ACCUMULATED ERRORS,  AT AND AFTER TRIGGERING
+#define MA_IND_ERRO_ACC 31
+#define MA_REG_ERRO_ACC 0x6D
+#define MA_DEF_ERRO_ACC 0x00
+#define MA_SHIFT_ERRO_ACC 0x00
+#define MA_MSK_ERRO_ACC 0xFF
+#define MA_LEN_ERRO_ACC 8
+
+//--------------------------------------------------------------- MSEL[2:0] MONITOR REGISTER
+#define MA_IND_MON_MSEL 32
+#define MA_REG_MON_MSEL 0x75
+#define MA_DEF_MON_MSEL 0x00
+#define MA_SHIFT_MON_MSEL 0x00
+#define MA_MSK_MON_MSEL 0x07
+#define MA_LEN_MON_MSEL 3
+//--------------------------------------------------------------- CURRENT ERROR FLAG MONITOR REG - FOR APP. CTRL.
+#define MA_IND_ERROR 33
+#define MA_REG_ERROR 0x7C
+#define MA_DEF_ERROR 0x00
+#define MA_SHIFT_ERROR 0x00
+#define MA_MSK_ERROR 0xFF
+#define MA_LEN_ERROR 8
+//---------------------------------------------------------------
+#define MA_IND_MON_LIMIT_CLIP 34
+#define MA_REG_MON_LIMIT_CLIP 0x7E
+#define MA_DEF_MON_LIMIT_CLIP 0x00 
+
+#define MA_SHIFT_MON_LIMIT 0x04
+#define MA_MSK_MON_LIMIT 0xF0
+#define MA_LEN_MON_LIMIT 4
+
+#define MA_SHIFT_MON_CLIP 0x00
+#define MA_MSK_MON_CLIP 0x0F
+#define MA_LEN_MON_CLIP 4
 
 
+#define REGAMOUNT MA_IND_MON_LIMIT_CLIP
+#define READONLY 10
+
+#define MA_VOL_MAX 2400
+#define MA_VOL_MIN -14400
+#define MA_VOL_MAX_DB 24
+#define MA_VOL_MIN_DB -144
 
 
-#define MA12070_VOL_MAX 2400
-#define MA12070_VOL_MIN -14400
-#define MA12070_VOL_MAX_DB 24
-#define MA12070_VOL_MIN_DB -144
+void 	ma_setVolumeMasterDb(int16_t volume); 
+uint8_t ma_init(void); 
+uint8_t ma_configure(uint8_t Default);
+int16_t ma_getVolumeDb(void); 
+void 	ma_getVolume(void); 
 
-#define MA12070_REG_POWER_MODE_CONTROL 0x00 
-#define MA12070_DEF_POWER_MODE_CONTROL 0x3D 
-#define MA12070_POWER_MODE_1 1
-#define MA12070_POWER_MODE_2 2
-#define MA12070_POWER_MODE_3 3
-#define MA12070_POWER_MODE_MAN 4
-#define MA12070_POWER_MODE_AUTO 5
-#define MA12070_POWER_MODE_DEFF 6	
+/*Select manual Power Mode control. Default
+ *the device will operate in automatic Power
+ *Mode control. 
+ *This bit can be set to 1 if manual Power Mode control is required.
+ */
+void ma_setPowerMode(uint8_t mode);
 
-#define MA12070_REG_MTHR_1TO2 0x01 
-#define MA12070_DEF_MTHR_1TO2 0x3C 
+/*
+ *Threshold value for PM1=>PM2 change. This
+ *value will set the threshold for when automatic
+ *Power Mode changes from PMX to PMX. It can
+ *be programmed from 0 - 255; 
+ *this maps to 0 output power – max output power
+ */
+void ma_setTreshold(uint8_t transition, uint8_t value); 
 
-#define MA12070_REG_MTHR_2TO1 0x02 
-#define MA12070_DEF_MTHR_2TO1 0x32 
+/*soft-clipping. High to enable. Low to disable
+ */
+void ma_setClipping(uint8_t enable);
 
-#define MA12070_REG_MTHR_2TO3 0x03 
-#define MA12070_DEF_MTHR_2TO3 0x5A 
+/*High to use permanently latching OCP. 
+ */
+void ma_setOcp(uint8_t enable);
 
-#define MA12070_REG_MTHR_3TO2 0x04 
-#define MA12070_DEF_MTHR_3TO2 0x50 
-
-#define MA12070_REG_SOFT_CILLIPNG 0x0A 
-#define MA12070_CLIPPING_EN 0x1 
-#define MA12070_CLIPPING_LATCH 0x00 
-#define MA12070_DEF_SOFT_CILLIPNG 0xC 
-
-#define MA12070_REG_PM_PROFILE_MODE 0x1D
-#define MA12070_POWER_PROFILE_0 1
-#define MA12070_POWER_PROFILE_1 2
-#define MA12070_POWER_PROFILE_2 3
-#define MA12070_POWER_PROFILE_3 4
-#define MA12070_POWER_PROFILE_4 5
-#define MA12070_DEF_PM_PROFILE_MODE 0x3D
-
-#define MA12070_REG_PM_PROFILE_CONF 0x1E
-#define	MA12070_POWER_SCHEME_CUSTOM 1 
-#define	MA12070_POWER_SCHEME_A 2
-#define	MA12070_POWER_SCHEME_B 3
-#define	MA12070_POWER_SCHEME_C 4
-#define	MA12070_POWER_SCHEME_D 5
-
-#define MA12070_DEF_PM_PROFILE_CONF 0x2F
-
-#define MA12070_REG_OVER_CURR_PROT 0x20 
-#define MA12070_DEF_OVER_CURR_PROT 0x1F 
-
-#define MA12070_REG_AUDIO_IN_MODE 0x25
-#define MA12070_AUDIO_IN_MODE_0 1 
-#define MA12070_AUDIO_IN_MODE_1 2
-#define MA12070_DEF_AUDIO_IN_MODE 0x10
-
-#define MA12070_REG_DC_PROTECTION 0x26 
-#define MA12070_DEF_DC_PROTECTION 0x05 
-
-#define MA12070_REG_AUDI_IN_OVERWRITE 0x27
-#define MA12070_DEF_AUDI_IN_OVERWRITE 0X08
-
-#define MA12070_REG_ERROR_HANDLER 0x2D
-#define MA12070_DEF_ERROR_HANDLER 0x30
-
-#define MA12070_REG_PCM_WORD_FORMAT 0x35
-#define MA12070_I2S_STANDART 1
-#define MA12070_I2S_LEFT 2
-#define MA12070_I2S_RIGHT_16b 3
-#define MA12070_I2S_RIGHT_18b 4
-#define MA12070_I2S_RIGHT_20b 5
-#define MA12070_I2S_RIGHT_24b 6
-
-#define MA12070_DEF_PCM_WORD_FORMAT 0x01
-
-#define MA12070_REG_I2S_CONFIG 0x36
-#define MA12070_DEF_I2S_CONFIG 0x01
-
-#define MA12070_REG_PROCESSOR_SET 0x35
-#define MA12070_DEF_PROCESSOR_SET 0x01
-
-#define MA12070_REG_LIMITER_SET 0x36
-#define MA12070_DEF_LIMITER_SET 0x01
-
-#define MA12070_REG_VOL_DB_MASTER 0x40
-#define MA12070_DEF_VOL_DB_MASTER 0x18
-
-#define MA12070_REG_VOL_LSB_MASTER 0x41
-#define MA12070_DEF_VOL_LSB_MASTER 0x00
-
-#define MA12070_REG_VOL_DB_CH0 0x42
-#define MA12070_DEF_VOL_DB_CH0 0x18
-
-#define MA12070_REG_VOL_DB_CH1 0x43
-#define MA12070_DEF_VOL_DB_CH1 0x18
-
-#define MA12070_REG_VOL_DB_CH2 0x44
-#define MA12070_DEF_VOL_DB_CH2 0x18
-
-#define MA12070_REG_VOL_DB_CH3 0x45
-#define MA12070_DEF_VOL_DB_CH3 0x18
-
-#define MA12070_REG_VOL_LSB_CHX 0x46
-#define MA12070_DEF_VOL_LSB_CHX 0x00
-
-#define MA12070_REG_THR_DB_CH0 0x47
-#define MA12070_DEF_THR_DB_CH0 0x18
-
-#define MA12070_REG_THR_DB_CH1 0x48
-#define MA12070_DEF_THR_DB_CH1 0x18
-
-#define MA12070_REG_THR_DB_CH2 0x49
-#define MA12070_DEF_THR_DB_CH2 0x18
-
-#define MA12070_REG_THR_DB_CH3 0x4A
-#define MA12070_DEF_THR_DB_CH3 0x18
-
-#define MA12070_REG_THR_LSB_CHX 0x4B
-#define MA12070_DEF_THR_LSB_CHX 0x00
-
-#define MA12070_REG_LIMITER_STATUS 0x7E
-#define MA12070_DEF_LIMITER_STATUS 0x00 
-
-#define MA12070_REG_CLIP_STAUTS 0x7E
-#define MA12070_DEF_CLIP_STAUTS 0x00
-
-#define MA12070_REG_MON_CH0_FREQ_POW 0x60
-#define MA12070_DEF_MON_CH0_FREQ_POW 0x00
-
-#define MA12070_REG_MON_CH0 0x61
-#define MA12070_DEF_MON_CH0 0x00
-
-#define MA12070_REG_MON_CH0_MODUL 0x62
-#define MA12070_DEF_MON_CH0_MODUL 0x00
-
-#define MA12070_REG_MON_CH1_FREQ_POW 0x64
-#define MA12070_DEF_MON_CH1_FREQ_POW 0x00
-
-#define MA12070_REG_MON_CH1 0x65
-#define MA12070_DEF_MON_CH1 0x00
-
-#define MA12070_REG_MON_CH1_MODUL 0x66
-#define MA12070_DEF_MON_CH1_MODUL 0x00
-
-#define MA12070_REG_ERRO_ACC 0x6D
-#define MA12070_DEF_ERRO_ACC 0x00
-
-#define MA12070_REG_MON_MSEL 0x75
-#define MA12070_DEF_MON_MSEL 0x00
-
-#define MA12070_REG_ERROR 0x7C
-#define MA12070_DEF_ERROR 0x00
-
-typedef struct MA12070 
-{
-	uint8_t power_mode;
-	uint8_t power_mode_manual;
-	uint8_t treshold_1to2; 
-	uint8_t treshold_2to1;
-	uint8_t treshold_2to3;
-	uint8_t treshold_3to2;
-	uint8_t ifClampEn; 
-	uint8_t ocpLatchEn; 
-	uint8_t pmProfile; 
-	uint8_t pm3_man; 
-	uint8_t pm2_man; 
-	uint8_t pm1_man;
-	uint8_t ocp_latch_clear;
-	uint8_t audio_in_mode;
-	uint8_t eh_dc_shndn;
-	uint8_t audio_in_mode_ext;
-	uint8_t eh_clear;
-	uint8_t i2s_format;
-	uint8_t i2s_right_first;
-	uint8_t i2s_frame_size;
-	uint8_t i2s_order;
-	uint8_t i2s_ws_pol;
-	uint8_t i2s_sck_pol;
-	uint8_t audio_proc_release;
-	uint8_t audio_proc_attack;
-	uint8_t audio_proc_enable;
-	uint8_t audio_proc_mute;
-	uint8_t audio_proc_limitter;
-	uint8_t vol_db_master;
-	uint8_t vol_lsb_master;
-	uint8_t vol_db[4];
-	uint8_t vol_lsb[4];
-	uint8_t thr_db[4];
-	uint8_t thr_lsb[4];
-	uint8_t audio_porc_limiter_mon;
-	uint8_t audio_proc_clip_mon;
-	uint8_t dcu_frequency_mon[2];
-	uint8_t dcu_power_mode_mon[2];
-	uint8_t dcu_mute_mon[2];
-	uint8_t dcu_vdd_ok_mon[2];
-	uint8_t dcu_pvdd_ok_mon[2];
-	uint8_t dcu_vcfly1_ok_mon[2];
-	uint8_t dcu_vcfly2_ok_mon[2];
-	uint8_t ocp_mon[2];
-	uint8_t dcu_modulation_mon[2];
-	uint8_t error_acc;
-	uint8_t msel_mon;
-	uint8_t error;
-} S_MA12070;
+/*Power Mode Profile select. With this register
+ *the user can select the appropriate Power Mode Profile.
+ * Datasheet MA12070P page 13 
+*/
+void ma_setPowerModeProfileSetings(uint8_t setings); 
+void ma_setPowerModeProfileConfig(uint8_t scheme, uint8_t powerMode); 
 
 
-uint8_t ma12070_setVolume(int16_t volume); 
-uint8_t ma12070_init(void); 
-uint8_t ma12070_configure(uint8_t Default);
-int16_t ma12070_getVolume(void); 
+void ma_clearOcpLatch(); 
+void ma_setAudioInMode(uint8_t mode);
+void ma_setDcProtection(uint8_t enable);
+void ma_setAudioInOverwrite(uint8_t enable);
 
-uint8_t ma12070_setPowerMode(uint8_t mode); 
-uint8_t ma12070_setTreshold(uint8_t transition, uint8_t value); 
-uint8_t ma12070_setClippingAndOcp(uint8_t clipOrOcp, uint8_t enable); 
-uint8_t ma12070_setPowerModeProfileSetings(uint8_t setings); 
-uint8_t ma12070_setPowerModeProfileConfig(uint8_t scheme, uint8_t powerMode); 
-uint8_t ma12070_clearOcpLatch(); 
-uint8_t ma12070_setAudioInMode(uint8_t mode);
-uint8_t ma12070_setDcProtection(uint8_t enable);
-uint8_t ma12070_setAudioInOverwrite(uint8_t enable);
+void ma_setI2sFormat(uint8_t format); 
+void ma_setI2sRightFirst(uint8_t leftOrRight);
+void ma_setI2sFrameSize(uint8_t bits);
+void ma_setI2sBitOrder(uint8_t mostOrLeast);
+void ma_setI2sWsPolarityHigh(uint8_t highOrLow);
+void ma_setI2sSckPolarityFalling(uint8_t risingOrFalling);
 
-uint8_t ma12070_setI2sFormat(uint8_t format); 
-uint8_t ma12070_setI2sRightFirst(uint8_t leftOrRight);
-uint8_t ma12070_setI2sNoOfFrameBits(uint8_t bits);
-uint8_t ma12070_setI2sBitOrder(uint8_t mostOrLeast);
-uint8_t ma12070_setI2sWsPolarity(uint8_t highOrLow);
-uint8_t ma12070_setI2sSckPolarity(uint8_t risingOrFalling);
+void ma_setProcReleaseLvl(uint8_t lvl);
+void ma_setProcAttackLvl(uint8_t lvl);
+void ma_setProcEn(uint8_t enable);
+void ma_setProcMute(uint8_t mute);
+void ma12060_setProcLimiterEn(uint8_t enable);
 
-uint8_t ma12070_setProcReleaseLvl(uint8_t lvl);
-uint8_t ma12070_setProcAttackLvl(uint8_t lvl);
-uint8_t ma12070_setProcEn(uint8_t enable);
-uint8_t ma12070_setProcMute(uint8_t mute);
-uint8_t ma12060_setProcLimiterEn(uint8_t enable);
+void ma_setVolumeCh0(uint8_t db, uint8_t lsb);
+void ma_setVolumeCh1(uint8_t db, uint8_t lsb);
+void ma_setVolumeCh2(uint8_t db, uint8_t lsb);
+void ma_setVolumeCh3(uint8_t db, uint8_t lsb);
+void ma_setVolumeMaster(uint8_t db, uint8_t lsb);
 
-uint8_t ma12070_setVolumeCh0(uint8_t db, uint8_t lsb);
-uint8_t ma12070_setVolumeCh1(uint8_t db, uint8_t lsb);
-uint8_t ma12070_setVolumeCh2(uint8_t db, uint8_t lsb);
-uint8_t ma12070_setVolumeCh3(uint8_t db, uint8_t lsb);
-uint8_t ma12070_setVolumeMaster(uint8_t db, uint8_t lsb);
+void ma_clearErrHandler();
 
+int16_t ma_getVolume(void);
 
-uint8_t ma12070_clearErrHandler();
-
-int16_t ma12070_getVolume(void);
-
-void ma12070_printCurrentCconf(void);
-void ma12070_getCurrentDevInfo(void); 
+void ma_printCurrentCconf(void);
+void ma_getCurrentDevInfo(void); 
