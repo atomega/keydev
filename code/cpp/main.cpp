@@ -6,6 +6,7 @@
 #include <cmath>
 #include "lowlayer/i2c/ll_i2c.h"
 #include "driver/pf8574/pf8574lcd.h"
+#include "driver/ma120x0/ma120x0.h"
 #include <unistd.h>
 #include "../c/algorithms/bitgestion.h"
 
@@ -14,21 +15,30 @@ using namespace std;
 
 int main()
 {
-char strBuffer[20] = "Kerem"; 	
-lcd_init(); 
-lcd_display_string(0,0,"Test : MA1207P");
-lcd_display_string(1,1,"Hello");
+	uint8_t i = 0; 
+	char strBuffer[20] = "Kerem"; 	
+	lcd_init(); 
 
-uint8_t test[2]  = {13}; 
-uint8_t bitToset = 8;
-uint8_t startBit = 1; 
-uint8_t stopBit = 2;
-uint8_t valToset = 2; 
-test[1] = 9; 
-	cout << "value is now : " << (void*)test[1]<< endl;
- set_bits_range_uint8(&test[1], startBit,stopBit,valToset);
+	printf("PLease enter a string to be displayed on the LCD \n\r >"); 
+	fgets(strBuffer,20,stdin); 
+	for(i = 0 ; i <= 20 ; i++)
+	{
+		if(strBuffer[i] == '\n')
+		{
+			strBuffer[i] = '.'; 
+		}
 
-	cout << "value is after :" << (void*)test[1]<< endl;
-	std::cout << "\n\n\nReached end of Main" << endl;
+	}
+	lcd_display_string(0,0,strBuffer);
+
+
+	// amplifier test
+	
+//	ma_printCurrentCconf();
+//	ma_setVolumeMasterDb(15); 
+//	ma_printCurrentCconf();
+
+
+
 	return 0; 
 }

@@ -4,122 +4,194 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CC	Makefile	/^CC = g++ $/;"	m
+CC	cpp_training/Makefile	/^CC = g++ $/;"	m
+CFLAGS	Makefile	/^CFLAGS = -Wall -pedantic  $/;"	m
+CFLAGS	cpp_training/Makefile	/^CFLAGS = -Wall -pedantic  $/;"	m
+CHAR_MODE	driver/pf8574/pf8574lcd.h	51;"	d
+CMD_MODE	driver/pf8574/pf8574lcd.h	50;"	d
+EN	driver/pf8574/pf8574lcd.h	44;"	d
+EXEC	Makefile	/^EXEC = runtest$/;"	m
+EXEC	cpp_training/Makefile	/^EXEC = runtest$/;"	m
+I2C_ADDRESS_10B	lowlayer/i2c/ll_i2c.h	68;"	d
+I2C_ADDRESS_7B	lowlayer/i2c/ll_i2c.h	67;"	d
+I2C_MODE_MASTER	lowlayer/i2c/ll_i2c.h	70;"	d
+I2C_MODE_MULTI_MASTER	lowlayer/i2c/ll_i2c.h	72;"	d
+I2C_MODE_SLAVE	lowlayer/i2c/ll_i2c.h	71;"	d
+I2C_SPEED_FAST	lowlayer/i2c/ll_i2c.h	62;"	d
+I2C_SPEED_FAST_PLUS	lowlayer/i2c/ll_i2c.h	63;"	d
+I2C_SPEED_HIGH_SPEED	lowlayer/i2c/ll_i2c.h	64;"	d
+I2C_SPEED_STANDART	lowlayer/i2c/ll_i2c.h	61;"	d
+I2C_SPEED_ULTRA_FAST	lowlayer/i2c/ll_i2c.h	65;"	d
+I2C_STATE_ABORT	lowlayer/i2c/ll_i2c.h	57;"	d
+I2C_STATE_ERROR	lowlayer/i2c/ll_i2c.h	59;"	d
+I2C_STATE_LISTEN	lowlayer/i2c/ll_i2c.h	56;"	d
+I2C_STATE_READY	lowlayer/i2c/ll_i2c.h	53;"	d
+I2C_STATE_RESET	lowlayer/i2c/ll_i2c.h	52;"	d
+I2C_STATE_RX	lowlayer/i2c/ll_i2c.h	55;"	d
+I2C_STATE_TIMEOUT	lowlayer/i2c/ll_i2c.h	58;"	d
+I2C_STATE_TX	lowlayer/i2c/ll_i2c.h	54;"	d
+LCD_1LINE	driver/pf8574/pf8574lcd.h	35;"	d
+LCD_2LINE	driver/pf8574/pf8574lcd.h	34;"	d
+LCD_4BITMODE	driver/pf8574/pf8574lcd.h	33;"	d
+LCD_5x1DOTS	driver/pf8574/pf8574lcd.h	36;"	d
+LCD_5x8DOTS	driver/pf8574/pf8574lcd.h	37;"	d
+LCD_8BITMODE	driver/pf8574/pf8574lcd.h	32;"	d
+LCD_ADDRS	driver/pf8574/pf8574lcd.h	54;"	d
+LCD_BACKLIGHT	driver/pf8574/pf8574lcd.h	40;"	d
+LCD_BLINKOFF	driver/pf8574/pf8574lcd.h	23;"	d
+LCD_BLINKON	driver/pf8574/pf8574lcd.h	22;"	d
+LCD_CLEARDISPLAY	driver/pf8574/pf8574lcd.h	2;"	d
+LCD_CURSORMOVE	driver/pf8574/pf8574lcd.h	27;"	d
+LCD_CURSOROFF	driver/pf8574/pf8574lcd.h	21;"	d
+LCD_CURSORON	driver/pf8574/pf8574lcd.h	20;"	d
+LCD_CURSORSHIFT	driver/pf8574/pf8574lcd.h	6;"	d
+LCD_DISPLAYCONTROL	driver/pf8574/pf8574lcd.h	5;"	d
+LCD_DISPLAYMOVE	driver/pf8574/pf8574lcd.h	26;"	d
+LCD_DISPLAYOFF	driver/pf8574/pf8574lcd.h	19;"	d
+LCD_DISPLAYON	driver/pf8574/pf8574lcd.h	18;"	d
+LCD_ENTRYLEFT	driver/pf8574/pf8574lcd.h	13;"	d
+LCD_ENTRYMODESET	driver/pf8574/pf8574lcd.h	4;"	d
+LCD_ENTRYRIGHT	driver/pf8574/pf8574lcd.h	12;"	d
+LCD_ENTRYSHIFTDECREMENT	driver/pf8574/pf8574lcd.h	15;"	d
+LCD_ENTRYSHIFTINCREMENT	driver/pf8574/pf8574lcd.h	14;"	d
+LCD_FUNCTIONSET	driver/pf8574/pf8574lcd.h	7;"	d
+LCD_MOVELEFT	driver/pf8574/pf8574lcd.h	29;"	d
+LCD_MOVERIGHT	driver/pf8574/pf8574lcd.h	28;"	d
+LCD_NOBACKLIGHT	driver/pf8574/pf8574lcd.h	41;"	d
+LCD_RETURNHOME	driver/pf8574/pf8574lcd.h	3;"	d
+LCD_SETCGRAMADDR	driver/pf8574/pf8574lcd.h	8;"	d
+LCD_SETDDRAMADDR	driver/pf8574/pf8574lcd.h	9;"	d
+LDFLAGS	Makefile	/^LDFLAGS = $/;"	m
+LDFLAGS	cpp_training/Makefile	/^LDFLAGS = $/;"	m
 MA12070	driver/ma120x0/ma120x0.h	/^typedef struct MA12070 $/;"	s
 MA12070_ADDR	driver/ma120x0/ma120x0.h	1;"	d
-MA12070_AUDIO_IN_MODE_0	driver/ma120x0/ma120x0.h	817;"	d
-MA12070_AUDIO_IN_MODE_1	driver/ma120x0/ma120x0.h	818;"	d
-MA12070_CLIPPING_EN	driver/ma120x0/ma120x0.h	792;"	d
-MA12070_CLIPPING_LATCH	driver/ma120x0/ma120x0.h	793;"	d
-MA12070_DEF_AUDIO_IN_MODE	driver/ma120x0/ma120x0.h	819;"	d
-MA12070_DEF_AUDI_IN_OVERWRITE	driver/ma120x0/ma120x0.h	825;"	d
-MA12070_DEF_CLIP_STAUTS	driver/ma120x0/ma120x0.h	889;"	d
-MA12070_DEF_DC_PROTECTION	driver/ma120x0/ma120x0.h	822;"	d
-MA12070_DEF_ERROR	driver/ma120x0/ma120x0.h	916;"	d
-MA12070_DEF_ERROR_HANDLER	driver/ma120x0/ma120x0.h	828;"	d
-MA12070_DEF_ERRO_ACC	driver/ma120x0/ma120x0.h	910;"	d
-MA12070_DEF_I2S_CONFIG	driver/ma120x0/ma120x0.h	841;"	d
-MA12070_DEF_LIMITER_SET	driver/ma120x0/ma120x0.h	847;"	d
-MA12070_DEF_LIMITER_STATUS	driver/ma120x0/ma120x0.h	886;"	d
-MA12070_DEF_MON_CH0	driver/ma120x0/ma120x0.h	895;"	d
-MA12070_DEF_MON_CH0_FREQ_POW	driver/ma120x0/ma120x0.h	892;"	d
-MA12070_DEF_MON_CH0_MODUL	driver/ma120x0/ma120x0.h	898;"	d
-MA12070_DEF_MON_CH1	driver/ma120x0/ma120x0.h	904;"	d
-MA12070_DEF_MON_CH1_FREQ_POW	driver/ma120x0/ma120x0.h	901;"	d
-MA12070_DEF_MON_CH1_MODUL	driver/ma120x0/ma120x0.h	907;"	d
-MA12070_DEF_MON_MSEL	driver/ma120x0/ma120x0.h	913;"	d
-MA12070_DEF_MTHR_1TO2	driver/ma120x0/ma120x0.h	780;"	d
-MA12070_DEF_MTHR_2TO1	driver/ma120x0/ma120x0.h	783;"	d
-MA12070_DEF_MTHR_2TO3	driver/ma120x0/ma120x0.h	786;"	d
-MA12070_DEF_MTHR_3TO2	driver/ma120x0/ma120x0.h	789;"	d
-MA12070_DEF_OVER_CURR_PROT	driver/ma120x0/ma120x0.h	814;"	d
-MA12070_DEF_PCM_WORD_FORMAT	driver/ma120x0/ma120x0.h	838;"	d
-MA12070_DEF_PM_PROFILE_CONF	driver/ma120x0/ma120x0.h	811;"	d
-MA12070_DEF_PM_PROFILE_MODE	driver/ma120x0/ma120x0.h	802;"	d
-MA12070_DEF_POWER_MODE_CONTROL	driver/ma120x0/ma120x0.h	772;"	d
-MA12070_DEF_PROCESSOR_SET	driver/ma120x0/ma120x0.h	844;"	d
-MA12070_DEF_SOFT_CILLIPNG	driver/ma120x0/ma120x0.h	794;"	d
-MA12070_DEF_THR_DB_CH0	driver/ma120x0/ma120x0.h	871;"	d
-MA12070_DEF_THR_DB_CH1	driver/ma120x0/ma120x0.h	874;"	d
-MA12070_DEF_THR_DB_CH2	driver/ma120x0/ma120x0.h	877;"	d
-MA12070_DEF_THR_DB_CH3	driver/ma120x0/ma120x0.h	880;"	d
-MA12070_DEF_THR_LSB_CHX	driver/ma120x0/ma120x0.h	883;"	d
-MA12070_DEF_VOL_DB_CH0	driver/ma120x0/ma120x0.h	856;"	d
-MA12070_DEF_VOL_DB_CH1	driver/ma120x0/ma120x0.h	859;"	d
-MA12070_DEF_VOL_DB_CH2	driver/ma120x0/ma120x0.h	862;"	d
-MA12070_DEF_VOL_DB_CH3	driver/ma120x0/ma120x0.h	865;"	d
-MA12070_DEF_VOL_DB_MASTER	driver/ma120x0/ma120x0.h	850;"	d
-MA12070_DEF_VOL_LSB_CHX	driver/ma120x0/ma120x0.h	868;"	d
-MA12070_DEF_VOL_LSB_MASTER	driver/ma120x0/ma120x0.h	853;"	d
-MA12070_I2S_LEFT	driver/ma120x0/ma120x0.h	832;"	d
-MA12070_I2S_RIGHT_16b	driver/ma120x0/ma120x0.h	833;"	d
-MA12070_I2S_RIGHT_18b	driver/ma120x0/ma120x0.h	834;"	d
-MA12070_I2S_RIGHT_20b	driver/ma120x0/ma120x0.h	835;"	d
-MA12070_I2S_RIGHT_24b	driver/ma120x0/ma120x0.h	836;"	d
-MA12070_I2S_STANDART	driver/ma120x0/ma120x0.h	831;"	d
-MA12070_POWER_MODE_1	driver/ma120x0/ma120x0.h	773;"	d
-MA12070_POWER_MODE_2	driver/ma120x0/ma120x0.h	774;"	d
-MA12070_POWER_MODE_3	driver/ma120x0/ma120x0.h	775;"	d
-MA12070_POWER_MODE_DEFF	driver/ma120x0/ma120x0.h	777;"	d
-MA12070_POWER_MODE_MAN	driver/ma120x0/ma120x0.h	776;"	d
-MA12070_POWER_PROFILE_0	driver/ma120x0/ma120x0.h	797;"	d
-MA12070_POWER_PROFILE_1	driver/ma120x0/ma120x0.h	798;"	d
-MA12070_POWER_PROFILE_2	driver/ma120x0/ma120x0.h	799;"	d
-MA12070_POWER_PROFILE_3	driver/ma120x0/ma120x0.h	800;"	d
-MA12070_POWER_PROFILE_4	driver/ma120x0/ma120x0.h	801;"	d
-MA12070_POWER_SCHEME_A	driver/ma120x0/ma120x0.h	806;"	d
-MA12070_POWER_SCHEME_B	driver/ma120x0/ma120x0.h	807;"	d
-MA12070_POWER_SCHEME_C	driver/ma120x0/ma120x0.h	808;"	d
-MA12070_POWER_SCHEME_CUSTOM	driver/ma120x0/ma120x0.h	805;"	d
-MA12070_POWER_SCHEME_D	driver/ma120x0/ma120x0.h	809;"	d
-MA12070_REG_AUDIO_IN_MODE	driver/ma120x0/ma120x0.h	816;"	d
-MA12070_REG_AUDI_IN_OVERWRITE	driver/ma120x0/ma120x0.h	824;"	d
-MA12070_REG_CLIP_STAUTS	driver/ma120x0/ma120x0.h	888;"	d
-MA12070_REG_DC_PROTECTION	driver/ma120x0/ma120x0.h	821;"	d
-MA12070_REG_ERROR	driver/ma120x0/ma120x0.h	915;"	d
-MA12070_REG_ERROR_HANDLER	driver/ma120x0/ma120x0.h	827;"	d
-MA12070_REG_ERRO_ACC	driver/ma120x0/ma120x0.h	909;"	d
-MA12070_REG_I2S_CONFIG	driver/ma120x0/ma120x0.h	840;"	d
-MA12070_REG_LIMITER_SET	driver/ma120x0/ma120x0.h	846;"	d
-MA12070_REG_LIMITER_STATUS	driver/ma120x0/ma120x0.h	885;"	d
-MA12070_REG_MON_CH0	driver/ma120x0/ma120x0.h	894;"	d
-MA12070_REG_MON_CH0_FREQ_POW	driver/ma120x0/ma120x0.h	891;"	d
-MA12070_REG_MON_CH0_MODUL	driver/ma120x0/ma120x0.h	897;"	d
-MA12070_REG_MON_CH1	driver/ma120x0/ma120x0.h	903;"	d
-MA12070_REG_MON_CH1_FREQ_POW	driver/ma120x0/ma120x0.h	900;"	d
-MA12070_REG_MON_CH1_MODUL	driver/ma120x0/ma120x0.h	906;"	d
-MA12070_REG_MON_MSEL	driver/ma120x0/ma120x0.h	912;"	d
-MA12070_REG_MTHR_1TO2	driver/ma120x0/ma120x0.h	779;"	d
-MA12070_REG_MTHR_2TO1	driver/ma120x0/ma120x0.h	782;"	d
-MA12070_REG_MTHR_2TO3	driver/ma120x0/ma120x0.h	785;"	d
-MA12070_REG_MTHR_3TO2	driver/ma120x0/ma120x0.h	788;"	d
-MA12070_REG_OVER_CURR_PROT	driver/ma120x0/ma120x0.h	813;"	d
-MA12070_REG_PCM_WORD_FORMAT	driver/ma120x0/ma120x0.h	830;"	d
-MA12070_REG_PM_PROFILE_CONF	driver/ma120x0/ma120x0.h	804;"	d
-MA12070_REG_PM_PROFILE_MODE	driver/ma120x0/ma120x0.h	796;"	d
-MA12070_REG_POWER_MODE_CONTROL	driver/ma120x0/ma120x0.h	771;"	d
-MA12070_REG_PROCESSOR_SET	driver/ma120x0/ma120x0.h	843;"	d
-MA12070_REG_SOFT_CILLIPNG	driver/ma120x0/ma120x0.h	791;"	d
-MA12070_REG_THR_DB_CH0	driver/ma120x0/ma120x0.h	870;"	d
-MA12070_REG_THR_DB_CH1	driver/ma120x0/ma120x0.h	873;"	d
-MA12070_REG_THR_DB_CH2	driver/ma120x0/ma120x0.h	876;"	d
-MA12070_REG_THR_DB_CH3	driver/ma120x0/ma120x0.h	879;"	d
-MA12070_REG_THR_LSB_CHX	driver/ma120x0/ma120x0.h	882;"	d
-MA12070_REG_VOL_DB_CH0	driver/ma120x0/ma120x0.h	855;"	d
-MA12070_REG_VOL_DB_CH1	driver/ma120x0/ma120x0.h	858;"	d
-MA12070_REG_VOL_DB_CH2	driver/ma120x0/ma120x0.h	861;"	d
-MA12070_REG_VOL_DB_CH3	driver/ma120x0/ma120x0.h	864;"	d
-MA12070_REG_VOL_DB_MASTER	driver/ma120x0/ma120x0.h	849;"	d
-MA12070_REG_VOL_LSB_CHX	driver/ma120x0/ma120x0.h	867;"	d
-MA12070_REG_VOL_LSB_MASTER	driver/ma120x0/ma120x0.h	852;"	d
-MA12070_VOL_MAX	driver/ma120x0/ma120x0.h	766;"	d
-MA12070_VOL_MAX_DB	driver/ma120x0/ma120x0.h	768;"	d
-MA12070_VOL_MIN	driver/ma120x0/ma120x0.h	767;"	d
-MA12070_VOL_MIN_DB	driver/ma120x0/ma120x0.h	769;"	d
+MA12070_AUDIO_IN_MODE_0	driver/ma120x0/ma120x0.h	834;"	d
+MA12070_AUDIO_IN_MODE_1	driver/ma120x0/ma120x0.h	835;"	d
+MA12070_CLIPPING_EN	driver/ma120x0/ma120x0.h	809;"	d
+MA12070_CLIPPING_LATCH	driver/ma120x0/ma120x0.h	810;"	d
+MA12070_DEF_AUDIO_IN_MODE	driver/ma120x0/ma120x0.h	836;"	d
+MA12070_DEF_AUDI_IN_OVERWRITE	driver/ma120x0/ma120x0.h	842;"	d
+MA12070_DEF_CLIP_STAUTS	driver/ma120x0/ma120x0.h	906;"	d
+MA12070_DEF_DC_PROTECTION	driver/ma120x0/ma120x0.h	839;"	d
+MA12070_DEF_ERROR	driver/ma120x0/ma120x0.h	933;"	d
+MA12070_DEF_ERROR_HANDLER	driver/ma120x0/ma120x0.h	845;"	d
+MA12070_DEF_ERRO_ACC	driver/ma120x0/ma120x0.h	927;"	d
+MA12070_DEF_I2S_CONFIG	driver/ma120x0/ma120x0.h	858;"	d
+MA12070_DEF_LIMITER_SET	driver/ma120x0/ma120x0.h	864;"	d
+MA12070_DEF_LIMITER_STATUS	driver/ma120x0/ma120x0.h	903;"	d
+MA12070_DEF_MON_CH0	driver/ma120x0/ma120x0.h	912;"	d
+MA12070_DEF_MON_CH0_FREQ_POW	driver/ma120x0/ma120x0.h	909;"	d
+MA12070_DEF_MON_CH0_MODUL	driver/ma120x0/ma120x0.h	915;"	d
+MA12070_DEF_MON_CH1	driver/ma120x0/ma120x0.h	921;"	d
+MA12070_DEF_MON_CH1_FREQ_POW	driver/ma120x0/ma120x0.h	918;"	d
+MA12070_DEF_MON_CH1_MODUL	driver/ma120x0/ma120x0.h	924;"	d
+MA12070_DEF_MON_MSEL	driver/ma120x0/ma120x0.h	930;"	d
+MA12070_DEF_MTHR_1TO2	driver/ma120x0/ma120x0.h	797;"	d
+MA12070_DEF_MTHR_2TO1	driver/ma120x0/ma120x0.h	800;"	d
+MA12070_DEF_MTHR_2TO3	driver/ma120x0/ma120x0.h	803;"	d
+MA12070_DEF_MTHR_3TO2	driver/ma120x0/ma120x0.h	806;"	d
+MA12070_DEF_OVER_CURR_PROT	driver/ma120x0/ma120x0.h	831;"	d
+MA12070_DEF_PCM_WORD_FORMAT	driver/ma120x0/ma120x0.h	855;"	d
+MA12070_DEF_PM_PROFILE_CONF	driver/ma120x0/ma120x0.h	828;"	d
+MA12070_DEF_PM_PROFILE_MODE	driver/ma120x0/ma120x0.h	819;"	d
+MA12070_DEF_POWER_MODE_CONTROL	driver/ma120x0/ma120x0.h	788;"	d
+MA12070_DEF_PROCESSOR_SET	driver/ma120x0/ma120x0.h	861;"	d
+MA12070_DEF_SOFT_CILLIPNG	driver/ma120x0/ma120x0.h	811;"	d
+MA12070_DEF_THR_DB_CH0	driver/ma120x0/ma120x0.h	888;"	d
+MA12070_DEF_THR_DB_CH1	driver/ma120x0/ma120x0.h	891;"	d
+MA12070_DEF_THR_DB_CH2	driver/ma120x0/ma120x0.h	894;"	d
+MA12070_DEF_THR_DB_CH3	driver/ma120x0/ma120x0.h	897;"	d
+MA12070_DEF_THR_LSB_CHX	driver/ma120x0/ma120x0.h	900;"	d
+MA12070_DEF_VOL_DB_CH0	driver/ma120x0/ma120x0.h	873;"	d
+MA12070_DEF_VOL_DB_CH1	driver/ma120x0/ma120x0.h	876;"	d
+MA12070_DEF_VOL_DB_CH2	driver/ma120x0/ma120x0.h	879;"	d
+MA12070_DEF_VOL_DB_CH3	driver/ma120x0/ma120x0.h	882;"	d
+MA12070_DEF_VOL_DB_MASTER	driver/ma120x0/ma120x0.h	867;"	d
+MA12070_DEF_VOL_LSB_CHX	driver/ma120x0/ma120x0.h	885;"	d
+MA12070_DEF_VOL_LSB_MASTER	driver/ma120x0/ma120x0.h	870;"	d
+MA12070_I2S_LEFT	driver/ma120x0/ma120x0.h	849;"	d
+MA12070_I2S_RIGHT_16b	driver/ma120x0/ma120x0.h	850;"	d
+MA12070_I2S_RIGHT_18b	driver/ma120x0/ma120x0.h	851;"	d
+MA12070_I2S_RIGHT_20b	driver/ma120x0/ma120x0.h	852;"	d
+MA12070_I2S_RIGHT_24b	driver/ma120x0/ma120x0.h	853;"	d
+MA12070_I2S_STANDART	driver/ma120x0/ma120x0.h	848;"	d
+MA12070_POWER_MODE_1	driver/ma120x0/ma120x0.h	789;"	d
+MA12070_POWER_MODE_2	driver/ma120x0/ma120x0.h	790;"	d
+MA12070_POWER_MODE_3	driver/ma120x0/ma120x0.h	791;"	d
+MA12070_POWER_MODE_AUTO	driver/ma120x0/ma120x0.h	793;"	d
+MA12070_POWER_MODE_DEFF	driver/ma120x0/ma120x0.h	794;"	d
+MA12070_POWER_MODE_MAN	driver/ma120x0/ma120x0.h	792;"	d
+MA12070_POWER_PROFILE_0	driver/ma120x0/ma120x0.h	814;"	d
+MA12070_POWER_PROFILE_1	driver/ma120x0/ma120x0.h	815;"	d
+MA12070_POWER_PROFILE_2	driver/ma120x0/ma120x0.h	816;"	d
+MA12070_POWER_PROFILE_3	driver/ma120x0/ma120x0.h	817;"	d
+MA12070_POWER_PROFILE_4	driver/ma120x0/ma120x0.h	818;"	d
+MA12070_POWER_SCHEME_A	driver/ma120x0/ma120x0.h	823;"	d
+MA12070_POWER_SCHEME_B	driver/ma120x0/ma120x0.h	824;"	d
+MA12070_POWER_SCHEME_C	driver/ma120x0/ma120x0.h	825;"	d
+MA12070_POWER_SCHEME_CUSTOM	driver/ma120x0/ma120x0.h	822;"	d
+MA12070_POWER_SCHEME_D	driver/ma120x0/ma120x0.h	826;"	d
+MA12070_REG_AUDIO_IN_MODE	driver/ma120x0/ma120x0.h	833;"	d
+MA12070_REG_AUDI_IN_OVERWRITE	driver/ma120x0/ma120x0.h	841;"	d
+MA12070_REG_CLIP_STAUTS	driver/ma120x0/ma120x0.h	905;"	d
+MA12070_REG_DC_PROTECTION	driver/ma120x0/ma120x0.h	838;"	d
+MA12070_REG_ERROR	driver/ma120x0/ma120x0.h	932;"	d
+MA12070_REG_ERROR_HANDLER	driver/ma120x0/ma120x0.h	844;"	d
+MA12070_REG_ERRO_ACC	driver/ma120x0/ma120x0.h	926;"	d
+MA12070_REG_I2S_CONFIG	driver/ma120x0/ma120x0.h	857;"	d
+MA12070_REG_LIMITER_SET	driver/ma120x0/ma120x0.h	863;"	d
+MA12070_REG_LIMITER_STATUS	driver/ma120x0/ma120x0.h	902;"	d
+MA12070_REG_MON_CH0	driver/ma120x0/ma120x0.h	911;"	d
+MA12070_REG_MON_CH0_FREQ_POW	driver/ma120x0/ma120x0.h	908;"	d
+MA12070_REG_MON_CH0_MODUL	driver/ma120x0/ma120x0.h	914;"	d
+MA12070_REG_MON_CH1	driver/ma120x0/ma120x0.h	920;"	d
+MA12070_REG_MON_CH1_FREQ_POW	driver/ma120x0/ma120x0.h	917;"	d
+MA12070_REG_MON_CH1_MODUL	driver/ma120x0/ma120x0.h	923;"	d
+MA12070_REG_MON_MSEL	driver/ma120x0/ma120x0.h	929;"	d
+MA12070_REG_MTHR_1TO2	driver/ma120x0/ma120x0.h	796;"	d
+MA12070_REG_MTHR_2TO1	driver/ma120x0/ma120x0.h	799;"	d
+MA12070_REG_MTHR_2TO3	driver/ma120x0/ma120x0.h	802;"	d
+MA12070_REG_MTHR_3TO2	driver/ma120x0/ma120x0.h	805;"	d
+MA12070_REG_OVER_CURR_PROT	driver/ma120x0/ma120x0.h	830;"	d
+MA12070_REG_PCM_WORD_FORMAT	driver/ma120x0/ma120x0.h	847;"	d
+MA12070_REG_PM_PROFILE_CONF	driver/ma120x0/ma120x0.h	821;"	d
+MA12070_REG_PM_PROFILE_MODE	driver/ma120x0/ma120x0.h	813;"	d
+MA12070_REG_POWER_MODE_CONTROL	driver/ma120x0/ma120x0.h	787;"	d
+MA12070_REG_PROCESSOR_SET	driver/ma120x0/ma120x0.h	860;"	d
+MA12070_REG_SOFT_CILLIPNG	driver/ma120x0/ma120x0.h	808;"	d
+MA12070_REG_THR_DB_CH0	driver/ma120x0/ma120x0.h	887;"	d
+MA12070_REG_THR_DB_CH1	driver/ma120x0/ma120x0.h	890;"	d
+MA12070_REG_THR_DB_CH2	driver/ma120x0/ma120x0.h	893;"	d
+MA12070_REG_THR_DB_CH3	driver/ma120x0/ma120x0.h	896;"	d
+MA12070_REG_THR_LSB_CHX	driver/ma120x0/ma120x0.h	899;"	d
+MA12070_REG_VOL_DB_CH0	driver/ma120x0/ma120x0.h	872;"	d
+MA12070_REG_VOL_DB_CH1	driver/ma120x0/ma120x0.h	875;"	d
+MA12070_REG_VOL_DB_CH2	driver/ma120x0/ma120x0.h	878;"	d
+MA12070_REG_VOL_DB_CH3	driver/ma120x0/ma120x0.h	881;"	d
+MA12070_REG_VOL_DB_MASTER	driver/ma120x0/ma120x0.h	866;"	d
+MA12070_REG_VOL_LSB_CHX	driver/ma120x0/ma120x0.h	884;"	d
+MA12070_REG_VOL_LSB_MASTER	driver/ma120x0/ma120x0.h	869;"	d
+MA12070_VOL_MAX	driver/ma120x0/ma120x0.h	782;"	d
+MA12070_VOL_MAX_DB	driver/ma120x0/ma120x0.h	784;"	d
+MA12070_VOL_MIN	driver/ma120x0/ma120x0.h	783;"	d
+MA12070_VOL_MIN_DB	driver/ma120x0/ma120x0.h	785;"	d
 NONEXISTENT	driver/ma120x0/ma120x0.cpp	9;"	d	file:
+Personnage	cpp_training/Personnage.cpp	/^Personnage::Personnage() $/;"	f	class:Personnage
+Personnage	cpp_training/Personnage.cpp	/^Personnage::Personnage(string weaponName, int weaponDamage) $/;"	f	class:Personnage
+Personnage	cpp_training/Personnage.h	/^class Personnage$/;"	c
 READWRITE	driver/ma120x0/ma120x0.cpp	8;"	d	file:
 REGAMOUNT	driver/ma120x0/ma120x0.cpp	7;"	d	file:
+RS	driver/pf8574/pf8574lcd.h	46;"	d
+RW	driver/pf8574/pf8574lcd.h	45;"	d
 S_MA12070	driver/ma120x0/ma120x0.h	/^} S_MA12070;$/;"	t	typeref:struct:MA12070
+TOTAL_CHAR_CAP	driver/pf8574/pf8574lcd.h	57;"	d
+Weapon	cpp_training/Weapon.cpp	/^Weapon::Weapon() : m_name("Epee Rouiller"), m_damage(10)$/;"	f	class:Weapon
+Weapon	cpp_training/Weapon.cpp	/^Weapon::Weapon(string name, int damage) : m_name(name), m_damage(damage)$/;"	f	class:Weapon
+Weapon	cpp_training/Weapon.h	/^class Weapon$/;"	c
+__LINE__	driver/ma120x0/ma120x0.cpp	/^	throwError(__LINE__);  	$/;"	v
 amp	driver/ma120x0/ma120x0.cpp	/^S_MA12070 amp				= {0}; $/;"	v
+attac	cpp_training/Personnage.cpp	/^void Personnage::attac(Personnage& target)$/;"	f	class:Personnage
 audio_in_mode	driver/ma120x0/ma120x0.h	/^	uint8_t audio_in_mode;$/;"	m	struct:MA12070
 audio_in_mode_ext	driver/ma120x0/ma120x0.h	/^	uint8_t audio_in_mode_ext;$/;"	m	struct:MA12070
 audio_porc_limiter_mon	driver/ma120x0/ma120x0.h	/^	uint8_t audio_porc_limiter_mon;$/;"	m	struct:MA12070
@@ -132,6 +204,13 @@ audio_proc_release	driver/ma120x0/ma120x0.h	/^	uint8_t audio_proc_release;$/;"	m
 bitNo	driver/ma120x0/ma120x0.cpp	/^uint8_t bitNo = 0 ; $/;"	v
 bitStart	driver/ma120x0/ma120x0.cpp	/^uint8_t bitStart = 0; $/;"	v
 bitStop	driver/ma120x0/ma120x0.cpp	/^uint8_t bitStop = 0; $/;"	v
+c_obj	Makefile	/^c_obj = $(c_src:.c=.o)$/;"	m
+c_src	Makefile	/^c_src = $(wildcard driver\/pf8574\/*.c) \\ $(wildcard ..\/c\/algorithms\/*.c)$/;"	m
+change	cpp_training/Weapon.cpp	/^void Weapon::change(string name, int damage)$/;"	f	class:Weapon
+changeWeapon	cpp_training/Personnage.cpp	/^void Personnage::changeWeapon(std::string newWeaponName, int newWeaponDamage)$/;"	f	class:Personnage
+cpp_obj	Makefile	/^cpp_obj = $(cpp_src:.cpp=.o)$/;"	m
+cpp_src	Makefile	/^cpp_src = $(wildcard *.cpp) \\ $(wildcard lowlayer\/i2c\/*.cpp) $/;"	m
+csrc	cpp_training/Makefile	/^csrc = $(wildcard *.cpp)$/;"	m
 curretnVolume	driver/ma120x0/ma120x0.cpp	/^int curretnVolume = 0; $/;"	v
 dataBuffer	driver/ma120x0/ma120x0.cpp	/^uint8_t dataBuffer[4]		= {0};$/;"	v
 dataTable	driver/ma120x0/ma120x0.cpp	/^uint8_t dataTable[REGAMOUNT] = {0};$/;"	v
@@ -143,10 +222,47 @@ dcu_pvdd_ok_mon	driver/ma120x0/ma120x0.h	/^	uint8_t dcu_pvdd_ok_mon[2];$/;"	m	st
 dcu_vcfly1_ok_mon	driver/ma120x0/ma120x0.h	/^	uint8_t dcu_vcfly1_ok_mon[2];$/;"	m	struct:MA12070
 dcu_vcfly2_ok_mon	driver/ma120x0/ma120x0.h	/^	uint8_t dcu_vcfly2_ok_mon[2];$/;"	m	struct:MA12070
 dcu_vdd_ok_mon	driver/ma120x0/ma120x0.h	/^	uint8_t dcu_vdd_ok_mon[2];$/;"	m	struct:MA12070
+defValTable	driver/ma120x0/ma120x0.cpp	/^uint8_t defValTable[READWRITE] =$/;"	v
+dirnkPotion	cpp_training/Personnage.cpp	/^void Personnage::dirnkPotion(int potionQte)$/;"	f	class:Personnage
 eh_clear	driver/ma120x0/ma120x0.h	/^	uint8_t eh_clear;$/;"	m	struct:MA12070
 eh_dc_shndn	driver/ma120x0/ma120x0.h	/^	uint8_t eh_dc_shndn;$/;"	m	struct:MA12070
 error	driver/ma120x0/ma120x0.h	/^	uint8_t error;$/;"	m	struct:MA12070
 error_acc	driver/ma120x0/ma120x0.h	/^	uint8_t error_acc;$/;"	m	struct:MA12070
+getDamage	cpp_training/Weapon.cpp	/^int Weapon::getDamage() const $/;"	f	class:Weapon
+i2cData	driver/pf8574/pf8574lcd.c	/^	uint8_t i2cData[1] = {0}; $/;"	v
+i2cDataLenght	driver/pf8574/pf8574lcd.c	/^	uint8_t i2cDataLenght = 0;$/;"	v
+i2cReg	driver/pf8574/pf8574lcd.c	/^	uint8_t i2cReg[1] = {0}; $/;"	v
+i2cRegLenght	driver/pf8574/pf8574lcd.c	/^	uint8_t i2cRegLenght = 1;$/;"	v
+i2c_abortTransmit	lowlayer/i2c/ll_i2c.cpp	/^void ll_i2c::i2c_abortTransmit(){}	 $/;"	f	class:ll_i2c
+i2c_arbitration	lowlayer/i2c/ll_i2c.cpp	/^void ll_i2c::i2c_arbitration(){}		 $/;"	f	class:ll_i2c
+i2c_busClear	lowlayer/i2c/ll_i2c.cpp	/^void ll_i2c::i2c_busClear(){}$/;"	f	class:ll_i2c
+i2c_clockStretch	lowlayer/i2c/ll_i2c.cpp	/^void ll_i2c::i2c_clockStretch(){}	$/;"	f	class:ll_i2c
+i2c_clockSynchronise	lowlayer/i2c/ll_i2c.cpp	/^void ll_i2c::i2c_clockSynchronise(){}$/;"	f	class:ll_i2c
+i2c_freeChannel	lowlayer/i2c/ll_i2c.cpp	/^void ll_i2c::i2c_freeChannel()$/;"	f	class:ll_i2c
+i2c_getAddress	lowlayer/i2c/ll_i2c.cpp	/^uint8_t ll_i2c::i2c_getAddress() const$/;"	f	class:ll_i2c
+i2c_getAddressMode	lowlayer/i2c/ll_i2c.cpp	/^uint8_t ll_i2c::i2c_getAddressMode() const$/;"	f	class:ll_i2c
+i2c_getError	lowlayer/i2c/ll_i2c.cpp	/^uint8_t ll_i2c::i2c_getError() const$/;"	f	class:ll_i2c
+i2c_getIcIdentification	lowlayer/i2c/ll_i2c.cpp	/^uint8_t ll_i2c::i2c_getIcIdentification() const$/;"	f	class:ll_i2c
+i2c_getIcManufacturer	lowlayer/i2c/ll_i2c.cpp	/^uint16_t ll_i2c::i2c_getIcManufacturer() const$/;"	f	class:ll_i2c
+i2c_getIcRevision	lowlayer/i2c/ll_i2c.cpp	/^uint8_t ll_i2c::i2c_getIcRevision()	const$/;"	f	class:ll_i2c
+i2c_getInterrupt	lowlayer/i2c/ll_i2c.cpp	/^uint8_t ll_i2c::i2c_getInterrupt() const$/;"	f	class:ll_i2c
+i2c_getTimeout	lowlayer/i2c/ll_i2c.cpp	/^uint32_t ll_i2c::i2c_getTimeout() const$/;"	f	class:ll_i2c
+i2c_initChannelAsMaster	lowlayer/i2c/ll_i2c.cpp	/^void ll_i2c::i2c_initChannelAsMaster()$/;"	f	class:ll_i2c
+i2c_initChannelAsSlave	lowlayer/i2c/ll_i2c.cpp	/^void ll_i2c::i2c_initChannelAsSlave()$/;"	f	class:ll_i2c
+i2c_pointReg	lowlayer/i2c/ll_i2c.cpp	/^void ll_i2c::i2c_pointReg(uint8_t *reg)$/;"	f	class:ll_i2c
+i2c_printBuffer	lowlayer/i2c/ll_i2c.cpp	/^void ll_i2c::i2c_printBuffer(uint8_t *reg, uint8_t *data, uint8_t &regLenght, uint8_t &dataLenght)$/;"	f	class:ll_i2c
+i2c_readDeviceInfo	lowlayer/i2c/ll_i2c.cpp	/^void ll_i2c::i2c_readDeviceInfo(){}	 $/;"	f	class:ll_i2c
+i2c_receive	lowlayer/i2c/ll_i2c.cpp	/^void ll_i2c::i2c_receive(uint8_t *reg, uint8_t *buffer, uint8_t &regLenght, uint8_t &bufferLenght)$/;"	f	class:ll_i2c
+i2c_send	lowlayer/i2c/ll_i2c.cpp	/^void ll_i2c::i2c_send(uint8_t *reg, uint8_t *data, uint8_t &regLenght, uint8_t &dataLenght)$/;"	f	class:ll_i2c
+i2c_setAddress	lowlayer/i2c/ll_i2c.cpp	/^void ll_i2c::i2c_setAddress(uint16_t &address)$/;"	f	class:ll_i2c
+i2c_setAddressMode	lowlayer/i2c/ll_i2c.cpp	/^void ll_i2c::i2c_setAddressMode(){}$/;"	f	class:ll_i2c
+i2c_setDma	lowlayer/i2c/ll_i2c.cpp	/^void ll_i2c::i2c_setDma(){}$/;"	f	class:ll_i2c
+i2c_setInterrupt	lowlayer/i2c/ll_i2c.cpp	/^void ll_i2c::i2c_setInterrupt(){}$/;"	f	class:ll_i2c
+i2c_setSpeed	lowlayer/i2c/ll_i2c.cpp	/^void ll_i2c::i2c_setSpeed(uint8_t speed){}$/;"	f	class:ll_i2c
+i2c_setTimeout	lowlayer/i2c/ll_i2c.cpp	/^void ll_i2c::i2c_setTimeout(uint8_t &m_timeout){}$/;"	f	class:ll_i2c
+i2c_softReset	lowlayer/i2c/ll_i2c.cpp	/^void ll_i2c::i2c_softReset(){}		$/;"	f	class:ll_i2c
+i2c_testDeviceSpeed	lowlayer/i2c/ll_i2c.cpp	/^uint8_t ll_i2c::i2c_testDeviceSpeed()$/;"	f	class:ll_i2c
+i2c_throwError	lowlayer/i2c/ll_i2c.cpp	/^void ll_i2c::i2c_throwError(int16_t error)$/;"	f	class:ll_i2c
 i2s_format	driver/ma120x0/ma120x0.h	/^	uint8_t i2s_format;$/;"	m	struct:MA12070
 i2s_frame_size	driver/ma120x0/ma120x0.h	/^	uint8_t i2s_frame_size;$/;"	m	struct:MA12070
 i2s_order	driver/ma120x0/ma120x0.h	/^	uint8_t i2s_order;$/;"	m	struct:MA12070
@@ -154,552 +270,604 @@ i2s_right_first	driver/ma120x0/ma120x0.h	/^	uint8_t i2s_right_first;$/;"	m	struc
 i2s_sck_pol	driver/ma120x0/ma120x0.h	/^	uint8_t i2s_sck_pol;$/;"	m	struct:MA12070
 i2s_ws_pol	driver/ma120x0/ma120x0.h	/^	uint8_t i2s_ws_pol;$/;"	m	struct:MA12070
 ifClampEn	driver/ma120x0/ma120x0.h	/^	uint8_t ifClampEn; $/;"	m	struct:MA12070
+isAlive	cpp_training/Personnage.cpp	/^bool Personnage::isAlive() const $/;"	f	class:Personnage
+lcd_display_string	driver/pf8574/pf8574lcd.c	/^void lcd_display_string(char line, char pos, char* charvalue)$/;"	f
+lcd_init	driver/pf8574/pf8574lcd.c	/^int lcd_init()$/;"	f
+lcd_write	driver/pf8574/pf8574lcd.c	/^void lcd_write(char cmd, char mode)$/;"	f
+lcd_write_4bits	driver/pf8574/pf8574lcd.c	/^void lcd_write_4bits(char data)$/;"	f
+ldc_pulse_En	driver/pf8574/pf8574lcd.c	/^void ldc_pulse_En(char data)$/;"	f
+ll_i2c	lowlayer/i2c/ll_i2c.cpp	/^ll_i2c::ll_i2c(uint16_t address, uint8_t channel, uint8_t mode, uint8_t addressMode) $/;"	f	class:ll_i2c
+ll_i2c	lowlayer/i2c/ll_i2c.h	/^class ll_i2c$/;"	c
+m_address	lowlayer/i2c/ll_i2c.h	/^		uint16_t m_address;			\/\/ I2c Standrat : Address of the device to be communicated or our Slave address in Slave mode$/;"	m	class:ll_i2c
+m_addressMode	lowlayer/i2c/ll_i2c.h	/^		uint8_t m_addressMode;		\/\/ I2C Standart : Address type of the device to be communicated$/;"	m	class:ll_i2c
+m_bufferPointer	lowlayer/i2c/ll_i2c.h	/^		uint8_t *m_bufferPointer;		\/\/ Buffer pointer for data to be sent & received$/;"	m	class:ll_i2c
+m_channel	lowlayer/i2c/ll_i2c.h	/^		uint8_t m_channel;				\/\/ Hardware Specific : Selection of I2C Channel$/;"	m	class:ll_i2c
+m_damage	cpp_training/Weapon.h	/^	int m_damage;$/;"	m	class:Weapon
+m_error	lowlayer/i2c/ll_i2c.h	/^		int16_t m_error;				\/\/ The error code corresponding to that error$/;"	m	class:ll_i2c
+m_fileDescriptor	lowlayer/i2c/ll_i2c.h	/^		uint16_t m_fileDescriptor;	\/\/ Linux : i2c file description$/;"	m	class:ll_i2c
+m_fileName	lowlayer/i2c/ll_i2c.h	/^		char m_fileName[20];		\/\/ Linux : i2c file name$/;"	m	class:ll_i2c
+m_hp	cpp_training/Personnage.h	/^    int m_hp;$/;"	m	class:Personnage
+m_icIdentification	lowlayer/i2c/ll_i2c.h	/^		uint8_t m_icIdentification;	\/\/ I2C Standart : Device information from manufacturer$/;"	m	class:ll_i2c
+m_icManufacturer	lowlayer/i2c/ll_i2c.h	/^		uint16_t m_icManufacturer;	\/\/ I2C Standart : Device information from manufacturer $/;"	m	class:ll_i2c
+m_icRevision	lowlayer/i2c/ll_i2c.h	/^		uint8_t m_icRevision;		\/\/ I2C Standart : Device information from manufacturer$/;"	m	class:ll_i2c
+m_internalBuffer	lowlayer/i2c/ll_i2c.h	/^		uint8_t m_internalBuffer[4];	\/\/ data frame to get the right order of data$/;"	m	class:ll_i2c
+m_interruptSource	lowlayer/i2c/ll_i2c.h	/^		uint32_t m_interruptSource;		\/\/ Hardware Specific : Interrupt cause$/;"	m	class:ll_i2c
+m_interrupttFlags	lowlayer/i2c/ll_i2c.h	/^		uint32_t m_interrupttFlags; 	\/\/ Hardware Specific : Interrupt flag$/;"	m	class:ll_i2c
+m_mana	cpp_training/Personnage.h	/^    int m_mana;$/;"	m	class:Personnage
+m_mode	lowlayer/i2c/ll_i2c.h	/^		uint8_t m_mode;				\/\/ I2C Standart : Mode of our device$/;"	m	class:ll_i2c
+m_name	cpp_training/Personnage.h	/^    std::string m_name;$/;"	m	class:Personnage
+m_name	cpp_training/Weapon.h	/^	std::string m_name; $/;"	m	class:Weapon
+m_regPointer	lowlayer/i2c/ll_i2c.h	/^		uint8_t *m_regPointer;			\/\/ reg pointer for data to be sent & received$/;"	m	class:ll_i2c
+m_speed	lowlayer/i2c/ll_i2c.h	/^		uint8_t m_speed;			\/\/ I2C Standart : Trasmission speed$/;"	m	class:ll_i2c
+m_state	lowlayer/i2c/ll_i2c.h	/^		uint8_t m_state;			\/\/ Defined by me : Current state of this i2c Object$/;"	m	class:ll_i2c
+m_timeout	lowlayer/i2c/ll_i2c.h	/^		uint32_t m_timeout;				\/\/ Timeout for managing communication breaks$/;"	m	class:ll_i2c
+m_transferCount	lowlayer/i2c/ll_i2c.h	/^		uint8_t m_transferCount;		\/\/ Internal counter for the count of data Transfer$/;"	m	class:ll_i2c
+m_transferSize	lowlayer/i2c/ll_i2c.h	/^		volatile uint8_t m_transferSize;\/\/ Size of the data to be sent or received$/;"	m	class:ll_i2c
+m_weapon	cpp_training/Personnage.h	/^    Weapon m_weapon;$/;"	m	class:Personnage
 ma120x0_configure	driver/ma120x0/ma120x0.cpp	/^uint8_t ma120x0_configure(uint8_t Default)$/;"	f
-ma120x0_defValTable	driver/ma120x0/ma120x0.cpp	/^uint8_t ma120x0_defValTable[READWRITE] =$/;"	v
 ma120x0_i2c_feltch	driver/ma120x0/ma120x0.cpp	/^uint8_t ma120x0_i2c_feltch()$/;"	f
 ma120x0_i2c_update	driver/ma120x0/ma120x0.cpp	/^uint8_t ma120x0_i2c_update()$/;"	f
 ma120x0_setPowerMode	driver/ma120x0/ma120x0.cpp	/^uint8_t ma120x0_setPowerMode(uint8_t mode)$/;"	f
-ma_audio_in_mode__a	driver/ma120x0/ma120x0.h	293;"	d
-ma_audio_in_mode__len	driver/ma120x0/ma120x0.h	294;"	d
-ma_audio_in_mode__mask	driver/ma120x0/ma120x0.h	295;"	d
-ma_audio_in_mode__reset	driver/ma120x0/ma120x0.h	297;"	d
-ma_audio_in_mode__shift	driver/ma120x0/ma120x0.h	296;"	d
-ma_audio_in_mode_ext__a	driver/ma120x0/ma120x0.h	308;"	d
-ma_audio_in_mode_ext__len	driver/ma120x0/ma120x0.h	309;"	d
-ma_audio_in_mode_ext__mask	driver/ma120x0/ma120x0.h	310;"	d
-ma_audio_in_mode_ext__reset	driver/ma120x0/ma120x0.h	312;"	d
-ma_audio_in_mode_ext__shift	driver/ma120x0/ma120x0.h	311;"	d
-ma_audio_in_mode_mon__a	driver/ma120x0/ma120x0.h	728;"	d
-ma_audio_in_mode_mon__len	driver/ma120x0/ma120x0.h	729;"	d
-ma_audio_in_mode_mon__mask	driver/ma120x0/ma120x0.h	730;"	d
-ma_audio_in_mode_mon__reset	driver/ma120x0/ma120x0.h	732;"	d
-ma_audio_in_mode_mon__shift	driver/ma120x0/ma120x0.h	731;"	d
-ma_audio_proc_attack__a	driver/ma120x0/ma120x0.h	357;"	d
-ma_audio_proc_attack__len	driver/ma120x0/ma120x0.h	358;"	d
-ma_audio_proc_attack__mask	driver/ma120x0/ma120x0.h	359;"	d
-ma_audio_proc_attack__reset	driver/ma120x0/ma120x0.h	361;"	d
-ma_audio_proc_attack__shift	driver/ma120x0/ma120x0.h	360;"	d
-ma_audio_proc_clip_mon__a	driver/ma120x0/ma120x0.h	756;"	d
-ma_audio_proc_clip_mon__len	driver/ma120x0/ma120x0.h	757;"	d
-ma_audio_proc_clip_mon__mask	driver/ma120x0/ma120x0.h	758;"	d
-ma_audio_proc_clip_mon__reset	driver/ma120x0/ma120x0.h	760;"	d
-ma_audio_proc_clip_mon__shift	driver/ma120x0/ma120x0.h	759;"	d
-ma_audio_proc_enable__a	driver/ma120x0/ma120x0.h	343;"	d
-ma_audio_proc_enable__len	driver/ma120x0/ma120x0.h	344;"	d
-ma_audio_proc_enable__mask	driver/ma120x0/ma120x0.h	345;"	d
-ma_audio_proc_enable__reset	driver/ma120x0/ma120x0.h	347;"	d
-ma_audio_proc_enable__shift	driver/ma120x0/ma120x0.h	346;"	d
-ma_audio_proc_limiter_mon__a	driver/ma120x0/ma120x0.h	749;"	d
-ma_audio_proc_limiter_mon__len	driver/ma120x0/ma120x0.h	750;"	d
-ma_audio_proc_limiter_mon__mask	driver/ma120x0/ma120x0.h	751;"	d
-ma_audio_proc_limiter_mon__reset	driver/ma120x0/ma120x0.h	753;"	d
-ma_audio_proc_limiter_mon__shift	driver/ma120x0/ma120x0.h	752;"	d
-ma_audio_proc_limiterenable__a	driver/ma120x0/ma120x0.h	371;"	d
-ma_audio_proc_limiterenable__len	driver/ma120x0/ma120x0.h	372;"	d
-ma_audio_proc_limiterenable__mask	driver/ma120x0/ma120x0.h	373;"	d
-ma_audio_proc_limiterenable__reset	driver/ma120x0/ma120x0.h	375;"	d
-ma_audio_proc_limiterenable__shift	driver/ma120x0/ma120x0.h	374;"	d
-ma_audio_proc_mute__a	driver/ma120x0/ma120x0.h	378;"	d
-ma_audio_proc_mute__len	driver/ma120x0/ma120x0.h	379;"	d
-ma_audio_proc_mute__mask	driver/ma120x0/ma120x0.h	380;"	d
-ma_audio_proc_mute__reset	driver/ma120x0/ma120x0.h	382;"	d
-ma_audio_proc_mute__shift	driver/ma120x0/ma120x0.h	381;"	d
-ma_audio_proc_release__a	driver/ma120x0/ma120x0.h	350;"	d
-ma_audio_proc_release__len	driver/ma120x0/ma120x0.h	351;"	d
-ma_audio_proc_release__mask	driver/ma120x0/ma120x0.h	352;"	d
-ma_audio_proc_release__reset	driver/ma120x0/ma120x0.h	354;"	d
-ma_audio_proc_release__shift	driver/ma120x0/ma120x0.h	353;"	d
-ma_baltype_pm1__a	driver/ma120x0/ma120x0.h	209;"	d
-ma_baltype_pm1__len	driver/ma120x0/ma120x0.h	210;"	d
-ma_baltype_pm1__mask	driver/ma120x0/ma120x0.h	211;"	d
-ma_baltype_pm1__reset	driver/ma120x0/ma120x0.h	213;"	d
-ma_baltype_pm1__shift	driver/ma120x0/ma120x0.h	212;"	d
-ma_baltype_pm2__a	driver/ma120x0/ma120x0.h	230;"	d
-ma_baltype_pm2__len	driver/ma120x0/ma120x0.h	231;"	d
-ma_baltype_pm2__mask	driver/ma120x0/ma120x0.h	232;"	d
-ma_baltype_pm2__reset	driver/ma120x0/ma120x0.h	234;"	d
-ma_baltype_pm2__shift	driver/ma120x0/ma120x0.h	233;"	d
-ma_baltype_pm3__a	driver/ma120x0/ma120x0.h	251;"	d
-ma_baltype_pm3__len	driver/ma120x0/ma120x0.h	252;"	d
-ma_baltype_pm3__mask	driver/ma120x0/ma120x0.h	253;"	d
-ma_baltype_pm3__reset	driver/ma120x0/ma120x0.h	255;"	d
-ma_baltype_pm3__shift	driver/ma120x0/ma120x0.h	254;"	d
-ma_balwaitcount_pm1__a	driver/ma120x0/ma120x0.h	174;"	d
-ma_balwaitcount_pm1__len	driver/ma120x0/ma120x0.h	175;"	d
-ma_balwaitcount_pm1__mask	driver/ma120x0/ma120x0.h	176;"	d
-ma_balwaitcount_pm1__reset	driver/ma120x0/ma120x0.h	178;"	d
-ma_balwaitcount_pm1__shift	driver/ma120x0/ma120x0.h	177;"	d
-ma_balwaitcount_pm2__a	driver/ma120x0/ma120x0.h	181;"	d
-ma_balwaitcount_pm2__len	driver/ma120x0/ma120x0.h	182;"	d
-ma_balwaitcount_pm2__mask	driver/ma120x0/ma120x0.h	183;"	d
-ma_balwaitcount_pm2__reset	driver/ma120x0/ma120x0.h	185;"	d
-ma_balwaitcount_pm2__shift	driver/ma120x0/ma120x0.h	184;"	d
-ma_balwaitcount_pm3__a	driver/ma120x0/ma120x0.h	188;"	d
-ma_balwaitcount_pm3__len	driver/ma120x0/ma120x0.h	189;"	d
-ma_balwaitcount_pm3__mask	driver/ma120x0/ma120x0.h	190;"	d
-ma_balwaitcount_pm3__reset	driver/ma120x0/ma120x0.h	192;"	d
-ma_balwaitcount_pm3__shift	driver/ma120x0/ma120x0.h	191;"	d
-ma_dcu_mon0__freqmode_mon__a	driver/ma120x0/ma120x0.h	553;"	d
-ma_dcu_mon0__freqmode_mon__len	driver/ma120x0/ma120x0.h	554;"	d
-ma_dcu_mon0__freqmode_mon__mask	driver/ma120x0/ma120x0.h	555;"	d
-ma_dcu_mon0__freqmode_mon__reset	driver/ma120x0/ma120x0.h	557;"	d
-ma_dcu_mon0__freqmode_mon__shift	driver/ma120x0/ma120x0.h	556;"	d
-ma_dcu_mon0__m_mon__a	driver/ma120x0/ma120x0.h	609;"	d
-ma_dcu_mon0__m_mon__len	driver/ma120x0/ma120x0.h	610;"	d
-ma_dcu_mon0__m_mon__mask	driver/ma120x0/ma120x0.h	611;"	d
-ma_dcu_mon0__m_mon__reset	driver/ma120x0/ma120x0.h	613;"	d
-ma_dcu_mon0__m_mon__shift	driver/ma120x0/ma120x0.h	612;"	d
-ma_dcu_mon0__mute__a	driver/ma120x0/ma120x0.h	602;"	d
-ma_dcu_mon0__mute__len	driver/ma120x0/ma120x0.h	603;"	d
-ma_dcu_mon0__mute__mask	driver/ma120x0/ma120x0.h	604;"	d
-ma_dcu_mon0__mute__reset	driver/ma120x0/ma120x0.h	606;"	d
-ma_dcu_mon0__mute__shift	driver/ma120x0/ma120x0.h	605;"	d
-ma_dcu_mon0__ocp_mon__a	driver/ma120x0/ma120x0.h	567;"	d
-ma_dcu_mon0__ocp_mon__len	driver/ma120x0/ma120x0.h	568;"	d
-ma_dcu_mon0__ocp_mon__mask	driver/ma120x0/ma120x0.h	569;"	d
-ma_dcu_mon0__ocp_mon__reset	driver/ma120x0/ma120x0.h	571;"	d
-ma_dcu_mon0__ocp_mon__shift	driver/ma120x0/ma120x0.h	570;"	d
-ma_dcu_mon0__pm_mon__a	driver/ma120x0/ma120x0.h	546;"	d
-ma_dcu_mon0__pm_mon__len	driver/ma120x0/ma120x0.h	547;"	d
-ma_dcu_mon0__pm_mon__mask	driver/ma120x0/ma120x0.h	548;"	d
-ma_dcu_mon0__pm_mon__reset	driver/ma120x0/ma120x0.h	550;"	d
-ma_dcu_mon0__pm_mon__shift	driver/ma120x0/ma120x0.h	549;"	d
-ma_dcu_mon0__pps_passed__a	driver/ma120x0/ma120x0.h	560;"	d
-ma_dcu_mon0__pps_passed__len	driver/ma120x0/ma120x0.h	561;"	d
-ma_dcu_mon0__pps_passed__mask	driver/ma120x0/ma120x0.h	562;"	d
-ma_dcu_mon0__pps_passed__reset	driver/ma120x0/ma120x0.h	564;"	d
-ma_dcu_mon0__pps_passed__shift	driver/ma120x0/ma120x0.h	563;"	d
-ma_dcu_mon0__pvdd_ok__a	driver/ma120x0/ma120x0.h	588;"	d
-ma_dcu_mon0__pvdd_ok__len	driver/ma120x0/ma120x0.h	589;"	d
-ma_dcu_mon0__pvdd_ok__mask	driver/ma120x0/ma120x0.h	590;"	d
-ma_dcu_mon0__pvdd_ok__reset	driver/ma120x0/ma120x0.h	592;"	d
-ma_dcu_mon0__pvdd_ok__shift	driver/ma120x0/ma120x0.h	591;"	d
-ma_dcu_mon0__sw_enable__a	driver/ma120x0/ma120x0.h	686;"	d
-ma_dcu_mon0__sw_enable__len	driver/ma120x0/ma120x0.h	687;"	d
-ma_dcu_mon0__sw_enable__mask	driver/ma120x0/ma120x0.h	688;"	d
-ma_dcu_mon0__sw_enable__reset	driver/ma120x0/ma120x0.h	690;"	d
-ma_dcu_mon0__sw_enable__shift	driver/ma120x0/ma120x0.h	689;"	d
-ma_dcu_mon0__vcfly1_ok__a	driver/ma120x0/ma120x0.h	574;"	d
-ma_dcu_mon0__vcfly1_ok__len	driver/ma120x0/ma120x0.h	575;"	d
-ma_dcu_mon0__vcfly1_ok__mask	driver/ma120x0/ma120x0.h	576;"	d
-ma_dcu_mon0__vcfly1_ok__reset	driver/ma120x0/ma120x0.h	578;"	d
-ma_dcu_mon0__vcfly1_ok__shift	driver/ma120x0/ma120x0.h	577;"	d
-ma_dcu_mon0__vcfly2_ok__a	driver/ma120x0/ma120x0.h	581;"	d
-ma_dcu_mon0__vcfly2_ok__len	driver/ma120x0/ma120x0.h	582;"	d
-ma_dcu_mon0__vcfly2_ok__mask	driver/ma120x0/ma120x0.h	583;"	d
-ma_dcu_mon0__vcfly2_ok__reset	driver/ma120x0/ma120x0.h	585;"	d
-ma_dcu_mon0__vcfly2_ok__shift	driver/ma120x0/ma120x0.h	584;"	d
-ma_dcu_mon0__vdd_ok__a	driver/ma120x0/ma120x0.h	595;"	d
-ma_dcu_mon0__vdd_ok__len	driver/ma120x0/ma120x0.h	596;"	d
-ma_dcu_mon0__vdd_ok__mask	driver/ma120x0/ma120x0.h	597;"	d
-ma_dcu_mon0__vdd_ok__reset	driver/ma120x0/ma120x0.h	599;"	d
-ma_dcu_mon0__vdd_ok__shift	driver/ma120x0/ma120x0.h	598;"	d
-ma_dcu_mon1__freqmode_mon__a	driver/ma120x0/ma120x0.h	623;"	d
-ma_dcu_mon1__freqmode_mon__len	driver/ma120x0/ma120x0.h	624;"	d
-ma_dcu_mon1__freqmode_mon__mask	driver/ma120x0/ma120x0.h	625;"	d
-ma_dcu_mon1__freqmode_mon__reset	driver/ma120x0/ma120x0.h	627;"	d
-ma_dcu_mon1__freqmode_mon__shift	driver/ma120x0/ma120x0.h	626;"	d
-ma_dcu_mon1__m_mon__a	driver/ma120x0/ma120x0.h	679;"	d
-ma_dcu_mon1__m_mon__len	driver/ma120x0/ma120x0.h	680;"	d
-ma_dcu_mon1__m_mon__mask	driver/ma120x0/ma120x0.h	681;"	d
-ma_dcu_mon1__m_mon__reset	driver/ma120x0/ma120x0.h	683;"	d
-ma_dcu_mon1__m_mon__shift	driver/ma120x0/ma120x0.h	682;"	d
-ma_dcu_mon1__mute__a	driver/ma120x0/ma120x0.h	672;"	d
-ma_dcu_mon1__mute__len	driver/ma120x0/ma120x0.h	673;"	d
-ma_dcu_mon1__mute__mask	driver/ma120x0/ma120x0.h	674;"	d
-ma_dcu_mon1__mute__reset	driver/ma120x0/ma120x0.h	676;"	d
-ma_dcu_mon1__mute__shift	driver/ma120x0/ma120x0.h	675;"	d
-ma_dcu_mon1__ocp_mon__a	driver/ma120x0/ma120x0.h	637;"	d
-ma_dcu_mon1__ocp_mon__len	driver/ma120x0/ma120x0.h	638;"	d
-ma_dcu_mon1__ocp_mon__mask	driver/ma120x0/ma120x0.h	639;"	d
-ma_dcu_mon1__ocp_mon__reset	driver/ma120x0/ma120x0.h	641;"	d
-ma_dcu_mon1__ocp_mon__shift	driver/ma120x0/ma120x0.h	640;"	d
-ma_dcu_mon1__pm_mon__a	driver/ma120x0/ma120x0.h	616;"	d
-ma_dcu_mon1__pm_mon__len	driver/ma120x0/ma120x0.h	617;"	d
-ma_dcu_mon1__pm_mon__mask	driver/ma120x0/ma120x0.h	618;"	d
-ma_dcu_mon1__pm_mon__reset	driver/ma120x0/ma120x0.h	620;"	d
-ma_dcu_mon1__pm_mon__shift	driver/ma120x0/ma120x0.h	619;"	d
-ma_dcu_mon1__pps_passed__a	driver/ma120x0/ma120x0.h	630;"	d
-ma_dcu_mon1__pps_passed__len	driver/ma120x0/ma120x0.h	631;"	d
-ma_dcu_mon1__pps_passed__mask	driver/ma120x0/ma120x0.h	632;"	d
-ma_dcu_mon1__pps_passed__reset	driver/ma120x0/ma120x0.h	634;"	d
-ma_dcu_mon1__pps_passed__shift	driver/ma120x0/ma120x0.h	633;"	d
-ma_dcu_mon1__pvdd_ok__a	driver/ma120x0/ma120x0.h	658;"	d
-ma_dcu_mon1__pvdd_ok__len	driver/ma120x0/ma120x0.h	659;"	d
-ma_dcu_mon1__pvdd_ok__mask	driver/ma120x0/ma120x0.h	660;"	d
-ma_dcu_mon1__pvdd_ok__reset	driver/ma120x0/ma120x0.h	662;"	d
-ma_dcu_mon1__pvdd_ok__shift	driver/ma120x0/ma120x0.h	661;"	d
-ma_dcu_mon1__sw_enable__a	driver/ma120x0/ma120x0.h	693;"	d
-ma_dcu_mon1__sw_enable__len	driver/ma120x0/ma120x0.h	694;"	d
-ma_dcu_mon1__sw_enable__mask	driver/ma120x0/ma120x0.h	695;"	d
-ma_dcu_mon1__sw_enable__reset	driver/ma120x0/ma120x0.h	697;"	d
-ma_dcu_mon1__sw_enable__shift	driver/ma120x0/ma120x0.h	696;"	d
-ma_dcu_mon1__vcfly1_ok__a	driver/ma120x0/ma120x0.h	644;"	d
-ma_dcu_mon1__vcfly1_ok__len	driver/ma120x0/ma120x0.h	645;"	d
-ma_dcu_mon1__vcfly1_ok__mask	driver/ma120x0/ma120x0.h	646;"	d
-ma_dcu_mon1__vcfly1_ok__reset	driver/ma120x0/ma120x0.h	648;"	d
-ma_dcu_mon1__vcfly1_ok__shift	driver/ma120x0/ma120x0.h	647;"	d
-ma_dcu_mon1__vcfly2_ok__a	driver/ma120x0/ma120x0.h	651;"	d
-ma_dcu_mon1__vcfly2_ok__len	driver/ma120x0/ma120x0.h	652;"	d
-ma_dcu_mon1__vcfly2_ok__mask	driver/ma120x0/ma120x0.h	653;"	d
-ma_dcu_mon1__vcfly2_ok__reset	driver/ma120x0/ma120x0.h	655;"	d
-ma_dcu_mon1__vcfly2_ok__shift	driver/ma120x0/ma120x0.h	654;"	d
-ma_dcu_mon1__vdd_ok__a	driver/ma120x0/ma120x0.h	665;"	d
-ma_dcu_mon1__vdd_ok__len	driver/ma120x0/ma120x0.h	666;"	d
-ma_dcu_mon1__vdd_ok__mask	driver/ma120x0/ma120x0.h	667;"	d
-ma_dcu_mon1__vdd_ok__reset	driver/ma120x0/ma120x0.h	669;"	d
-ma_dcu_mon1__vdd_ok__shift	driver/ma120x0/ma120x0.h	668;"	d
-ma_dtsteps_pm1__a	driver/ma120x0/ma120x0.h	202;"	d
-ma_dtsteps_pm1__len	driver/ma120x0/ma120x0.h	203;"	d
-ma_dtsteps_pm1__mask	driver/ma120x0/ma120x0.h	204;"	d
-ma_dtsteps_pm1__reset	driver/ma120x0/ma120x0.h	206;"	d
-ma_dtsteps_pm1__shift	driver/ma120x0/ma120x0.h	205;"	d
-ma_dtsteps_pm2__a	driver/ma120x0/ma120x0.h	223;"	d
-ma_dtsteps_pm2__len	driver/ma120x0/ma120x0.h	224;"	d
-ma_dtsteps_pm2__mask	driver/ma120x0/ma120x0.h	225;"	d
-ma_dtsteps_pm2__reset	driver/ma120x0/ma120x0.h	227;"	d
-ma_dtsteps_pm2__shift	driver/ma120x0/ma120x0.h	226;"	d
-ma_dtsteps_pm3__a	driver/ma120x0/ma120x0.h	244;"	d
-ma_dtsteps_pm3__len	driver/ma120x0/ma120x0.h	245;"	d
-ma_dtsteps_pm3__mask	driver/ma120x0/ma120x0.h	246;"	d
-ma_dtsteps_pm3__reset	driver/ma120x0/ma120x0.h	248;"	d
-ma_dtsteps_pm3__shift	driver/ma120x0/ma120x0.h	247;"	d
-ma_eh_clear__a	driver/ma120x0/ma120x0.h	315;"	d
-ma_eh_clear__len	driver/ma120x0/ma120x0.h	316;"	d
-ma_eh_clear__mask	driver/ma120x0/ma120x0.h	317;"	d
-ma_eh_clear__reset	driver/ma120x0/ma120x0.h	319;"	d
-ma_eh_clear__shift	driver/ma120x0/ma120x0.h	318;"	d
-ma_eh_dcshdn__a	driver/ma120x0/ma120x0.h	300;"	d
-ma_eh_dcshdn__len	driver/ma120x0/ma120x0.h	301;"	d
-ma_eh_dcshdn__mask	driver/ma120x0/ma120x0.h	302;"	d
-ma_eh_dcshdn__reset	driver/ma120x0/ma120x0.h	304;"	d
-ma_eh_dcshdn__shift	driver/ma120x0/ma120x0.h	303;"	d
-ma_error__a	driver/ma120x0/ma120x0.h	742;"	d
-ma_error__len	driver/ma120x0/ma120x0.h	743;"	d
-ma_error__mask	driver/ma120x0/ma120x0.h	744;"	d
-ma_error__reset	driver/ma120x0/ma120x0.h	746;"	d
-ma_error__shift	driver/ma120x0/ma120x0.h	745;"	d
-ma_error_acc__a	driver/ma120x0/ma120x0.h	714;"	d
-ma_error_acc__len	driver/ma120x0/ma120x0.h	715;"	d
-ma_error_acc__mask	driver/ma120x0/ma120x0.h	716;"	d
-ma_error_acc__reset	driver/ma120x0/ma120x0.h	718;"	d
-ma_error_acc__shift	driver/ma120x0/ma120x0.h	717;"	d
-ma_hvboot0_ok_mon__a	driver/ma120x0/ma120x0.h	700;"	d
-ma_hvboot0_ok_mon__len	driver/ma120x0/ma120x0.h	701;"	d
-ma_hvboot0_ok_mon__mask	driver/ma120x0/ma120x0.h	702;"	d
-ma_hvboot0_ok_mon__reset	driver/ma120x0/ma120x0.h	704;"	d
-ma_hvboot0_ok_mon__shift	driver/ma120x0/ma120x0.h	703;"	d
-ma_hvboot1_ok_mon__a	driver/ma120x0/ma120x0.h	707;"	d
-ma_hvboot1_ok_mon__len	driver/ma120x0/ma120x0.h	708;"	d
-ma_hvboot1_ok_mon__mask	driver/ma120x0/ma120x0.h	709;"	d
-ma_hvboot1_ok_mon__reset	driver/ma120x0/ma120x0.h	711;"	d
-ma_hvboot1_ok_mon__shift	driver/ma120x0/ma120x0.h	710;"	d
-ma_i2s_data_rate__a	driver/ma120x0/ma120x0.h	721;"	d
-ma_i2s_data_rate__len	driver/ma120x0/ma120x0.h	722;"	d
-ma_i2s_data_rate__mask	driver/ma120x0/ma120x0.h	723;"	d
-ma_i2s_data_rate__reset	driver/ma120x0/ma120x0.h	725;"	d
-ma_i2s_data_rate__shift	driver/ma120x0/ma120x0.h	724;"	d
-ma_i2s_format__a	driver/ma120x0/ma120x0.h	364;"	d
-ma_i2s_format__len	driver/ma120x0/ma120x0.h	365;"	d
-ma_i2s_format__mask	driver/ma120x0/ma120x0.h	366;"	d
-ma_i2s_format__reset	driver/ma120x0/ma120x0.h	368;"	d
-ma_i2s_format__shift	driver/ma120x0/ma120x0.h	367;"	d
-ma_i2s_framesize__a	driver/ma120x0/ma120x0.h	392;"	d
-ma_i2s_framesize__len	driver/ma120x0/ma120x0.h	393;"	d
-ma_i2s_framesize__mask	driver/ma120x0/ma120x0.h	394;"	d
-ma_i2s_framesize__reset	driver/ma120x0/ma120x0.h	396;"	d
-ma_i2s_framesize__shift	driver/ma120x0/ma120x0.h	395;"	d
-ma_i2s_order__a	driver/ma120x0/ma120x0.h	406;"	d
-ma_i2s_order__len	driver/ma120x0/ma120x0.h	407;"	d
-ma_i2s_order__mask	driver/ma120x0/ma120x0.h	408;"	d
-ma_i2s_order__reset	driver/ma120x0/ma120x0.h	410;"	d
-ma_i2s_order__shift	driver/ma120x0/ma120x0.h	409;"	d
-ma_i2s_rightfirst__a	driver/ma120x0/ma120x0.h	413;"	d
-ma_i2s_rightfirst__len	driver/ma120x0/ma120x0.h	414;"	d
-ma_i2s_rightfirst__mask	driver/ma120x0/ma120x0.h	415;"	d
-ma_i2s_rightfirst__reset	driver/ma120x0/ma120x0.h	417;"	d
-ma_i2s_rightfirst__shift	driver/ma120x0/ma120x0.h	416;"	d
-ma_i2s_sck_pol__a	driver/ma120x0/ma120x0.h	385;"	d
-ma_i2s_sck_pol__len	driver/ma120x0/ma120x0.h	386;"	d
-ma_i2s_sck_pol__mask	driver/ma120x0/ma120x0.h	387;"	d
-ma_i2s_sck_pol__reset	driver/ma120x0/ma120x0.h	389;"	d
-ma_i2s_sck_pol__shift	driver/ma120x0/ma120x0.h	388;"	d
-ma_i2s_ws_pol__a	driver/ma120x0/ma120x0.h	399;"	d
-ma_i2s_ws_pol__len	driver/ma120x0/ma120x0.h	400;"	d
-ma_i2s_ws_pol__mask	driver/ma120x0/ma120x0.h	401;"	d
-ma_i2s_ws_pol__reset	driver/ma120x0/ma120x0.h	403;"	d
-ma_i2s_ws_pol__shift	driver/ma120x0/ma120x0.h	402;"	d
-ma_lf_clamp_en__a	driver/ma120x0/ma120x0.h	63;"	d
-ma_lf_clamp_en__len	driver/ma120x0/ma120x0.h	64;"	d
-ma_lf_clamp_en__mask	driver/ma120x0/ma120x0.h	65;"	d
-ma_lf_clamp_en__reset	driver/ma120x0/ma120x0.h	67;"	d
-ma_lf_clamp_en__shift	driver/ma120x0/ma120x0.h	66;"	d
+ma_audio_in_mode__a	driver/ma120x0/ma120x0.h	309;"	d
+ma_audio_in_mode__len	driver/ma120x0/ma120x0.h	310;"	d
+ma_audio_in_mode__mask	driver/ma120x0/ma120x0.h	311;"	d
+ma_audio_in_mode__reset	driver/ma120x0/ma120x0.h	313;"	d
+ma_audio_in_mode__shift	driver/ma120x0/ma120x0.h	312;"	d
+ma_audio_in_mode_ext__a	driver/ma120x0/ma120x0.h	324;"	d
+ma_audio_in_mode_ext__len	driver/ma120x0/ma120x0.h	325;"	d
+ma_audio_in_mode_ext__mask	driver/ma120x0/ma120x0.h	326;"	d
+ma_audio_in_mode_ext__reset	driver/ma120x0/ma120x0.h	328;"	d
+ma_audio_in_mode_ext__shift	driver/ma120x0/ma120x0.h	327;"	d
+ma_audio_in_mode_mon__a	driver/ma120x0/ma120x0.h	744;"	d
+ma_audio_in_mode_mon__len	driver/ma120x0/ma120x0.h	745;"	d
+ma_audio_in_mode_mon__mask	driver/ma120x0/ma120x0.h	746;"	d
+ma_audio_in_mode_mon__reset	driver/ma120x0/ma120x0.h	748;"	d
+ma_audio_in_mode_mon__shift	driver/ma120x0/ma120x0.h	747;"	d
+ma_audio_proc_attack__a	driver/ma120x0/ma120x0.h	373;"	d
+ma_audio_proc_attack__len	driver/ma120x0/ma120x0.h	374;"	d
+ma_audio_proc_attack__mask	driver/ma120x0/ma120x0.h	375;"	d
+ma_audio_proc_attack__reset	driver/ma120x0/ma120x0.h	377;"	d
+ma_audio_proc_attack__shift	driver/ma120x0/ma120x0.h	376;"	d
+ma_audio_proc_clip_mon__a	driver/ma120x0/ma120x0.h	772;"	d
+ma_audio_proc_clip_mon__len	driver/ma120x0/ma120x0.h	773;"	d
+ma_audio_proc_clip_mon__mask	driver/ma120x0/ma120x0.h	774;"	d
+ma_audio_proc_clip_mon__reset	driver/ma120x0/ma120x0.h	776;"	d
+ma_audio_proc_clip_mon__shift	driver/ma120x0/ma120x0.h	775;"	d
+ma_audio_proc_enable__a	driver/ma120x0/ma120x0.h	359;"	d
+ma_audio_proc_enable__len	driver/ma120x0/ma120x0.h	360;"	d
+ma_audio_proc_enable__mask	driver/ma120x0/ma120x0.h	361;"	d
+ma_audio_proc_enable__reset	driver/ma120x0/ma120x0.h	363;"	d
+ma_audio_proc_enable__shift	driver/ma120x0/ma120x0.h	362;"	d
+ma_audio_proc_limiter_mon__a	driver/ma120x0/ma120x0.h	765;"	d
+ma_audio_proc_limiter_mon__len	driver/ma120x0/ma120x0.h	766;"	d
+ma_audio_proc_limiter_mon__mask	driver/ma120x0/ma120x0.h	767;"	d
+ma_audio_proc_limiter_mon__reset	driver/ma120x0/ma120x0.h	769;"	d
+ma_audio_proc_limiter_mon__shift	driver/ma120x0/ma120x0.h	768;"	d
+ma_audio_proc_limiterenable__a	driver/ma120x0/ma120x0.h	387;"	d
+ma_audio_proc_limiterenable__len	driver/ma120x0/ma120x0.h	388;"	d
+ma_audio_proc_limiterenable__mask	driver/ma120x0/ma120x0.h	389;"	d
+ma_audio_proc_limiterenable__reset	driver/ma120x0/ma120x0.h	391;"	d
+ma_audio_proc_limiterenable__shift	driver/ma120x0/ma120x0.h	390;"	d
+ma_audio_proc_mute__a	driver/ma120x0/ma120x0.h	394;"	d
+ma_audio_proc_mute__len	driver/ma120x0/ma120x0.h	395;"	d
+ma_audio_proc_mute__mask	driver/ma120x0/ma120x0.h	396;"	d
+ma_audio_proc_mute__reset	driver/ma120x0/ma120x0.h	398;"	d
+ma_audio_proc_mute__shift	driver/ma120x0/ma120x0.h	397;"	d
+ma_audio_proc_release__a	driver/ma120x0/ma120x0.h	366;"	d
+ma_audio_proc_release__len	driver/ma120x0/ma120x0.h	367;"	d
+ma_audio_proc_release__mask	driver/ma120x0/ma120x0.h	368;"	d
+ma_audio_proc_release__reset	driver/ma120x0/ma120x0.h	370;"	d
+ma_audio_proc_release__shift	driver/ma120x0/ma120x0.h	369;"	d
+ma_baltype_pm1__a	driver/ma120x0/ma120x0.h	225;"	d
+ma_baltype_pm1__len	driver/ma120x0/ma120x0.h	226;"	d
+ma_baltype_pm1__mask	driver/ma120x0/ma120x0.h	227;"	d
+ma_baltype_pm1__reset	driver/ma120x0/ma120x0.h	229;"	d
+ma_baltype_pm1__shift	driver/ma120x0/ma120x0.h	228;"	d
+ma_baltype_pm2__a	driver/ma120x0/ma120x0.h	246;"	d
+ma_baltype_pm2__len	driver/ma120x0/ma120x0.h	247;"	d
+ma_baltype_pm2__mask	driver/ma120x0/ma120x0.h	248;"	d
+ma_baltype_pm2__reset	driver/ma120x0/ma120x0.h	250;"	d
+ma_baltype_pm2__shift	driver/ma120x0/ma120x0.h	249;"	d
+ma_baltype_pm3__a	driver/ma120x0/ma120x0.h	267;"	d
+ma_baltype_pm3__len	driver/ma120x0/ma120x0.h	268;"	d
+ma_baltype_pm3__mask	driver/ma120x0/ma120x0.h	269;"	d
+ma_baltype_pm3__reset	driver/ma120x0/ma120x0.h	271;"	d
+ma_baltype_pm3__shift	driver/ma120x0/ma120x0.h	270;"	d
+ma_balwaitcount_pm1__a	driver/ma120x0/ma120x0.h	187;"	d
+ma_balwaitcount_pm1__index	driver/ma120x0/ma120x0.h	188;"	d
+ma_balwaitcount_pm1__len	driver/ma120x0/ma120x0.h	189;"	d
+ma_balwaitcount_pm1__mask	driver/ma120x0/ma120x0.h	190;"	d
+ma_balwaitcount_pm1__reset	driver/ma120x0/ma120x0.h	192;"	d
+ma_balwaitcount_pm1__shift	driver/ma120x0/ma120x0.h	191;"	d
+ma_balwaitcount_pm2__a	driver/ma120x0/ma120x0.h	195;"	d
+ma_balwaitcount_pm2__index	driver/ma120x0/ma120x0.h	196;"	d
+ma_balwaitcount_pm2__len	driver/ma120x0/ma120x0.h	197;"	d
+ma_balwaitcount_pm2__mask	driver/ma120x0/ma120x0.h	198;"	d
+ma_balwaitcount_pm2__reset	driver/ma120x0/ma120x0.h	200;"	d
+ma_balwaitcount_pm2__shift	driver/ma120x0/ma120x0.h	199;"	d
+ma_balwaitcount_pm3__a	driver/ma120x0/ma120x0.h	203;"	d
+ma_balwaitcount_pm3__index	driver/ma120x0/ma120x0.h	204;"	d
+ma_balwaitcount_pm3__len	driver/ma120x0/ma120x0.h	205;"	d
+ma_balwaitcount_pm3__mask	driver/ma120x0/ma120x0.h	206;"	d
+ma_balwaitcount_pm3__reset	driver/ma120x0/ma120x0.h	208;"	d
+ma_balwaitcount_pm3__shift	driver/ma120x0/ma120x0.h	207;"	d
+ma_dcu_mon0__freqmode_mon__a	driver/ma120x0/ma120x0.h	569;"	d
+ma_dcu_mon0__freqmode_mon__len	driver/ma120x0/ma120x0.h	570;"	d
+ma_dcu_mon0__freqmode_mon__mask	driver/ma120x0/ma120x0.h	571;"	d
+ma_dcu_mon0__freqmode_mon__reset	driver/ma120x0/ma120x0.h	573;"	d
+ma_dcu_mon0__freqmode_mon__shift	driver/ma120x0/ma120x0.h	572;"	d
+ma_dcu_mon0__m_mon__a	driver/ma120x0/ma120x0.h	625;"	d
+ma_dcu_mon0__m_mon__len	driver/ma120x0/ma120x0.h	626;"	d
+ma_dcu_mon0__m_mon__mask	driver/ma120x0/ma120x0.h	627;"	d
+ma_dcu_mon0__m_mon__reset	driver/ma120x0/ma120x0.h	629;"	d
+ma_dcu_mon0__m_mon__shift	driver/ma120x0/ma120x0.h	628;"	d
+ma_dcu_mon0__mute__a	driver/ma120x0/ma120x0.h	618;"	d
+ma_dcu_mon0__mute__len	driver/ma120x0/ma120x0.h	619;"	d
+ma_dcu_mon0__mute__mask	driver/ma120x0/ma120x0.h	620;"	d
+ma_dcu_mon0__mute__reset	driver/ma120x0/ma120x0.h	622;"	d
+ma_dcu_mon0__mute__shift	driver/ma120x0/ma120x0.h	621;"	d
+ma_dcu_mon0__ocp_mon__a	driver/ma120x0/ma120x0.h	583;"	d
+ma_dcu_mon0__ocp_mon__len	driver/ma120x0/ma120x0.h	584;"	d
+ma_dcu_mon0__ocp_mon__mask	driver/ma120x0/ma120x0.h	585;"	d
+ma_dcu_mon0__ocp_mon__reset	driver/ma120x0/ma120x0.h	587;"	d
+ma_dcu_mon0__ocp_mon__shift	driver/ma120x0/ma120x0.h	586;"	d
+ma_dcu_mon0__pm_mon__a	driver/ma120x0/ma120x0.h	562;"	d
+ma_dcu_mon0__pm_mon__len	driver/ma120x0/ma120x0.h	563;"	d
+ma_dcu_mon0__pm_mon__mask	driver/ma120x0/ma120x0.h	564;"	d
+ma_dcu_mon0__pm_mon__reset	driver/ma120x0/ma120x0.h	566;"	d
+ma_dcu_mon0__pm_mon__shift	driver/ma120x0/ma120x0.h	565;"	d
+ma_dcu_mon0__pps_passed__a	driver/ma120x0/ma120x0.h	576;"	d
+ma_dcu_mon0__pps_passed__len	driver/ma120x0/ma120x0.h	577;"	d
+ma_dcu_mon0__pps_passed__mask	driver/ma120x0/ma120x0.h	578;"	d
+ma_dcu_mon0__pps_passed__reset	driver/ma120x0/ma120x0.h	580;"	d
+ma_dcu_mon0__pps_passed__shift	driver/ma120x0/ma120x0.h	579;"	d
+ma_dcu_mon0__pvdd_ok__a	driver/ma120x0/ma120x0.h	604;"	d
+ma_dcu_mon0__pvdd_ok__len	driver/ma120x0/ma120x0.h	605;"	d
+ma_dcu_mon0__pvdd_ok__mask	driver/ma120x0/ma120x0.h	606;"	d
+ma_dcu_mon0__pvdd_ok__reset	driver/ma120x0/ma120x0.h	608;"	d
+ma_dcu_mon0__pvdd_ok__shift	driver/ma120x0/ma120x0.h	607;"	d
+ma_dcu_mon0__sw_enable__a	driver/ma120x0/ma120x0.h	702;"	d
+ma_dcu_mon0__sw_enable__len	driver/ma120x0/ma120x0.h	703;"	d
+ma_dcu_mon0__sw_enable__mask	driver/ma120x0/ma120x0.h	704;"	d
+ma_dcu_mon0__sw_enable__reset	driver/ma120x0/ma120x0.h	706;"	d
+ma_dcu_mon0__sw_enable__shift	driver/ma120x0/ma120x0.h	705;"	d
+ma_dcu_mon0__vcfly1_ok__a	driver/ma120x0/ma120x0.h	590;"	d
+ma_dcu_mon0__vcfly1_ok__len	driver/ma120x0/ma120x0.h	591;"	d
+ma_dcu_mon0__vcfly1_ok__mask	driver/ma120x0/ma120x0.h	592;"	d
+ma_dcu_mon0__vcfly1_ok__reset	driver/ma120x0/ma120x0.h	594;"	d
+ma_dcu_mon0__vcfly1_ok__shift	driver/ma120x0/ma120x0.h	593;"	d
+ma_dcu_mon0__vcfly2_ok__a	driver/ma120x0/ma120x0.h	597;"	d
+ma_dcu_mon0__vcfly2_ok__len	driver/ma120x0/ma120x0.h	598;"	d
+ma_dcu_mon0__vcfly2_ok__mask	driver/ma120x0/ma120x0.h	599;"	d
+ma_dcu_mon0__vcfly2_ok__reset	driver/ma120x0/ma120x0.h	601;"	d
+ma_dcu_mon0__vcfly2_ok__shift	driver/ma120x0/ma120x0.h	600;"	d
+ma_dcu_mon0__vdd_ok__a	driver/ma120x0/ma120x0.h	611;"	d
+ma_dcu_mon0__vdd_ok__len	driver/ma120x0/ma120x0.h	612;"	d
+ma_dcu_mon0__vdd_ok__mask	driver/ma120x0/ma120x0.h	613;"	d
+ma_dcu_mon0__vdd_ok__reset	driver/ma120x0/ma120x0.h	615;"	d
+ma_dcu_mon0__vdd_ok__shift	driver/ma120x0/ma120x0.h	614;"	d
+ma_dcu_mon1__freqmode_mon__a	driver/ma120x0/ma120x0.h	639;"	d
+ma_dcu_mon1__freqmode_mon__len	driver/ma120x0/ma120x0.h	640;"	d
+ma_dcu_mon1__freqmode_mon__mask	driver/ma120x0/ma120x0.h	641;"	d
+ma_dcu_mon1__freqmode_mon__reset	driver/ma120x0/ma120x0.h	643;"	d
+ma_dcu_mon1__freqmode_mon__shift	driver/ma120x0/ma120x0.h	642;"	d
+ma_dcu_mon1__m_mon__a	driver/ma120x0/ma120x0.h	695;"	d
+ma_dcu_mon1__m_mon__len	driver/ma120x0/ma120x0.h	696;"	d
+ma_dcu_mon1__m_mon__mask	driver/ma120x0/ma120x0.h	697;"	d
+ma_dcu_mon1__m_mon__reset	driver/ma120x0/ma120x0.h	699;"	d
+ma_dcu_mon1__m_mon__shift	driver/ma120x0/ma120x0.h	698;"	d
+ma_dcu_mon1__mute__a	driver/ma120x0/ma120x0.h	688;"	d
+ma_dcu_mon1__mute__len	driver/ma120x0/ma120x0.h	689;"	d
+ma_dcu_mon1__mute__mask	driver/ma120x0/ma120x0.h	690;"	d
+ma_dcu_mon1__mute__reset	driver/ma120x0/ma120x0.h	692;"	d
+ma_dcu_mon1__mute__shift	driver/ma120x0/ma120x0.h	691;"	d
+ma_dcu_mon1__ocp_mon__a	driver/ma120x0/ma120x0.h	653;"	d
+ma_dcu_mon1__ocp_mon__len	driver/ma120x0/ma120x0.h	654;"	d
+ma_dcu_mon1__ocp_mon__mask	driver/ma120x0/ma120x0.h	655;"	d
+ma_dcu_mon1__ocp_mon__reset	driver/ma120x0/ma120x0.h	657;"	d
+ma_dcu_mon1__ocp_mon__shift	driver/ma120x0/ma120x0.h	656;"	d
+ma_dcu_mon1__pm_mon__a	driver/ma120x0/ma120x0.h	632;"	d
+ma_dcu_mon1__pm_mon__len	driver/ma120x0/ma120x0.h	633;"	d
+ma_dcu_mon1__pm_mon__mask	driver/ma120x0/ma120x0.h	634;"	d
+ma_dcu_mon1__pm_mon__reset	driver/ma120x0/ma120x0.h	636;"	d
+ma_dcu_mon1__pm_mon__shift	driver/ma120x0/ma120x0.h	635;"	d
+ma_dcu_mon1__pps_passed__a	driver/ma120x0/ma120x0.h	646;"	d
+ma_dcu_mon1__pps_passed__len	driver/ma120x0/ma120x0.h	647;"	d
+ma_dcu_mon1__pps_passed__mask	driver/ma120x0/ma120x0.h	648;"	d
+ma_dcu_mon1__pps_passed__reset	driver/ma120x0/ma120x0.h	650;"	d
+ma_dcu_mon1__pps_passed__shift	driver/ma120x0/ma120x0.h	649;"	d
+ma_dcu_mon1__pvdd_ok__a	driver/ma120x0/ma120x0.h	674;"	d
+ma_dcu_mon1__pvdd_ok__len	driver/ma120x0/ma120x0.h	675;"	d
+ma_dcu_mon1__pvdd_ok__mask	driver/ma120x0/ma120x0.h	676;"	d
+ma_dcu_mon1__pvdd_ok__reset	driver/ma120x0/ma120x0.h	678;"	d
+ma_dcu_mon1__pvdd_ok__shift	driver/ma120x0/ma120x0.h	677;"	d
+ma_dcu_mon1__sw_enable__a	driver/ma120x0/ma120x0.h	709;"	d
+ma_dcu_mon1__sw_enable__len	driver/ma120x0/ma120x0.h	710;"	d
+ma_dcu_mon1__sw_enable__mask	driver/ma120x0/ma120x0.h	711;"	d
+ma_dcu_mon1__sw_enable__reset	driver/ma120x0/ma120x0.h	713;"	d
+ma_dcu_mon1__sw_enable__shift	driver/ma120x0/ma120x0.h	712;"	d
+ma_dcu_mon1__vcfly1_ok__a	driver/ma120x0/ma120x0.h	660;"	d
+ma_dcu_mon1__vcfly1_ok__len	driver/ma120x0/ma120x0.h	661;"	d
+ma_dcu_mon1__vcfly1_ok__mask	driver/ma120x0/ma120x0.h	662;"	d
+ma_dcu_mon1__vcfly1_ok__reset	driver/ma120x0/ma120x0.h	664;"	d
+ma_dcu_mon1__vcfly1_ok__shift	driver/ma120x0/ma120x0.h	663;"	d
+ma_dcu_mon1__vcfly2_ok__a	driver/ma120x0/ma120x0.h	667;"	d
+ma_dcu_mon1__vcfly2_ok__len	driver/ma120x0/ma120x0.h	668;"	d
+ma_dcu_mon1__vcfly2_ok__mask	driver/ma120x0/ma120x0.h	669;"	d
+ma_dcu_mon1__vcfly2_ok__reset	driver/ma120x0/ma120x0.h	671;"	d
+ma_dcu_mon1__vcfly2_ok__shift	driver/ma120x0/ma120x0.h	670;"	d
+ma_dcu_mon1__vdd_ok__a	driver/ma120x0/ma120x0.h	681;"	d
+ma_dcu_mon1__vdd_ok__len	driver/ma120x0/ma120x0.h	682;"	d
+ma_dcu_mon1__vdd_ok__mask	driver/ma120x0/ma120x0.h	683;"	d
+ma_dcu_mon1__vdd_ok__reset	driver/ma120x0/ma120x0.h	685;"	d
+ma_dcu_mon1__vdd_ok__shift	driver/ma120x0/ma120x0.h	684;"	d
+ma_dtsteps_pm1__a	driver/ma120x0/ma120x0.h	218;"	d
+ma_dtsteps_pm1__len	driver/ma120x0/ma120x0.h	219;"	d
+ma_dtsteps_pm1__mask	driver/ma120x0/ma120x0.h	220;"	d
+ma_dtsteps_pm1__reset	driver/ma120x0/ma120x0.h	222;"	d
+ma_dtsteps_pm1__shift	driver/ma120x0/ma120x0.h	221;"	d
+ma_dtsteps_pm2__a	driver/ma120x0/ma120x0.h	239;"	d
+ma_dtsteps_pm2__len	driver/ma120x0/ma120x0.h	240;"	d
+ma_dtsteps_pm2__mask	driver/ma120x0/ma120x0.h	241;"	d
+ma_dtsteps_pm2__reset	driver/ma120x0/ma120x0.h	243;"	d
+ma_dtsteps_pm2__shift	driver/ma120x0/ma120x0.h	242;"	d
+ma_dtsteps_pm3__a	driver/ma120x0/ma120x0.h	260;"	d
+ma_dtsteps_pm3__len	driver/ma120x0/ma120x0.h	261;"	d
+ma_dtsteps_pm3__mask	driver/ma120x0/ma120x0.h	262;"	d
+ma_dtsteps_pm3__reset	driver/ma120x0/ma120x0.h	264;"	d
+ma_dtsteps_pm3__shift	driver/ma120x0/ma120x0.h	263;"	d
+ma_eh_clear__a	driver/ma120x0/ma120x0.h	331;"	d
+ma_eh_clear__len	driver/ma120x0/ma120x0.h	332;"	d
+ma_eh_clear__mask	driver/ma120x0/ma120x0.h	333;"	d
+ma_eh_clear__reset	driver/ma120x0/ma120x0.h	335;"	d
+ma_eh_clear__shift	driver/ma120x0/ma120x0.h	334;"	d
+ma_eh_dcshdn__a	driver/ma120x0/ma120x0.h	316;"	d
+ma_eh_dcshdn__len	driver/ma120x0/ma120x0.h	317;"	d
+ma_eh_dcshdn__mask	driver/ma120x0/ma120x0.h	318;"	d
+ma_eh_dcshdn__reset	driver/ma120x0/ma120x0.h	320;"	d
+ma_eh_dcshdn__shift	driver/ma120x0/ma120x0.h	319;"	d
+ma_error__a	driver/ma120x0/ma120x0.h	758;"	d
+ma_error__len	driver/ma120x0/ma120x0.h	759;"	d
+ma_error__mask	driver/ma120x0/ma120x0.h	760;"	d
+ma_error__reset	driver/ma120x0/ma120x0.h	762;"	d
+ma_error__shift	driver/ma120x0/ma120x0.h	761;"	d
+ma_error_acc__a	driver/ma120x0/ma120x0.h	730;"	d
+ma_error_acc__len	driver/ma120x0/ma120x0.h	731;"	d
+ma_error_acc__mask	driver/ma120x0/ma120x0.h	732;"	d
+ma_error_acc__reset	driver/ma120x0/ma120x0.h	734;"	d
+ma_error_acc__shift	driver/ma120x0/ma120x0.h	733;"	d
+ma_hvboot0_ok_mon__a	driver/ma120x0/ma120x0.h	716;"	d
+ma_hvboot0_ok_mon__len	driver/ma120x0/ma120x0.h	717;"	d
+ma_hvboot0_ok_mon__mask	driver/ma120x0/ma120x0.h	718;"	d
+ma_hvboot0_ok_mon__reset	driver/ma120x0/ma120x0.h	720;"	d
+ma_hvboot0_ok_mon__shift	driver/ma120x0/ma120x0.h	719;"	d
+ma_hvboot1_ok_mon__a	driver/ma120x0/ma120x0.h	723;"	d
+ma_hvboot1_ok_mon__len	driver/ma120x0/ma120x0.h	724;"	d
+ma_hvboot1_ok_mon__mask	driver/ma120x0/ma120x0.h	725;"	d
+ma_hvboot1_ok_mon__reset	driver/ma120x0/ma120x0.h	727;"	d
+ma_hvboot1_ok_mon__shift	driver/ma120x0/ma120x0.h	726;"	d
+ma_i2s_data_rate__a	driver/ma120x0/ma120x0.h	737;"	d
+ma_i2s_data_rate__len	driver/ma120x0/ma120x0.h	738;"	d
+ma_i2s_data_rate__mask	driver/ma120x0/ma120x0.h	739;"	d
+ma_i2s_data_rate__reset	driver/ma120x0/ma120x0.h	741;"	d
+ma_i2s_data_rate__shift	driver/ma120x0/ma120x0.h	740;"	d
+ma_i2s_format__a	driver/ma120x0/ma120x0.h	380;"	d
+ma_i2s_format__len	driver/ma120x0/ma120x0.h	381;"	d
+ma_i2s_format__mask	driver/ma120x0/ma120x0.h	382;"	d
+ma_i2s_format__reset	driver/ma120x0/ma120x0.h	384;"	d
+ma_i2s_format__shift	driver/ma120x0/ma120x0.h	383;"	d
+ma_i2s_framesize__a	driver/ma120x0/ma120x0.h	408;"	d
+ma_i2s_framesize__len	driver/ma120x0/ma120x0.h	409;"	d
+ma_i2s_framesize__mask	driver/ma120x0/ma120x0.h	410;"	d
+ma_i2s_framesize__reset	driver/ma120x0/ma120x0.h	412;"	d
+ma_i2s_framesize__shift	driver/ma120x0/ma120x0.h	411;"	d
+ma_i2s_order__a	driver/ma120x0/ma120x0.h	422;"	d
+ma_i2s_order__len	driver/ma120x0/ma120x0.h	423;"	d
+ma_i2s_order__mask	driver/ma120x0/ma120x0.h	424;"	d
+ma_i2s_order__reset	driver/ma120x0/ma120x0.h	426;"	d
+ma_i2s_order__shift	driver/ma120x0/ma120x0.h	425;"	d
+ma_i2s_rightfirst__a	driver/ma120x0/ma120x0.h	429;"	d
+ma_i2s_rightfirst__len	driver/ma120x0/ma120x0.h	430;"	d
+ma_i2s_rightfirst__mask	driver/ma120x0/ma120x0.h	431;"	d
+ma_i2s_rightfirst__reset	driver/ma120x0/ma120x0.h	433;"	d
+ma_i2s_rightfirst__shift	driver/ma120x0/ma120x0.h	432;"	d
+ma_i2s_sck_pol__a	driver/ma120x0/ma120x0.h	401;"	d
+ma_i2s_sck_pol__len	driver/ma120x0/ma120x0.h	402;"	d
+ma_i2s_sck_pol__mask	driver/ma120x0/ma120x0.h	403;"	d
+ma_i2s_sck_pol__reset	driver/ma120x0/ma120x0.h	405;"	d
+ma_i2s_sck_pol__shift	driver/ma120x0/ma120x0.h	404;"	d
+ma_i2s_ws_pol__a	driver/ma120x0/ma120x0.h	415;"	d
+ma_i2s_ws_pol__len	driver/ma120x0/ma120x0.h	416;"	d
+ma_i2s_ws_pol__mask	driver/ma120x0/ma120x0.h	417;"	d
+ma_i2s_ws_pol__reset	driver/ma120x0/ma120x0.h	419;"	d
+ma_i2s_ws_pol__shift	driver/ma120x0/ma120x0.h	418;"	d
+ma_lf_clamp_en__a	driver/ma120x0/ma120x0.h	70;"	d
+ma_lf_clamp_en__index	driver/ma120x0/ma120x0.h	71;"	d
+ma_lf_clamp_en__len	driver/ma120x0/ma120x0.h	72;"	d
+ma_lf_clamp_en__mask	driver/ma120x0/ma120x0.h	73;"	d
+ma_lf_clamp_en__reset	driver/ma120x0/ma120x0.h	75;"	d
+ma_lf_clamp_en__shift	driver/ma120x0/ma120x0.h	74;"	d
 ma_manualpm__a	driver/ma120x0/ma120x0.h	7;"	d
-ma_manualpm__len	driver/ma120x0/ma120x0.h	8;"	d
-ma_manualpm__mask	driver/ma120x0/ma120x0.h	9;"	d
-ma_manualpm__reset	driver/ma120x0/ma120x0.h	11;"	d
-ma_manualpm__shift	driver/ma120x0/ma120x0.h	10;"	d
-ma_msel_mon__a	driver/ma120x0/ma120x0.h	735;"	d
-ma_msel_mon__len	driver/ma120x0/ma120x0.h	736;"	d
-ma_msel_mon__mask	driver/ma120x0/ma120x0.h	737;"	d
-ma_msel_mon__reset	driver/ma120x0/ma120x0.h	739;"	d
-ma_msel_mon__shift	driver/ma120x0/ma120x0.h	738;"	d
-ma_mthr_1to2__a	driver/ma120x0/ma120x0.h	21;"	d
-ma_mthr_1to2__len	driver/ma120x0/ma120x0.h	22;"	d
-ma_mthr_1to2__mask	driver/ma120x0/ma120x0.h	23;"	d
-ma_mthr_1to2__reset	driver/ma120x0/ma120x0.h	25;"	d
-ma_mthr_1to2__shift	driver/ma120x0/ma120x0.h	24;"	d
-ma_mthr_2to1__a	driver/ma120x0/ma120x0.h	28;"	d
-ma_mthr_2to1__len	driver/ma120x0/ma120x0.h	29;"	d
-ma_mthr_2to1__mask	driver/ma120x0/ma120x0.h	30;"	d
-ma_mthr_2to1__reset	driver/ma120x0/ma120x0.h	32;"	d
-ma_mthr_2to1__shift	driver/ma120x0/ma120x0.h	31;"	d
-ma_mthr_2to3__a	driver/ma120x0/ma120x0.h	35;"	d
-ma_mthr_2to3__len	driver/ma120x0/ma120x0.h	36;"	d
-ma_mthr_2to3__mask	driver/ma120x0/ma120x0.h	37;"	d
-ma_mthr_2to3__reset	driver/ma120x0/ma120x0.h	39;"	d
-ma_mthr_2to3__shift	driver/ma120x0/ma120x0.h	38;"	d
-ma_mthr_3to2__a	driver/ma120x0/ma120x0.h	42;"	d
-ma_mthr_3to2__len	driver/ma120x0/ma120x0.h	43;"	d
-ma_mthr_3to2__mask	driver/ma120x0/ma120x0.h	44;"	d
-ma_mthr_3to2__reset	driver/ma120x0/ma120x0.h	46;"	d
-ma_mthr_3to2__shift	driver/ma120x0/ma120x0.h	45;"	d
-ma_ocp_latch_clear__a	driver/ma120x0/ma120x0.h	286;"	d
-ma_ocp_latch_clear__len	driver/ma120x0/ma120x0.h	287;"	d
-ma_ocp_latch_clear__mask	driver/ma120x0/ma120x0.h	288;"	d
-ma_ocp_latch_clear__reset	driver/ma120x0/ma120x0.h	290;"	d
-ma_ocp_latch_clear__shift	driver/ma120x0/ma120x0.h	289;"	d
-ma_ocp_latch_en__a	driver/ma120x0/ma120x0.h	56;"	d
-ma_ocp_latch_en__len	driver/ma120x0/ma120x0.h	57;"	d
-ma_ocp_latch_en__mask	driver/ma120x0/ma120x0.h	58;"	d
-ma_ocp_latch_en__reset	driver/ma120x0/ma120x0.h	60;"	d
-ma_ocp_latch_en__shift	driver/ma120x0/ma120x0.h	59;"	d
-ma_pm1_man__a	driver/ma120x0/ma120x0.h	279;"	d
-ma_pm1_man__len	driver/ma120x0/ma120x0.h	280;"	d
-ma_pm1_man__mask	driver/ma120x0/ma120x0.h	281;"	d
-ma_pm1_man__reset	driver/ma120x0/ma120x0.h	283;"	d
-ma_pm1_man__shift	driver/ma120x0/ma120x0.h	282;"	d
-ma_pm2_man__a	driver/ma120x0/ma120x0.h	272;"	d
-ma_pm2_man__len	driver/ma120x0/ma120x0.h	273;"	d
-ma_pm2_man__mask	driver/ma120x0/ma120x0.h	274;"	d
-ma_pm2_man__reset	driver/ma120x0/ma120x0.h	276;"	d
-ma_pm2_man__shift	driver/ma120x0/ma120x0.h	275;"	d
-ma_pm3_man__a	driver/ma120x0/ma120x0.h	265;"	d
-ma_pm3_man__len	driver/ma120x0/ma120x0.h	266;"	d
-ma_pm3_man__mask	driver/ma120x0/ma120x0.h	267;"	d
-ma_pm3_man__reset	driver/ma120x0/ma120x0.h	269;"	d
-ma_pm3_man__shift	driver/ma120x0/ma120x0.h	268;"	d
-ma_pm_man__a	driver/ma120x0/ma120x0.h	14;"	d
-ma_pm_man__len	driver/ma120x0/ma120x0.h	15;"	d
-ma_pm_man__mask	driver/ma120x0/ma120x0.h	16;"	d
-ma_pm_man__reset	driver/ma120x0/ma120x0.h	18;"	d
-ma_pm_man__shift	driver/ma120x0/ma120x0.h	17;"	d
-ma_pmcfg_btl_b__freqdiv__a	driver/ma120x0/ma120x0.h	76;"	d
-ma_pmcfg_btl_b__freqdiv__len	driver/ma120x0/ma120x0.h	77;"	d
-ma_pmcfg_btl_b__freqdiv__mask	driver/ma120x0/ma120x0.h	78;"	d
-ma_pmcfg_btl_b__freqdiv__reset	driver/ma120x0/ma120x0.h	80;"	d
-ma_pmcfg_btl_b__freqdiv__shift	driver/ma120x0/ma120x0.h	79;"	d
-ma_pmcfg_btl_b__lf_gain_ol__a	driver/ma120x0/ma120x0.h	83;"	d
-ma_pmcfg_btl_b__lf_gain_ol__len	driver/ma120x0/ma120x0.h	84;"	d
-ma_pmcfg_btl_b__lf_gain_ol__mask	driver/ma120x0/ma120x0.h	85;"	d
-ma_pmcfg_btl_b__lf_gain_ol__reset	driver/ma120x0/ma120x0.h	87;"	d
-ma_pmcfg_btl_b__lf_gain_ol__shift	driver/ma120x0/ma120x0.h	86;"	d
-ma_pmcfg_btl_b__modtype__a	driver/ma120x0/ma120x0.h	70;"	d
-ma_pmcfg_btl_b__modtype__len	driver/ma120x0/ma120x0.h	71;"	d
-ma_pmcfg_btl_b__modtype__mask	driver/ma120x0/ma120x0.h	72;"	d
-ma_pmcfg_btl_b__modtype__reset	driver/ma120x0/ma120x0.h	74;"	d
-ma_pmcfg_btl_b__modtype__shift	driver/ma120x0/ma120x0.h	73;"	d
-ma_pmcfg_btl_c__freqdiv__a	driver/ma120x0/ma120x0.h	90;"	d
-ma_pmcfg_btl_c__freqdiv__len	driver/ma120x0/ma120x0.h	91;"	d
-ma_pmcfg_btl_c__freqdiv__mask	driver/ma120x0/ma120x0.h	92;"	d
-ma_pmcfg_btl_c__freqdiv__reset	driver/ma120x0/ma120x0.h	94;"	d
-ma_pmcfg_btl_c__freqdiv__shift	driver/ma120x0/ma120x0.h	93;"	d
-ma_pmcfg_btl_c__lf_gain_ol__a	driver/ma120x0/ma120x0.h	104;"	d
-ma_pmcfg_btl_c__lf_gain_ol__len	driver/ma120x0/ma120x0.h	105;"	d
-ma_pmcfg_btl_c__lf_gain_ol__mask	driver/ma120x0/ma120x0.h	106;"	d
-ma_pmcfg_btl_c__lf_gain_ol__reset	driver/ma120x0/ma120x0.h	108;"	d
-ma_pmcfg_btl_c__lf_gain_ol__shift	driver/ma120x0/ma120x0.h	107;"	d
-ma_pmcfg_btl_c__modtype__a	driver/ma120x0/ma120x0.h	97;"	d
-ma_pmcfg_btl_c__modtype__len	driver/ma120x0/ma120x0.h	98;"	d
-ma_pmcfg_btl_c__modtype__mask	driver/ma120x0/ma120x0.h	99;"	d
-ma_pmcfg_btl_c__modtype__reset	driver/ma120x0/ma120x0.h	101;"	d
-ma_pmcfg_btl_c__modtype__shift	driver/ma120x0/ma120x0.h	100;"	d
-ma_pmcfg_btl_d__freqdiv__a	driver/ma120x0/ma120x0.h	118;"	d
-ma_pmcfg_btl_d__freqdiv__len	driver/ma120x0/ma120x0.h	119;"	d
-ma_pmcfg_btl_d__freqdiv__mask	driver/ma120x0/ma120x0.h	120;"	d
-ma_pmcfg_btl_d__freqdiv__reset	driver/ma120x0/ma120x0.h	122;"	d
-ma_pmcfg_btl_d__freqdiv__shift	driver/ma120x0/ma120x0.h	121;"	d
-ma_pmcfg_btl_d__lf_gain_ol__a	driver/ma120x0/ma120x0.h	125;"	d
-ma_pmcfg_btl_d__lf_gain_ol__len	driver/ma120x0/ma120x0.h	126;"	d
-ma_pmcfg_btl_d__lf_gain_ol__mask	driver/ma120x0/ma120x0.h	127;"	d
-ma_pmcfg_btl_d__lf_gain_ol__reset	driver/ma120x0/ma120x0.h	129;"	d
-ma_pmcfg_btl_d__lf_gain_ol__shift	driver/ma120x0/ma120x0.h	128;"	d
-ma_pmcfg_btl_d__modtype__a	driver/ma120x0/ma120x0.h	111;"	d
-ma_pmcfg_btl_d__modtype__len	driver/ma120x0/ma120x0.h	112;"	d
-ma_pmcfg_btl_d__modtype__mask	driver/ma120x0/ma120x0.h	113;"	d
-ma_pmcfg_btl_d__modtype__reset	driver/ma120x0/ma120x0.h	115;"	d
-ma_pmcfg_btl_d__modtype__shift	driver/ma120x0/ma120x0.h	114;"	d
-ma_pmcfg_se_a__freqdiv__a	driver/ma120x0/ma120x0.h	139;"	d
-ma_pmcfg_se_a__freqdiv__len	driver/ma120x0/ma120x0.h	140;"	d
-ma_pmcfg_se_a__freqdiv__mask	driver/ma120x0/ma120x0.h	141;"	d
-ma_pmcfg_se_a__freqdiv__reset	driver/ma120x0/ma120x0.h	143;"	d
-ma_pmcfg_se_a__freqdiv__shift	driver/ma120x0/ma120x0.h	142;"	d
-ma_pmcfg_se_a__lf_gain_ol__a	driver/ma120x0/ma120x0.h	146;"	d
-ma_pmcfg_se_a__lf_gain_ol__len	driver/ma120x0/ma120x0.h	147;"	d
-ma_pmcfg_se_a__lf_gain_ol__mask	driver/ma120x0/ma120x0.h	148;"	d
-ma_pmcfg_se_a__lf_gain_ol__reset	driver/ma120x0/ma120x0.h	150;"	d
-ma_pmcfg_se_a__lf_gain_ol__shift	driver/ma120x0/ma120x0.h	149;"	d
-ma_pmcfg_se_a__modtype__a	driver/ma120x0/ma120x0.h	132;"	d
-ma_pmcfg_se_a__modtype__len	driver/ma120x0/ma120x0.h	133;"	d
-ma_pmcfg_se_a__modtype__mask	driver/ma120x0/ma120x0.h	134;"	d
-ma_pmcfg_se_a__modtype__reset	driver/ma120x0/ma120x0.h	136;"	d
-ma_pmcfg_se_a__modtype__shift	driver/ma120x0/ma120x0.h	135;"	d
-ma_pmcfg_se_b__freqdiv__a	driver/ma120x0/ma120x0.h	160;"	d
-ma_pmcfg_se_b__freqdiv__len	driver/ma120x0/ma120x0.h	161;"	d
-ma_pmcfg_se_b__freqdiv__mask	driver/ma120x0/ma120x0.h	162;"	d
-ma_pmcfg_se_b__freqdiv__reset	driver/ma120x0/ma120x0.h	164;"	d
-ma_pmcfg_se_b__freqdiv__shift	driver/ma120x0/ma120x0.h	163;"	d
-ma_pmcfg_se_b__lf_gain_ol__a	driver/ma120x0/ma120x0.h	153;"	d
-ma_pmcfg_se_b__lf_gain_ol__len	driver/ma120x0/ma120x0.h	154;"	d
-ma_pmcfg_se_b__lf_gain_ol__mask	driver/ma120x0/ma120x0.h	155;"	d
-ma_pmcfg_se_b__lf_gain_ol__reset	driver/ma120x0/ma120x0.h	157;"	d
-ma_pmcfg_se_b__lf_gain_ol__shift	driver/ma120x0/ma120x0.h	156;"	d
-ma_pmcfg_se_b__modtype__a	driver/ma120x0/ma120x0.h	167;"	d
-ma_pmcfg_se_b__modtype__len	driver/ma120x0/ma120x0.h	168;"	d
-ma_pmcfg_se_b__modtype__mask	driver/ma120x0/ma120x0.h	169;"	d
-ma_pmcfg_se_b__modtype__reset	driver/ma120x0/ma120x0.h	171;"	d
-ma_pmcfg_se_b__modtype__shift	driver/ma120x0/ma120x0.h	170;"	d
-ma_pmprofile__a	driver/ma120x0/ma120x0.h	258;"	d
-ma_pmprofile__len	driver/ma120x0/ma120x0.h	259;"	d
-ma_pmprofile__mask	driver/ma120x0/ma120x0.h	260;"	d
-ma_pmprofile__reset	driver/ma120x0/ma120x0.h	262;"	d
-ma_pmprofile__shift	driver/ma120x0/ma120x0.h	261;"	d
-ma_pwmclkdiv_nom__a	driver/ma120x0/ma120x0.h	49;"	d
-ma_pwmclkdiv_nom__len	driver/ma120x0/ma120x0.h	50;"	d
-ma_pwmclkdiv_nom__mask	driver/ma120x0/ma120x0.h	51;"	d
-ma_pwmclkdiv_nom__reset	driver/ma120x0/ma120x0.h	53;"	d
-ma_pwmclkdiv_nom__shift	driver/ma120x0/ma120x0.h	52;"	d
-ma_system_mute__a	driver/ma120x0/ma120x0.h	329;"	d
-ma_system_mute__len	driver/ma120x0/ma120x0.h	330;"	d
-ma_system_mute__mask	driver/ma120x0/ma120x0.h	331;"	d
-ma_system_mute__reset	driver/ma120x0/ma120x0.h	333;"	d
-ma_system_mute__shift	driver/ma120x0/ma120x0.h	332;"	d
-ma_thermal_compr_en__a	driver/ma120x0/ma120x0.h	322;"	d
-ma_thermal_compr_en__len	driver/ma120x0/ma120x0.h	323;"	d
-ma_thermal_compr_en__mask	driver/ma120x0/ma120x0.h	324;"	d
-ma_thermal_compr_en__reset	driver/ma120x0/ma120x0.h	326;"	d
-ma_thermal_compr_en__shift	driver/ma120x0/ma120x0.h	325;"	d
-ma_thermal_compr_max_db__a	driver/ma120x0/ma120x0.h	336;"	d
-ma_thermal_compr_max_db__len	driver/ma120x0/ma120x0.h	337;"	d
-ma_thermal_compr_max_db__mask	driver/ma120x0/ma120x0.h	338;"	d
-ma_thermal_compr_max_db__reset	driver/ma120x0/ma120x0.h	340;"	d
-ma_thermal_compr_max_db__shift	driver/ma120x0/ma120x0.h	339;"	d
-ma_thr_db_ch0__a	driver/ma120x0/ma120x0.h	490;"	d
-ma_thr_db_ch0__len	driver/ma120x0/ma120x0.h	491;"	d
-ma_thr_db_ch0__mask	driver/ma120x0/ma120x0.h	492;"	d
-ma_thr_db_ch0__reset	driver/ma120x0/ma120x0.h	494;"	d
-ma_thr_db_ch0__shift	driver/ma120x0/ma120x0.h	493;"	d
-ma_thr_db_ch1__a	driver/ma120x0/ma120x0.h	497;"	d
-ma_thr_db_ch1__len	driver/ma120x0/ma120x0.h	498;"	d
-ma_thr_db_ch1__mask	driver/ma120x0/ma120x0.h	499;"	d
-ma_thr_db_ch1__reset	driver/ma120x0/ma120x0.h	501;"	d
-ma_thr_db_ch1__shift	driver/ma120x0/ma120x0.h	500;"	d
-ma_thr_db_ch2__a	driver/ma120x0/ma120x0.h	504;"	d
-ma_thr_db_ch2__len	driver/ma120x0/ma120x0.h	505;"	d
-ma_thr_db_ch2__mask	driver/ma120x0/ma120x0.h	506;"	d
-ma_thr_db_ch2__reset	driver/ma120x0/ma120x0.h	508;"	d
-ma_thr_db_ch2__shift	driver/ma120x0/ma120x0.h	507;"	d
-ma_thr_db_ch3__a	driver/ma120x0/ma120x0.h	511;"	d
-ma_thr_db_ch3__len	driver/ma120x0/ma120x0.h	512;"	d
-ma_thr_db_ch3__mask	driver/ma120x0/ma120x0.h	513;"	d
-ma_thr_db_ch3__reset	driver/ma120x0/ma120x0.h	515;"	d
-ma_thr_db_ch3__shift	driver/ma120x0/ma120x0.h	514;"	d
-ma_thr_lsb_ch0__a	driver/ma120x0/ma120x0.h	518;"	d
-ma_thr_lsb_ch0__len	driver/ma120x0/ma120x0.h	519;"	d
-ma_thr_lsb_ch0__mask	driver/ma120x0/ma120x0.h	520;"	d
-ma_thr_lsb_ch0__reset	driver/ma120x0/ma120x0.h	522;"	d
-ma_thr_lsb_ch0__shift	driver/ma120x0/ma120x0.h	521;"	d
-ma_thr_lsb_ch1__a	driver/ma120x0/ma120x0.h	525;"	d
-ma_thr_lsb_ch1__len	driver/ma120x0/ma120x0.h	526;"	d
-ma_thr_lsb_ch1__mask	driver/ma120x0/ma120x0.h	527;"	d
-ma_thr_lsb_ch1__reset	driver/ma120x0/ma120x0.h	529;"	d
-ma_thr_lsb_ch1__shift	driver/ma120x0/ma120x0.h	528;"	d
-ma_thr_lsb_ch2__a	driver/ma120x0/ma120x0.h	532;"	d
-ma_thr_lsb_ch2__len	driver/ma120x0/ma120x0.h	533;"	d
-ma_thr_lsb_ch2__mask	driver/ma120x0/ma120x0.h	534;"	d
-ma_thr_lsb_ch2__reset	driver/ma120x0/ma120x0.h	536;"	d
-ma_thr_lsb_ch2__shift	driver/ma120x0/ma120x0.h	535;"	d
-ma_thr_lsb_ch3__a	driver/ma120x0/ma120x0.h	539;"	d
-ma_thr_lsb_ch3__len	driver/ma120x0/ma120x0.h	540;"	d
-ma_thr_lsb_ch3__mask	driver/ma120x0/ma120x0.h	541;"	d
-ma_thr_lsb_ch3__reset	driver/ma120x0/ma120x0.h	543;"	d
-ma_thr_lsb_ch3__shift	driver/ma120x0/ma120x0.h	542;"	d
-ma_usespread_pm1__a	driver/ma120x0/ma120x0.h	195;"	d
-ma_usespread_pm1__len	driver/ma120x0/ma120x0.h	196;"	d
-ma_usespread_pm1__mask	driver/ma120x0/ma120x0.h	197;"	d
-ma_usespread_pm1__reset	driver/ma120x0/ma120x0.h	199;"	d
-ma_usespread_pm1__shift	driver/ma120x0/ma120x0.h	198;"	d
-ma_usespread_pm2__a	driver/ma120x0/ma120x0.h	216;"	d
-ma_usespread_pm2__len	driver/ma120x0/ma120x0.h	217;"	d
-ma_usespread_pm2__mask	driver/ma120x0/ma120x0.h	218;"	d
-ma_usespread_pm2__reset	driver/ma120x0/ma120x0.h	220;"	d
-ma_usespread_pm2__shift	driver/ma120x0/ma120x0.h	219;"	d
-ma_usespread_pm3__a	driver/ma120x0/ma120x0.h	237;"	d
-ma_usespread_pm3__len	driver/ma120x0/ma120x0.h	238;"	d
-ma_usespread_pm3__mask	driver/ma120x0/ma120x0.h	239;"	d
-ma_usespread_pm3__reset	driver/ma120x0/ma120x0.h	241;"	d
-ma_usespread_pm3__shift	driver/ma120x0/ma120x0.h	240;"	d
-ma_vol_db_ch0__a	driver/ma120x0/ma120x0.h	434;"	d
-ma_vol_db_ch0__len	driver/ma120x0/ma120x0.h	435;"	d
-ma_vol_db_ch0__mask	driver/ma120x0/ma120x0.h	436;"	d
-ma_vol_db_ch0__reset	driver/ma120x0/ma120x0.h	438;"	d
-ma_vol_db_ch0__shift	driver/ma120x0/ma120x0.h	437;"	d
-ma_vol_db_ch1__a	driver/ma120x0/ma120x0.h	441;"	d
-ma_vol_db_ch1__len	driver/ma120x0/ma120x0.h	442;"	d
-ma_vol_db_ch1__mask	driver/ma120x0/ma120x0.h	443;"	d
-ma_vol_db_ch1__reset	driver/ma120x0/ma120x0.h	445;"	d
-ma_vol_db_ch1__shift	driver/ma120x0/ma120x0.h	444;"	d
-ma_vol_db_ch2__a	driver/ma120x0/ma120x0.h	448;"	d
-ma_vol_db_ch2__len	driver/ma120x0/ma120x0.h	449;"	d
-ma_vol_db_ch2__mask	driver/ma120x0/ma120x0.h	450;"	d
-ma_vol_db_ch2__reset	driver/ma120x0/ma120x0.h	452;"	d
-ma_vol_db_ch2__shift	driver/ma120x0/ma120x0.h	451;"	d
-ma_vol_db_ch3__a	driver/ma120x0/ma120x0.h	455;"	d
-ma_vol_db_ch3__len	driver/ma120x0/ma120x0.h	456;"	d
-ma_vol_db_ch3__mask	driver/ma120x0/ma120x0.h	457;"	d
-ma_vol_db_ch3__reset	driver/ma120x0/ma120x0.h	459;"	d
-ma_vol_db_ch3__shift	driver/ma120x0/ma120x0.h	458;"	d
-ma_vol_db_master__a	driver/ma120x0/ma120x0.h	420;"	d
-ma_vol_db_master__len	driver/ma120x0/ma120x0.h	421;"	d
-ma_vol_db_master__mask	driver/ma120x0/ma120x0.h	422;"	d
-ma_vol_db_master__reset	driver/ma120x0/ma120x0.h	424;"	d
-ma_vol_db_master__shift	driver/ma120x0/ma120x0.h	423;"	d
-ma_vol_lsb_ch0__a	driver/ma120x0/ma120x0.h	462;"	d
-ma_vol_lsb_ch0__len	driver/ma120x0/ma120x0.h	463;"	d
-ma_vol_lsb_ch0__mask	driver/ma120x0/ma120x0.h	464;"	d
-ma_vol_lsb_ch0__reset	driver/ma120x0/ma120x0.h	466;"	d
-ma_vol_lsb_ch0__shift	driver/ma120x0/ma120x0.h	465;"	d
-ma_vol_lsb_ch1__a	driver/ma120x0/ma120x0.h	469;"	d
-ma_vol_lsb_ch1__len	driver/ma120x0/ma120x0.h	470;"	d
-ma_vol_lsb_ch1__mask	driver/ma120x0/ma120x0.h	471;"	d
-ma_vol_lsb_ch1__reset	driver/ma120x0/ma120x0.h	473;"	d
-ma_vol_lsb_ch1__shift	driver/ma120x0/ma120x0.h	472;"	d
-ma_vol_lsb_ch2__a	driver/ma120x0/ma120x0.h	476;"	d
-ma_vol_lsb_ch2__len	driver/ma120x0/ma120x0.h	477;"	d
-ma_vol_lsb_ch2__mask	driver/ma120x0/ma120x0.h	478;"	d
-ma_vol_lsb_ch2__reset	driver/ma120x0/ma120x0.h	480;"	d
-ma_vol_lsb_ch2__shift	driver/ma120x0/ma120x0.h	479;"	d
-ma_vol_lsb_ch3__a	driver/ma120x0/ma120x0.h	483;"	d
-ma_vol_lsb_ch3__len	driver/ma120x0/ma120x0.h	484;"	d
-ma_vol_lsb_ch3__mask	driver/ma120x0/ma120x0.h	485;"	d
-ma_vol_lsb_ch3__reset	driver/ma120x0/ma120x0.h	487;"	d
-ma_vol_lsb_ch3__shift	driver/ma120x0/ma120x0.h	486;"	d
-ma_vol_lsb_master__a	driver/ma120x0/ma120x0.h	427;"	d
-ma_vol_lsb_master__len	driver/ma120x0/ma120x0.h	428;"	d
-ma_vol_lsb_master__mask	driver/ma120x0/ma120x0.h	429;"	d
-ma_vol_lsb_master__reset	driver/ma120x0/ma120x0.h	431;"	d
-ma_vol_lsb_master__shift	driver/ma120x0/ma120x0.h	430;"	d
+ma_manualpm__len	driver/ma120x0/ma120x0.h	9;"	d
+ma_manualpm__mask	driver/ma120x0/ma120x0.h	10;"	d
+ma_manualpm__reset	driver/ma120x0/ma120x0.h	12;"	d
+ma_manualpm__shift	driver/ma120x0/ma120x0.h	11;"	d
+ma_msel_mon__a	driver/ma120x0/ma120x0.h	751;"	d
+ma_msel_mon__len	driver/ma120x0/ma120x0.h	752;"	d
+ma_msel_mon__mask	driver/ma120x0/ma120x0.h	753;"	d
+ma_msel_mon__reset	driver/ma120x0/ma120x0.h	755;"	d
+ma_msel_mon__shift	driver/ma120x0/ma120x0.h	754;"	d
+ma_mthr_1to2__a	driver/ma120x0/ma120x0.h	22;"	d
+ma_mthr_1to2__index	driver/ma120x0/ma120x0.h	23;"	d
+ma_mthr_1to2__len	driver/ma120x0/ma120x0.h	24;"	d
+ma_mthr_1to2__mask	driver/ma120x0/ma120x0.h	25;"	d
+ma_mthr_1to2__reset	driver/ma120x0/ma120x0.h	27;"	d
+ma_mthr_1to2__shift	driver/ma120x0/ma120x0.h	26;"	d
+ma_mthr_2to1__a	driver/ma120x0/ma120x0.h	30;"	d
+ma_mthr_2to1__index	driver/ma120x0/ma120x0.h	31;"	d
+ma_mthr_2to1__len	driver/ma120x0/ma120x0.h	32;"	d
+ma_mthr_2to1__mask	driver/ma120x0/ma120x0.h	33;"	d
+ma_mthr_2to1__reset	driver/ma120x0/ma120x0.h	35;"	d
+ma_mthr_2to1__shift	driver/ma120x0/ma120x0.h	34;"	d
+ma_mthr_2to3__a	driver/ma120x0/ma120x0.h	38;"	d
+ma_mthr_2to3__index	driver/ma120x0/ma120x0.h	39;"	d
+ma_mthr_2to3__len	driver/ma120x0/ma120x0.h	40;"	d
+ma_mthr_2to3__mask	driver/ma120x0/ma120x0.h	41;"	d
+ma_mthr_2to3__reset	driver/ma120x0/ma120x0.h	43;"	d
+ma_mthr_2to3__shift	driver/ma120x0/ma120x0.h	42;"	d
+ma_mthr_3to2__a	driver/ma120x0/ma120x0.h	46;"	d
+ma_mthr_3to2__index	driver/ma120x0/ma120x0.h	47;"	d
+ma_mthr_3to2__len	driver/ma120x0/ma120x0.h	48;"	d
+ma_mthr_3to2__mask	driver/ma120x0/ma120x0.h	49;"	d
+ma_mthr_3to2__reset	driver/ma120x0/ma120x0.h	51;"	d
+ma_mthr_3to2__shift	driver/ma120x0/ma120x0.h	50;"	d
+ma_ocp_latch_clear__a	driver/ma120x0/ma120x0.h	302;"	d
+ma_ocp_latch_clear__len	driver/ma120x0/ma120x0.h	303;"	d
+ma_ocp_latch_clear__mask	driver/ma120x0/ma120x0.h	304;"	d
+ma_ocp_latch_clear__reset	driver/ma120x0/ma120x0.h	306;"	d
+ma_ocp_latch_clear__shift	driver/ma120x0/ma120x0.h	305;"	d
+ma_ocp_latch_en__a	driver/ma120x0/ma120x0.h	62;"	d
+ma_ocp_latch_en__index	driver/ma120x0/ma120x0.h	63;"	d
+ma_ocp_latch_en__len	driver/ma120x0/ma120x0.h	64;"	d
+ma_ocp_latch_en__mask	driver/ma120x0/ma120x0.h	65;"	d
+ma_ocp_latch_en__reset	driver/ma120x0/ma120x0.h	67;"	d
+ma_ocp_latch_en__shift	driver/ma120x0/ma120x0.h	66;"	d
+ma_pm1_man__a	driver/ma120x0/ma120x0.h	295;"	d
+ma_pm1_man__len	driver/ma120x0/ma120x0.h	296;"	d
+ma_pm1_man__mask	driver/ma120x0/ma120x0.h	297;"	d
+ma_pm1_man__reset	driver/ma120x0/ma120x0.h	299;"	d
+ma_pm1_man__shift	driver/ma120x0/ma120x0.h	298;"	d
+ma_pm2_man__a	driver/ma120x0/ma120x0.h	288;"	d
+ma_pm2_man__len	driver/ma120x0/ma120x0.h	289;"	d
+ma_pm2_man__mask	driver/ma120x0/ma120x0.h	290;"	d
+ma_pm2_man__reset	driver/ma120x0/ma120x0.h	292;"	d
+ma_pm2_man__shift	driver/ma120x0/ma120x0.h	291;"	d
+ma_pm3_man__a	driver/ma120x0/ma120x0.h	281;"	d
+ma_pm3_man__len	driver/ma120x0/ma120x0.h	282;"	d
+ma_pm3_man__mask	driver/ma120x0/ma120x0.h	283;"	d
+ma_pm3_man__reset	driver/ma120x0/ma120x0.h	285;"	d
+ma_pm3_man__shift	driver/ma120x0/ma120x0.h	284;"	d
+ma_pm__index	driver/ma120x0/ma120x0.h	8;"	d
+ma_pm_man__a	driver/ma120x0/ma120x0.h	15;"	d
+ma_pm_man__len	driver/ma120x0/ma120x0.h	16;"	d
+ma_pm_man__mask	driver/ma120x0/ma120x0.h	17;"	d
+ma_pm_man__reset	driver/ma120x0/ma120x0.h	19;"	d
+ma_pm_man__shift	driver/ma120x0/ma120x0.h	18;"	d
+ma_pmcfg_btl_b__freqdiv__a	driver/ma120x0/ma120x0.h	85;"	d
+ma_pmcfg_btl_b__freqdiv__len	driver/ma120x0/ma120x0.h	86;"	d
+ma_pmcfg_btl_b__freqdiv__mask	driver/ma120x0/ma120x0.h	87;"	d
+ma_pmcfg_btl_b__freqdiv__reset	driver/ma120x0/ma120x0.h	89;"	d
+ma_pmcfg_btl_b__freqdiv__shift	driver/ma120x0/ma120x0.h	88;"	d
+ma_pmcfg_btl_b__index	driver/ma120x0/ma120x0.h	79;"	d
+ma_pmcfg_btl_b__lf_gain_ol__a	driver/ma120x0/ma120x0.h	92;"	d
+ma_pmcfg_btl_b__lf_gain_ol__len	driver/ma120x0/ma120x0.h	93;"	d
+ma_pmcfg_btl_b__lf_gain_ol__mask	driver/ma120x0/ma120x0.h	94;"	d
+ma_pmcfg_btl_b__lf_gain_ol__reset	driver/ma120x0/ma120x0.h	96;"	d
+ma_pmcfg_btl_b__lf_gain_ol__shift	driver/ma120x0/ma120x0.h	95;"	d
+ma_pmcfg_btl_b__modtype__a	driver/ma120x0/ma120x0.h	78;"	d
+ma_pmcfg_btl_b__modtype__len	driver/ma120x0/ma120x0.h	80;"	d
+ma_pmcfg_btl_b__modtype__mask	driver/ma120x0/ma120x0.h	81;"	d
+ma_pmcfg_btl_b__modtype__reset	driver/ma120x0/ma120x0.h	83;"	d
+ma_pmcfg_btl_b__modtype__shift	driver/ma120x0/ma120x0.h	82;"	d
+ma_pmcfg_btl_c__freqdiv__a	driver/ma120x0/ma120x0.h	99;"	d
+ma_pmcfg_btl_c__freqdiv__len	driver/ma120x0/ma120x0.h	101;"	d
+ma_pmcfg_btl_c__freqdiv__mask	driver/ma120x0/ma120x0.h	102;"	d
+ma_pmcfg_btl_c__freqdiv__reset	driver/ma120x0/ma120x0.h	104;"	d
+ma_pmcfg_btl_c__freqdiv__shift	driver/ma120x0/ma120x0.h	103;"	d
+ma_pmcfg_btl_c__index	driver/ma120x0/ma120x0.h	100;"	d
+ma_pmcfg_btl_c__lf_gain_ol__a	driver/ma120x0/ma120x0.h	114;"	d
+ma_pmcfg_btl_c__lf_gain_ol__len	driver/ma120x0/ma120x0.h	115;"	d
+ma_pmcfg_btl_c__lf_gain_ol__mask	driver/ma120x0/ma120x0.h	116;"	d
+ma_pmcfg_btl_c__lf_gain_ol__reset	driver/ma120x0/ma120x0.h	118;"	d
+ma_pmcfg_btl_c__lf_gain_ol__shift	driver/ma120x0/ma120x0.h	117;"	d
+ma_pmcfg_btl_c__modtype__a	driver/ma120x0/ma120x0.h	107;"	d
+ma_pmcfg_btl_c__modtype__len	driver/ma120x0/ma120x0.h	108;"	d
+ma_pmcfg_btl_c__modtype__mask	driver/ma120x0/ma120x0.h	109;"	d
+ma_pmcfg_btl_c__modtype__reset	driver/ma120x0/ma120x0.h	111;"	d
+ma_pmcfg_btl_c__modtype__shift	driver/ma120x0/ma120x0.h	110;"	d
+ma_pmcfg_btl_d__freqdiv__a	driver/ma120x0/ma120x0.h	129;"	d
+ma_pmcfg_btl_d__freqdiv__len	driver/ma120x0/ma120x0.h	130;"	d
+ma_pmcfg_btl_d__freqdiv__mask	driver/ma120x0/ma120x0.h	131;"	d
+ma_pmcfg_btl_d__freqdiv__reset	driver/ma120x0/ma120x0.h	133;"	d
+ma_pmcfg_btl_d__freqdiv__shift	driver/ma120x0/ma120x0.h	132;"	d
+ma_pmcfg_btl_d__index	driver/ma120x0/ma120x0.h	122;"	d
+ma_pmcfg_btl_d__lf_gain_ol__a	driver/ma120x0/ma120x0.h	136;"	d
+ma_pmcfg_btl_d__lf_gain_ol__len	driver/ma120x0/ma120x0.h	137;"	d
+ma_pmcfg_btl_d__lf_gain_ol__mask	driver/ma120x0/ma120x0.h	138;"	d
+ma_pmcfg_btl_d__lf_gain_ol__reset	driver/ma120x0/ma120x0.h	140;"	d
+ma_pmcfg_btl_d__lf_gain_ol__shift	driver/ma120x0/ma120x0.h	139;"	d
+ma_pmcfg_btl_d__modtype__a	driver/ma120x0/ma120x0.h	121;"	d
+ma_pmcfg_btl_d__modtype__len	driver/ma120x0/ma120x0.h	123;"	d
+ma_pmcfg_btl_d__modtype__mask	driver/ma120x0/ma120x0.h	124;"	d
+ma_pmcfg_btl_d__modtype__reset	driver/ma120x0/ma120x0.h	126;"	d
+ma_pmcfg_btl_d__modtype__shift	driver/ma120x0/ma120x0.h	125;"	d
+ma_pmcfg_se_a__freqdiv__a	driver/ma120x0/ma120x0.h	151;"	d
+ma_pmcfg_se_a__freqdiv__len	driver/ma120x0/ma120x0.h	152;"	d
+ma_pmcfg_se_a__freqdiv__mask	driver/ma120x0/ma120x0.h	153;"	d
+ma_pmcfg_se_a__freqdiv__reset	driver/ma120x0/ma120x0.h	155;"	d
+ma_pmcfg_se_a__freqdiv__shift	driver/ma120x0/ma120x0.h	154;"	d
+ma_pmcfg_se_a__index	driver/ma120x0/ma120x0.h	144;"	d
+ma_pmcfg_se_a__lf_gain_ol__a	driver/ma120x0/ma120x0.h	158;"	d
+ma_pmcfg_se_a__lf_gain_ol__len	driver/ma120x0/ma120x0.h	159;"	d
+ma_pmcfg_se_a__lf_gain_ol__mask	driver/ma120x0/ma120x0.h	160;"	d
+ma_pmcfg_se_a__lf_gain_ol__reset	driver/ma120x0/ma120x0.h	162;"	d
+ma_pmcfg_se_a__lf_gain_ol__shift	driver/ma120x0/ma120x0.h	161;"	d
+ma_pmcfg_se_a__modtype__a	driver/ma120x0/ma120x0.h	143;"	d
+ma_pmcfg_se_a__modtype__len	driver/ma120x0/ma120x0.h	145;"	d
+ma_pmcfg_se_a__modtype__mask	driver/ma120x0/ma120x0.h	146;"	d
+ma_pmcfg_se_a__modtype__reset	driver/ma120x0/ma120x0.h	148;"	d
+ma_pmcfg_se_a__modtype__shift	driver/ma120x0/ma120x0.h	147;"	d
+ma_pmcfg_se_b__freqdiv__a	driver/ma120x0/ma120x0.h	173;"	d
+ma_pmcfg_se_b__freqdiv__len	driver/ma120x0/ma120x0.h	174;"	d
+ma_pmcfg_se_b__freqdiv__mask	driver/ma120x0/ma120x0.h	175;"	d
+ma_pmcfg_se_b__freqdiv__reset	driver/ma120x0/ma120x0.h	177;"	d
+ma_pmcfg_se_b__freqdiv__shift	driver/ma120x0/ma120x0.h	176;"	d
+ma_pmcfg_se_b__index	driver/ma120x0/ma120x0.h	166;"	d
+ma_pmcfg_se_b__lf_gain_ol__a	driver/ma120x0/ma120x0.h	165;"	d
+ma_pmcfg_se_b__lf_gain_ol__len	driver/ma120x0/ma120x0.h	167;"	d
+ma_pmcfg_se_b__lf_gain_ol__mask	driver/ma120x0/ma120x0.h	168;"	d
+ma_pmcfg_se_b__lf_gain_ol__reset	driver/ma120x0/ma120x0.h	170;"	d
+ma_pmcfg_se_b__lf_gain_ol__shift	driver/ma120x0/ma120x0.h	169;"	d
+ma_pmcfg_se_b__modtype__a	driver/ma120x0/ma120x0.h	180;"	d
+ma_pmcfg_se_b__modtype__len	driver/ma120x0/ma120x0.h	181;"	d
+ma_pmcfg_se_b__modtype__mask	driver/ma120x0/ma120x0.h	182;"	d
+ma_pmcfg_se_b__modtype__reset	driver/ma120x0/ma120x0.h	184;"	d
+ma_pmcfg_se_b__modtype__shift	driver/ma120x0/ma120x0.h	183;"	d
+ma_pmprofile__a	driver/ma120x0/ma120x0.h	274;"	d
+ma_pmprofile__len	driver/ma120x0/ma120x0.h	275;"	d
+ma_pmprofile__mask	driver/ma120x0/ma120x0.h	276;"	d
+ma_pmprofile__reset	driver/ma120x0/ma120x0.h	278;"	d
+ma_pmprofile__shift	driver/ma120x0/ma120x0.h	277;"	d
+ma_pwmclkdiv_nom__a	driver/ma120x0/ma120x0.h	54;"	d
+ma_pwmclkdiv_nom__index	driver/ma120x0/ma120x0.h	55;"	d
+ma_pwmclkdiv_nom__len	driver/ma120x0/ma120x0.h	56;"	d
+ma_pwmclkdiv_nom__mask	driver/ma120x0/ma120x0.h	57;"	d
+ma_pwmclkdiv_nom__reset	driver/ma120x0/ma120x0.h	59;"	d
+ma_pwmclkdiv_nom__shift	driver/ma120x0/ma120x0.h	58;"	d
+ma_system_mute__a	driver/ma120x0/ma120x0.h	345;"	d
+ma_system_mute__len	driver/ma120x0/ma120x0.h	346;"	d
+ma_system_mute__mask	driver/ma120x0/ma120x0.h	347;"	d
+ma_system_mute__reset	driver/ma120x0/ma120x0.h	349;"	d
+ma_system_mute__shift	driver/ma120x0/ma120x0.h	348;"	d
+ma_thermal_compr_en__a	driver/ma120x0/ma120x0.h	338;"	d
+ma_thermal_compr_en__len	driver/ma120x0/ma120x0.h	339;"	d
+ma_thermal_compr_en__mask	driver/ma120x0/ma120x0.h	340;"	d
+ma_thermal_compr_en__reset	driver/ma120x0/ma120x0.h	342;"	d
+ma_thermal_compr_en__shift	driver/ma120x0/ma120x0.h	341;"	d
+ma_thermal_compr_max_db__a	driver/ma120x0/ma120x0.h	352;"	d
+ma_thermal_compr_max_db__len	driver/ma120x0/ma120x0.h	353;"	d
+ma_thermal_compr_max_db__mask	driver/ma120x0/ma120x0.h	354;"	d
+ma_thermal_compr_max_db__reset	driver/ma120x0/ma120x0.h	356;"	d
+ma_thermal_compr_max_db__shift	driver/ma120x0/ma120x0.h	355;"	d
+ma_thr_db_ch0__a	driver/ma120x0/ma120x0.h	506;"	d
+ma_thr_db_ch0__len	driver/ma120x0/ma120x0.h	507;"	d
+ma_thr_db_ch0__mask	driver/ma120x0/ma120x0.h	508;"	d
+ma_thr_db_ch0__reset	driver/ma120x0/ma120x0.h	510;"	d
+ma_thr_db_ch0__shift	driver/ma120x0/ma120x0.h	509;"	d
+ma_thr_db_ch1__a	driver/ma120x0/ma120x0.h	513;"	d
+ma_thr_db_ch1__len	driver/ma120x0/ma120x0.h	514;"	d
+ma_thr_db_ch1__mask	driver/ma120x0/ma120x0.h	515;"	d
+ma_thr_db_ch1__reset	driver/ma120x0/ma120x0.h	517;"	d
+ma_thr_db_ch1__shift	driver/ma120x0/ma120x0.h	516;"	d
+ma_thr_db_ch2__a	driver/ma120x0/ma120x0.h	520;"	d
+ma_thr_db_ch2__len	driver/ma120x0/ma120x0.h	521;"	d
+ma_thr_db_ch2__mask	driver/ma120x0/ma120x0.h	522;"	d
+ma_thr_db_ch2__reset	driver/ma120x0/ma120x0.h	524;"	d
+ma_thr_db_ch2__shift	driver/ma120x0/ma120x0.h	523;"	d
+ma_thr_db_ch3__a	driver/ma120x0/ma120x0.h	527;"	d
+ma_thr_db_ch3__len	driver/ma120x0/ma120x0.h	528;"	d
+ma_thr_db_ch3__mask	driver/ma120x0/ma120x0.h	529;"	d
+ma_thr_db_ch3__reset	driver/ma120x0/ma120x0.h	531;"	d
+ma_thr_db_ch3__shift	driver/ma120x0/ma120x0.h	530;"	d
+ma_thr_lsb_ch0__a	driver/ma120x0/ma120x0.h	534;"	d
+ma_thr_lsb_ch0__len	driver/ma120x0/ma120x0.h	535;"	d
+ma_thr_lsb_ch0__mask	driver/ma120x0/ma120x0.h	536;"	d
+ma_thr_lsb_ch0__reset	driver/ma120x0/ma120x0.h	538;"	d
+ma_thr_lsb_ch0__shift	driver/ma120x0/ma120x0.h	537;"	d
+ma_thr_lsb_ch1__a	driver/ma120x0/ma120x0.h	541;"	d
+ma_thr_lsb_ch1__len	driver/ma120x0/ma120x0.h	542;"	d
+ma_thr_lsb_ch1__mask	driver/ma120x0/ma120x0.h	543;"	d
+ma_thr_lsb_ch1__reset	driver/ma120x0/ma120x0.h	545;"	d
+ma_thr_lsb_ch1__shift	driver/ma120x0/ma120x0.h	544;"	d
+ma_thr_lsb_ch2__a	driver/ma120x0/ma120x0.h	548;"	d
+ma_thr_lsb_ch2__len	driver/ma120x0/ma120x0.h	549;"	d
+ma_thr_lsb_ch2__mask	driver/ma120x0/ma120x0.h	550;"	d
+ma_thr_lsb_ch2__reset	driver/ma120x0/ma120x0.h	552;"	d
+ma_thr_lsb_ch2__shift	driver/ma120x0/ma120x0.h	551;"	d
+ma_thr_lsb_ch3__a	driver/ma120x0/ma120x0.h	555;"	d
+ma_thr_lsb_ch3__len	driver/ma120x0/ma120x0.h	556;"	d
+ma_thr_lsb_ch3__mask	driver/ma120x0/ma120x0.h	557;"	d
+ma_thr_lsb_ch3__reset	driver/ma120x0/ma120x0.h	559;"	d
+ma_thr_lsb_ch3__shift	driver/ma120x0/ma120x0.h	558;"	d
+ma_usespread_pm1__a	driver/ma120x0/ma120x0.h	211;"	d
+ma_usespread_pm1__len	driver/ma120x0/ma120x0.h	212;"	d
+ma_usespread_pm1__mask	driver/ma120x0/ma120x0.h	213;"	d
+ma_usespread_pm1__reset	driver/ma120x0/ma120x0.h	215;"	d
+ma_usespread_pm1__shift	driver/ma120x0/ma120x0.h	214;"	d
+ma_usespread_pm2__a	driver/ma120x0/ma120x0.h	232;"	d
+ma_usespread_pm2__len	driver/ma120x0/ma120x0.h	233;"	d
+ma_usespread_pm2__mask	driver/ma120x0/ma120x0.h	234;"	d
+ma_usespread_pm2__reset	driver/ma120x0/ma120x0.h	236;"	d
+ma_usespread_pm2__shift	driver/ma120x0/ma120x0.h	235;"	d
+ma_usespread_pm3__a	driver/ma120x0/ma120x0.h	253;"	d
+ma_usespread_pm3__len	driver/ma120x0/ma120x0.h	254;"	d
+ma_usespread_pm3__mask	driver/ma120x0/ma120x0.h	255;"	d
+ma_usespread_pm3__reset	driver/ma120x0/ma120x0.h	257;"	d
+ma_usespread_pm3__shift	driver/ma120x0/ma120x0.h	256;"	d
+ma_vol_db_ch0__a	driver/ma120x0/ma120x0.h	450;"	d
+ma_vol_db_ch0__len	driver/ma120x0/ma120x0.h	451;"	d
+ma_vol_db_ch0__mask	driver/ma120x0/ma120x0.h	452;"	d
+ma_vol_db_ch0__reset	driver/ma120x0/ma120x0.h	454;"	d
+ma_vol_db_ch0__shift	driver/ma120x0/ma120x0.h	453;"	d
+ma_vol_db_ch1__a	driver/ma120x0/ma120x0.h	457;"	d
+ma_vol_db_ch1__len	driver/ma120x0/ma120x0.h	458;"	d
+ma_vol_db_ch1__mask	driver/ma120x0/ma120x0.h	459;"	d
+ma_vol_db_ch1__reset	driver/ma120x0/ma120x0.h	461;"	d
+ma_vol_db_ch1__shift	driver/ma120x0/ma120x0.h	460;"	d
+ma_vol_db_ch2__a	driver/ma120x0/ma120x0.h	464;"	d
+ma_vol_db_ch2__len	driver/ma120x0/ma120x0.h	465;"	d
+ma_vol_db_ch2__mask	driver/ma120x0/ma120x0.h	466;"	d
+ma_vol_db_ch2__reset	driver/ma120x0/ma120x0.h	468;"	d
+ma_vol_db_ch2__shift	driver/ma120x0/ma120x0.h	467;"	d
+ma_vol_db_ch3__a	driver/ma120x0/ma120x0.h	471;"	d
+ma_vol_db_ch3__len	driver/ma120x0/ma120x0.h	472;"	d
+ma_vol_db_ch3__mask	driver/ma120x0/ma120x0.h	473;"	d
+ma_vol_db_ch3__reset	driver/ma120x0/ma120x0.h	475;"	d
+ma_vol_db_ch3__shift	driver/ma120x0/ma120x0.h	474;"	d
+ma_vol_db_master__a	driver/ma120x0/ma120x0.h	436;"	d
+ma_vol_db_master__len	driver/ma120x0/ma120x0.h	437;"	d
+ma_vol_db_master__mask	driver/ma120x0/ma120x0.h	438;"	d
+ma_vol_db_master__reset	driver/ma120x0/ma120x0.h	440;"	d
+ma_vol_db_master__shift	driver/ma120x0/ma120x0.h	439;"	d
+ma_vol_lsb_ch0__a	driver/ma120x0/ma120x0.h	478;"	d
+ma_vol_lsb_ch0__len	driver/ma120x0/ma120x0.h	479;"	d
+ma_vol_lsb_ch0__mask	driver/ma120x0/ma120x0.h	480;"	d
+ma_vol_lsb_ch0__reset	driver/ma120x0/ma120x0.h	482;"	d
+ma_vol_lsb_ch0__shift	driver/ma120x0/ma120x0.h	481;"	d
+ma_vol_lsb_ch1__a	driver/ma120x0/ma120x0.h	485;"	d
+ma_vol_lsb_ch1__len	driver/ma120x0/ma120x0.h	486;"	d
+ma_vol_lsb_ch1__mask	driver/ma120x0/ma120x0.h	487;"	d
+ma_vol_lsb_ch1__reset	driver/ma120x0/ma120x0.h	489;"	d
+ma_vol_lsb_ch1__shift	driver/ma120x0/ma120x0.h	488;"	d
+ma_vol_lsb_ch2__a	driver/ma120x0/ma120x0.h	492;"	d
+ma_vol_lsb_ch2__len	driver/ma120x0/ma120x0.h	493;"	d
+ma_vol_lsb_ch2__mask	driver/ma120x0/ma120x0.h	494;"	d
+ma_vol_lsb_ch2__reset	driver/ma120x0/ma120x0.h	496;"	d
+ma_vol_lsb_ch2__shift	driver/ma120x0/ma120x0.h	495;"	d
+ma_vol_lsb_ch3__a	driver/ma120x0/ma120x0.h	499;"	d
+ma_vol_lsb_ch3__len	driver/ma120x0/ma120x0.h	500;"	d
+ma_vol_lsb_ch3__mask	driver/ma120x0/ma120x0.h	501;"	d
+ma_vol_lsb_ch3__reset	driver/ma120x0/ma120x0.h	503;"	d
+ma_vol_lsb_ch3__shift	driver/ma120x0/ma120x0.h	502;"	d
+ma_vol_lsb_master__a	driver/ma120x0/ma120x0.h	443;"	d
+ma_vol_lsb_master__len	driver/ma120x0/ma120x0.h	444;"	d
+ma_vol_lsb_master__mask	driver/ma120x0/ma120x0.h	445;"	d
+ma_vol_lsb_master__reset	driver/ma120x0/ma120x0.h	447;"	d
+ma_vol_lsb_master__shift	driver/ma120x0/ma120x0.h	446;"	d
+main	cpp_training/main.cpp	/^int main()$/;"	f
+main	main.cpp	/^int main()$/;"	f
 msel_mon	driver/ma120x0/ma120x0.h	/^	uint8_t msel_mon;$/;"	m	struct:MA12070
+obj	cpp_training/Makefile	/^obj = $(csrc:.cpp=.o)$/;"	m
 ocpLatchEn	driver/ma120x0/ma120x0.h	/^	uint8_t ocpLatchEn; $/;"	m	struct:MA12070
 ocp_latch_clear	driver/ma120x0/ma120x0.h	/^	uint8_t ocp_latch_clear;$/;"	m	struct:MA12070
 ocp_mon	driver/ma120x0/ma120x0.h	/^	uint8_t ocp_mon[2];$/;"	m	struct:MA12070
@@ -709,16 +877,28 @@ pm3_man	driver/ma120x0/ma120x0.h	/^	uint8_t pm3_man; $/;"	m	struct:MA12070
 pmProfile	driver/ma120x0/ma120x0.h	/^	uint8_t pmProfile; $/;"	m	struct:MA12070
 power_mode	driver/ma120x0/ma120x0.h	/^	uint8_t power_mode;$/;"	m	struct:MA12070
 power_mode_manual	driver/ma120x0/ma120x0.h	/^	uint8_t power_mode_manual;$/;"	m	struct:MA12070
+recieveDmg	cpp_training/Personnage.cpp	/^void Personnage::recieveDmg(int dmg) $/;"	f	class:Personnage
 regBuffer	driver/ma120x0/ma120x0.cpp	/^uint8_t regBuffer[4]		= {0};$/;"	v
 regTable	driver/ma120x0/ma120x0.cpp	/^uint8_t regTable[REGAMOUNT] = $/;"	v
-returnTableIndex	driver/ma120x0/ma120x0.cpp	/^uint8_t returnTableIndex(uint8_t reg)$/;"	f
+setName	cpp_training/Personnage.cpp	/^void Personnage::setName(std::string name)$/;"	f	class:Personnage
+show	cpp_training/Weapon.cpp	/^void Weapon::show() const $/;"	f	class:Weapon
+showStatus	cpp_training/Personnage.cpp	/^void Personnage::showStatus() const$/;"	f	class:Personnage
+testPointer	cpp_training/main.cpp	/^void testPointer(int *firstPointer)$/;"	f
+testPointer2	cpp_training/main.cpp	/^void testPointer2(int *secondPointer)$/;"	f
+testingValRefPtr	cpp_training/main.cpp	/^void testingValRefPtr()$/;"	f
 thr_db	driver/ma120x0/ma120x0.h	/^	uint8_t thr_db[4];$/;"	m	struct:MA12070
 thr_lsb	driver/ma120x0/ma120x0.h	/^	uint8_t thr_lsb[4];$/;"	m	struct:MA12070
+throwError	driver/ma120x0/ma120x0.cpp	/^void throwError(uint16_t error)$/;"	f
 treshold_1to2	driver/ma120x0/ma120x0.h	/^	uint8_t treshold_1to2; $/;"	m	struct:MA12070
 treshold_2to1	driver/ma120x0/ma120x0.h	/^	uint8_t treshold_2to1;$/;"	m	struct:MA12070
 treshold_2to3	driver/ma120x0/ma120x0.h	/^	uint8_t treshold_2to3;$/;"	m	struct:MA12070
 treshold_3to2	driver/ma120x0/ma120x0.h	/^	uint8_t treshold_3to2;$/;"	m	struct:MA12070
+valToset	driver/ma120x0/ma120x0.cpp	/^uint8_t valToset = 0; $/;"	v
 vol_db	driver/ma120x0/ma120x0.h	/^	uint8_t vol_db[4];$/;"	m	struct:MA12070
 vol_db_master	driver/ma120x0/ma120x0.h	/^	uint8_t vol_db_master;$/;"	m	struct:MA12070
 vol_lsb	driver/ma120x0/ma120x0.h	/^	uint8_t vol_lsb[4];$/;"	m	struct:MA12070
 vol_lsb_master	driver/ma120x0/ma120x0.h	/^	uint8_t vol_lsb_master;$/;"	m	struct:MA12070
+writeTest	cpp_training/main.cpp	/^void writeTest(int fd, int *buf)$/;"	f
+~Personnage	cpp_training/Personnage.cpp	/^Personnage::~Personnage()$/;"	f	class:Personnage
+~Weapon	cpp_training/Weapon.cpp	/^Weapon::~Weapon()$/;"	f	class:Weapon
+~ll_i2c	lowlayer/i2c/ll_i2c.cpp	/^ll_i2c::~ll_i2c()$/;"	f	class:ll_i2c

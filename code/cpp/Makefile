@@ -1,4 +1,4 @@
-cpp_src = $(wildcard *.cpp) \ $(wildcard lowlayer/i2c/*.cpp) 
+cpp_src = $(wildcard *.cpp) \ $(wildcard lowlayer/i2c/*.cpp) \ $(wildcard driver/ma120x0/*.cpp) 
 c_src = $(wildcard driver/pf8574/*.c) \ $(wildcard ../c/algorithms/*.c)
 
 cpp_obj = $(cpp_src:.cpp=.o)
