@@ -3,12 +3,11 @@
 
 #include <iostream>
 #include <string>
-#include <cmath>
 #include "lowlayer/i2c/ll_i2c.h"
 #include "driver/pf8574/pf8574lcd.h"
 #include "driver/ma120x0/ma120x0.h"
 #include <unistd.h>
-#include "../c/algorithms/bitgestion.h"
+//#include "../c/algorithms/bitgestion.h"
 
 using namespace std;
 

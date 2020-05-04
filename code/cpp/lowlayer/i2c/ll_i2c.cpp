@@ -138,7 +138,7 @@ void ll_i2c::i2c_setAddress(uint16_t &address)
 
 
 // Defined by me :Read a given number of bytes
-void ll_i2c::i2c_receive(uint8_t *reg, uint8_t *buffer, uint8_t &regLenght, uint8_t &bufferLenght)
+void ll_i2c::i2c_read(uint8_t *reg, uint8_t *buffer, uint8_t &regLenght, uint8_t &bufferLenght)
 {
 	if (bufferLenght == regLenght)
 	{
@@ -162,7 +162,7 @@ void ll_i2c::i2c_receive(uint8_t *reg, uint8_t *buffer, uint8_t &regLenght, uint
 }
 
 // Defined by me : Send a given number of bytes
-void ll_i2c::i2c_send(uint8_t *reg, uint8_t *data, uint8_t &regLenght, uint8_t &dataLenght)
+void ll_i2c::i2c_write(uint8_t *reg, uint8_t *data, uint8_t &regLenght, uint8_t &dataLenght)
 {
 
 	if (regLenght == 1 && dataLenght == 0)

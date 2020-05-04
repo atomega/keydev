@@ -1,12 +1,7 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h>     /* abs */
 #include <stdint.h>
 #include <string.h>
-#include <unistd.h>
-#include <sys/time.h>
-#include <errno.h>
-#include <sys/types.h>
-#include <limits.h>
 
 
 #define MA_ADDR 0x20 // Device Adress
@@ -189,7 +184,7 @@
 #define MA_I2S_LEFT 1
 #define MA_I2S_RIGHT_16b 4
 #define MA_I2S_RIGHT_18b 6
-#define MA_I2S_RIGHT_20b 0
+#define MA_I2S_RIGHT_20b 3
 #define MA_I2S_RIGHT_24b 7
 
 #define MA_ATT_REL_FAST 2
@@ -490,8 +485,8 @@
 
 
 void 	ma_setVolumeMasterDb(int16_t volume); 
-uint8_t ma_init(void); 
-uint8_t ma_configure(uint8_t Default);
+void	ma_init(void); 
+void	ma_configure(uint8_t Default);
 int16_t ma_getVolumeDb(void); 
 
 /*Select manual Power Mode control. Default
@@ -526,7 +521,7 @@ void ma_setPowerModeProfileSetings(uint8_t setings);
 void ma_setPowerModeProfileConfig(uint8_t scheme, uint8_t powerMode); 
 
 
-void ma_clearOcpLatch(); 
+void ma_clearOcpLatch(void); 
 void ma_setAudioInMode(uint8_t mode);
 void ma_setDcProtection(uint8_t enable);
 void ma_setAudioInOverwrite(uint8_t enable);
@@ -542,7 +537,7 @@ void ma_setProcReleaseLvl(uint8_t lvl);
 void ma_setProcAttackLvl(uint8_t lvl);
 void ma_setProcEn(uint8_t enable);
 void ma_setProcMute(uint8_t mute);
-void ma_setProcLimiterEn(uint8_t enable);
+void ma_setProcLimiter(uint8_t enable);
 
 void ma_setVolumeCh0(uint8_t db, uint8_t lsb);
 void ma_setVolumeCh1(uint8_t db, uint8_t lsb);
@@ -550,9 +545,14 @@ void ma_setVolumeCh2(uint8_t db, uint8_t lsb);
 void ma_setVolumeCh3(uint8_t db, uint8_t lsb);
 void ma_setVolumeMaster(uint8_t db, uint8_t lsb);
 
-void ma_clearErrHandler();
+void ma_clearErrHandler(void);
 
 int16_t ma_getVolume(void);
 
 void ma_printCurrentCconf(void);
 void ma_getCurrentDevInfo(void); 
+//I2C Functions 
+void ma_i2c_fetch(void);
+void ma_i2c_update(void);
+// Error Mangement 
+void ma_throwError(uint16_t error);

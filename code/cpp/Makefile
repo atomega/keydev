@@ -1,5 +1,5 @@
-cpp_src = $(wildcard *.cpp) \ $(wildcard lowlayer/i2c/*.cpp) \ $(wildcard driver/ma120x0/*.cpp) 
-c_src = $(wildcard driver/pf8574/*.c) \ $(wildcard ../c/algorithms/*.c)
+cpp_src = $(wildcard *.cpp) $(wildcard lowlayer/i2c/*.cpp)  
+c_src = $(wildcard driver/pf8574/*.c) $(wildcard ../c/algorithms/*.c) $(wildcard driver/ma120x0/*.c)
 
 cpp_obj = $(cpp_src:.cpp=.o)
 c_obj = $(c_src:.c=.o)
@@ -15,7 +15,7 @@ $(EXEC): $(cpp_obj) $(c_obj)
 	$(CC) -o $@ $^ $(LDFLAGS) 
  
 clean: 
-	rm -rf $(obj)
+	rm -rf $(c_obj) $(cpp_obj) $(EXEC)
 
 cleanall: 
-	rm -rf $(obj) $(EXEC)
+	rm -rf $(c_obj) $(cpp_obj) $(EXEC)

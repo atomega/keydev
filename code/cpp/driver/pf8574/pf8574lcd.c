@@ -118,10 +118,10 @@ void lcd_display_string(char line, char pos, char* charvalue)
 void ldc_pulse_En(char data)
 {
 	i2cReg[0] = data | EN | LCD_BACKLIGHT; 
-	LCD.i2c_send(i2cReg, i2cData, i2cRegLenght,i2cDataLenght); 
+	LCD.i2c_write(i2cReg, i2cData, i2cRegLenght,i2cDataLenght); 
 	usleep(100);  
 	i2cReg[0] = (data & ~EN) | LCD_BACKLIGHT,
-	LCD.i2c_send(i2cReg, i2cData, i2cRegLenght,i2cDataLenght); 
+	LCD.i2c_write(i2cReg, i2cData, i2cRegLenght,i2cDataLenght); 
 	usleep(500);  
 }
 
@@ -139,6 +139,6 @@ void lcd_write(char cmd, char mode)
 void lcd_write_4bits(char data)
 {	
 	i2cReg[0] = (data | LCD_BACKLIGHT);
-	LCD.i2c_send(i2cReg, i2cData, i2cRegLenght,i2cDataLenght); 
+	LCD.i2c_write(i2cReg, i2cData, i2cRegLenght,i2cDataLenght); 
 	ldc_pulse_En(data); 
 }

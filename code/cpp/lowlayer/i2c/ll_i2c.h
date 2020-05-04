@@ -83,8 +83,8 @@ class ll_i2c
 		/*Methods*/
 
 		void i2c_printBuffer(uint8_t *reg, uint8_t *data, uint8_t &regLenght, uint8_t &dataLenght);		// Display the communictation string in a nice way. 
-		void i2c_receive(uint8_t *reg, uint8_t *buffer, uint8_t &regLenght, uint8_t &bufferLenght);		// Defined by me : Read a given number of bytes
-		void i2c_send(uint8_t *reg, uint8_t *data, uint8_t &regLenght, uint8_t &dataLenght);			// Defined by me : Send a given number of bytes 
+		void i2c_read(uint8_t *reg, uint8_t *buffer, uint8_t &regLenght, uint8_t &bufferLenght);		// Defined by me : Read a given number of bytes
+		void i2c_write(uint8_t *reg, uint8_t *data, uint8_t &regLenght, uint8_t &dataLenght);			// Defined by me : Send a given number of bytes 
 		uint8_t i2c_testDeviceSpeed();	// Defined by me : Cycle trough different modes until device cnat't answer fast enought
 		uint8_t i2c_discoverDevices();	// Defined by me : Scan the awailable address range on standart mode to find devices   
 		

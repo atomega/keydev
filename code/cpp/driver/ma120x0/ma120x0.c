@@ -1,11 +1,10 @@
-
 #include"../../lowlayer/i2c/ll_i2c.h"
 #include"../../../c/algorithms/bitgestion.h"
 #include"ma120x0.h"
 
-ll_i2c ma(MA_ADDR, 1, I2C_MODE_MASTER,I2C_ADDRESS_7B);
+ll_i2c ma_i2c(MA_ADDR, 1, I2C_MODE_MASTER,I2C_ADDRESS_7B);
 
-int curretnVolume 		= 0; 
+int16_t curretnVolume 	= 0; 
 uint8_t bitNo 			= 0; 
 uint8_t bitStart		= 0; 
 uint8_t bitStop 		= 0; 
@@ -103,7 +102,7 @@ uint8_t monitorinTable[READONLY]
 	MA_DEF_MON_LIMIT_CLIP	
 };
 
-uint8_t ma_configure(uint8_t Default)
+void ma_configure(uint8_t Default)
 {
 		//Set the device back to default setings
 		ma_i2c_fetch(); 
@@ -133,31 +132,30 @@ uint8_t ma_configure(uint8_t Default)
 		ma_setProcReleaseLvl(MA_ATT_REL_NORMAL); 						
 	 	ma_setProcAttackLvl(MA_ATT_REL_NORMAL); 					
  		ma_setProcEn(1); 											
- 		ma_setProcLimiterEn(1); 										
+ 		ma_setProcLimiter(1); 										
 		ma_setVolumeCh0(MA_DEF_VOL_DB_CH0,MA_DEF_VOL_LSB_CHX);
 		ma_setVolumeCh1(MA_DEF_VOL_DB_CH1,MA_DEF_VOL_LSB_CHX);
 		ma_setVolumeCh2(MA_DEF_VOL_DB_CH2,MA_DEF_VOL_LSB_CHX);
 		ma_setVolumeCh3(MA_DEF_VOL_DB_CH3,MA_DEF_VOL_LSB_CHX);
 		ma_setVolumeMaster(0x40,0x0);
 		//ma_setVolume(-15);												// Set Volume to 0 dB 
-	throwError(__LINE__); 
 }
 
 void ma_i2c_update()
 {
 	i2cLenght = REGAMOUNT; 
-	ma.i2c_send(regTable,dataTable,i2cLenght,i2cLenght);
+	ma_i2c.i2c_write(regTable,dataTable,i2cLenght,i2cLenght);
 }
 
-void ma_i2c_feltch()
+void ma_i2c_fetch()
 {
 	i2cLenght = REGAMOUNT - READONLY; 
-	ma.i2c_read(regTable,dataTable,i2cLenght,i2cLenght);
+	ma_i2c.i2c_read(regTable,dataTable,i2cLenght,i2cLenght);
 }
 
-void throwError(uint16_t error)
+void ma_throwError(uint16_t error)
 {
-	printf ("\n\rma.c Has generated an Error on line >>%d<<\n\r", error); 
+	printf ("\n\rma_c Has generated an Error on line >>%d<<\n\r", error); 
 }
 
 void ma_setPowerMode(uint8_t mode)
@@ -166,12 +164,12 @@ void ma_setPowerMode(uint8_t mode)
 	bitStop = bitStart + MA_LEN_PWR_MODE_SEL; 
 	switch(mode)
 	{
-		case MA_PWR_MODE_MAN
-			bitNo = MA_MANUALPM__SHIFT;
+		case MA_PWR_MODE_MAN: 
+			bitNo = MA_SHIFT_PWR_MODE_MAN;
 			set_nth_bit_uint8(&dataTable[MA_IND_PWR_MODE_CTRL], bitNo); 		
 			break;
-		case MA_PWR_MODE_AUTO
-			bitNo = MA_MANUALPM__SHIFT;
+		case MA_PWR_MODE_AUTO:
+			bitNo = MA_SHIFT_PWR_MODE_MAN;
 			unset_nth_bit_uint8(&dataTable[MA_IND_PWR_MODE_CTRL], bitNo); 		
 			break;
 		case MA_PWR_MODE_1:
@@ -194,7 +192,7 @@ void ma_setPowerMode(uint8_t mode)
 			break; 
 		
 		default: 
-				throwError(__LINE__); 
+				ma_throwError(__LINE__); 
 	}
 }
 
@@ -221,13 +219,13 @@ void ma_setTreshold(uint8_t transition, uint8_t value)
 				break; 
 			
 			default : 
-				throwError(__LINE__); 
+				ma_throwError(__LINE__); 
 		}
-		throwError(__LINE__); 
+		ma_throwError(__LINE__); 
 	}
 	else 
 	{
-		throwError(__LINE__);
+		ma_throwError(__LINE__);
 	}
 }
 
@@ -244,7 +242,7 @@ void ma_setClipping(uint8_t enable)
 	}
 	else
 	{
-		throwError(__LINE__); 
+		ma_throwError(__LINE__); 
 	}
 		
 }
@@ -262,7 +260,7 @@ void ma_setOcp(uint8_t enable)
 	}
 	else
 	{
-		throwError(__LINE__); 
+		ma_throwError(__LINE__); 
 	}
 }
 
@@ -286,7 +284,7 @@ void ma_setPowerModeProfileSetings(uint8_t setings)
 			valToset = MA_POWER_PROFILE_4;
 			break; 
 		default:
-			throwError(__LINE__); 
+			ma_throwError(__LINE__); 
 	}
 	
 	bitStart = MA_SHIFT_PM_PROFILE_MODE ; 
@@ -339,7 +337,7 @@ void ma_setPowerModeProfileConfig(uint8_t scheme, uint8_t powerMode)
 						break; 
 						
 					default : 
-						throwError(__LINE__); 
+						ma_throwError(__LINE__); 
 				}
 
 			case MA_POWER_MODE_2 : 
@@ -381,7 +379,7 @@ void ma_setPowerModeProfileConfig(uint8_t scheme, uint8_t powerMode)
 						break; 
 						
 					default : 
-						throwError(__LINE__);  
+						ma_throwError(__LINE__);  
 				}
 
 
@@ -424,16 +422,16 @@ void ma_setPowerModeProfileConfig(uint8_t scheme, uint8_t powerMode)
 						break; 
 						
 					default : 
-						throwError(__LINE__);  
+						ma_throwError(__LINE__);  
 				}			
 				
 			default :
-				throwError(__LINE__); 
+				ma_throwError(__LINE__); 
 		}
 	}
 	else 
 	{
-		throwError(__LINE__); 
+		ma_throwError(__LINE__); 
 	}
 }
 
@@ -468,12 +466,12 @@ void ma_setAudioInMode(uint8_t mode)
 				set_bits_range_uint8(&dataTable[MA_IND_PM_PROFILE_CONF], bitStart, bitStop, valToset);
 				break; 
 			default : 
-				throwError(__LINE__); 
+				ma_throwError(__LINE__); 
 		}
 	}
 	else 
 	{
-		throwError(__LINE__); 
+		ma_throwError(__LINE__); 
 	}
 }
 
@@ -490,7 +488,7 @@ void ma_setDcProtection(uint8_t enable)
 	}
 	else 
 	{
-		throwError(__LINE__);
+		ma_throwError(__LINE__);
 	}
 }
 
@@ -507,7 +505,7 @@ void ma_setAudioInOverwrite(uint8_t enable)
 	}
 	else 
 	{
-		throwError(__LINE__);
+		ma_throwError(__LINE__);
 	}
 }
 
@@ -517,9 +515,9 @@ void ma_clearErrHandler()
 	unset_nth_bit_uint8(&dataTable[MA_IND_ERROR_HANDLER],bitNo);
 }
 
-void ma_setI2sFormat(uint8_t format)
+void ma_setI2sFormat(uint8_t forma_)
 {
-	switch(format)
+	switch(forma_)
 	{	
 		case MA_I2S_STANDART :
 			valToset = MA_I2S_STANDART;
@@ -534,13 +532,13 @@ void ma_setI2sFormat(uint8_t format)
 			valToset = MA_I2S_RIGHT_18b;
 			break; 
 		case MA_I2S_RIGHT_20b :
-			valToset = MA_I2S_RIGHT_20b;
+			valToset = 0;
 			break; 
 		case MA_I2S_RIGHT_24b :
 			valToset = MA_I2S_RIGHT_24b;
 			break; 
 		default : 
-			throwError(__LINE__); 
+			ma_throwError(__LINE__); 
 	}	
 	bitStart = MA_SHIFT_PCM_WORD_FORMAT; 
 	bitStop = bitStart + MA_LEN_PCM_WORD_FORMAT;
@@ -562,7 +560,7 @@ void ma_setI2sRightFirst(uint8_t leftOrRight)
 	}
 	else 
 	{
-		throwError(__LINE__);
+		ma_throwError(__LINE__);
 	}
 }
 
@@ -584,7 +582,7 @@ void ma_setI2sFrameSize(uint8_t bits)
 			break;  
 
 		default : 
-			  throwError(__LINE__); 	
+			  ma_throwError(__LINE__); 	
 	
 	}
 	bitStart = MA_SHIFT_I2S_FRAME_SIZE; 
@@ -606,12 +604,12 @@ void ma_setI2sBitOrder(uint8_t mostOrLeast)
 	}
 	else 
 	{
-		throwError(__LINE__);
+		ma_throwError(__LINE__);
 	}
 }
 
 
-void ma_setI2sWsPolarityHigh(uint8_t highOrLow)
+void ma_setI2sWsPolarity(uint8_t highOrLow)
 {
 	bitNo = MA_SHIFT_I2S_WS_POL;
 	if (highOrLow == 0)
@@ -624,11 +622,11 @@ void ma_setI2sWsPolarityHigh(uint8_t highOrLow)
 	}
 	else 
 	{
-		throwError(__LINE__);
+		ma_throwError(__LINE__);
 	}
 }
 
-void ma_setI2sSckPolarityFalling(uint8_t risingOrFalling)
+void ma_setI2sSckPolarity(uint8_t risingOrFalling)
 { 
 	bitNo = MA_SHIFT_I2S_SCK_POL;
 	if (risingOrFalling == 0)
@@ -641,7 +639,7 @@ void ma_setI2sSckPolarityFalling(uint8_t risingOrFalling)
 	}
 	else 
 	{
-		throwError(__LINE__);
+		ma_throwError(__LINE__);
 	}
 }
 
@@ -664,7 +662,7 @@ void ma_setProcReleaseLvl(uint8_t lvl)
 			break;  
 
 		default : 
-			  throwError(__LINE__); 	
+			  ma_throwError(__LINE__); 	
 	
 	}
 	bitStart = MA_SHIFT_PROC_RELEASE; 
@@ -689,7 +687,7 @@ void ma_setProcAttackLvl(uint8_t lvl)
 			break;  
 
 		default : 
-			  throwError(__LINE__); 	
+			  ma_throwError(__LINE__); 	
 	
 	}
 	bitStart = MA_SHIFT_PROC_ATTACK; 
@@ -711,7 +709,7 @@ void ma_setProcEn(uint8_t enable)
 	}
 	else 
 	{
-		throwError(__LINE__);
+		ma_throwError(__LINE__);
 	}
 }
  
@@ -729,7 +727,7 @@ void ma_setProcMute(uint8_t mute)
 	}
 	else 
 	{
-		throwError(__LINE__);
+		ma_throwError(__LINE__);
 	}
 }
 
@@ -746,7 +744,7 @@ void ma_setProcLimiter(uint8_t enable)
 	}
 	else 
 	{
-		throwError(__LINE__);
+		ma_throwError(__LINE__);
 	}
 }
 
@@ -779,7 +777,7 @@ void ma_setVolumeCh0(uint8_t db, uint8_t lsb)
 	}
 	else 
 	{
-		throwError(__LINE__); 
+		ma_throwError(__LINE__); 
 	}
 }
 // TODO : Direct update via i2c 
@@ -794,7 +792,7 @@ void ma_setVolumeCh1(uint8_t db, uint8_t lsb)
 	}
 	else 
 	{
-		throwError(__LINE__); 
+		ma_throwError(__LINE__); 
 	}
 }
 // TODO : Direct update via i2c 
@@ -809,7 +807,7 @@ void ma_setVolumeCh2(uint8_t db, uint8_t lsb)
 	}
 	else 
 	{
-		throwError(__LINE__); 
+		ma_throwError(__LINE__); 
 	}
 }
 // TODO : Direct update via i2c 
@@ -824,7 +822,7 @@ void ma_setVolumeCh3(uint8_t db, uint8_t lsb)
 	}
 	else 
 	{
-		throwError(__LINE__); 
+		ma_throwError(__LINE__); 
 	}
 }
 // TODO : Direct update via i2c 
@@ -842,11 +840,11 @@ void ma_setVolumeMaster(uint8_t db, uint8_t lsb)
 		dataBuffer[0] = dataTable[MA_IND_VOL_DB_MASTER];
 		regBuffer[1]  = regTable[MA_IND_VOL_LSB_MASTER];
 		dataBuffer[1] = dataTable[MA_IND_VOL_LSB_MASTER];
-		//ma.i2c_send(regBuffer,dataBuffer,i2cLenght,i2cLenght);
+		//ma_i2c.write(regBuffer,dataBuffer,i2cLenght,i2cLenght);
 	}
 	else 
 	{
-		throwError(__LINE__); 
+		ma_throwError(__LINE__); 
 	}
 }
 
@@ -862,26 +860,36 @@ void ma_setVolumeMasterDb(int16_t volume)
 	{
 		if( volume <= MA_VOL_MAX)
 		{
-			DbFraction = (char) get_n_bits_lsb_int16(volume,2); 
+			bitNo = 2;
+			get_n_bits_lsb_int16(&volume,bitNo);
+			DbFraction = (char) volume; 
 			DbBuff = (volume/100); 
 			
 			if(DbFraction == 0)
 			{
 				DbBuff = (MA_VOL_MAX_DB) - DbBuff; 
-			} else { DbFraction = (DbFraction^3) + 1; DbBuff = (MA_VOL_MAX_DB) - DbBuff -1; } DbNumber = (char)DbBuff; printf("Bdnumber: %u\tfraction: %u \n",DbNumber, DbFraction); 
+			} 
+			else 
+			{ 
+				DbFraction = (DbFraction^3) + 1; DbBuff = (MA_VOL_MAX_DB) - DbBuff -1; 
+			} 
+			DbNumber = (char)DbBuff; 
+			printf("Bdnumber: %u\tfraction: %u \n",DbNumber, DbFraction); 
 			
 			ma_setVolumeMaster(DbNumber, DbFraction);
 		}
 		else 
 		{
-			throwError(__LINE__); 
+			ma_throwError(__LINE__); 
 		}					
 	} 
 	else
 	{	
 		if(volume >= MA_VOL_MIN)
 		{
-			DbFraction = (char) get_n_bits_lsb_int16(volume,2); 
+			bitNo = 2;
+			get_n_bits_lsb_int16(&volume,bitNo); 
+			DbFraction = (char) volume; 
 			DbBuff = (volume/100); 
 			
 			if(DbFraction == 0)
@@ -900,48 +908,48 @@ void ma_setVolumeMasterDb(int16_t volume)
 		}
 		else
 		{
-			throwError(__LINE__); 
+			ma_throwError(__LINE__); 
 		}
 	}
 }
 void ma_printCurrentCconf(void)
 {
 	printf("\n\n\t CURRENT CONFIGURATION OF MA12070P \n\n");
-	printf("\r\nMA_REG_PWR_MODE_CTRL \t: "		,dataTable[MA_IND_PWR_MODE_CTRL]);
-	printf("\r\nMA_REG_MTHR_1TO2 \t: "			,dataTable[MA_IND_MTHR_1TO2]);
-	printf("\r\nMA_REG_MTHR_2TO1 \t: "			,dataTable[MA_IND_MTHR_2TO1]);
-	printf("\r\nMA_REG_MTHR_2TO3 \t: "			,dataTable[MA_IND_MTHR_2TO3]);
-	printf("\r\nMA_REG_MTHR_3TO2 \t: "			,dataTable[MA_IND_MTHR_3TO2]);
-	printf("\r\nMA_REG_LATCH_CLAMP \t: "		,dataTable[MA_IND_LATCH_CLAMP]);
-	printf("\r\nMA_REG_PM_PROFILE_MODE \t: "	,dataTable[MA_IND_PM_PROFILE_MODE]);
-	printf("\r\nMA_REG_PM_PROFILE_CONF \t: "	,dataTable[MA_IND_PM_PROFILE_CONF]);
-	printf("\r\nMA_REG_OCP_LATCH_CLEAR \t: "	,dataTable[MA_IND_OCP_LATCH_CLEAR]);
-	printf("\r\nMA_REG_AUDIO_IN_MODE \t: "		,dataTable[MA_IND_AUDIO_IN_MODE]);
-	printf("\r\nMA_REG_DC_PROTECTION \t: "		,dataTable[MA_IND_DC_PROTECTION]);
-	printf("\r\nMA_REG_AUDIO_IN_OVERWRITE \t: "	,dataTable[MA_IND_AUDIO_IN_OVERWRITE]);
-	printf("\r\nMA_REG_ERROR_HANDLER \t: "		,dataTable[MA_IND_ERROR_HANDLER]);
-	printf("\r\nMA_REG_PCM_PROC_SET \t: "		,dataTable[MA_IND_PCM_PROC_SET]);
-	printf("\r\nMA_REG_I2S_CONFIG \t: "			,dataTable[MA_IND_I2S_CONFIG]);
-	printf("\r\nMA_REG_VOL_DB_MASTER \t: "		,dataTable[MA_IND_VOL_DB_MASTER]);
-	printf("\r\nMA_REG_VOL_LSB_MASTER \t: "		,dataTable[MA_IND_VOL_LSB_MASTER]);
-	printf("\r\nMA_REG_VOL_DB_CH0 \t: "			,dataTable[MA_IND_VOL_DB_CH0]);
-	printf("\r\nMA_REG_VOL_DB_CH1 \t: "			,dataTable[MA_IND_VOL_DB_CH1]);
-	printf("\r\nMA_REG_VOL_DB_CH2 \t: "			,dataTable[MA_IND_VOL_DB_CH2]);
-	printf("\r\nMA_REG_VOL_DB_CH3 \t: "			,dataTable[MA_IND_VOL_DB_CH3]);
-	printf("\r\nMA_REG_VOL_LSB_CHX \t: "		,dataTable[MA_IND_VOL_LSB_CHX]);
-	printf("\r\nMA_REG_THR_DB_CH0 \t: "			,dataTable[MA_IND_THR_DB_CH0]);
-	printf("\r\nMA_REG_THR_DB_CH1 \t: "			,dataTable[MA_IND_THR_DB_CH1]);
-	printf("\r\nMA_REG_THR_DB_CH2 \t: "			,dataTable[MA_IND_THR_DB_CH2]);
-	printf("\r\nMA_REG_THR_DB_CH3 \t: "			,dataTable[MA_IND_THR_DB_CH3]);
-	printf("\r\nMA_REG_THR_LSB_CHX \t: "		,dataTable[MA_IND_THR_LSB_CHX]);
-	printf("\r\nMA_REG_MON0_FREQ_PM \t: "		,dataTable[MA_IND_MON0_FREQ_PM]);
-	printf("\r\nMA_REG_MON0 \t\t: "				,dataTable[MA_IND_MON0]);
-	printf("\r\nMA_REG_MON0_MODUL \t: "			,dataTable[MA_IND_MON0_MODUL]);
-	printf("\r\nMA_REG_MON1_FREQ_PM \t: "		,dataTable[MA_IND_MON1_FREQ_PM]);
-	printf("\r\nMA_REG_MON1 \t\t: "				,dataTable[MA_IND_MON1]);
-	printf("\r\nMA_REG_MON_CH1_MODUL \t: "		,dataTable[MA_IND_MON_CH1_MODUL]);
-	printf("\r\nMA_REG_ERRO_ACC \t: "			,dataTable[MA_IND_ERRO_ACC]);
-	printf("\r\nMA_REG_MON_MSEL \t: "			,dataTable[MA_IND_MON_MSEL]);
-	printf("\r\nMA_REG_ERROR \t\t: "			,dataTable[MA_IND_ERROR]);
-	printf("\r\nMA_REG_MON_LIMIT_CLI \t: "		,dataTable[MA_IND_MON_LIMIT_CLIP]);
+	printf("\r\nMA_REG_PWR_MODE_CTRL \t: %d "		,dataTable[MA_IND_PWR_MODE_CTRL]);
+	printf("\r\nMA_REG_MTHR_1TO2 \t: %d "			,dataTable[MA_IND_MTHR_1TO2]);
+	printf("\r\nMA_REG_MTHR_2TO1 \t: %d "			,dataTable[MA_IND_MTHR_2TO1]);
+	printf("\r\nMA_REG_MTHR_2TO3 \t: %d "			,dataTable[MA_IND_MTHR_2TO3]);
+	printf("\r\nMA_REG_MTHR_3TO2 \t: %d "			,dataTable[MA_IND_MTHR_3TO2]);
+	printf("\r\nMA_REG_LATCH_CLAMP \t: %d "		,dataTable[MA_IND_LATCH_CLAMP]);
+	printf("\r\nMA_REG_PM_PROFILE_MODE \t: %d "	,dataTable[MA_IND_PM_PROFILE_MODE]);
+	printf("\r\nMA_REG_PM_PROFILE_CONF \t: %d "	,dataTable[MA_IND_PM_PROFILE_CONF]);
+	printf("\r\nMA_REG_OCP_LATCH_CLEAR \t: %d "	,dataTable[MA_IND_OCP_LATCH_CLEAR]);
+	printf("\r\nMA_REG_AUDIO_IN_MODE \t: %d "		,dataTable[MA_IND_AUDIO_IN_MODE]);
+	printf("\r\nMA_REG_DC_PROTECTION \t: %d "		,dataTable[MA_IND_DC_PROTECTION]);
+	printf("\r\nMA_REG_AUDIO_IN_OVERWRITE \t: %d "	,dataTable[MA_IND_AUDIO_IN_OVERWRITE]);
+	printf("\r\nMA_REG_ERROR_HANDLER \t: %d "		,dataTable[MA_IND_ERROR_HANDLER]);
+	printf("\r\nMA_REG_PCM_PROC_SET \t: %d "		,dataTable[MA_IND_PCM_PROC_SET]);
+	printf("\r\nMA_REG_I2S_CONFIG \t: %d "			,dataTable[MA_IND_I2S_CONFIG]);
+	printf("\r\nMA_REG_VOL_DB_MASTER \t: %d "		,dataTable[MA_IND_VOL_DB_MASTER]);
+	printf("\r\nMA_REG_VOL_LSB_MASTER \t: %d "		,dataTable[MA_IND_VOL_LSB_MASTER]);
+	printf("\r\nMA_REG_VOL_DB_CH0 \t: %d "			,dataTable[MA_IND_VOL_DB_CH0]);
+	printf("\r\nMA_REG_VOL_DB_CH1 \t: %d "			,dataTable[MA_IND_VOL_DB_CH1]);
+	printf("\r\nMA_REG_VOL_DB_CH2 \t: %d "			,dataTable[MA_IND_VOL_DB_CH2]);
+	printf("\r\nMA_REG_VOL_DB_CH3 \t: %d "			,dataTable[MA_IND_VOL_DB_CH3]);
+	printf("\r\nMA_REG_VOL_LSB_CHX \t: %d "		,dataTable[MA_IND_VOL_LSB_CHX]);
+	printf("\r\nMA_REG_THR_DB_CH0 \t: %d "			,dataTable[MA_IND_THR_DB_CH0]);
+	printf("\r\nMA_REG_THR_DB_CH1 \t: %d "			,dataTable[MA_IND_THR_DB_CH1]);
+	printf("\r\nMA_REG_THR_DB_CH2 \t: %d "			,dataTable[MA_IND_THR_DB_CH2]);
+	printf("\r\nMA_REG_THR_DB_CH3 \t: %d "			,dataTable[MA_IND_THR_DB_CH3]);
+	printf("\r\nMA_REG_THR_LSB_CHX \t: %d "		,dataTable[MA_IND_THR_LSB_CHX]);
+	printf("\r\nMA_REG_MON0_FREQ_PM \t: %d "		,dataTable[MA_IND_MON0_FREQ_PM]);
+	printf("\r\nMA_REG_MON0 \t\t: %d "				,dataTable[MA_IND_MON0]);
+	printf("\r\nMA_REG_MON0_MODUL \t: %d "			,dataTable[MA_IND_MON0_MODUL]);
+	printf("\r\nMA_REG_MON1_FREQ_PM \t: %d "		,dataTable[MA_IND_MON1_FREQ_PM]);
+	printf("\r\nMA_REG_MON1 \t\t: %d "				,dataTable[MA_IND_MON1]);
+	printf("\r\nMA_REG_MON_CH1_MODUL \t: %d "		,dataTable[MA_IND_MON_CH1_MODUL]);
+	printf("\r\nMA_REG_ERRO_ACC \t: %d "			,dataTable[MA_IND_ERRO_ACC]);
+	printf("\r\nMA_REG_MON_MSEL \t: %d "			,dataTable[MA_IND_MON_MSEL]);
+	printf("\r\nMA_REG_ERROR \t\t: %d "			,dataTable[MA_IND_ERROR]);
+	printf("\r\nMA_REG_MON_LIMIT_CLI \t: %d "		,dataTable[MA_IND_MON_LIMIT_CLIP]);
 }
