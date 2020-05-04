@@ -290,7 +290,7 @@ uint8_t ll_i2c::i2c_getAddressMode() const
 
 void ll_i2c::i2c_throwError(int16_t error)
 {
-	cout << "An error has been generated on line : >>" << error << "<< " << endl << "Operation aborded anc channel closed" << endl; 
+	cout << "["<<__FILE__<<"] error on line :\t >>" << error << "<< " << endl; 
 	m_state = I2C_STATE_ERROR; 
 }
 

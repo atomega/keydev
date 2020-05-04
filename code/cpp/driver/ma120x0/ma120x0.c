@@ -109,22 +109,22 @@ void ma_configure(uint8_t Default)
 
 		ma_clearErrHandler();
 
-		ma_setPowerMode(MA_DEF_PWR_MODE_CTRL); 	 				// Power mode is set to default 
-		ma_setTreshold(MA_REG_MTHR_1TO2, MA_DEF_MTHR_1TO2); 	// Default treshold
-		ma_setTreshold(MA_REG_MTHR_2TO1, MA_DEF_MTHR_2TO1); 	// Default treshold
-		ma_setTreshold(MA_REG_MTHR_2TO3, MA_DEF_MTHR_2TO3); 	// Default treshold
-		ma_setTreshold(MA_REG_MTHR_3TO2, MA_DEF_MTHR_3TO2); 	// Default treshold
+		ma_setPowerMode(MA_PWR_MODE_DEFF);					// Power mode is set to default 
+		ma_setTreshold(MA_MTHR_1TO2, MA_DEF_MTHR_1TO2); 	// Default treshold
+		ma_setTreshold(MA_MTHR_2TO1, MA_DEF_MTHR_2TO1); 	// Default treshold
+		ma_setTreshold(MA_MTHR_2TO3, MA_DEF_MTHR_2TO3); 	// Default treshold
+		ma_setTreshold(MA_MTHR_3TO2, MA_DEF_MTHR_3TO2); 	// Default treshold
 
-		ma_setClipping(1); 										// soft Clipping Enabled
-		ma_setOcp(1); 											// Overcurrent protection Cilipping latch enabled
-		ma_setPowerModeProfileSetings(MA_POWER_PROFILE_2);		// Profile 2 the default one 
-		ma_setAudioInMode(MA_AUDIO_IN_MODE_0); 					// Audio in as default +20dB
-		ma_setDcProtection(1); 									// DC Protection Enabled
-		ma_setAudioInOverwrite(0);								// Audio In overwrite Disabled (must be enabeled to led AudioInMode to take effect)
-	 	ma_setI2sFormat(MA_I2S_STANDART);						// Standart I2S Configuration
-		ma_setI2sRightFirst(0); 								// Set to Left First
-		ma_setI2sFrameSize(64);									// Word data lenght set to 64
-		ma_setI2sBitOrder(0); 									// Set to most significant Bit
+		ma_setClipping(1); 									// soft Clipping Enabled
+		ma_setOcp(1); 										// Overcurrent protection Cilipping latch enabled
+		ma_setPowerModeProfileSetings(MA_POWER_PROFILE_2);	// Profile 2 the default one 
+		ma_setAudioInMode(MA_AUDIO_IN_MODE_0); 				// Audio in as default +20dB
+		ma_setDcProtection(1); 								// DC Protection Enabled
+		ma_setAudioInOverwrite(0);							// Audio In overwrite Disabled (must be enabeled to led AudioInMode to take effect)
+	 	ma_setI2sFormat(MA_I2S_STANDART);					// Standart I2S Configuration
+		ma_setI2sRightFirst(0); 							// Set to Left First
+		ma_setI2sFrameSize(64);								// Word data lenght set to 64
+		ma_setI2sBitOrder(0); 								// Set to most significant Bit
 
  		ma_setProcMute(0); 												
 		ma_setI2sWsPolarity(I2S_WS_POL_LOW); 										
@@ -144,18 +144,18 @@ void ma_configure(uint8_t Default)
 void ma_i2c_update()
 {
 	i2cLenght = REGAMOUNT; 
-	ma_i2c.i2c_write(regTable,dataTable,i2cLenght,i2cLenght);
+//	ma_i2c.i2c_write(regTable,dataTable,i2cLenght,i2cLenght);
 }
 
 void ma_i2c_fetch()
 {
 	i2cLenght = REGAMOUNT - READONLY; 
-	ma_i2c.i2c_read(regTable,dataTable,i2cLenght,i2cLenght);
+//	ma_i2c.i2c_read(regTable,dataTable,i2cLenght,i2cLenght);
 }
 
 void ma_throwError(uint16_t error)
 {
-	printf ("\n\rma_c Has generated an Error on line >>%d<<\n\r", error); 
+	printf ("\n\r[%s] Error on line : \t >>%d<<\n\r",__FILE__,error); 
 }
 
 void ma_setPowerMode(uint8_t mode)
@@ -188,7 +188,7 @@ void ma_setPowerMode(uint8_t mode)
 			break;  
 		
 		case MA_PWR_MODE_DEFF:	
-			dataTable[MA_IND_PWR_MODE_CTRL] = defValTable[MA_DEF_PWR_MODE_CTRL]; 
+			dataTable[MA_IND_PWR_MODE_CTRL] = defValTable[MA_IND_PWR_MODE_CTRL]; 
 			break; 
 		
 		default: 
@@ -198,7 +198,7 @@ void ma_setPowerMode(uint8_t mode)
 
 void ma_setTreshold(uint8_t transition, uint8_t value)
 {
-	if(value <= 0 && value <= 255)
+	if(value >= 0 && value <= 255)
 	{
 		switch(transition)
 		{
@@ -221,7 +221,6 @@ void ma_setTreshold(uint8_t transition, uint8_t value)
 			default : 
 				ma_throwError(__LINE__); 
 		}
-		ma_throwError(__LINE__); 
 	}
 	else 
 	{
@@ -914,42 +913,43 @@ void ma_setVolumeMasterDb(int16_t volume)
 }
 void ma_printCurrentCconf(void)
 {
-	printf("\n\n\t CURRENT CONFIGURATION OF MA12070P \n\n");
-	printf("\r\nMA_REG_PWR_MODE_CTRL \t: %d "		,dataTable[MA_IND_PWR_MODE_CTRL]);
-	printf("\r\nMA_REG_MTHR_1TO2 \t: %d "			,dataTable[MA_IND_MTHR_1TO2]);
-	printf("\r\nMA_REG_MTHR_2TO1 \t: %d "			,dataTable[MA_IND_MTHR_2TO1]);
-	printf("\r\nMA_REG_MTHR_2TO3 \t: %d "			,dataTable[MA_IND_MTHR_2TO3]);
-	printf("\r\nMA_REG_MTHR_3TO2 \t: %d "			,dataTable[MA_IND_MTHR_3TO2]);
-	printf("\r\nMA_REG_LATCH_CLAMP \t: %d "		,dataTable[MA_IND_LATCH_CLAMP]);
-	printf("\r\nMA_REG_PM_PROFILE_MODE \t: %d "	,dataTable[MA_IND_PM_PROFILE_MODE]);
-	printf("\r\nMA_REG_PM_PROFILE_CONF \t: %d "	,dataTable[MA_IND_PM_PROFILE_CONF]);
-	printf("\r\nMA_REG_OCP_LATCH_CLEAR \t: %d "	,dataTable[MA_IND_OCP_LATCH_CLEAR]);
-	printf("\r\nMA_REG_AUDIO_IN_MODE \t: %d "		,dataTable[MA_IND_AUDIO_IN_MODE]);
-	printf("\r\nMA_REG_DC_PROTECTION \t: %d "		,dataTable[MA_IND_DC_PROTECTION]);
-	printf("\r\nMA_REG_AUDIO_IN_OVERWRITE \t: %d "	,dataTable[MA_IND_AUDIO_IN_OVERWRITE]);
-	printf("\r\nMA_REG_ERROR_HANDLER \t: %d "		,dataTable[MA_IND_ERROR_HANDLER]);
-	printf("\r\nMA_REG_PCM_PROC_SET \t: %d "		,dataTable[MA_IND_PCM_PROC_SET]);
-	printf("\r\nMA_REG_I2S_CONFIG \t: %d "			,dataTable[MA_IND_I2S_CONFIG]);
-	printf("\r\nMA_REG_VOL_DB_MASTER \t: %d "		,dataTable[MA_IND_VOL_DB_MASTER]);
-	printf("\r\nMA_REG_VOL_LSB_MASTER \t: %d "		,dataTable[MA_IND_VOL_LSB_MASTER]);
-	printf("\r\nMA_REG_VOL_DB_CH0 \t: %d "			,dataTable[MA_IND_VOL_DB_CH0]);
-	printf("\r\nMA_REG_VOL_DB_CH1 \t: %d "			,dataTable[MA_IND_VOL_DB_CH1]);
-	printf("\r\nMA_REG_VOL_DB_CH2 \t: %d "			,dataTable[MA_IND_VOL_DB_CH2]);
-	printf("\r\nMA_REG_VOL_DB_CH3 \t: %d "			,dataTable[MA_IND_VOL_DB_CH3]);
-	printf("\r\nMA_REG_VOL_LSB_CHX \t: %d "		,dataTable[MA_IND_VOL_LSB_CHX]);
-	printf("\r\nMA_REG_THR_DB_CH0 \t: %d "			,dataTable[MA_IND_THR_DB_CH0]);
-	printf("\r\nMA_REG_THR_DB_CH1 \t: %d "			,dataTable[MA_IND_THR_DB_CH1]);
-	printf("\r\nMA_REG_THR_DB_CH2 \t: %d "			,dataTable[MA_IND_THR_DB_CH2]);
-	printf("\r\nMA_REG_THR_DB_CH3 \t: %d "			,dataTable[MA_IND_THR_DB_CH3]);
-	printf("\r\nMA_REG_THR_LSB_CHX \t: %d "		,dataTable[MA_IND_THR_LSB_CHX]);
-	printf("\r\nMA_REG_MON0_FREQ_PM \t: %d "		,dataTable[MA_IND_MON0_FREQ_PM]);
-	printf("\r\nMA_REG_MON0 \t\t: %d "				,dataTable[MA_IND_MON0]);
-	printf("\r\nMA_REG_MON0_MODUL \t: %d "			,dataTable[MA_IND_MON0_MODUL]);
-	printf("\r\nMA_REG_MON1_FREQ_PM \t: %d "		,dataTable[MA_IND_MON1_FREQ_PM]);
-	printf("\r\nMA_REG_MON1 \t\t: %d "				,dataTable[MA_IND_MON1]);
-	printf("\r\nMA_REG_MON_CH1_MODUL \t: %d "		,dataTable[MA_IND_MON_CH1_MODUL]);
-	printf("\r\nMA_REG_ERRO_ACC \t: %d "			,dataTable[MA_IND_ERRO_ACC]);
-	printf("\r\nMA_REG_MON_MSEL \t: %d "			,dataTable[MA_IND_MON_MSEL]);
-	printf("\r\nMA_REG_ERROR \t\t: %d "			,dataTable[MA_IND_ERROR]);
-	printf("\r\nMA_REG_MON_LIMIT_CLI \t: %d "		,dataTable[MA_IND_MON_LIMIT_CLIP]);
+	printf("\n\n\t\t CURRENT CONFIGURATION OF MA12070P \n\n");
+	printf("\nPWR_MODE_CTRL \t\t: 0x%x "		,dataTable[MA_IND_PWR_MODE_CTRL] & 0xff );
+	printf("\nMTHR_1TO2 \t\t: 0x%x "			,dataTable[MA_IND_MTHR_1TO2] & 0xff );
+	printf("\nMTHR_2TO1 \t\t: 0x%x "			,dataTable[MA_IND_MTHR_2TO1] & 0xff );
+	printf("\nMTHR_2TO3 \t\t: 0x%x "			,dataTable[MA_IND_MTHR_2TO3] & 0xff );
+	printf("\nMTHR_3TO2 \t\t: 0x%x "			,dataTable[MA_IND_MTHR_3TO2] & 0xff );
+	printf("\nLATCH_CLAMP \t\t: 0x%x "		,dataTable[MA_IND_LATCH_CLAMP] & 0xff );
+	printf("\nPM_PROFILE_MODE \t: 0x%x "	,dataTable[MA_IND_PM_PROFILE_MODE] & 0xff );
+	printf("\nPM_PROFILE_CONF \t: 0x%x "	,dataTable[MA_IND_PM_PROFILE_CONF] & 0xff );
+	printf("\nOCP_LATCH_CLEAR \t: 0x%x "	,dataTable[MA_IND_OCP_LATCH_CLEAR] & 0xff );
+	printf("\nAUDIO_IN_MODE \t\t: 0x%x "		,dataTable[MA_IND_AUDIO_IN_MODE] & 0xff );
+	printf("\nDC_PROTECTION \t\t: 0x%x "		,dataTable[MA_IND_DC_PROTECTION] & 0xff );
+	printf("\nAUDIO_IN_OVERWRITE \t: 0x%x "	,dataTable[MA_IND_AUDIO_IN_OVERWRITE] & 0xff );
+	printf("\nERROR_HANDLER \t\t: 0x%x "		,dataTable[MA_IND_ERROR_HANDLER] & 0xff );
+	printf("\nPCM_PROC_SET \t\t: 0x%x "		,dataTable[MA_IND_PCM_PROC_SET] & 0xff );
+	printf("\nI2S_CONFIG \t\t: 0x%x "			,dataTable[MA_IND_I2S_CONFIG] & 0xff );
+	printf("\nVOL_DB_MASTER \t\t: 0x%x "		,dataTable[MA_IND_VOL_DB_MASTER] & 0xff );
+	printf("\nVOL_LSB_MASTER \t\t: 0x%x "		,dataTable[MA_IND_VOL_LSB_MASTER] & 0xff );
+	printf("\nVOL_DB_CH0 \t\t: 0x%x "			,dataTable[MA_IND_VOL_DB_CH0] & 0xff );
+	printf("\nVOL_DB_CH1 \t\t: 0x%x "			,dataTable[MA_IND_VOL_DB_CH1] & 0xff );
+	printf("\nVOL_DB_CH2 \t\t: 0x%x "			,dataTable[MA_IND_VOL_DB_CH2] & 0xff );
+	printf("\nVOL_DB_CH3 \t\t: 0x%x "			,dataTable[MA_IND_VOL_DB_CH3] & 0xff );
+	printf("\nVOL_LSB_CHX \t\t: 0x%x "		,dataTable[MA_IND_VOL_LSB_CHX] & 0xff );
+	printf("\nTHR_DB_CH0 \t\t: 0x%x "			,dataTable[MA_IND_THR_DB_CH0] & 0xff );
+	printf("\nTHR_DB_CH1 \t\t: 0x%x "			,dataTable[MA_IND_THR_DB_CH1] & 0xff );
+	printf("\nTHR_DB_CH2 \t\t: 0x%x "			,dataTable[MA_IND_THR_DB_CH2] & 0xff );
+	printf("\nTHR_DB_CH3 \t\t: 0x%x "			,dataTable[MA_IND_THR_DB_CH3] & 0xff );
+	printf("\nTHR_LSB_CHX \t\t: 0x%x "		,dataTable[MA_IND_THR_LSB_CHX] & 0xff );
+	printf("\nMON0_FREQ_PM \t\t: 0x%x "		,dataTable[MA_IND_MON0_FREQ_PM] & 0xff );
+	printf("\nMON0 \t\t\t: 0x%x "				,dataTable[MA_IND_MON0] & 0xff );
+	printf("\nMON0_MODUL \t\t: 0x%x "			,dataTable[MA_IND_MON0_MODUL] & 0xff );
+	printf("\nMON1_FREQ_PM \t\t: 0x%x "		,dataTable[MA_IND_MON1_FREQ_PM] & 0xff );
+	printf("\nMON1 \t\t\t: 0x%x "				,dataTable[MA_IND_MON1] & 0xff );
+	printf("\nMON_CH1_MODUL \t\t: 0x%x "		,dataTable[MA_IND_MON_CH1_MODUL] & 0xff );
+	printf("\nERRO_ACC \t\t: 0x%x "			,dataTable[MA_IND_ERRO_ACC] & 0xff );
+	printf("\nMON_MSEL \t\t: 0x%x "			,dataTable[MA_IND_MON_MSEL] & 0xff );
+	printf("\nERROR \t\t\t: 0x%x "			,dataTable[MA_IND_ERROR] & 0xff );
+	printf("\nMON_LIMIT_CLI \t\t: 0x%x \n"		,dataTable[MA_IND_MON_LIMIT_CLIP] & 0xff );
+	printf("\ntesting value \t\t: 0x%x \n"		,defValTable[MA_IND_PWR_MODE_CTRL] & 0xff );
 }

@@ -17,9 +17,8 @@ int main()
 	uint8_t i = 0; 
 	char strBuffer[20] = "Kerem"; 	
 	lcd_init(); 
-
-	printf("PLease enter a string to be displayed on the LCD \n\r >"); 
-	fgets(strBuffer,20,stdin); 
+//	printf("PLease enter a string to be displayed on the LCD \n\r >"); 
+//	fgets(strBuffer,20,stdin); 
 	for(i = 0 ; i <= 20 ; i++)
 	{
 		if(strBuffer[i] == '\n')
@@ -33,9 +32,9 @@ int main()
 
 	// amplifier test
 	
-//	ma_printCurrentCconf();
-//	ma_setVolumeMasterDb(15); 
-//	ma_printCurrentCconf();
+	ma_printCurrentCconf();
+	ma_configure(1);
+	ma_printCurrentCconf();
 
 
 
