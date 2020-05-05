@@ -952,4 +952,31 @@ void ma_printCurrentCconf(void)
 	printf("\nERROR \t\t\t: 0x%x "			,dataTable[MA_IND_ERROR] & 0xff );
 	printf("\nMON_LIMIT_CLI \t\t: 0x%x \n"		,dataTable[MA_IND_MON_LIMIT_CLIP] & 0xff );
 	printf("\ntesting value \t\t: 0x%x \n"		,defValTable[MA_IND_PWR_MODE_CTRL] & 0xff );
+	
+}
+
+void printBinary_uint8(uint8_t toPrint)
+{
+	uint8_t counter = 0; 
+
+	printf("0");
+	while (toPrint) 
+	{
+		if (toPrint & 1)
+		{
+			printf("1");
+		}
+		else
+		{
+			printf("0");
+		}
+		toPrint >>= 1;
+		counter++;
+	}
+	if(counter <=7)
+	{
+		counter++; 
+		printf("0");
+
+	}
 }

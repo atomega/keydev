@@ -556,3 +556,4 @@ void ma_i2c_fetch(void);
 void ma_i2c_update(void);
 // Error Mangement 
 void ma_throwError(uint16_t error);
+void printBinary_uint8(uint8_t toPrint);
