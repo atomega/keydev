@@ -4,6 +4,7 @@
 
 ll_i2c ma_i2c(MA_ADDR, 1, I2C_MODE_MASTER,I2C_ADDRESS_7B);
 
+uint8_t tabIndex		= 0;
 int16_t curretnVolume 	= 0; 
 uint8_t bitNo 			= 0; 
 uint8_t bitStart		= 0; 
@@ -102,11 +103,18 @@ uint8_t monitorinTable[READONLY]
 	MA_DEF_MON_LIMIT_CLIP	
 };
 
-void ma_configure(uint8_t Default)
+void ma_configure(uint8_t factory)
 {
-		//Set the device back to default setings
-		ma_i2c_fetch(); 
+	//Set the device back to default setings
+	ma_i2c_fetch(); 
 
+	if(factory)
+	{
+		ma_setFactorySettings();
+	}
+	
+	else 
+	{
 		ma_clearErrHandler();
 
 		ma_setPowerMode(MA_PWR_MODE_DEFF);					// Power mode is set to default 
@@ -121,24 +129,33 @@ void ma_configure(uint8_t Default)
 		ma_setAudioInMode(MA_AUDIO_IN_MODE_0); 				// Audio in as default +20dB
 		ma_setDcProtection(1); 								// DC Protection Enabled
 		ma_setAudioInOverwrite(0);							// Audio In overwrite Disabled (must be enabeled to led AudioInMode to take effect)
-	 	ma_setI2sFormat(MA_I2S_STANDART);					// Standart I2S Configuration
+		ma_setI2sFormat(MA_I2S_STANDART);					// Standart I2S Configuration
 		ma_setI2sRightFirst(0); 							// Set to Left First
 		ma_setI2sFrameSize(64);								// Word data lenght set to 64
 		ma_setI2sBitOrder(0); 								// Set to most significant Bit
 
- 		ma_setProcMute(0); 												
+		ma_setProcMute(0); 												
 		ma_setI2sWsPolarity(I2S_WS_POL_LOW); 										
 		ma_setI2sSckPolarity(I2S_SCK_POL_FALLING); 							
 		ma_setProcReleaseLvl(MA_ATT_REL_NORMAL); 						
-	 	ma_setProcAttackLvl(MA_ATT_REL_NORMAL); 					
- 		ma_setProcEn(1); 											
- 		ma_setProcLimiter(1); 										
+		ma_setProcAttackLvl(MA_ATT_REL_NORMAL); 					
+		ma_setProcEn(1); 											
+		ma_setProcLimiter(1); 										
 		ma_setVolumeCh0(MA_DEF_VOL_DB_CH0,MA_DEF_VOL_LSB_CHX);
 		ma_setVolumeCh1(MA_DEF_VOL_DB_CH1,MA_DEF_VOL_LSB_CHX);
 		ma_setVolumeCh2(MA_DEF_VOL_DB_CH2,MA_DEF_VOL_LSB_CHX);
 		ma_setVolumeCh3(MA_DEF_VOL_DB_CH3,MA_DEF_VOL_LSB_CHX);
 		ma_setVolumeMaster(0x40,0x0);
 		//ma_setVolume(-15);												// Set Volume to 0 dB 
+	}
+}
+
+void ma_setFactorySettings()
+{
+	for(tabIndex = 0 ; tabIndex < READWRITE ; tabIndex++)
+	{
+		dataTable[tabIndex] = defValTable[tabIndex]; 
+	}
 }
 
 void ma_i2c_update()
@@ -914,93 +931,99 @@ void ma_setVolumeMasterDb(int16_t volume)
 void ma_printCurrentCconf(void)
 {
 	printf("\n\n\t\t CURRENT CONFIGURATION OF MA12070P \n\n");
-	printf("\nPWR_MODE_CTRL \t\t: 0x%x | "	 ,dataTable[MA_IND_PWR_MODE_CTRL] & 0xff );
+	printf("\nPWR_MODE_CTRL \t\t: 0x%x \t| "	 ,dataTable[MA_IND_PWR_MODE_CTRL] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_PWR_MODE_CTRL]);
-	printf("\nMTHR_1TO2 \t\t: 0x%x | "		 ,dataTable[MA_IND_MTHR_1TO2] & 0xff );
+	printf("\nMTHR_1TO2 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_MTHR_1TO2] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_MTHR_1TO2]);
-	printf("\nMTHR_2TO1 \t\t: 0x%x | "		 ,dataTable[MA_IND_MTHR_2TO1] & 0xff );
+	printf("\nMTHR_2TO1 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_MTHR_2TO1] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_MTHR_2TO1]);
-	printf("\nMTHR_2TO3 \t\t: 0x%x | "		 ,dataTable[MA_IND_MTHR_2TO3] & 0xff );
+	printf("\nMTHR_2TO3 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_MTHR_2TO3] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_MTHR_2TO3]);
-	printf("\nMTHR_3TO2 \t\t: 0x%x | "		 ,dataTable[MA_IND_MTHR_3TO2] & 0xff );
+	printf("\nMTHR_3TO2 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_MTHR_3TO2] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_MTHR_3TO2]);
-	printf("\nLATCH_CLAMP \t\t: 0x%x | "	 ,dataTable[MA_IND_LATCH_CLAMP] & 0xff );
+	printf("\nLATCH_CLAMP \t\t: 0x%x \t| "	 ,dataTable[MA_IND_LATCH_CLAMP] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_LATCH_CLAMP]);
-	printf("\nPM_PROFILE_MODE \t: 0x%x | "	 ,dataTable[MA_IND_PM_PROFILE_MODE] & 0xff );
+	printf("\nPM_PROFILE_MODE \t: 0x%x \t| "	 ,dataTable[MA_IND_PM_PROFILE_MODE] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_PM_PROFILE_MODE]);
-	printf("\nPM_PROFILE_CONF \t: 0x%x | "	 ,dataTable[MA_IND_PM_PROFILE_CONF] & 0xff );
+	printf("\nPM_PROFILE_CONF \t: 0x%x \t| "	 ,dataTable[MA_IND_PM_PROFILE_CONF] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_PM_PROFILE_CONF]);
-	printf("\nOCP_LATCH_CLEAR \t: 0x%x | "	 ,dataTable[MA_IND_OCP_LATCH_CLEAR] & 0xff );
+	printf("\nOCP_LATCH_CLEAR \t: 0x%x \t| "	 ,dataTable[MA_IND_OCP_LATCH_CLEAR] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_OCP_LATCH_CLEAR]);
-	printf("\nAUDIO_IN_MODE \t\t: 0x%x | "	 ,dataTable[MA_IND_AUDIO_IN_MODE] & 0xff );
+	printf("\nAUDIO_IN_MODE \t\t: 0x%x \t| "	 ,dataTable[MA_IND_AUDIO_IN_MODE] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_AUDIO_IN_MODE]);
-	printf("\nDC_PROTECTION \t\t: 0x%x | "	 ,dataTable[MA_IND_DC_PROTECTION] & 0xff );
+	printf("\nDC_PROTECTION \t\t: 0x%x \t| "	 ,dataTable[MA_IND_DC_PROTECTION] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_DC_PROTECTION]);
-	printf("\nAUDIO_IN_OVERWRITE \t: 0x%x | ",dataTable[MA_IND_AUDIO_IN_OVERWRITE] & 0xff );
+	printf("\nAUDIO_IN_OVERWRITE \t: 0x%x \t| ",dataTable[MA_IND_AUDIO_IN_OVERWRITE] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_AUDIO_IN_OVERWRITE]);
-	printf("\nERROR_HANDLER \t\t: 0x%x | "	 ,dataTable[MA_IND_ERROR_HANDLER] & 0xff );
+	printf("\nERROR_HANDLER \t\t: 0x%x \t| "	 ,dataTable[MA_IND_ERROR_HANDLER] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_ERROR_HANDLER]);
-	printf("\nPCM_PROC_SET \t\t: 0x%x | "	 ,dataTable[MA_IND_PCM_PROC_SET] & 0xff );
+	printf("\nPCM_PROC_SET \t\t: 0x%x \t| "	 ,dataTable[MA_IND_PCM_PROC_SET] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_PCM_PROC_SET]);
-	printf("\nI2S_CONFIG \t\t: 0x%x | "		 ,dataTable[MA_IND_I2S_CONFIG] & 0xff );
+	printf("\nI2S_CONFIG \t\t: 0x%x \t| "		 ,dataTable[MA_IND_I2S_CONFIG] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_I2S_CONFIG]);
-	printf("\nVOL_DB_MASTER \t\t: 0x%x | "	 ,dataTable[MA_IND_VOL_DB_MASTER] & 0xff );
+	printf("\nVOL_DB_MASTER \t\t: 0x%x \t| "	 ,dataTable[MA_IND_VOL_DB_MASTER] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_VOL_DB_MASTER]);
-	printf("\nVOL_LSB_MASTER \t\t: 0x%x | "	 ,dataTable[MA_IND_VOL_LSB_MASTER] & 0xff );
+	printf("\nVOL_LSB_MASTER \t\t: 0x%x \t| "	 ,dataTable[MA_IND_VOL_LSB_MASTER] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_VOL_LSB_MASTER]);
-	printf("\nVOL_DB_CH0 \t\t: 0x%x | "		 ,dataTable[MA_IND_VOL_DB_CH0] & 0xff );
+	printf("\nVOL_DB_CH0 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_VOL_DB_CH0] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_VOL_DB_CH0]);
-	printf("\nVOL_DB_CH1 \t\t: 0x%x | "		 ,dataTable[MA_IND_VOL_DB_CH1] & 0xff );
+	printf("\nVOL_DB_CH1 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_VOL_DB_CH1] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_VOL_DB_CH1]);
-	printf("\nVOL_DB_CH2 \t\t: 0x%x | "		 ,dataTable[MA_IND_VOL_DB_CH2] & 0xff );
+	printf("\nVOL_DB_CH2 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_VOL_DB_CH2] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_VOL_DB_CH2]);
-	printf("\nVOL_DB_CH3 \t\t: 0x%x | "		 ,dataTable[MA_IND_VOL_DB_CH3] & 0xff );
+	printf("\nVOL_DB_CH3 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_VOL_DB_CH3] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_VOL_DB_CH3]);
-	printf("\nVOL_LSB_CHX \t\t: 0x%x | "	 ,dataTable[MA_IND_VOL_LSB_CHX] & 0xff );
+	printf("\nVOL_LSB_CHX \t\t: 0x%x \t| "	 ,dataTable[MA_IND_VOL_LSB_CHX] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_VOL_LSB_CHX]);
-	printf("\nTHR_DB_CH0 \t\t: 0x%x | "		 ,dataTable[MA_IND_THR_DB_CH0] & 0xff );
+	printf("\nTHR_DB_CH0 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_THR_DB_CH0] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_THR_DB_CH0]);
-	printf("\nTHR_DB_CH1 \t\t: 0x%x | "		 ,dataTable[MA_IND_THR_DB_CH1] & 0xff );
+	printf("\nTHR_DB_CH1 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_THR_DB_CH1] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_THR_DB_CH1]);
-	printf("\nTHR_DB_CH2 \t\t: 0x%x | "		 ,dataTable[MA_IND_THR_DB_CH2] & 0xff );
+	printf("\nTHR_DB_CH2 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_THR_DB_CH2] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_THR_DB_CH2]);
-	printf("\nTHR_DB_CH3 \t\t: 0x%x | "		 ,dataTable[MA_IND_THR_DB_CH3] & 0xff );
+	printf("\nTHR_DB_CH3 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_THR_DB_CH3] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_THR_DB_CH3]);
-	printf("\nTHR_LSB_CHX \t\t: 0x%x | "	 ,dataTable[MA_IND_THR_LSB_CHX] & 0xff );
+	printf("\nTHR_LSB_CHX \t\t: 0x%x \t| "	 ,dataTable[MA_IND_THR_LSB_CHX] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_THR_LSB_CHX]);
-	printf("\nMON0_FREQ_PM \t\t: 0x%x | "	 ,dataTable[MA_IND_MON0_FREQ_PM] & 0xff );
+	printf("\nMON0_FREQ_PM \t\t: 0x%x \t| "	 ,dataTable[MA_IND_MON0_FREQ_PM] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_MON0_FREQ_PM]);
-	printf("\nMON0 \t\t\t: 0x%x | "			 ,dataTable[MA_IND_MON0] & 0xff );
+	printf("\nMON0 \t\t\t: 0x%x \t| "			 ,dataTable[MA_IND_MON0] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_MON0]);
-	printf("\nMON0_MODUL \t\t: 0x%x | "		 ,dataTable[MA_IND_MON0_MODUL] & 0xff );
+	printf("\nMON0_MODUL \t\t: 0x%x \t| "		 ,dataTable[MA_IND_MON0_MODUL] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_MON0_MODUL]);
-	printf("\nMON1_FREQ_PM \t\t: 0x%x | "	 ,dataTable[MA_IND_MON1_FREQ_PM] & 0xff );
+	printf("\nMON1_FREQ_PM \t\t: 0x%x \t| "	 ,dataTable[MA_IND_MON1_FREQ_PM] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_MON1_FREQ_PM]);
-	printf("\nMON1 \t\t\t: 0x%x | "			 ,dataTable[MA_IND_MON1] & 0xff );
+	printf("\nMON1 \t\t\t: 0x%x \t| "			 ,dataTable[MA_IND_MON1] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_MON1]);
-	printf("\nMON_CH1_MODUL \t\t: 0x%x | "	 ,dataTable[MA_IND_MON_CH1_MODUL] & 0xff );
+	printf("\nMON_CH1_MODUL \t\t: 0x%x \t| "	 ,dataTable[MA_IND_MON_CH1_MODUL] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_MON_CH1_MODUL]);
-	printf("\nERRO_ACC \t\t: 0x%x | "		 ,dataTable[MA_IND_ERRO_ACC] & 0xff );
+	printf("\nERRO_ACC \t\t: 0x%x \t| "		 ,dataTable[MA_IND_ERRO_ACC] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_ERRO_ACC]);
-	printf("\nMON_MSEL \t\t: 0x%x | "		 ,dataTable[MA_IND_MON_MSEL] & 0xff );
+	printf("\nMON_MSEL \t\t: 0x%x \t| "		 ,dataTable[MA_IND_MON_MSEL] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_MON_MSEL]);
-	printf("\nERROR \t\t\t: 0x%x | "		 ,dataTable[MA_IND_ERROR] & 0xff );
+	printf("\nERROR \t\t\t: 0x%x \t| "		 ,dataTable[MA_IND_ERROR] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_ERROR]);
-	printf("\nMON_LIMIT_CLI \t\t: 0x%x | n"	 ,dataTable[MA_IND_MON_LIMIT_CLIP] & 0xff );
+	printf("\nMON_LIMIT_CLI \t\t: 0x%x \t| "	 ,dataTable[MA_IND_MON_LIMIT_CLIP] & 0xff );
 	printBinary_uint8(dataTable[MA_IND_MON_LIMIT_CLIP]);
-	printf("\ntesting value \t\t: 0x%x | n"	 ,defValTable[MA_IND_PWR_MODE_CTRL] & 0xff );
-	printBinary_uint8(defValTable[MA_IND_PWR_MODE_CTRL]);
-	
+	printf("\n\n");
 }
 
 void printBinary_uint8(uint8_t toPrint)
 {
-	uint8_t counter = 0; 
+	uint8_t counter, bit = 0; 
 
-	printf("0");
-	while (toPrint) 
+	printf("0b ");
+
+	for(counter = 8;counter > 0; counter--)
 	{
-		if (toPrint & 1)
+		bit = toPrint >> (counter - 1);
+		
+		if (counter == 4)
+		{
+			printf(" ");
+		}
+
+		if (bit & 1)
 		{
 			printf("1");
 		}
@@ -1008,13 +1031,5 @@ void printBinary_uint8(uint8_t toPrint)
 		{
 			printf("0");
 		}
-		toPrint >>= 1;
-		counter++;
-	}
-	if(counter <=7)
-	{
-		counter++; 
-		printf("0");
-
 	}
 }

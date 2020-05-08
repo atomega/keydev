@@ -486,7 +486,7 @@
 
 void 	ma_setVolumeMasterDb(int16_t volume); 
 void	ma_init(void); 
-void	ma_configure(uint8_t Default);
+void	ma_configure(uint8_t factory);
 int16_t ma_getVolumeDb(void); 
 
 /*Select manual Power Mode control. Default
@@ -519,6 +519,9 @@ void ma_setOcp(uint8_t enable);
 */
 void ma_setPowerModeProfileSetings(uint8_t setings); 
 void ma_setPowerModeProfileConfig(uint8_t scheme, uint8_t powerMode); 
+
+// Load factory settings to the main value table
+void ma_setFactorySettings(); 
 
 
 void ma_clearOcpLatch(void); 
