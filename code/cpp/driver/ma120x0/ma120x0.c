@@ -2,6 +2,8 @@
 #include"../../../c/algorithms/bitgestion.h"
 #include"ma120x0.h"
 
+#define STRSIZE 30
+
 ll_i2c ma_i2c(MA_ADDR, 1, I2C_MODE_MASTER,I2C_ADDRESS_7B);
 
 uint8_t tabIndex		= 0;
@@ -15,6 +17,47 @@ uint8_t regBuffer[4]	= {0};
 uint8_t dataBuffer[4]	= {0};
 
 uint8_t dataTable[REGAMOUNT] = {0};
+
+char nameTable[REGAMOUNT][STRSIZE] = 
+{	
+	"MA_REG_PWR_MODE_CTRL",
+	"MA_REG_MTHR_1TO2",
+	"MA_REG_MTHR_2TO1",
+	"MA_REG_MTHR_2TO3",
+	"MA_REG_MTHR_3TO2",
+	"MA_REG_LATCH_CLAMP",
+	"MA_REG_PM_PROFILE_MODE",
+	"MA_REG_PM_PROFILE_CONF",
+	"MA_REG_OCP_LATCH_CLEAR",
+	"MA_REG_AUDIO_IN_MODE",
+	"MA_REG_DC_PROTECTION",
+	"MA_REG_AUDIO_IN_OVERWRITE",
+	"MA_REG_ERROR_HANDLER",
+	"MA_REG_PCM_PROC_SET",
+	"MA_REG_I2S_CONFIG",
+	"MA_REG_VOL_DB_MASTER",
+	"MA_REG_VOL_LSB_MASTER",
+	"MA_REG_VOL_DB_CH0",
+	"MA_REG_VOL_DB_CH1",
+	"MA_REG_VOL_DB_CH2",
+	"MA_REG_VOL_DB_CH3",
+	"MA_REG_VOL_LSB_CHX",
+	"MA_REG_THR_DB_CH0",
+	"MA_REG_THR_DB_CH1",
+	"MA_REG_THR_DB_CH2",
+	"MA_REG_THR_DB_CH3",
+	"MA_REG_THR_LSB_CHX",
+	"MA_REG_MON0_FREQ_PM",
+	"MA_REG_MON0",
+	"MA_REG_MON0_MODUL",
+	"MA_REG_MON1_FREQ_PM",
+	"MA_REG_MON1",
+	"MA_REG_MON_CH1_MODUL",
+	"MA_REG_ERRO_ACC",
+	"MA_REG_MON_MSEL",
+	"MA_REG_ERROR",
+	"MA_REG_MON_LIMIT_CLIP"
+};
 
 
 uint8_t regTable[REGAMOUNT] = 
@@ -930,82 +973,49 @@ void ma_setVolumeMasterDb(int16_t volume)
 }
 void ma_printCurrentCconf(void)
 {
+	uint8_t xCoor = 0; 
+
 	printf("\n\n\t\t CURRENT CONFIGURATION OF MA12070P \n\n");
-	printf("\nPWR_MODE_CTRL \t\t: 0x%x \t| "	 ,dataTable[MA_IND_PWR_MODE_CTRL] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_PWR_MODE_CTRL]);
-	printf("\nMTHR_1TO2 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_MTHR_1TO2] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_MTHR_1TO2]);
-	printf("\nMTHR_2TO1 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_MTHR_2TO1] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_MTHR_2TO1]);
-	printf("\nMTHR_2TO3 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_MTHR_2TO3] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_MTHR_2TO3]);
-	printf("\nMTHR_3TO2 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_MTHR_3TO2] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_MTHR_3TO2]);
-	printf("\nLATCH_CLAMP \t\t: 0x%x \t| "	 ,dataTable[MA_IND_LATCH_CLAMP] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_LATCH_CLAMP]);
-	printf("\nPM_PROFILE_MODE \t: 0x%x \t| "	 ,dataTable[MA_IND_PM_PROFILE_MODE] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_PM_PROFILE_MODE]);
-	printf("\nPM_PROFILE_CONF \t: 0x%x \t| "	 ,dataTable[MA_IND_PM_PROFILE_CONF] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_PM_PROFILE_CONF]);
-	printf("\nOCP_LATCH_CLEAR \t: 0x%x \t| "	 ,dataTable[MA_IND_OCP_LATCH_CLEAR] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_OCP_LATCH_CLEAR]);
-	printf("\nAUDIO_IN_MODE \t\t: 0x%x \t| "	 ,dataTable[MA_IND_AUDIO_IN_MODE] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_AUDIO_IN_MODE]);
-	printf("\nDC_PROTECTION \t\t: 0x%x \t| "	 ,dataTable[MA_IND_DC_PROTECTION] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_DC_PROTECTION]);
-	printf("\nAUDIO_IN_OVERWRITE \t: 0x%x \t| ",dataTable[MA_IND_AUDIO_IN_OVERWRITE] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_AUDIO_IN_OVERWRITE]);
-	printf("\nERROR_HANDLER \t\t: 0x%x \t| "	 ,dataTable[MA_IND_ERROR_HANDLER] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_ERROR_HANDLER]);
-	printf("\nPCM_PROC_SET \t\t: 0x%x \t| "	 ,dataTable[MA_IND_PCM_PROC_SET] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_PCM_PROC_SET]);
-	printf("\nI2S_CONFIG \t\t: 0x%x \t| "		 ,dataTable[MA_IND_I2S_CONFIG] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_I2S_CONFIG]);
-	printf("\nVOL_DB_MASTER \t\t: 0x%x \t| "	 ,dataTable[MA_IND_VOL_DB_MASTER] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_VOL_DB_MASTER]);
-	printf("\nVOL_LSB_MASTER \t\t: 0x%x \t| "	 ,dataTable[MA_IND_VOL_LSB_MASTER] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_VOL_LSB_MASTER]);
-	printf("\nVOL_DB_CH0 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_VOL_DB_CH0] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_VOL_DB_CH0]);
-	printf("\nVOL_DB_CH1 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_VOL_DB_CH1] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_VOL_DB_CH1]);
-	printf("\nVOL_DB_CH2 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_VOL_DB_CH2] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_VOL_DB_CH2]);
-	printf("\nVOL_DB_CH3 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_VOL_DB_CH3] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_VOL_DB_CH3]);
-	printf("\nVOL_LSB_CHX \t\t: 0x%x \t| "	 ,dataTable[MA_IND_VOL_LSB_CHX] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_VOL_LSB_CHX]);
-	printf("\nTHR_DB_CH0 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_THR_DB_CH0] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_THR_DB_CH0]);
-	printf("\nTHR_DB_CH1 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_THR_DB_CH1] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_THR_DB_CH1]);
-	printf("\nTHR_DB_CH2 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_THR_DB_CH2] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_THR_DB_CH2]);
-	printf("\nTHR_DB_CH3 \t\t: 0x%x \t| "		 ,dataTable[MA_IND_THR_DB_CH3] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_THR_DB_CH3]);
-	printf("\nTHR_LSB_CHX \t\t: 0x%x \t| "	 ,dataTable[MA_IND_THR_LSB_CHX] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_THR_LSB_CHX]);
-	printf("\nMON0_FREQ_PM \t\t: 0x%x \t| "	 ,dataTable[MA_IND_MON0_FREQ_PM] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_MON0_FREQ_PM]);
-	printf("\nMON0 \t\t\t: 0x%x \t| "			 ,dataTable[MA_IND_MON0] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_MON0]);
-	printf("\nMON0_MODUL \t\t: 0x%x \t| "		 ,dataTable[MA_IND_MON0_MODUL] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_MON0_MODUL]);
-	printf("\nMON1_FREQ_PM \t\t: 0x%x \t| "	 ,dataTable[MA_IND_MON1_FREQ_PM] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_MON1_FREQ_PM]);
-	printf("\nMON1 \t\t\t: 0x%x \t| "			 ,dataTable[MA_IND_MON1] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_MON1]);
-	printf("\nMON_CH1_MODUL \t\t: 0x%x \t| "	 ,dataTable[MA_IND_MON_CH1_MODUL] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_MON_CH1_MODUL]);
-	printf("\nERRO_ACC \t\t: 0x%x \t| "		 ,dataTable[MA_IND_ERRO_ACC] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_ERRO_ACC]);
-	printf("\nMON_MSEL \t\t: 0x%x \t| "		 ,dataTable[MA_IND_MON_MSEL] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_MON_MSEL]);
-	printf("\nERROR \t\t\t: 0x%x \t| "		 ,dataTable[MA_IND_ERROR] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_ERROR]);
-	printf("\nMON_LIMIT_CLI \t\t: 0x%x \t| "	 ,dataTable[MA_IND_MON_LIMIT_CLIP] & 0xff );
-	printBinary_uint8(dataTable[MA_IND_MON_LIMIT_CLIP]);
-	printf("\n\n");
+	printf("Reg Name\t\t\t|Index\t|Address|Val Hex|Val Bin\t|");
+	
+	for(tabIndex = 0 ; tabIndex < REGAMOUNT ; tabIndex ++)
+	{
+		printf("\n%s\t",nameTable[tabIndex]);
+		if(strlen(nameTable[tabIndex]) < 25)
+		{
+			printf("\t");
+			if(strlen(nameTable[tabIndex]) < 16)
+			{
+				printf("\t");
+			}
+		}
+		printf("|");
+		printf("%d\t",tabIndex);
+		printf("|");
+		if(regTable[tabIndex] <= 0x0f)
+		{
+			printf("0x0%x\t",regTable[tabIndex] & 0xff);
+		}
+		else 
+		{
+			printf("0x%x\t",regTable[tabIndex] & 0xff);
+		}
+	
+		printf("|");
+		if(dataTable[tabIndex] <= 0x0f)
+		{
+			printf("0x0%x\t",dataTable[tabIndex] & 0xff );
+		}
+		else 
+		{
+			printf("0x%x\t",dataTable[tabIndex] & 0xff );
+		}
+		
+		printf("|");
+		printBinary_uint8(dataTable[tabIndex]);
+		printf("\t|");
+	}
+	printf("\n\n"); 
 }
 
 void printBinary_uint8(uint8_t toPrint)
