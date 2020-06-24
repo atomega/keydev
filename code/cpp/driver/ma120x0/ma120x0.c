@@ -1,10 +1,6 @@
-#include"../../lowlayer/i2c/ll_i2c.h"
-#include"../../../c/algorithms/bitgestion.h"
 #include"ma120x0.h"
 
-#define STRSIZE 30
-
-ll_i2c ma_i2c(MA_ADDR, 1, I2C_MODE_MASTER,I2C_ADDRESS_7B);
+//ll_i2c ma_i2c(MA_ADDR, 1, I2C_MODE_MASTER,I2C_ADDRESS_7B);
 
 uint8_t tabIndex		= 0;
 int16_t curretnVolume 	= 0; 
@@ -220,7 +216,8 @@ void ma_throwError(uint16_t error)
 
 void ma_setPowerMode(uint8_t mode)
 {
-	bitStart = MA_SHIFT_PWR_MODE_SEL ; 
+	printf("Selected Mode : %d\n",mode); 
+	bitStart = MA_SHIFT_PWR_MODE_SEL; 
 	bitStop = bitStart + MA_LEN_PWR_MODE_SEL; 
 	switch(mode)
 	{
@@ -228,16 +225,19 @@ void ma_setPowerMode(uint8_t mode)
 			bitNo = MA_SHIFT_PWR_MODE_MAN;
 			set_nth_bit_uint8(&dataTable[MA_IND_PWR_MODE_CTRL], bitNo); 		
 			break;
+
 		case MA_PWR_MODE_AUTO:
 			bitNo = MA_SHIFT_PWR_MODE_MAN;
 			unset_nth_bit_uint8(&dataTable[MA_IND_PWR_MODE_CTRL], bitNo); 		
 			break;
-		case MA_PWR_MODE_1:
+
+		case MA_PWR_MODE_1 :
 			valToset = MA_PWR_MODE_1;
 			set_bits_range_uint8(&dataTable[MA_IND_PWR_MODE_CTRL], bitStart, bitStop, valToset); 			
+			printf("bitStart : %d \n bitStop : %d \n valToSet : %d \n\n", bitStart, bitStop, valToset);
 			break; 
 		
-		case MA_PWR_MODE_2: 	
+		case MA_PWR_MODE_2 : 	
 			valToset = MA_PWR_MODE_2;
 			set_bits_range_uint8(&dataTable[MA_IND_PWR_MODE_CTRL], bitStart, bitStop, valToset); 			
 			break; 
@@ -357,7 +357,7 @@ void ma_setPowerModeProfileConfig(uint8_t scheme, uint8_t powerMode)
 	{
 		switch(powerMode)
 		{
-			case MA_POWER_MODE_1 : 
+			case MA_PM_MODE_1 : 
 				switch(scheme)
 				{
 					case MA_POWER_SCHEME_CUSTOM : 
@@ -399,7 +399,7 @@ void ma_setPowerModeProfileConfig(uint8_t scheme, uint8_t powerMode)
 						ma_throwError(__LINE__); 
 				}
 
-			case MA_POWER_MODE_2 : 
+			case MA_PM_MODE_2 : 
 				switch(scheme)
 				{
 					case MA_POWER_SCHEME_CUSTOM : 
@@ -442,7 +442,7 @@ void ma_setPowerModeProfileConfig(uint8_t scheme, uint8_t powerMode)
 				}
 
 
-			case MA_POWER_MODE_3 : 
+			case MA_PM_MODE_3 : 
 				switch(scheme)
 				{
 					case MA_POWER_SCHEME_CUSTOM : 
@@ -973,8 +973,6 @@ void ma_setVolumeMasterDb(int16_t volume)
 }
 void ma_printCurrentCconf(void)
 {
-	uint8_t xCoor = 0; 
-
 	printf("\n\n\t\t CURRENT CONFIGURATION OF MA12070P \n\n");
 	printf("Reg Name\t\t\t|Index\t|Address|Val Hex|Val Bin\t|");
 	

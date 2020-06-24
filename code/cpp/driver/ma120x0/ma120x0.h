@@ -2,9 +2,12 @@
 #include <stdlib.h>     /* abs */
 #include <stdint.h>
 #include <string.h>
-
+#include <unistd.h>
+//#include"../../lowlayer/i2c/ll_i2c.h"
+#include"../../../c/algorithms/bitgestion.h"
 
 #define MA_ADDR 0x20 // Device Adress
+#define STRSIZE 30
 
 
 //--------------------------------------------------------------- POWER MODE CONTROL
@@ -107,9 +110,9 @@
 #define MA_MSK_PM_PROFILE_PM1 0x03
 #define MA_LEN_PM_PROFILE_PM1 2
 
-#define	MA_POWER_MODE_1 2
-#define	MA_POWER_MODE_2 3
-#define	MA_POWER_MODE_3 4
+#define	MA_PM_MODE_1 2
+#define	MA_PM_MODE_2 3
+#define	MA_PM_MODE_3 4
 
 #define	MA_POWER_SCHEME_A 0
 #define	MA_POWER_SCHEME_B 1

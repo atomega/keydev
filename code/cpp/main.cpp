@@ -3,11 +3,11 @@
 
 #include <iostream>
 #include <string>
-#include "lowlayer/i2c/ll_i2c.h"
-#include "driver/pf8574/pf8574lcd.h"
+//#include "lowlayer/i2c/ll_i2c.h"
+//#include "driver/pf8574/pf8574lcd.h"
 #include "driver/ma120x0/ma120x0.h"
 #include <unistd.h>
-//#include "../c/algorithms/bitgestion.h"
+#include "../c/algorithms/bitgestion.h"
 
 using namespace std;
 
@@ -16,9 +16,10 @@ int main()
 {
 	uint8_t i = 0; 
 	char strBuffer[20] = "Kerem"; 	
-//	lcd_init(); 
-//	printf("PLease enter a string to be displayed on the LCD \n\r >"); 
-//	fgets(strBuffer,20,stdin); 
+/*
+	lcd_init(); 
+	printf("PLease enter a string to be displayed on the LCD \n\r >"); 
+	fgets(strBuffer,20,stdin); 
 	for(i = 0 ; i <= 20 ; i++)
 	{
 		if(strBuffer[i] == '\n')
@@ -27,16 +28,13 @@ int main()
 		}
 
 	}
-//	lcd_display_string(0,0,strBuffer);
-
+	lcd_display_string(0,0,strBuffer);
+*/
 
 	// amplifier test
-	
+	ma_setPowerMode(MA_PWR_MODE_MAN);
+	ma_setPowerMode(MA_PWR_MODE_3);
 	ma_printCurrentCconf();
-	ma_configure(1);
-	ma_printCurrentCconf();
-
-
 
 	return 0; 
 }
