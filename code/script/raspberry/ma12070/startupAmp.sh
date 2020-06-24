@@ -1,12 +1,12 @@
 #!/bin/sh
 
 sleep 3
-./gpioSetup.sh
+~/keydev/code/script/raspberry/ma12070/gpioSetup.sh
 
-./enableAmp.sh 
+~/keydev/code/script/raspberry/ma12070/enableAmp.sh 
 
-/home/pi/keydev/code/c/runtest
+~/keydev/code/cpp/runtest
 
-./unmuteAmp.sh
+~/keydev/code/script/raspberry/ma12070/unmuteAmp.sh
 
 echo "Done"

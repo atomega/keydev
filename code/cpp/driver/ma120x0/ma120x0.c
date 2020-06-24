@@ -1,6 +1,6 @@
 #include"ma120x0.h"
 
-//ll_i2c ma_i2c(MA_ADDR, 1, I2C_MODE_MASTER,I2C_ADDRESS_7B);
+ll_i2c ma_i2c(MA_ADDR, 1, I2C_MODE_MASTER,I2C_ADDRESS_7B);
 
 uint8_t tabIndex		= 0;
 int16_t curretnVolume 	= 0; 
@@ -145,7 +145,6 @@ uint8_t monitorinTable[READONLY]
 void ma_configure(uint8_t factory)
 {
 	//Set the device back to default setings
-	ma_i2c_fetch(); 
 
 	if(factory)
 	{
@@ -156,28 +155,28 @@ void ma_configure(uint8_t factory)
 	{
 		ma_clearErrHandler();
 
-		ma_setPowerMode(MA_PWR_MODE_DEFF);					// Power mode is set to default 
+		ma_setPowerMode(MA_PWR_MODE_DEFF);			// Power mode is set to default 
 		ma_setTreshold(MA_MTHR_1TO2, MA_DEF_MTHR_1TO2); 	// Default treshold
 		ma_setTreshold(MA_MTHR_2TO1, MA_DEF_MTHR_2TO1); 	// Default treshold
 		ma_setTreshold(MA_MTHR_2TO3, MA_DEF_MTHR_2TO3); 	// Default treshold
 		ma_setTreshold(MA_MTHR_3TO2, MA_DEF_MTHR_3TO2); 	// Default treshold
 
-		ma_setClipping(1); 									// soft Clipping Enabled
-		ma_setOcp(1); 										// Overcurrent protection Cilipping latch enabled
+		ma_setClipping(1); 					// soft Clipping Enabled
+		ma_setOcp(0); 						// Overcurrent protection Cilipping latch enabled
 		ma_setPowerModeProfileSetings(MA_POWER_PROFILE_2);	// Profile 2 the default one 
-		ma_setAudioInMode(MA_AUDIO_IN_MODE_0); 				// Audio in as default +20dB
-		ma_setDcProtection(1); 								// DC Protection Enabled
-		ma_setAudioInOverwrite(0);							// Audio In overwrite Disabled (must be enabeled to led AudioInMode to take effect)
-		ma_setI2sFormat(MA_I2S_STANDART);					// Standart I2S Configuration
-		ma_setI2sRightFirst(0); 							// Set to Left First
-		ma_setI2sFrameSize(64);								// Word data lenght set to 64
-		ma_setI2sBitOrder(0); 								// Set to most significant Bit
+		ma_setAudioInMode(MA_AUDIO_IN_MODE_0); 			// Audio in as default +20dB
+		ma_setDcProtection(1); 					// DC Protection Enabled
+		ma_setAudioInOverwrite(0);				// Audio In overwrite Disabled (must be enabeled to led AudioInMode to take effect)
+		ma_setI2sFormat(MA_I2S_STANDART);			// Standart I2S Configuration
+		ma_setI2sRightFirst(0); 				// Set to Left First
+		ma_setI2sFrameSize(64);					// Word data lenght set to 64
+		ma_setI2sBitOrder(0); 					// Set to most significant Bit
 
 		ma_setProcMute(0); 												
 		ma_setI2sWsPolarity(I2S_WS_POL_LOW); 										
 		ma_setI2sSckPolarity(I2S_SCK_POL_FALLING); 							
-		ma_setProcReleaseLvl(MA_ATT_REL_NORMAL); 						
-		ma_setProcAttackLvl(MA_ATT_REL_NORMAL); 					
+		ma_setProcReleaseLvl(MA_ATT_REL_SLOW); 						
+		ma_setProcAttackLvl(MA_ATT_REL_SLOW); 					
 		ma_setProcEn(1); 											
 		ma_setProcLimiter(1); 										
 		ma_setVolumeCh0(MA_DEF_VOL_DB_CH0,MA_DEF_VOL_LSB_CHX);
@@ -199,14 +198,14 @@ void ma_setFactorySettings()
 
 void ma_i2c_update()
 {
-	i2cLenght = REGAMOUNT; 
-//	ma_i2c.i2c_write(regTable,dataTable,i2cLenght,i2cLenght);
+	i2cLenght = REGAMOUNT - READONLY; 
+	ma_i2c.i2c_write(regTable,dataTable,i2cLenght,i2cLenght);
 }
 
 void ma_i2c_fetch()
 {
-	i2cLenght = REGAMOUNT - READONLY; 
-//	ma_i2c.i2c_read(regTable,dataTable,i2cLenght,i2cLenght);
+	i2cLenght = REGAMOUNT; 
+	ma_i2c.i2c_read(regTable,dataTable,i2cLenght,i2cLenght);
 }
 
 void ma_throwError(uint16_t error)
@@ -361,7 +360,7 @@ void ma_setPowerModeProfileConfig(uint8_t scheme, uint8_t powerMode)
 				switch(scheme)
 				{
 					case MA_POWER_SCHEME_CUSTOM : 
-						valToset = 2;
+						valToset = 1;
 						bitStart = MA_SHIFT_PM_PROFILE_PM1; 
 						bitStop = bitStart + MA_LEN_PM_PROFILE_PM1; 
 						set_bits_range_uint8(&dataTable[MA_IND_PM_PROFILE_CONF], bitStart, bitStop, valToset);
@@ -403,7 +402,7 @@ void ma_setPowerModeProfileConfig(uint8_t scheme, uint8_t powerMode)
 				switch(scheme)
 				{
 					case MA_POWER_SCHEME_CUSTOM : 
-						valToset = 3;
+						valToset = 2;
 						bitStart = MA_SHIFT_PM_PROFILE_PM2; 
 						bitStop = bitStart + MA_LEN_PM_PROFILE_PM2; 
 						set_bits_range_uint8(&dataTable[MA_IND_PM_PROFILE_CONF], bitStart, bitStop, valToset);
@@ -574,27 +573,27 @@ void ma_clearErrHandler()
 	unset_nth_bit_uint8(&dataTable[MA_IND_ERROR_HANDLER],bitNo);
 }
 
-void ma_setI2sFormat(uint8_t forma_)
+void ma_setI2sFormat(uint8_t format)
 {
-	switch(forma_)
+	switch(format)
 	{	
 		case MA_I2S_STANDART :
 			valToset = MA_I2S_STANDART;
 			break; 
-		case MA_I2S_LEFT :
-			valToset = MA_I2S_LEFT;
+		case MA_I2S_LEFT_JUSTIFIED :
+			valToset = MA_I2S_LEFT_JUSTIFIED;
 			break; 
-		case MA_I2S_RIGHT_16b :
-			valToset = MA_I2S_RIGHT_16b;
+		case MA_I2S_RIGHT_JUSTIFIED_16b :
+			valToset = MA_I2S_RIGHT_JUSTIFIED_16b;
 			break; 
-		case MA_I2S_RIGHT_18b :
-			valToset = MA_I2S_RIGHT_18b;
+		case MA_I2S_RIGHT_JUSTIFIED_18b :
+			valToset = MA_I2S_RIGHT_JUSTIFIED_18b;
 			break; 
-		case MA_I2S_RIGHT_20b :
-			valToset = 0;
+		case MA_I2S_RIGHT_JUSTIFIED_20b :
+			valToset =  0; // PLease refer to datasheet
 			break; 
-		case MA_I2S_RIGHT_24b :
-			valToset = MA_I2S_RIGHT_24b;
+		case MA_I2S_RIGHT_JUSTIFIED_24b :
+			valToset = MA_I2S_RIGHT_JUSTIFIED_24b;
 			break; 
 		default : 
 			ma_throwError(__LINE__); 
@@ -899,7 +898,7 @@ void ma_setVolumeMaster(uint8_t db, uint8_t lsb)
 		dataBuffer[0] = dataTable[MA_IND_VOL_DB_MASTER];
 		regBuffer[1]  = regTable[MA_IND_VOL_LSB_MASTER];
 		dataBuffer[1] = dataTable[MA_IND_VOL_LSB_MASTER];
-		//ma_i2c.write(regBuffer,dataBuffer,i2cLenght,i2cLenght);
+		ma_i2c.i2c_write(regBuffer,dataBuffer,i2cLenght,i2cLenght);
 	}
 	else 
 	{
@@ -962,7 +961,7 @@ void ma_setVolumeMasterDb(int16_t volume)
 			}
 			
 			DbNumber = (char)DbBuff; 
-		   	//printf("Bdnumber: %u\tfraction: %u \n",DbNumber, DbFraction);
+		   	printf("Bdnumber: %u\tfraction: %u \n",DbNumber, DbFraction);
 			ma_setVolumeMaster(DbNumber, DbFraction);
 		}
 		else

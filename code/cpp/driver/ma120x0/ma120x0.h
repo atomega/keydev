@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <string.h>
 #include <unistd.h>
-//#include"../../lowlayer/i2c/ll_i2c.h"
+#include"../../lowlayer/i2c/ll_i2c.h"
 #include"../../../c/algorithms/bitgestion.h"
 
 #define MA_ADDR 0x20 // Device Adress
@@ -82,15 +82,15 @@
 // PM PROFILE SELECT. VALID PRESETS: 0-1-2-3-4. 5=> CUSTOM PROFILE.
 #define MA_IND_PM_PROFILE_MODE 6 
 #define MA_REG_PM_PROFILE_MODE 0x1D
-#define MA_DEF_PM_PROFILE_MODE 0x3D
+#define MA_DEF_PM_PROFILE_MODE 0x00
 #define MA_SHIFT_PM_PROFILE_MODE 0x00
 #define MA_MSK_PM_PROFILE_MODE 0x07
 #define MA_LEN_PM_PROFILE_MODE 3
-#define MA_POWER_PROFILE_0 1
-#define MA_POWER_PROFILE_1 2
-#define MA_POWER_PROFILE_2 3
-#define MA_POWER_PROFILE_3 4
-#define MA_POWER_PROFILE_4 5
+#define MA_POWER_PROFILE_0 0
+#define MA_POWER_PROFILE_1 1
+#define MA_POWER_PROFILE_2 2
+#define MA_POWER_PROFILE_3 3
+#define MA_POWER_PROFILE_4 4
 
 //--------------------------------------------------------------- POWER MODE PROFILE CONFIGURATION
 // CUSTOM PROFILE PM3 CONTENTS. 0=>A,  1=>B,  2=>C,  3=>D
@@ -184,11 +184,11 @@
 #define MA_LEN_PCM_WORD_FORMAT 3
 
 #define MA_I2S_STANDART 0
-#define MA_I2S_LEFT 1
-#define MA_I2S_RIGHT_16b 4
-#define MA_I2S_RIGHT_18b 6
-#define MA_I2S_RIGHT_20b 3
-#define MA_I2S_RIGHT_24b 7
+#define MA_I2S_LEFT_JUSTIFIED 1
+#define MA_I2S_RIGHT_JUSTIFIED_16b 4
+#define MA_I2S_RIGHT_JUSTIFIED_18b 6
+#define MA_I2S_RIGHT_JUSTIFIED_20b 5
+#define MA_I2S_RIGHT_JUSTIFIED_24b 7
 
 #define MA_ATT_REL_FAST 2
 #define MA_ATT_REL_NORMAL 1

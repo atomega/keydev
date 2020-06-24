@@ -31,10 +31,18 @@ int main()
 	lcd_display_string(0,0,strBuffer);
 */
 
-	// amplifier test
-	ma_setPowerMode(MA_PWR_MODE_MAN);
-	ma_setPowerMode(MA_PWR_MODE_3);
+	//ma_configure(0); 
+	//ma_printCurrentCconf();
+	//ma_i2c_update();
+	//ma_i2c_fetch();
+	
+
+	ma_configure(0); 
 	ma_printCurrentCconf();
+	ma_i2c_update(); 
+	ma_i2c_fetch(); 
+	ma_printCurrentCconf(); 
+
 
 	return 0; 
 }
