@@ -169,7 +169,7 @@ void ma_configure(uint8_t factory)
 		ma_setAudioInOverwrite(0);				// Audio In overwrite Disabled (must be enabeled to led AudioInMode to take effect)
 		ma_setI2sFormat(MA_I2S_STANDART);			// Standart I2S Configuration
 		ma_setI2sRightFirst(0); 				// Set to Left First
-		ma_setI2sFrameSize(64);					// Word data lenght set to 64
+		ma_setI2sFrameSize(32);					// Word data lenght set to 64
 		ma_setI2sBitOrder(0); 					// Set to most significant Bit
 
 		ma_setProcMute(0); 												
@@ -183,7 +183,7 @@ void ma_configure(uint8_t factory)
 		ma_setVolumeCh1(MA_DEF_VOL_DB_CH1,MA_DEF_VOL_LSB_CHX);
 		ma_setVolumeCh2(MA_DEF_VOL_DB_CH2,MA_DEF_VOL_LSB_CHX);
 		ma_setVolumeCh3(MA_DEF_VOL_DB_CH3,MA_DEF_VOL_LSB_CHX);
-		ma_setVolumeMaster(0x40,0x0);
+		ma_setVolumeMaster(0x30,0x0);
 		//ma_setVolume(-15);												// Set Volume to 0 dB 
 	}
 }
@@ -787,6 +787,11 @@ void ma_setProcMute(uint8_t mute)
 	{
 		ma_throwError(__LINE__);
 	}
+
+	i2cLenght = 1; 
+	regBuffer[0]  = regTable[MA_IND_I2S_CONFIG];
+	dataBuffer[0] = dataTable[MA_IND_I2S_CONFIG];
+	ma_i2c.i2c_write(regBuffer,dataBuffer,i2cLenght,i2cLenght);
 }
 
 void ma_setProcLimiter(uint8_t enable)
