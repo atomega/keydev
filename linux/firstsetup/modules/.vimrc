@@ -8,7 +8,11 @@ set noswapfile
 set nobackup
 set exrc 
 set number
+set nowrap ""lines are allwas one line
+set autoindent
+filetype plugin indent on
 syntax enable
+:autocmd InsertEnter,InsertLeave * set cul!
 "--------------------------------------------------------------------
 
 "WILDMENU FOR FUZZY FILE SEARCH--------------------------------------
@@ -83,15 +87,17 @@ set makeprg=bundle\ exec\ rspec\ -f\ QuickfixFormatter
 "REMAPS--------------------------------------------------------------
 let mapleader=" " "leader is space
 "Kepp The good habits no arrows for you
-nnoremap <Left>:echo "No left for you!"<CR> 
-nnoremap <Right>:echo "No right for you!"<CR> 
-nnoremap <Up> :echo "No up for you!"<CR>
-nnoremap <Down> :echo "No down for you!"<CR>
+nnoremap <Left> 1 :wincmd > <CR> 
+nnoremap <Right> 1 :wincmd < <CR> 
+nnoremap <Up> 1 :wincmd - <CR>
+nnoremap <Down> 1 :wincmd + <CR>
 "Ease of window jumg intead of ^wj etc..
 map <leader>h :wincmd h<CR> 
 map <leader>j :wincmd j<CR>
 map <leader>k :wincmd k<CR>
 map <leader>l :wincmd l<CR>
+map ,/ :s/^/\/\//<CR>
+map ,{ :s/);/)\r{\r\t\r}\r/g<CR>
 "--------------------------------------------------------------------
 
 
