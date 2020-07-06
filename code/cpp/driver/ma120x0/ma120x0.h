@@ -558,6 +558,7 @@ int16_t ma_getVolume(void);
 void ma_printCurrentCconf(void);
 void ma_getCurrentDevInfo(void); 
 //I2C Functions 
+void ma_clearRegTable(void);
 void ma_i2c_fetch(void);
 void ma_i2c_update(void);
 // Error Mangement 

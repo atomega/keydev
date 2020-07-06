@@ -18,9 +18,9 @@ sudo echo "27" > /sys/class/gpio/export
 
 
 sudo echo "out" > /sys/class/gpio/gpio17/direction
-sudo echo "1" > /sys/class/gpio/gpio17/value
+sudo echo "0" > /sys/class/gpio/gpio17/value
 sudo echo "out" > /sys/class/gpio/gpio27/direction
-sudo echo "1" > /sys/class/gpio/gpio27/value
+sudo echo "0" > /sys/class/gpio/gpio27/value
 
 # Set up GPIO 7 and set to input
 # echo "7" > /sys/class/gpio/export

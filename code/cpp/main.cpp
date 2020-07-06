@@ -30,12 +30,11 @@ int main()
 	}
 	lcd_display_string(0,0,strBuffer);
 */
-/*	ma_configure(0); 
+	ma_configure(0); 
+	//ma_clearErrHandler();
 	ma_i2c_update(); 
 	ma_i2c_fetch(); 
 	ma_printCurrentCconf();
-*/
-       ma_setVolumeMaster(0x28,0);	
 
 	return 0; 
 }

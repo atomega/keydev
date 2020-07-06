@@ -202,8 +202,17 @@ void ma_i2c_update()
 	ma_i2c.i2c_write(regTable,dataTable,i2cLenght,i2cLenght);
 }
 
+void ma_clearRegTable()
+{
+	for (bitNo = 0 ;bitNo < REGAMOUNT ; bitNo ++)
+	{
+		dataTable[bitNo] = 0; 
+	}	
+}
+
 void ma_i2c_fetch()
 {
+	ma_clearRegTable();
 	i2cLenght = REGAMOUNT; 
 	ma_i2c.i2c_read(regTable,dataTable,i2cLenght,i2cLenght);
 }
@@ -569,8 +578,22 @@ void ma_setAudioInOverwrite(uint8_t enable)
 
 void ma_clearErrHandler()
 {
+	i2cLenght = 1; 
 	bitNo = MA_SHIFT_ERROR_HANDLER;
 	unset_nth_bit_uint8(&dataTable[MA_IND_ERROR_HANDLER],bitNo);
+	regBuffer[0]  = regTable[MA_IND_ERROR_HANDLER];
+	dataBuffer[0] = dataTable[MA_IND_ERROR_HANDLER];
+	ma_i2c.i2c_write(regBuffer,dataBuffer,i2cLenght,i2cLenght);
+	
+	set_nth_bit_uint8(&dataTable[MA_IND_ERROR_HANDLER],bitNo);
+	regBuffer[0]  = regTable[MA_IND_ERROR_HANDLER];
+	dataBuffer[0] = dataTable[MA_IND_ERROR_HANDLER];
+	ma_i2c.i2c_write(regBuffer,dataBuffer,i2cLenght,i2cLenght);
+	
+	unset_nth_bit_uint8(&dataTable[MA_IND_ERROR_HANDLER],bitNo);
+	regBuffer[0]  = regTable[MA_IND_ERROR_HANDLER];
+	dataBuffer[0] = dataTable[MA_IND_ERROR_HANDLER];
+	ma_i2c.i2c_write(regBuffer,dataBuffer,i2cLenght,i2cLenght);
 }
 
 void ma_setI2sFormat(uint8_t format)

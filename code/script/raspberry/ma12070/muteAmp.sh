@@ -2,4 +2,4 @@
 
 
 # Write output
-sudo echo "1" > /sys/class/gpio/gpio17/value
+sudo echo "0" > /sys/class/gpio/gpio17/value
