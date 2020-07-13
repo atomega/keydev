@@ -154,7 +154,6 @@ void ma_configure(uint8_t factory)
 	else 
 	{
 		ma_clearErrHandler();
-
 		ma_setPowerMode(MA_PWR_MODE_DEFF);			// Power mode is set to default 
 		ma_setTreshold(MA_MTHR_1TO2, MA_DEF_MTHR_1TO2); 	// Default treshold
 		ma_setTreshold(MA_MTHR_2TO1, MA_DEF_MTHR_2TO1); 	// Default treshold
@@ -172,7 +171,6 @@ void ma_configure(uint8_t factory)
 		ma_setI2sFrameSize(32);					// Word data lenght set to 64
 		ma_setI2sBitOrder(0); 					// Set to most significant Bit
 
-		ma_setProcMute(0); 												
 		ma_setI2sWsPolarity(I2S_WS_POL_LOW); 										
 		ma_setI2sSckPolarity(I2S_SCK_POL_FALLING); 							
 		ma_setProcReleaseLvl(MA_ATT_REL_SLOW); 						
@@ -198,8 +196,11 @@ void ma_setFactorySettings()
 
 void ma_i2c_update()
 {
+	ma_setProcMute(1); 												
+	ma_clearErrHandler();
 	i2cLenght = REGAMOUNT - READONLY; 
 	ma_i2c.i2c_write(regTable,dataTable,i2cLenght,i2cLenght);
+	ma_setProcMute(0); 												
 }
 
 void ma_clearRegTable()
