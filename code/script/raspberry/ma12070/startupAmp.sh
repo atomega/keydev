@@ -1,12 +1,11 @@
 #!/bin/sh
 
-sleep 3
-~/keydev/code/script/raspberry/ma12070/gpioSetup.sh
+sudo /home/osmc/keydev/code/script/raspberry/ma12070/gpioSetup.sh
 
-~/keydev/code/script/raspberry/ma12070/enableAmp.sh 
+sudo /home/osmc/keydev/code/script/raspberry/ma12070/enableAmp.sh 
 
-~/keydev/code/cpp/runtest
+sudo /home/osmc/keydev/code/cpp/runtest 64 35 > /home/osmc/keydev/code/script/raspberry/ma12070/ampLog.txt
 
-~/keydev/code/script/raspberry/ma12070/unmuteAmp.sh
+sudo /home/osmc/keydev/code/script/raspberry/ma12070/unmuteAmp.sh
 
 echo "Done"

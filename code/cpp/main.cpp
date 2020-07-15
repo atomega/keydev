@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 		if ((framesize == 16) || (framesize == 32) || (framesize == 64))
 		{
 			cout << "Setting frame size to: " << framesize << endl; 
-			//ma_setI2sFrameSize(framesize);	// Word data lenght set to 64
+			ma_setI2sFrameSize(framesize);	// Word data lenght set to 64
 		}
 		else 
 		{
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 		if ((volume > 0) && (volume < 255))
 		{
 			cout << "setting volume to: "<< volume << endl; 
-			ma_setVolumeMaster(0x30,0x0);
+			ma_setVolumeMaster(volume,0x0);
 		}
 		else 
 		{

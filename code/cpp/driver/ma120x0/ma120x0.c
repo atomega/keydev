@@ -168,7 +168,7 @@ void ma_configure(uint8_t factory)
 		ma_setAudioInOverwrite(0);				// Audio In overwrite Disabled (must be enabeled to led AudioInMode to take effect)
 		ma_setI2sFormat(MA_I2S_STANDART);			// Standart I2S Configuration
 		ma_setI2sRightFirst(0); 				// Set to Left First
-		ma_setI2sFrameSize(32);					// Word data lenght set to 64
+		ma_setI2sFrameSize(64);					// Word data lenght set to 64
 		ma_setI2sBitOrder(0); 					// Set to most significant Bit
 
 		ma_setI2sWsPolarity(I2S_WS_POL_LOW); 										
