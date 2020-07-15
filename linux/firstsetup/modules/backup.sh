@@ -36,7 +36,7 @@ echo "#######################################"
          OK=1
       elif [ "$input" = "rl" ] || [ "$input" = "rL" ] || [ "$input" = "Rl" ] || [ "$input" = "RL" ]
          then
-         response="nl"
+         response="rl"
          OK=1
       elif [ "$input" = "help" ] || [ "$input" = "h" ]
 		then 
@@ -67,7 +67,7 @@ elif [ "$response" = "nl" ];
 then
 	read -p "Source directory: " -i "/" -e sourceDir
 	read -p "Target directory: " -i "/" -e targetDir
-	sudo rsync -aAXP --delete --dry-run --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","swapfile","lost+found",".cache","Downloads",".ecryptfs"} $sourceDir $targetDir 
+	sudo rsync -aAXP --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","swapfile","lost+found",".cache","Downloads",".ecryptfs"} $sourceDir $targetDir 
 
 elif [ "$response" = "is" ]; 
 then
@@ -83,10 +83,16 @@ then
 	read -p "Source directory: " -i "/" -e sourceDir
 	read -p "Target current directory: " -i "/" -e linkDir
 	read -p "Target itteration directory: " -i "/" -e targetDir
-	sudo rsync -aAXPH --delete --dry-run --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","swapfile","lost+found",".cache","Downloads",".ecryptfs"} --link-dest=$linkDir $sourceDir $targetDir
+	sudo rsync -aAXPH --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","swapfile","lost+found",".cache","Downloads",".ecryptfs"} --link-dest=$linkDir $sourceDir $targetDir
 	
-elif [ "$response" = "il" ]; 
-then
-	echo "under construction" 
+elif [ "$response" = "rl" ]; 
+then	
+	lsblk
+	read -p "Target Device to be mounted: " -i "/dev/" -e deviceName
+	read -p "Target device mount direcotry: " -i "/mnt/" -e targetDir
+	read -p "Backup directory: " -i "/" -e sourceDir
+	sudo mount $deviceName $targetDir
+	ls $targetDir
+	sudo rsync -aAXP --delete --exclude="lost+found" $sourceDir $targetDir 
 fi
 exit
