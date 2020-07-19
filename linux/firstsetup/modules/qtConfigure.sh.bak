@@ -1,0 +1,181 @@
+#!/bin/bash
+
+sysrootLinker="sysroot-relativelinks.py"
+
+quitting()  
+{
+	read -p 'Do you want to Make Clean before quitting ? (y/n): ' yesorno
+	if [ ¨$yesorno¨ = ¨y¨ ]; 
+	then
+		sudo make confclean -j$coreCount
+		sudo make clean -j$coreCount
+	fi
+	
+	echo -e "\e[34m Terminating process \e[0m"
+	sudo umount $sysrootDir
+	sudo rm -r $binDir
+	sudo rm -r $sysrootDir
+	exit
+}  
+
+echo -e "\e[34m Wellcome to the Qt crosscompiler setup script \e[0m"
+echo -e "\e[34m the compilation may take a long time (Few Hours) depending on your system \e[0m"
+echo -e "\e[34m so please take a coffee and enjoy the ride \e[0m"
+
+read -p 'Do you want to use predefined values (y/n) ?: ' yesorno
+if [ ¨$yesorno¨ = ¨y¨ ]; 
+then
+	imageUsed="/home/key/crosscompile-tools/2020-05-27-raspios-buster-full-armhf.img"
+	sysrootDir="/mnt/raspitest"
+	binDir="/usr/local/qt5pi"
+	qtDriectory="/home/key/Qt/5.9.9/Src"
+	#toolchainUsed="/home/key/crosscompile-tools/binaries/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf-"
+	toolchainUsed="/home/key/crosscompile-tools/binaries/cross-pi-gcc/bin/arm-linux-gnueabihf-"
+	coreCount=4
+	sectorSize=512
+	sectorStart=532480
+	
+	if [ -d "$sysrootDir" ]; then
+		echo -e "\e[31m Directory exists and will be replaced \e[0m"
+		sudo umount $sysrootDir
+		sudo rm -r $sysrootDir
+	fi
+	sudo mkdir $sysrootDir
+
+	if [ -d "$binDir" ]; then
+		echo -e "\e[31m Directory exists and will be replaced \e[0m"
+		sudo rm -r $binDir
+	fi
+	sudo mkdir $binDir
+
+	cd $qtDriectory
+
+else 
+	read -p "Desired mounting mounting directory for file system of your target machine: " -i "/" -e sysrootDir
+	if [ -d "$sysrootDir" ]; then
+		echo -e "\e[31m Directory exists and will be replaced \e[0m"
+		sudo umount $sysrootDir
+		sudo rm -r $sysrootDir
+	fi
+	sudo mkdir $sysrootDir
+
+
+	read -p 'Desired compiler directory for local binary: ' -i "/" -e  binDir
+	if [ -d "$binDir" ]; then
+		echo -e "\e[31m Directory exists and will be replaced \e[0m"
+		sudo rm -r $binDir
+	fi
+	sudo mkdir $binDir
+
+
+	read -p 'Desired toolchain: ' -i "/" -e  toolchainUsed
+	read -p 'Desired image: ' -i "/" -e  imageUsed
+	read -p 'Src directory for Qt version: ' -i "/" -e qtDriectory
+	cd $qtDriectory
+
+	echo -e "\e[34m CPU information \e[0m"
+	sudo lscpu | grep Thread
+	sudo lscpu | grep Core
+	echo
+	read -p "PLease enter the amount of paralles precessors to be used: " coreCount 
+	echo
+	echo
+
+	echo -e "\e[34m Fdisk util will now show the configuration of the selected image \e[0m"
+	sudo fdisk -l $imageUsed
+	read -p "Indicated sector size: " sectorSize
+	read -p "Desired sector start: " sectorStart
+
+fi
+
+echo -e "\e[34m Mounting image \e[0m"
+sudo mount $imageUsed -o loop,offset=$(( $sectorSize * $sectorStart )) $sysrootDir
+
+echo
+ls $sysrootDir
+echo
+
+read -p 'Is root file mounted correctly (y/n) ?: ' yesorno
+
+if [ ¨$yesorno¨ = ¨y¨ ]; 
+then
+	echo "Continuing with a check" 
+else 
+	quitting
+fi
+
+echo "PLease confirm the following statements :" 
+echo "Selected image is:"
+echo " >> $imageUsed"
+echo "Sysroot for traget is:" 
+echo " >> $sysrootDir"
+echo "Qt Binaries Intalation:" 
+echo " >> $binDir"
+echo "Qt Src Directory:" 
+echo " >> $qtDriectory"
+echo "Tollchain Used is:"
+echo " >> $toolchainUsed"
+echo "Number of threads is:" 
+echo " >> $coreCount"
+
+read -p 'Are those informations correct ? (y/n): ' yesorno
+if [ ¨$yesorno¨ = ¨y¨ ]; 
+then
+	echo -e "\e[34m Now the Relative links will be configured for the sysroot \e[0m"
+	if [ -f "$sysrootLinker" ]; 
+	then
+		echo -e "\e[31m sysroot-relativelinks exists \e[0m"
+		sudo chmod +x ./sysroot-relativelinks.py
+		sudo ./sysroot-relativelinks.py $sysrootDir
+	else
+		echo -e "\e[31m sysroot-relativelinks will de downloaded \e[0m"
+		wget https://raw.githubusercontent.com/riscv/riscv-poky/master/scripts/sysroot-relativelinks.py
+		sudo chmod +x ./sysroot-relativelinks.py
+		sudo ./sysroot-relativelinks.py $sysrootDir
+	fi
+else 
+	quitting
+fi
+
+read -p 'Do you want to Make Clean before cofiguration ? (y/n): ' yesorno
+if [ ¨$yesorno¨ = ¨y¨ ]; 
+then
+	sudo make confclean -j$coreCount
+	sudo make clean -j$coreCount
+	echo -e "\e[34m Cleaning is done \e[0m"
+fi
+
+echo -e "\e[34m Runnning the configuration \e[0m"
+sudo ./configure -opengl -device linux-rasp-pi-g++ -device-option CROSS_COMPILE=$toolchainUsed -sysroot $sysrootDir -opensource -confirm-license -optimized-qmake -no-glib -no-pulseaudio -no-alsa -qt-xcb -reduce-exports -release -make libs -extprefix $binDir -skip qtwebengine
+#sudo ./configure -opengl es2 -device linux-rasp-pi-g++ -device-option CROSS_COMPILE=$toolchainUsed -sysroot $sysrootDir -opensource -confirm-license -optimized-qmake -no-glib -no-pulseaudio -no-alsa -qt-xgb -reduce-exports -release -make libs -extprefix $binDir -skip qtwebengine
+
+read -p 'Did you get any errors ? (y/n): ' yesorno
+if [ ¨$yesorno¨ = ¨y¨ ]; 
+then
+	quitting	
+else
+	echo -e "\e[34m Staring Make \e[0m" 
+	sudo make -j$coreCount
+	echo -e "\e[34m Make is done please make sure that there are no errors \e[0m" 
+	echo
+fi
+
+read -p 'Did you get any errors ? (y/n): ' yesorno
+if [ ¨$yesorno¨ = ¨y¨ ]; 
+then
+	quitting	
+else 
+	echo -e "\e[34m Starting Make Install \e[0m"
+	sudo make install -j$coreCount
+	echo -e "\e[34m Make Install is done please make sure that there no errors \e[0m"
+	echo
+fi
+
+
+read -p 'Did you get any errors ? (y/n): ' yesorno
+if [ ¨$yesorno¨ = ¨y¨ ]; 
+then
+	quitting	
+else 
+	echo -e "\e[34m Then enviroment was sucsessfully prepared have Fun! \e[0m"
+fi

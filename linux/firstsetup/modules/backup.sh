@@ -61,6 +61,7 @@ then
 	read -p "Source ip address: " -i -e sourceIp 
 	read -p "Source user name: " -i -e sourceUser 
 	read -p "Source directory: " -i "/" -e sourceDir
+	read -p "Target directory: " -i "/" -e targetDir
 	sudo rsync -aAXP -e ssh --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","swapfile","lost+found",".cache","Downloads",".ecryptfs"} $sourceUser@$sourceIp:$sourceDir $targetDir
 
 elif [ "$response" = "nl" ]; 
