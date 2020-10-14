@@ -10,7 +10,7 @@ echo "Create new from ssh		-> ns "
 echo "Create new from local		-> nl "
 echo "Create itteration from ssh	-> is" 
 echo "Create itteration from local	-> il" 
-echo "Restore backup to local		-> rl" 
+echo "Restore from local to local	-> rl" 
 echo "#######################################"
    
    # loop until we get a good answer and break out
@@ -45,7 +45,7 @@ echo "#######################################"
 		echo "Create new from local -> nl "
 		echo "Create itteration from ssh -> is" 
 		echo "Create itteration from local -> il" 
-		echo "Restore on local -> rl" 
+		echo "Restore from local to local -> rl" 
       elif [ "$input" = "q" ] || [ "$input" = "quit" ]
 		then
 		exit
@@ -94,6 +94,6 @@ then
 	read -p "Backup directory: " -i "/" -e sourceDir
 	sudo mount $deviceName $targetDir
 	ls $targetDir
-	sudo rsync -aAXP --delete --exclude="lost+found" $sourceDir $targetDir 
+	sudo rsync -aAXP --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","swapfile","lost+found",".cache","Downloads",".ecryptfs"} $sourceDir $targetDir 
 fi
 exit

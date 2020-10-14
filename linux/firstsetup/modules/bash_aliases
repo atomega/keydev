@@ -1,0 +1,4 @@
+alias activatealias='source ~/.bashrc'
+alias die='sudo shutdown -h now'
+alias grepstory='history | grep '
+alias cls='clear && ls'

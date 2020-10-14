@@ -49,11 +49,10 @@ read -p 'Please entre Password for wifi connection: ' psk
 echo "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev" | sudo tee -a $wifiFile
 echo "update_config=1" | sudo tee -a $wifiFile
 echo "country=CH" | sudo tee -a $wifiFile
-echo "" | sudo tee -a $wifiFile
+echo " " | sudo tee -a $wifiFile
 echo "network={" | sudo tee -a $wifiFile
-echo "	ssid=\"$ssid\"" | sudo tee -a $wifiFile
-echo "	psk=\"$psk\"" | sudo tee -a $wifiFile
-echo "	key_mgmt=WPA-PSK" | sudo tee -a $wifiFile
+echo -e "\tssid=\"$ssid\"" | sudo tee -a $wifiFile
+echo -e "\tpsk=\"$psk\"" | sudo tee -a $wifiFile
 echo "}" | sudo tee -a $wifiFile
 echo
 echo
