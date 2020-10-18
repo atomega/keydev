@@ -3,16 +3,18 @@
 mutePin=17
 enabelPin=27
 powerPin=22
+volume=35
+bitRate=32
 
 powerUp()
 {
-	sudo echo "1" > /sys/class/gpio/gpio$powerPin/value
+	sudo echo "0" > /sys/class/gpio/gpio$powerPin/value
 	echo "Amplifier powered up"
 }
 
 powerDown()
 {
-	sudo echo "0" > /sys/class/gpio/gpio$powerPin/value
+	sudo echo "1" > /sys/class/gpio/gpio$powerPin/value
 	echo "Amplifier powered down"
 }
 
@@ -52,7 +54,7 @@ configurePins()
 	sudo echo "out" > /sys/class/gpio/gpio$enabelPin/direction
 	sudo echo "1" > /sys/class/gpio/gpio$enabelPin/value
 	sudo echo "out" > /sys/class/gpio/gpio$powerPin/direction
-	sudo echo "0" > /sys/class/gpio/gpio$powerPin/value
+	sudo echo "1" > /sys/class/gpio/gpio$powerPin/value
 	echo "Pins for amplifier are configured"
 }
 
@@ -66,7 +68,7 @@ clearPins()
 
 initAmp()
 {
-	/home/pi/github/keydev/code/cpp/runtest 64 35
+	/home/pi/github/keydev/code/cpp/runtest $bitRate $volume
 }
 
 if [ -z "$1" ];
@@ -116,7 +118,6 @@ fi
 
 if [ "$1" == "start" ];
 then
-	configurePins
 	powerUp
 	enableAmp
 	initAmp
@@ -129,6 +130,5 @@ then
 	muteAmp
 	disableAmp
 	powerDown
-	clearPins
 	echo "Amplifier has stoped"
 fi
