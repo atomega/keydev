@@ -8,8 +8,7 @@ DEVICE_ADDRESS = 0x20      #7 bit address (will be left shifted to add the read 
 I2C_REG = 0x40
 VOLUME = 0x35
 
-#Write a single register
-y = bus.read_byte_data(DEVICE_ADDRESS, I2C_REG)
-print y
-
-#bus.write_byte_data(DEVICE_ADDRESS, DEVICE_REG_MODE1, DEVICE_REG_LEDOUT0)
+VOLUME = bus.read_byte_data(DEVICE_ADDRESS, I2C_REG)
+VOLUME = VOLUME + 1
+bus.write_byte_data(DEVICE_ADDRESS, I2C_REG, VOLUME)
+print VOLUME

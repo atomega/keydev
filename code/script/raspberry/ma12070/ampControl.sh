@@ -3,13 +3,24 @@
 mutePin=17
 enabelPin=27
 powerPin=22
-volume=35
+volume=55
 bitRate=32
 
 powerUp()
 {
 	sudo echo "0" > /sys/class/gpio/gpio$powerPin/value
 	echo "Amplifier powered up"
+}
+
+
+volup()
+{
+	/home/pi/github/keydev/code/python/raspberry/ma12070/volup.py
+}
+
+voldown()
+{
+	/home/pi/github/keydev/code/python/raspberry/ma12070/voldown.py
 }
 
 powerDown()
@@ -116,11 +127,24 @@ then
 	disableAmp
 fi
 
+if [ "$1" == "volup" ];
+then
+	volup
+fi
+
+if [ "$1" == "voldown" ];
+then
+	voldown
+fi
+
 if [ "$1" == "start" ];
 then
 	powerUp
+	read -p "" -t 0.1
 	enableAmp
+	read -p "" -t 0.1
 	initAmp
+	read -p "" -t 0.1
 	unmuteAmp
 	echo "Amplifier has started"
 fi
@@ -128,7 +152,9 @@ fi
 if [ "$1" == "stop" ];
 then
 	muteAmp
+	read -p "" -t 0.1
 	disableAmp
+	read -p "" -t 0.1
 	powerDown
 	echo "Amplifier has stoped"
 fi
