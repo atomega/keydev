@@ -85,6 +85,17 @@ initAmp()
 if [ -z "$1" ];
 then
 	echo "Please entre a command"
+	echo "-> disconfigure : Clearing the control pins"
+	echo "-> power : Turns the relay on"
+	echo "-> shutdown : turns the relay off"
+	echo "-> mute : mutes the amplifier output stage"
+	echo "-> enable : enable amplifier for opretaion and serial communication"
+	echo "-> disable : disable the amplifier"
+	echo "-> volup : Send serial command to up the volume"
+	echo "-> voldown : Send serial command to down the volume"
+	echo "-> init : Calls tha main init \"C\" code"
+	echo "-> start : All the required steps to start the amplifier for the first time"
+	echo "-> stop : all the required steps to stop the amplifier"
 fi
 
 if [ "$1" == "configure" ];
@@ -137,6 +148,11 @@ then
 	voldown
 fi
 
+if [ "$1" == "init" ];
+then
+	initAmp
+fi
+
 if [ "$1" == "start" ];
 then
 	powerUp
@@ -158,3 +174,4 @@ then
 	powerDown
 	echo "Amplifier has stoped"
 fi
+

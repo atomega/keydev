@@ -11,4 +11,4 @@ VOLUME = 0x35
 VOLUME = bus.read_byte_data(DEVICE_ADDRESS, I2C_REG)
 VOLUME = VOLUME - 1
 bus.write_byte_data(DEVICE_ADDRESS, I2C_REG, VOLUME)
-print VOLUME
+print("REG: ",hex(I2C_REG)," -> ",VOLUME)
