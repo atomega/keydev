@@ -38,7 +38,7 @@
 				</div>
 			</form>
 
-			<h3> Sent : 
+			<h3> 
 				<?php
 				if(isset($_GET['send']))
 				{
@@ -71,7 +71,6 @@
 										echo("<br>");
 										echo ("Data: 0x"."$sendData");
 										echo("<br>");
-										echo("New Value: ");	
 										echo shell_exec("$command"); 	
 									}
 									else
@@ -113,7 +112,7 @@
 						<option value="0x21">MA12070P 0x21</option>
 					</select>
 					<br>
-					<label for="i2creg">Register 0x</label>
+					<label for="i2creg">Register</label>
 					<input type="text" id="i2creg" name="read_register" placeholder="Ex: 0x25">
 					<br>
 					<br>
@@ -121,7 +120,7 @@
 				</div>
 			</form>
 
-			<h3> Recieved data is : 
+			<h3>
 				<?php
 				if(isset($_GET['read']))
 				{
