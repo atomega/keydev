@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="sensum.css">
+<link rel="stylesheet" href="css/sensum.css">
 <body>
 
 	<div class="header">
@@ -11,7 +11,7 @@
 
 	<div class="navbar">
 		<a href="index.php">Amplifier</a>
-		<a href="#">I2C</a>
+		<a href="i2c.php">I2C</a>
 		<a href="#">System</a>
 		<a href="#" class="right">Info</a>
 	</div>
@@ -45,58 +45,15 @@
 					$sendReg=$_GET['send_register'];
 					$sendAddress=$_GET['send_i2caddress'];
 					$sendData=$_GET['send_data'];
-					if(empty($sendData) || empty($sendReg))
-					{
-						echo("Register or Data is Empty");
-					}
-					else
-					{
-						if (strpos($sendReg, 'x') !== false) 
-						{
-							if (strpos($sendData, 'x') !== false) 
-							{
-								$sendReg = substr($sendReg, 2);
-								$decimalTest = hexdec($sendReg);
-								if($decimalTest >= 0 && $decimalTest <= 255)
-								{
-									$sendData = substr($sendData, 2);
-									$decimalTest = hexdec($sendData);
-									if($decimalTest >= 0 && $decimalTest <= 255)
-									{
-										$command = "./i2cComm.py "."$sendAddress"." "."0x"."$sendReg"." "."0x"."$sendData";
-										echo("<br>");
-										echo("Device: "."$sendAddress");
-										echo("<br>");
-										echo("Register: 0x"."$sendReg");
-										echo("<br>");
-										echo ("Data: 0x"."$sendData");
-										echo("<br>");
-										echo shell_exec("$command"); 	
-									}
-									else
-									{
-										echo("<br>");
-										echo("Please enter a value betwween 0 and 255");
-									}
-								}
-								else
-								{
-									echo("<br>");
-									echo("Please enter a value betwween 0 and 255");
-								}
-							}
-							else
-							{
-								echo("<br>");
-								echo("Please enter an hexadecimal number");
-							}
-						}
-						else
-						{
-							echo("<br>");
-							echo("Please enter an hexadecimal number");
-						}
-					}
+					$command = "script/i2cComm.sh 1 "."$sendAddress"." "."$sendReg"." "."$sendData";
+					echo("<br>");
+					echo("Device: "."$sendAddress");
+					echo("<br>");
+					echo("Register: 0x"."$sendReg");
+					echo("<br>");
+					echo ("Data: 0x"."$sendData");
+					echo("<br>");
+					echo shell_exec("$command");	
 				}
 				?>	
 			</h3>	
@@ -126,28 +83,8 @@
 				{
 					$readReg=$_GET['read_register'];
 					$readAddress=$_GET['read_i2caddress'];
-
-					if (strpos($readReg, 'x') !== false) 
-					{
-						$readReg = substr($readReg, 2);
-						$decimalTest = hexdec($readReg);
-						if($decimalTest >= 0 && $decimalTest <= 255)
-						{
-							$command = "./i2cComm.py "."$readAddress"." "."0x"."$readReg";
-							echo shell_exec("$command"); 	
-						}
-						else
-						{
-							echo("<br>");
-							echo("Please enter a value betwween 0 and 255");
-						}
-						
-					}
-					else
-					{
-						echo("<br>");
-						echo("Please enter an hexadecimal number");
-					}
+					$command = "script/i2cComm.sh 1 "."$readAddress"." "."$readReg";
+					echo shell_exec("$command"); 	
 				}
 				?>	
 			</h3>	

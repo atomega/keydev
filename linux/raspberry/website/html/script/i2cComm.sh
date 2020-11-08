@@ -31,11 +31,11 @@ isArg1ok()
 		if ! [[ $VAR1 =~ $regexNumber ]] 
 		then
 			echo "Error: $VAR1 is not a valid I2C bus number"
-			helpInfo
+			exit 1
 		fi
 	else 
 		echo "Error: $VAR1 is not a valid I2c bus number"
-		helpInfo
+		exit 1
 		fi
 }
 
@@ -44,11 +44,20 @@ areArgOK()
 	if ! [[ $1 =~ $regexHex ]] 
 	then
 		echo "Error: $1 is not a valid hexadecimal number"
-		helpInfo
+		exit 1
 	fi
 }
 
-if [ "$#" -eq 3  ]
+if [ "$#" -eq 1 ]
+then 
+	if [ "$VAR1" = "help" ]
+	then
+		helpInfo
+	else
+		echo "Error: invalid argument number"
+		exit 1 
+	fi
+elif [ "$#" -eq 3  ]
 then 
 	isArg1ok
 	for i in ${argTab[@]}
@@ -71,14 +80,14 @@ then
 	
 	if [ "$4" = "$i2cReadVal" ]
 	then
-		echo "$i2cReadVal"
+		echo "New value : $i2cReadVal"
 	else
 		echo "Error: write unsucessfull"
-		helpInfo
+		exit 1 
 	fi
 else
 	echo "Error: invalid argument number"
-	helpInfo
+	exit 1 
 fi
 
 exit 1
