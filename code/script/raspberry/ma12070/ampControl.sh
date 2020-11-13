@@ -4,7 +4,7 @@ mutePin=17
 enabelPin=27
 powerPin=22
 volume=55
-bitRate=32
+bitRate=64
 
 helpInfo()
 {

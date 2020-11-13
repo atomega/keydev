@@ -1,0 +1,356 @@
+#include "amplifier.h" 
+#include "gpio.h" 
+
+/*
+void ampI2cRead(char *reg)
+{
+	char execBuffer [50];
+	int i2cRegister = chechHexAndReturn(reg); 
+	sprintf (execBuffer, "i2cget -y %d %d %d", I2C_INTERFACE_NO, I2C_ADDRESS, i2cRegister); 
+	system(execBuffer); 
+	exit(0);
+}
+
+void ampI2cWrite(char *reg, char *data) 
+{
+	char execBuffer [50];
+	int i2cRegister = chechHexAndReturn(reg); 
+	int i2cData = chechHexAndReturn(data); 
+	sprintf (execBuffer, "i2cset -y %d %d %d %d",I2C_INTERFACE_NO, I2C_ADDRESS, i2cRegister, i2cData); 
+	system(execBuffer); 
+	exit(0);
+}
+
+void ampGpioSet(unsigned char pin, unsigned char onOff)
+{
+
+}
+
+void anpGpioGet(unsigned char pin)
+{
+
+}
+*/
+unsigned int generalCommand = 0; 
+
+#define ARGC_MAX 5 
+#define ARGC_MIN 2 
+#define ARGC_GET 3 
+#define ARGC_SET_SIMPLE 4 
+#define ARGC_SET_COMPLEX 5 
+
+#define BIT_GET_SET 15
+#define BIT_SIMPLE_COMPLEX 14 
+#define BIT_RAW_DECODE 13
+
+
+#define ARGC_SELF 1
+#define ARGC_COMMAND 2
+#define ARGC_ACTION 3
+#define ARGC_VALUE 4
+#define ARGC_DATA 5
+
+#define ARGV_COMMAND ARGC_COMMAND-1
+#define ARGV_ACTION ARGC_ACTION-1
+#define ARGV_VALUE ARGC_VALUE-1
+#define ARGV_DATA ARGC_DATA-1
+
+#define SIZE_OF_VALUES 12
+#define SIZE_OF_ACTIONS 12
+#define SIZE_OF_COMMANDS 5
+
+#define ERROR_VALUE 60
+#define ERROR_ACTION 61
+#define ERROR_CMD 62
+
+char *command[SIZE_OF_COMMANDS] = 
+{
+	"-g", 
+	"-s", 
+	"get", 
+	"set", 
+	"info"
+};
+
+char *action[SIZE_OF_ACTIONS] = 
+{
+	"mute",
+	"enable",
+	"power",
+	"limiter",
+	"clipping",
+	"channel0",
+	"channel1", 
+	"error",
+	"output", 
+	"error-history", 
+	"info",
+	"status"
+};
+
+char *value[SIZE_OF_VALUES] =
+{
+	"on",
+	"off",
+	"frequency",
+	"power",
+	"mute",
+	"vdd",
+	"pvdd",
+	"cfly",
+	"ocp",
+	"modulation", 
+	"up", 
+	"down"
+};
+
+
+int main(int argc, char *argv[])
+{
+	uint8_t i = 0; 
+
+
+	printf("command: %s | action: %s | vlaue: %s\n",argv[ARGV_COMMAND], argv[ARGV_ACTION], argv[ARGV_VALUE]);
+
+	if(argc > ARGC_MIN && argc <= ARGC_MAX)
+	{			
+		for(i = 0; i < SIZE_OF_COMMANDS ; i++)
+		{
+			if(strcmp(argv[ARGV_COMMAND],command[i]) == 0)
+			{
+				printf("matched command %s \n",command[i]); 
+				for(i = 0; i < SIZE_OF_VALUES ; i++)
+				{
+					if(strcmp(argv[ARGV_ACTION],action[i]) == 0)
+					{
+						printf("matched action %s \n",action[i]); 
+						for(i = 0; i < SIZE_OF_VALUES ; i++)
+						{
+							if(strcmp(argv[ARGV_VALUE],value[i]) == 0)
+							{
+								printf("matched value %s \n",action[i]); 
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	else 
+	{
+		printHelp(); 
+	}
+	
+	printError(__LINE__,ERROR_UNHANDELT_FE);
+	return -1; 
+}
+
+int chechHexAndReturn(char *hex)
+{
+	if (strlen(hex) == 4)
+	{
+		if( hex[1] == 'x')
+		{
+			long deci = strtol(hex, NULL, 16);
+			if(deci >= 0 && deci <=255)
+			{
+				return (int)deci; 
+			}
+			{
+				printError(__LINE__, ERROR_NOT_HEX_RANGE); 
+			}
+		}
+		else 
+		{
+			printError(__LINE__, ERROR_NOT_HEX); 
+		}
+	}
+	else 
+	{
+		printError(__LINE__, ERROR_NOT_HEX); 
+	}
+	return -1; 
+}
+
+
+int getPinState(char *stat)
+{
+	if(strcmp(stat,"on") == 0){
+		return ON; 
+	}
+	else if(strcmp(stat,"off") == 0){
+		return OFF; 
+	}
+	else{
+		printError(__LINE__,ERROR_INVALID_PIN_STATE);
+	}
+	printError(__LINE__,ERROR_UNHANDELT_FE);
+	return -1; 
+}
+
+
+int getCommand(char *cmd)
+{
+	if(strcmp(cmd,"i2c") == 0){
+		return COMMAND_I2C; 
+	}
+	else if(strcmp(cmd,"gpio") == 0){
+		return COMMAND_GPIO; 
+	}
+	else{
+		printError(__LINE__,ERROR_INVALID_COMMAND);
+	}
+
+	printError(__LINE__,ERROR_UNHANDELT_FE);
+	return -1; 
+}
+
+int getAction(char *act, int cmd)
+{
+	if(cmd == COMMAND_I2C)
+	{
+		if(strcmp(act,"read") == 0){
+			return ACTION_READ; 
+		}
+		else if(strcmp(act,"write") == 0){
+			return ACTION_WRITE; 
+		}
+		else{
+			printError(__LINE__,ERROR_INVALID_I2C_ACTION);
+		}
+	}
+	else if(cmd == COMMAND_GPIO)
+	{
+		if(strcmp(act,"get") == 0){
+			return ACTION_GET; 
+		}
+		else if(strcmp(act,"set") == 0){
+			return ACTION_SET; 
+		}
+		else{
+			printError(__LINE__,ERROR_INVALID_GPIO_ACTION);
+		}
+	}
+
+	printError(__LINE__,ERROR_UNHANDELT_FE);
+	return -1; 
+}
+
+int getPinName(char *pinName)
+{
+	if(strcmp(pinName,"mute") == 0){
+		return PIN_MUTE; 
+	}
+	else if(strcmp(pinName,"enable") == 0){
+		return PIN_ENABLE; 
+	}
+	else if(strcmp(pinName,"power") == 0){
+		return PIN_POWER;
+	}
+	else{
+		printError(__LINE__,ERROR_INVALID_GPIO_NAME);
+	}
+
+	printError(__LINE__,ERROR_UNHANDELT_FE);
+	return -1;
+}
+
+char printError(int line, int err)
+{
+	switch(err)
+	{
+		case ERROR_UNHANDELT_FE: 
+			printf("Error: unhandled end of function l:%d\n",line); 
+			break;
+		case ERROR_NOTONOFF: 
+			printf("Error: please set on or off l:%d\n",line); 
+			break;
+		case ERROR_UNKNOWNPINVAL: 
+			printf("Error: invalit pin value l:%d\n",line); 
+			break;
+		case ERROR_STDERR_OPEN:
+			printf("Error: Failed to open the sysfile l:%d\n",line);
+			break;
+		case ERROR_STDERR_WRITE:
+			printf("Error: Failed to write to sysfile l:%d\n",line);
+			break;
+		case ERROR_STDERR_READ:
+			printf("Error: Failed to read to sysfile l:%d\n",line);
+			break; 
+		case ERROR_INVALID_ARG_COUNT:
+			printf("Error: Invalid argumernt count l:%d\n",line); 
+			break; 
+		case ERROR_NOT_I2C_ARG_QTE: 
+			printf("Error: I2C command needs more arguments l:%d\n",line);
+			break; 
+		case ERROR_INVALID_GPIO_ACTION: 
+			printf("Error: Inavlid action for \"gpio\" command l:%d\n",line); 
+			break; 
+		case ERROR_INVALID_I2C_ACTION: 
+			printf("Error: Inavlid action for \"i2c\" command l:%d\n",line); 
+			break; 
+		case ERROR_INVALID_GPIO_NAME: 
+			printf("Error: Inavlid gpio pin name l:%d\n",line);
+			break; 
+		case ERROR_INVALID_COMMAND: 
+			printf("Error: Invalid command please select \"i2c\" or \"gpio\" l:%d\n",line); 
+			break; 
+		case ERROR_INVALID_PIN_STATE: 
+			printf("Error: Invalid pin state on/off l:%d\n",line); 
+			break; 
+		case ERROR_NOT_GPIO_SET_ARG_QTE: 
+			printf("Error: gpio set need more argumments l:%d\n",line); 
+			break; 
+		case ERROR_NOT_HEX:
+			printf("Error: Not an hexadecimal number ex : 0x4f l:%d\n",line); 
+			break; 
+		case ERROR_NOT_HEX_RANGE:
+			printf("Error: only hexadecimal between 0 - 255 l:%d\n",line); 
+			break; 
+		case ERROR_NOT_I2C_WRITE_ARG_QTE:
+			printf("Error: i2c write need more argumments l:%d\n",line); 
+			break; 
+		case ERROR_VALUE:
+			printf("Error: invalid value l:%d\n",line); 
+			break; 
+		case ERROR_ACTION:
+			printf("Error: invalid action l:%d\n",line); 
+			break; 
+		case ERROR_CMD:
+			printf("Error: invalid command l:%d\n",line); 
+			break; 
+		default:
+			printf("Error: Error of Error Reached -> not Good l:%d\n",line); 
+			break;
+	}
+	exit(1);
+}
+
+char printHelp()
+{
+	printf("\nHelp For amcontrol\n"
+			"***************************************************************\n"
+			"this program will automatically detect the actions to do accorting to\n"
+			"-the amount orguments given \n"
+			"-the specified command.\n"
+			"***************************************************************\n"
+			"Command for GPIO \n"
+			"./ampControl [gpio] [get/set] [name] [on/off]\n" 
+			"\tgpio - selected command\n"
+			"\tget/set - action to execute get or set a pin\n"
+			"\tname - name of the pin | mute | enable | power |\n"
+			"\ton/off - turns the given pin name on or foo\n"
+			"Ex : ./ampControl gpio get mute\n"
+			"Ex : ./ampControl gpio set enable on\n"
+			"***************************************************************\n"
+			"Command for i2c\n"
+			"./amplifier [i2c] [read/write] [address] [register] [data]\n"
+			"\ti2c - selected command\n"
+			"\tred/write - read or write to the given register\n"
+			"\taddress - phisycal adress of the device\n"
+			"\tregister - the register address\n"
+			"\tdata - the data to be writen to the register\n"
+			"Ex : ./ampControl i2c read 0x20 0x40\n"
+			"Ex : ./ampControl i2c write 0x20 0x40 0x24\n"); 
+	exit(1);
+}

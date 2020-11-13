@@ -1,10 +1,10 @@
 csrc = $(wildcard *.c) 
 
 obj = $(csrc:.c=.o)
-CC = gcc 
-CFLAGS = -Wall -pedantic  
-LDFLAGS = 
-EXEC = webGpio
+CC = gcc -g
+CFLAGS = 
+LDFLAGS =
+EXEC = ampcontrol
 
 
 all : $(EXEC)
